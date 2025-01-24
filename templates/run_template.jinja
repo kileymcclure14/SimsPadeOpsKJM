@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -J {{ job_name }}              # Job name
-#SBATCH -o {{ job_name }}.o%j          # Name of stdout output file
-#SBATCH -e {{ job_name }}.e%j          # Name of stderr error file
+#SBATCH -J {{ job_name }}            # Job name
+#SBATCH -o {{ job_path }}.o%j        # Name of stdout output file
+#SBATCH -e {{ job_path }}.e%j        # Name of stderr error file
 #SBATCH -p skx                       # Queue (partition) name
 #SBATCH -N {{ n_nodes }}             # Total # of nodes
 #SBATCH --ntasks-per-node 48         # Total # of cores

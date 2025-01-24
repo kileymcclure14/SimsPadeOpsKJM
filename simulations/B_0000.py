@@ -16,7 +16,6 @@ single_inputs = dict(
     sim = dict(
         # always need to provide the filepaths (no defaults)
         inputdir = ju.DATA_PATH + curr_script_name + "_Files",
-        outputdir = ju.DATA_PATH + curr_script_name + "_Files",
         # if not provided, default_inputs will be used
         tstop = 250,
         t_dataDump = 50,

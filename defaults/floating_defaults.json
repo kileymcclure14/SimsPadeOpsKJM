@@ -12,7 +12,8 @@
         "sim_file_name" : "sim_inputs.dat",
         "turb_dirname" : "turbine_dir",
         "t_dataDump" : 1000,
-        "useDynamicTurbine": true
+        "useDynamicTurbine": true,
+        "RunID" : 1
     },
     "turb": {
         "xLoc": 5,
