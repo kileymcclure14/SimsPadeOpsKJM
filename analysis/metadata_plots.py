@@ -31,7 +31,7 @@ import statistics
 
 
 
-suite_path = au.DATA_PATH + "F_0000_SU_Files/"
+suite_path = au.DATA_PATH + "F_0000_X_Files/"
 sub_folders = [f.path for f in os.scandir(suite_path) if f.is_dir()]
 # TODO: In the long term, should make sure the IDs are in the right order!
 
