@@ -1,8 +1,10 @@
+import itertools
 import jinja_sim_utils as ju
-import os
 from pathlib import Path
 
-# TODO: need to add in scratch path so the run scripts have the right file path
+# The purpose of this simulation was to study how different filter widths,
+# along with turning the correction calculation on and off, would effect the value of Cp,
+# especially compared to the analytical value.
 
 sim_template = ju.TEMPLATE_PATH.joinpath("sim_template.jinja")
 turb_template = ju.TEMPLATE_PATH.joinpath("turb_template.jinja")
@@ -18,25 +20,37 @@ single_inputs = dict(
         inputdir = ju.DATA_PATH + curr_script_name + "_Files",
         outputdir = ju.DATA_PATH + curr_script_name + "_Files",
         # if not provided, default_inputs will be used
+        Lx = 25,
+        Ly = 10,
+        Lz = 10,
+        nx = 256,
+        ny = 128,
+        nz = 128,
         tstop = 250,
         t_dataDump = 50,
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
+        cT = 1.0,
+        surge_freq = 0.0,
+        surge_amplitude = 0.0,
+        pitch_amplitude = 0.0,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
         problem_dir = "turbines",
         problem_name = "AD_coriolis_shear",
-        job_name = "steady_test_sg",
+        job_name = "grid_resolution_test_sg",
         # if not provided, default_inputs will be used
         n_hrs = 4,
     )
 )
-
-varied_inputs = dict(sim = dict(dt = [0.2, 0.04]),  # big and small timesteps (max f expected in unsteady sims is ~1.2 so 1 / (20 * 1))
-                     turb = dict(cT = [1.0, 3.0], ))  # below and above the Betz limit
-
-
-ju.write_padeops_suite(single_inputs, varied_inputs, nested = True, default_input = default_inputs,
+single_inputs["sim"]["dt"] = ju.find_min_dt(1.0, 256, 128, 128, 0.0, single_inputs, v = 0.0, w = 0.0)
+factor_list = [0.25, 1.5, 2.75, 4.0]
+filterWidth = [ ju.find_filter_width(single_inputs, factor = f) for f in factor_list]
+useCorrection = [True, False]
+varied_inputs = itertools.product(useCorrection, filterWidth)
+varied_header = ["useCorrection", "filterWidth"]
+# write needed simulation files
+ju.write_padeops_suite(single_inputs, varied_inputs, varied_header = varied_header, default_input = default_inputs,
     sim_template = sim_template, run_template = run_template, turb_template = turb_template)

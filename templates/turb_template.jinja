@@ -4,10 +4,11 @@ yLoc         =   {{ "%0.8f"|format(yLoc|float) }}d0
 zLoc         =   {{ "%0.8f"|format(zLoc|float) }}d0
 diam         =   1.0d0 
 cT           =   {{ "%0.8f"|format(cT|float) }}d0
+useDynamicYaw = .FALSE.
 yaw          =   0.00000000d0
 tilt         =   0.00000000d0
-filterWidth  =   0.3006d0
-useCorrection = .True.     ! turns filtering on (Shapiro et al. (2019))
+filterWidth  =   {{ "%0.8f"|format(filterWidth|float) }}d0
+useCorrection = .{{ useCorrection|upper }}.     ! turns filtering on (Shapiro et al. (2019))
 
 /
 /

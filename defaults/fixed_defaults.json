@@ -1,6 +1,6 @@
 {
     "sim": {
-        "nx": 56,
+        "nx": 256,
         "ny": 128,
         "nz": 128,
         "tstop": 1000,
@@ -20,6 +20,8 @@
         "yLoc": 5,
         "zLoc": 2.5,
         "cT": 1.33,
+        "useCorrection" : false,
+        "filterWidth" : 0.5,
         "surge_freq": 0,
         "surge_amplitude": 0,
         "pitch_amplitude": 0

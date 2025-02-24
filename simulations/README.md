@@ -11,8 +11,9 @@ Here is a list of the simulations with the ID, as well as the keys. I have also 
 | ID   | Keys | Notes | Date |
 |------|------|-------|------|
 | 0000 | X    | Varying dt and CT' to test needed timestep | 01/21/25|
-| 0000 | SU    | Varying dt and CT' to test needed timestep | 01/22/25|
+| 0000 | SU_PI_X | Varying grid size needed for accurate resolution | 01/22/25|
 | 0001 | X    | Varying CT' with constant dt to test instability | 01/23/25|
+| 0002 | SU_PI_X | | 02/17/25 |
 
 ## Fixed-Bottom Simulations
 
