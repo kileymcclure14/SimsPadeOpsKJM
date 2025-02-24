@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import padeopsIO as pio
-import pyGCS as pg
 from scipy.signal import find_peaks
 import statistics
 
