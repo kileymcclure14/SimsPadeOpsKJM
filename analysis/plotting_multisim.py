@@ -10,7 +10,7 @@ import numpy as np
 
 data_path = Path(au.DATA_PATH)
 sim1_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0000")
-sim1 = pio.BudgetIO("Data/U_0007]8_Files/Sim_0000", padeops=True, runid = 1, normalize_origin = "turbine")
+sim1 = pio.BudgetIO("Data/U_0008_Files/Sim_0000", padeops=True, runid = 1, normalize_origin = "turbine")
 sim2_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0001")
 sim2 = pio.BudgetIO("Data/U_0008_Files/Sim_0001", padeops=True, runid = 1, normalize_origin = "turbine")
 sim3_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0002")
