@@ -19,6 +19,7 @@ plt.xlabel('Timestep')
 plt.ylabel('Power (Non Dimensionalized by $D^2U^3$ )')
 plt.title('Power Output')
 plt.savefig("./Turbine_Power_U_0006")
+print(power_time)
 
 #Turbine Power Coefficent
 u_inf = sim.slice(field_terms=['u'], xlim = -5, zlim= 0)['u'].mean("y").values
@@ -29,11 +30,13 @@ plt.xlabel('Timestep')
 plt.ylabel('Cp')
 plt.title('Power Coefficent')
 plt.savefig("./Turbine_Cp_U_0006")
+print(Cp_time)
 
 #Instantanious Velocity Field
 ds = sim.slice(field_terms='u', ylim=0)
 ds['u'].imshow()
 plt.savefig("./U_Field_U_0006")
+
 
 #Turbine Thrust 
 Ctprime = sim.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
@@ -45,3 +48,7 @@ plt.xlabel('Timestep')
 plt.ylabel('Thrust (Non Dimensional)')
 plt.title('Turbine Thrust')
 plt.savefig("./Turbine_Thrust_U_0006")
+
+print(thrust_time)
+print(u_inf)
+print(ud_time)
