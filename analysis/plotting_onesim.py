@@ -12,7 +12,7 @@ sim_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files")
 sim = pio.BudgetIO("Data/U_0008_Files/Sim_0000", padeops = True, runid =1, normalize_origin= "turbine")
 
 #Turbine Power
-power_time = sim.read_turb_power(steady=False)
+power_time = sim.read_turb_power("all", steady=False)
 plt.figure(figsize= (9, 6))
 plt.plot(power_time, label = 'Ct Prime = 0.75')
 plt.xlabel('Timestep')
@@ -40,7 +40,7 @@ plt.savefig("./U_Field_U_0008_Sim1_Single")
 
 #Turbine Thrust 
 Ctprime = sim.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
-ud_time = sim.read_turb_uvel(steady=False)
+ud_time = sim.read_turb_uvel("all",steady=False)
 thrust_time = ud_time**2 * Ctprime * 0.5 * (np.pi/4)
 plt.figure(figsize= (9, 6))
 plt.plot(thrust_time, label = 'Ct Prime = 0.75')

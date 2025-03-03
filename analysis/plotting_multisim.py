@@ -19,10 +19,10 @@ sim4_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0003")
 sim4 = pio.BudgetIO("Data/U_0008_Files/Sim_0003", padeops=True, runid = 1, normalize_origin = "turbine")
 
 #Turbine Power
-power_time_s1 = sim1.read_turb_power(steady=False)
-power_time_s2 = sim2.read_turb_power(steady=False)
-power_time_s3 = sim3.read_turb_power(steady=False)
-power_time_s4 = sim4.read_turb_power(steady=False)
+power_time_s1 = sim1.read_turb_power("all", steady=False)
+power_time_s2 = sim2.read_turb_power("all", steady=False)
+power_time_s3 = sim3.read_turb_power("all", steady=False)
+power_time_s4 = sim4.read_turb_power("all", steady=False)
 plt.figure(figsize = (9,6))
 plt.plot(power_time_s1, label = 'Ct Prime = 0.75', color='red')
 plt.plot(power_time_s2, label = 'Ct Prime = 1.50', color='blue')
@@ -78,16 +78,16 @@ plt.savefig("./U_Field_U_0008_Sim4")
 
 #Turbine Thrust
 Ctprime1 = sim1.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
-ud_time1 = sim1.read_turb_uvel(steady=False)
+ud_time1 = sim1.read_turb_uvel("all", steady=False)
 thrust_time1 = ud_time1**2 * Ctprime1 * 0.5 * (np.pi/4)
 Ctprime2 = sim2.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
-ud_time2 = sim2.read_turb_uvel(steady=False)
+ud_time2 = sim2.read_turb_uvel("all", steady=False)
 thrust_time2 = ud_time2**2 * Ctprime2 * 0.5 * (np.pi/4)
 Ctprime3 = sim3.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
-ud_time3 = sim3.read_turb_uvel(steady=False)
+ud_time3 = sim3.read_turb_uvel("all", steady=False)
 thrust_time3 = ud_time3**2 * Ctprime3 * 0.5 * (np.pi/4)
 Ctprime4 = sim4.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
-ud_time4 = sim4.read_turb_uvel(steady=False)
+ud_time4 = sim4.read_turb_uvel("all", steady=False)
 thrust_time4 = ud_time4**2 * Ctprime4 * 0.5 * (np.pi/4)
 plt.figure(figsize= (9, 6))
 plt.plot(thrust_time1, label = 'Ct Prime = 0.75', color='red')
