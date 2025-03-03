@@ -107,3 +107,105 @@ print(f"Uinf for Ct' = 0.75: {u_inf1} and ud: {ud_time1}")
 print(f"Uinf for Ct' = 1.50: {u_inf2} and ud: {ud_time2}")
 print(f"Uinf for Ct' = 2.25: {u_inf3} and ud: {ud_time3}")
 print(f"Uinf for Ct' = 3.0: {u_inf4} and ud: {ud_time4}")
+
+#Compare
+
+#Induction Factores
+a1 = 1-(ud_time1/u_inf1)
+a2 = 1-(ud_time2/u_inf2)
+a3 = 1-(ud_time3/u_inf3)
+a4 = 1-(ud_time4/u_inf4)
+
+#Power Coefficients
+#First Sim
+Cp_t1 = 4*a1*((1-a1)**2)
+plt.figure(figsize = (9,6))
+plt.plot(Cp_time_s1, label = 'Simulated Cp')
+plt.plot(Cp_t1, label = 'Theoretical Cp')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Cp')
+plt.title('Power Coefficient Theoretical Comparison Sim1: Ct Prime = 0.75')
+plt.savefig("./Turbine_Cp_Comapre_Sim1")
+
+#Second Sim
+Cp_t2 = 4*a2*((1-a2)**2)
+plt.figure(figsize = (9,6))
+plt.plot(Cp_time_s2, label = 'Simulated Cp')
+plt.plot(Cp_t2, label = 'Theoretical Cp')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Cp')
+plt.title('Power Coefficient Theoretical Comparison Sim2: Ct Prime = 1.50')
+plt.savefig("./Turbine_Cp_Comapre_Sim2")
+
+#Third Sim
+Cp_t3 = 4*a3*((1-a3)**2)
+plt.figure(figsize = (9,6))
+plt.plot(Cp_time_s3, label = 'Simulated Cp')
+plt.plot(Cp_t3, label = 'Theoretical Cp')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Cp')
+plt.title('Power Coefficient Theoretical Comparison Sim3: Ct Prime = 2.25')
+plt.savefig("./Turbine_Cp_Comapre_Sim3")
+
+#Fourth Sim
+Cp_t4 = 4*a4*((1-a4)**2)
+plt.figure(figsize = (9,6))
+plt.plot(Cp_time_s4, label = 'Simulated Cp')
+plt.plot(Cp_t4, label = 'Theoretical Cp')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Cp')
+plt.title('Power Coefficient Theoretical Comparison Sim4: Ct Prime = 3.0')
+plt.savefig("./Turbine_Cp_Comapre_Sim4")
+
+#Thrust Coefficients
+#First Sim
+ct_a1 = Ctprime1*((1-a1)**2)
+ct_t1 = 4*a1*(1-a1)
+plt.figure(figsize = (9,6))
+plt.plot(ct_a1, label = 'Simulated Ct')
+plt.plot(ct_t1, label = 'Theoretical Ct')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Ct')
+plt.title('Thrust Coefficient Theoretical Comparison Sim1: Ct Prime = 0.75')
+plt.savefig("./Turbine_Ct_Comapre_Sim1")
+
+#Second Sim
+ct_a2 = Ctprime2*((1-a2)**2)
+ct_t2 = 4*a2*(1-a2)
+plt.figure(figsize = (9,6))
+plt.plot(ct_a2, label = 'Simulated Ct')
+plt.plot(ct_t2, label = 'Theoretical Ct')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Ct')
+plt.title('Thrust Coefficient Theoretical Comparison Sim2: Ct Prime = 1.50')
+plt.savefig("./Turbine_Ct_Comapre_Sim2")
+
+#Third Sim
+ct_a3 = Ctprime3*((1-a3)**2)
+ct_t3 = 4*a3*(1-a3)
+plt.figure(figsize = (9,6))
+plt.plot(ct_a3, label = 'Simulated Ct')
+plt.plot(ct_t3, label = 'Theoretical Ct')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Ct')
+plt.title('Thrust Coefficient Theoretical Comparison Sim3: Ct Prime = 2.25')
+plt.savefig("./Turbine_Ct_Comapre_Sim3")
+
+#Fourth Sim
+ct_a4 = Ctprime4*((1-a4)**2)
+ct_t4 = 4*a4*(1-a4)
+plt.figure(figsize = (9,6))
+plt.plot(ct_a4, label = 'Simulated Ct')
+plt.plot(ct_t4, label = 'Theoretical Ct')
+plt.legend()
+plt.xlabel('Timestep')
+plt.ylabel('Ct')
+plt.title('Thrust Coefficient Theoretical Comparison Sim4: Ct Prime = 3.0')
+plt.savefig("./Turbine_Ct_Comapre_Sim4")
