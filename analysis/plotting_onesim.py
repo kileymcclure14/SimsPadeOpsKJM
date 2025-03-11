@@ -16,7 +16,7 @@ power_time = sim.read_turb_power("all", turb = 1)[100:]
 
 #Turbine Power Coefficient
 u_inf = sim.slice(field_terms=['u'], xlim = -5, zlim= 0)['u'].mean("y").values
-Cp_time = power_time / (0.5 * u_inf**3)
+Cp_time = power_time / (0.5 *(np.pi/4)* u_inf**3)
 Cp_time = Cp_time[100:]
 plt.figure(figsize= (9, 6))
 plt.plot(Cp_time, label = 'Ct Prime = 1.50')
@@ -86,7 +86,7 @@ min_length_ct = min(len(ct_a), len(ct_t))
 ct_a = ct_a[:min_length_ct]
 ct_t = ct_t[:min_length_ct]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(ct_a)), ct_a, label= 'Simulated Ct', marker = '.', size = 5)
+plt.scatter(range(len(ct_a)), ct_a, label= 'Simulated Ct', marker = '.', s = 5)
 plt.plot(ct_t, label = 'Theoretical Ct')
 plt.legend()
 plt.xlabel('Timestep')

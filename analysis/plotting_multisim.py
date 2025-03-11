@@ -10,14 +10,14 @@ import numpy as np
 
 #Change these each new sim
 data_path = Path(au.DATA_PATH)
-sim1_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0000")
-sim1 = pio.BudgetIO("Data/U_0008_Files/Sim_0000", padeops=True, runid = 1, normalize_origin = "turbine")
-sim2_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0001")
-sim2 = pio.BudgetIO("Data/U_0008_Files/Sim_0001", padeops=True, runid = 1, normalize_origin = "turbine")
-sim3_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0002")
-sim3 = pio.BudgetIO("Data/U_0008_Files/Sim_0002", padeops=True, runid = 1, normalize_origin = "turbine")
-sim4_folder = os.path.join(au.DATA_PATH, "U_0000_8_Files/Sim_0003")
-sim4 = pio.BudgetIO("Data/U_0008_Files/Sim_0003", padeops=True, runid = 1, normalize_origin = "turbine")
+sim1_folder = os.path.join(au.DATA_PATH, "U_0000_9_Files/Sim_0000")
+sim1 = pio.BudgetIO("Data/U_0009_Files/Sim_0000", padeops=True, runid = 1, normalize_origin = "turbine")
+sim2_folder = os.path.join(au.DATA_PATH, "U_0000_9_Files/Sim_0001")
+sim2 = pio.BudgetIO("Data/U_0009_Files/Sim_0001", padeops=True, runid = 1, normalize_origin = "turbine")
+sim3_folder = os.path.join(au.DATA_PATH, "U_0000_9_Files/Sim_0002")
+sim3 = pio.BudgetIO("Data/U_0009_Files/Sim_0002", padeops=True, runid = 1, normalize_origin = "turbine")
+sim4_folder = os.path.join(au.DATA_PATH, "U_0000_9_Files/Sim_0003")
+sim4 = pio.BudgetIO("Data/U_0009_Files/Sim_0003", padeops=True, runid = 1, normalize_origin = "turbine")
 
 #Turbine Power
 power_time_s1 = sim1.read_turb_power("all", steady=False)[50:]
@@ -39,34 +39,34 @@ Cp_time_s3= Cp_time_s3[50:]
 Cp_time_s4 = power_time_s4 / (0.5 *u_inf4**3)
 Cp_time_s4 = Cp_time_s4[50:]
 plt.figure(figsize= (9, 6))
-plt.plot(Cp_time_s1, label = 'Ct Prime = 0.75', color='red')
+plt.plot(Cp_time_s1, label = 'Ct Prime = 1.0', color='red')
 plt.plot(Cp_time_s2, label = 'Ct Prime = 1.50', color='blue')
-plt.plot(Cp_time_s3, label = 'Ct Prime = 2.25', color='green')
-plt.plot(Cp_time_s4, label = 'Ct Prime = 3.0', color='black')
+plt.plot(Cp_time_s3, label = 'Ct Prime = 2.0', color='green')
+plt.plot(Cp_time_s4, label = 'Ct Prime = 2.5', color='black')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Cp')
 plt.title('Power Coefficient')
-plt.savefig("./Turbine_Cp_U_0008") #Change with each new sim
+plt.savefig("./Turbine_Cp_U_0009") #Change with each new sim
 #Change with each new sim
-print(f"Power coefficent for Ct' = 0.75: {Cp_time_s1}")
+print(f"Power coefficent for Ct' = 1.0: {Cp_time_s1}")
 print(f"Power coefficent for Ct' = 1.50: {Cp_time_s2}")
-print(f"Power coefficent for Ct' =  2.25: {Cp_time_s3}")
-print(f"Power coefficent for Ct' = 3.0: {Cp_time_s4}")
+print(f"Power coefficent for Ct' =  2.0: {Cp_time_s3}")
+print(f"Power coefficent for Ct' = 2.50: {Cp_time_s4}")
 
 #Instantaneous Velocity Field
 ds1 = sim1.slice(field_terms='u', ylim=0)
 ds1['u'].imshow()
-plt.savefig("./U_Field_U_0008_Sim1") #Change with each new sim
+plt.savefig("./U_Field_U_0009_Sim1") #Change with each new sim
 ds2 = sim2.slice(field_terms='u', ylim=0)
 ds2['u'].imshow()
-plt.savefig("./U_Field_U_0008_Sim2") #Change with each new sim
+plt.savefig("./U_Field_U_0009_Sim2") #Change with each new sim
 ds3 = sim3.slice(field_terms='u', ylim=0)
 ds3['u'].imshow()
-plt.savefig("./U_Field_U_0008_Sim3") #Change with each new sim
+plt.savefig("./U_Field_U_0009_Sim3") #Change with each new sim
 ds4 = sim4.slice(field_terms='u', ylim=0)
 ds4['u'].imshow()
-plt.savefig("./U_Field_U_0008_Sim4") #Change with each new sim
+plt.savefig("./U_Field_U_0009_Sim4") #Change with each new sim
 
 #Turbine Thrust
 Ctprime1 = sim1.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
@@ -87,24 +87,24 @@ thrust_time4 = ud_time4**2 * Ctprime4 * 0.5 * (np.pi/4)
 thrust_time4 = thrust_time4[50:]
 plt.figure(figsize= (9, 6))
 #Change labels with each sim
-plt.plot(thrust_time1, label = 'Ct Prime = 0.75', color='red')
+plt.plot(thrust_time1, label = 'Ct Prime = 1.0', color='red')
 plt.plot(thrust_time2, label = 'Ct Prime = 1.50', color='blue')
-plt.plot(thrust_time3, label = 'Ct Prime = 2.25', color='green')
-plt.plot(thrust_time4, label = 'Ct Prime = 3.0', color='black')
+plt.plot(thrust_time3, label = 'Ct Prime = 2.0', color='green')
+plt.plot(thrust_time4, label = 'Ct Prime = 2.50', color='black')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Thrust')
 plt.title('Turbine Thrust')
-plt.savefig("./Turbine_Thrust_U_0008")
+plt.savefig("./Turbine_Thrust_U_0009")
 #Change with each sim
-print(f"Thrust for Ct' = 0.75: {thrust_time1}")
+print(f"Thrust for Ct' = 1.0: {thrust_time1}")
 print(f"Thrust for Ct' = 1.50: {thrust_time2}")
-print(f"Thrust for Ct' = 2.25: {thrust_time3}")
-print(f"Thrust for Ct' = 3.0: {thrust_time4}")
-print(f"Uinf for Ct' = 0.75: {u_inf1} and ud: {ud_time1}")
+print(f"Thrust for Ct' = 2.0: {thrust_time3}")
+print(f"Thrust for Ct' = 2.5: {thrust_time4}")
+print(f"Uinf for Ct' = 1.0: {u_inf1} and ud: {ud_time1}")
 print(f"Uinf for Ct' = 1.50: {u_inf2} and ud: {ud_time2}")
-print(f"Uinf for Ct' = 2.25: {u_inf3} and ud: {ud_time3}")
-print(f"Uinf for Ct' = 3.0: {u_inf4} and ud: {ud_time4}")
+print(f"Uinf for Ct' = 2.0: {u_inf3} and ud: {ud_time3}")
+print(f"Uinf for Ct' = 2.5: {u_inf4} and ud: {ud_time4}")
 
 #Compare
 
@@ -115,10 +115,10 @@ a3 = 1-(ud_time3/u_inf3)
 a4 = 1-(ud_time4/u_inf4)
 
 #Change with each sim
-print(f"Induction factor for Ct' = 0.75: {a1}")
+print(f"Induction factor for Ct' = 1.0: {a1}")
 print(f"Induction factor for Ct' = 1.50: {a2}")
-print(f"Induction factor for Ct' = 2.25: {a3}")
-print(f"Induction factor for Ct' = 3.0: {a4}")
+print(f"Induction factor for Ct' = 2.0: {a3}")
+print(f"Induction factor for Ct' = 2.50: {a4}")
 
 #Power Coefficients
 #First Sim
@@ -130,7 +130,7 @@ plt.plot(Cp_t1, label = 'Theoretical Cp')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Cp')
-plt.title('Power Coefficient Theoretical Comparison Sim1: Ct Prime = 0.75') #Change with each sim
+plt.title('Power Coefficient Theoretical Comparison Sim1: Ct Prime = 1.0') #Change with each sim
 plt.savefig("./Turbine_Cp_Comapre_Sim1")
 
 #Second Sim
@@ -154,7 +154,7 @@ plt.plot(Cp_t3, label = 'Theoretical Cp')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Cp')
-plt.title('Power Coefficient Theoretical Comparison Sim3: Ct Prime = 2.25') #Change with each sim
+plt.title('Power Coefficient Theoretical Comparison Sim3: Ct Prime = 2.0') #Change with each sim
 plt.savefig("./Turbine_Cp_Comapre_Sim3")
 
 #Fourth Sim
@@ -166,18 +166,18 @@ plt.plot(Cp_t4, label = 'Theoretical Cp')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Cp')
-plt.title('Power Coefficient Theoretical Comparison Sim4: Ct Prime = 3.0')
+plt.title('Power Coefficient Theoretical Comparison Sim4: Ct Prime = 2.5')
 plt.savefig("./Turbine_Cp_Comapre_Sim4")
 
 #Combined Plot, Change labels with each new sim
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(Cp_time_s1)), Cp_time_s1, label='Simulated Cp at Ct Prime = 0.75 ', color = 'red', marker='.', s=5)
+plt.scatter(range(len(Cp_time_s1)), Cp_time_s1, label='Simulated Cp at Ct Prime = 1.0 ', color = 'red', marker='.', s=5)
 plt.plot(Cp_t1, label = 'Theoretical Cp at Ct Prime = 0.75', color = 'red')
 plt.scatter(range(len(Cp_time_s2)), Cp_time_s2, label='Simulated Cp at Ct Prime = 1.50', color = 'blue', marker='.', s=5)
 plt.plot(Cp_t2, label = 'Theoretical Cp at Ct Prime = 1.50', color = 'blue')
-plt.scatter(range(len(Cp_time_s3)), Cp_time_s3, label='Simulated Cp at Ct Prime = 2.25', color = 'green', marker='.', s=5)
+plt.scatter(range(len(Cp_time_s3)), Cp_time_s3, label='Simulated Cp at Ct Prime = 2.0', color = 'green', marker='.', s=5)
 plt.plot(Cp_t3, label = 'Theoretical Cp at Ct Prime = 2.25', color = 'green')
-plt.scatter(range(len(Cp_time_s4)), Cp_time_s4, label='Simulated Cp at Ct Prime = 3.0', color = 'black', marker='.', s=5)
+plt.scatter(range(len(Cp_time_s4)), Cp_time_s4, label='Simulated Cp at Ct Prime = 2.5', color = 'black', marker='.', s=5)
 plt.plot(Cp_t4, label = 'Theoretical Cp at Ct Prime = 3.0', color = 'black')
 plt.legend()
 plt.savefig('./Cp_Comapare_all')
@@ -189,12 +189,12 @@ ct_a1 = ct_a1[50:]
 ct_t1 = 4*a1*(1-a1)
 ct_t1 = ct_t1[50:]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(ct_a1)), ct_a1, label = 'Simulated Ct at Ct Prime = 0.75', marker = '.', s = 5)
+plt.scatter(range(len(ct_a1)), ct_a1, label = 'Simulated Ct at Ct Prime = 1.0', marker = '.', s = 5)
 plt.plot(ct_t1, label = 'Theoretical Ct')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Ct')
-plt.title('Thrust Coefficient Theoretical Comparison Sim1: Ct Prime = 0.75')
+plt.title('Thrust Coefficient Theoretical Comparison Sim1: Ct Prime = 1.0')
 plt.savefig("./Turbine_Ct_Comapre_Sim1")
 
 #Second Sim
@@ -217,12 +217,12 @@ ct_a3 = ct_a3[50:]
 ct_t3 = 4*a3*(1-a3)
 ct_t3 = ct_t3[50:]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(ct_a3)), ct_a3, label = 'Simulated Ct at Ct Prime = 2.25', marker = '.', s = 5)
+plt.scatter(range(len(ct_a3)), ct_a3, label = 'Simulated Ct at Ct Prime = 2.0', marker = '.', s = 5)
 plt.plot(ct_t3, label = 'Theoretical Ct')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Ct')
-plt.title('Thrust Coefficient Theoretical Comparison Sim3: Ct Prime = 2.25')
+plt.title('Thrust Coefficient Theoretical Comparison Sim3: Ct Prime = 2.0')
 plt.savefig("./Turbine_Ct_Comapre_Sim3")
 
 #Fourth Sim
@@ -231,24 +231,24 @@ ct_a4 = ct_a4[50:]
 ct_t4 = 4*a4*(1-a4)
 ct_t4 = ct_t4[50:]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(ct_a4)), ct_a4, label = 'Simulated Ct at Ct Prime = 3.0', marker = '.', s = 5)
+plt.scatter(range(len(ct_a4)), ct_a4, label = 'Simulated Ct at Ct Prime = 2.5', marker = '.', s = 5)
 plt.plot(ct_t4, label = 'Theoretical Ct')
 plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Ct')
-plt.title('Thrust Coefficient Theoretical Comparison Sim4: Ct Prime = 3.0')
+plt.title('Thrust Coefficient Theoretical Comparison Sim4: Ct Prime = 2.5')
 plt.savefig("./Turbine_Ct_Comapre_Sim4")
 
 #Combined Plot, change labels with each new sim
 plt.figure(figsize=(9,6))
-plt.scatter(range(len(ct_a1)), ct_a1, label = 'Simulated Ct at Ct Prime = 0.75', marker = '.', s = 5, color ='red')
-plt.plot(ct_t1, label = 'Theoretical Ct at Ct Prime = 0.75', color = 'red')
+plt.scatter(range(len(ct_a1)), ct_a1, label = 'Simulated Ct at Ct Prime = 1.0', marker = '.', s = 5, color ='red')
+plt.plot(ct_t1, label = 'Theoretical Ct at Ct Prime = 1.0', color = 'red')
 plt.scatter(range(len(ct_a2)), ct_a2, label = 'Simulated Ct at Ct Prime = 1.50', marker = '.', s = 5, color = 'blue')
 plt.plot(ct_t2, label = 'Theoretical Ct at Ct Prime = 1.50', color = 'blue')
-plt.scatter(range(len(ct_a3)), ct_a3, label = 'Simulated Ct at Ct Prime = 2.25', marker = '.', s = 5, color = 'green')
-plt.plot(ct_t3, label = 'Theoretical Ct at Ct Prime = 2.25', color = 'green')
-plt.scatter(range(len(ct_a4)), ct_a4, label = 'Simulated Ct at Ct Prime = 3.0', marker = '.', s = 5, color = 'black')
-plt.plot(ct_t4, label = 'Theoretical Ct at Ct Prime = 3.0', color = 'black')
+plt.scatter(range(len(ct_a3)), ct_a3, label = 'Simulated Ct at Ct Prime = 2.0', marker = '.', s = 5, color = 'green')
+plt.plot(ct_t3, label = 'Theoretical Ct at Ct Prime = 2.0', color = 'green')
+plt.scatter(range(len(ct_a4)), ct_a4, label = 'Simulated Ct at Ct Prime = 2.5', marker = '.', s = 5, color = 'black')
+plt.plot(ct_t4, label = 'Theoretical Ct at Ct Prime = 2.5', color = 'black')
 plt.legend()
 plt.savefig('./ct_compare_all')
 
@@ -274,10 +274,10 @@ percent_dif_cp_sim4 = np.abs((Cp_t4 - Cp_time_s4)/Cp_t4)*100
 
 
 plt.figure(figsize=(9,6))
-plt.plot(percent_dif_cp_sim1, label = 'Ct Prime = 0.75', color = 'red')
+plt.plot(percent_dif_cp_sim1, label = 'Ct Prime = 1.0', color = 'red')
 plt.plot(percent_dif_cp_sim2, label = 'Ct Prime = 1.50', color = 'blue')
-plt.plot(percent_dif_cp_sim3, label = 'Ct Prime = 2.25', color = 'green')
-plt.plot(percent_dif_cp_sim4, label = 'Ct Prime = 3.0', color = 'black')
+plt.plot(percent_dif_cp_sim3, label = 'Ct Prime = 2.0', color = 'green')
+plt.plot(percent_dif_cp_sim4, label = 'Ct Prime = 2.5', color = 'black')
 plt.xlabel('Timestep')
 plt.ylabel('Percent Difference')
 plt.title('Percent Difference Theory vs. Simulated Cp')
@@ -303,10 +303,10 @@ ct_t4 = ct_t4[:min_length_ct4]
 percent_dif_ct_sim4 = np.abs((ct_t4 - ct_a4)/ct_t4)*100
 
 plt.figure(figsize=(9,6))
-plt.plot(percent_dif_ct_sim1, label = 'Ct Prime = 0.75', color = 'red')
+plt.plot(percent_dif_ct_sim1, label = 'Ct Prime = 1,0', color = 'red')
 plt.plot(percent_dif_ct_sim2, label = 'Ct Prime = 1.50', color = 'blue')
-plt.plot(percent_dif_ct_sim3, label = 'Ct Prime = 2.25', color = 'green')
-plt.plot(percent_dif_ct_sim4, label = 'Ct Prime = 3.0', color = 'black')
+plt.plot(percent_dif_ct_sim3, label = 'Ct Prime = 2.0', color = 'green')
+plt.plot(percent_dif_ct_sim4, label = 'Ct Prime = 2.5', color = 'black')
 plt.xlabel('Timestep')
 plt.ylabel('Percent Difference')
 plt.title('Percent Difference Theory vs. Simulated Ct')
