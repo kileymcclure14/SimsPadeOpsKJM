@@ -16,15 +16,15 @@ power_time = sim.read_turb_power("all", turb = 1)[100:]
 
 #Turbine Power Coefficient
 u_inf = sim.slice(field_terms=['u'], xlim = -5, zlim= 0)['u'].mean("y").values
-Cp_time = power_time / (0.5 *(np.pi/4)* u_inf**3)
-Cp_time = Cp_time[100:]
+Cp_les = power_time / (0.5 *(np.pi/4)* u_inf**3)
+Cp_les = Cp_les[100:]
 plt.figure(figsize= (9, 6))
-plt.plot(Cp_time, label = 'Ct Prime = 1.50')
+plt.plot(Cp_les, label = 'Ct Prime = 1.50')
 plt.xlabel('Timestep')
 plt.ylabel('Cp')
 plt.title('Power Coefficient')
 plt.savefig("./Turbine_Cp_U_0008_Sim2_Single")
-print(f"Power coefficent at Ct'= 1.50: {Cp_time}")
+print(f"Power coefficent at Ct'= 1.50: {Cp_les}")
 
 #Instantanious Velocity Field
 ds = sim.slice(field_terms='u', ylim=0)
@@ -51,16 +51,17 @@ print(f"Ud at Ct' = 1.50: {ud_time}")
 #Compare
 
 #Indcution Factor
-a = 1 - (ud_time/u_inf)
+a_les = 1 - (power_time/(0.5*(np.pi/4)*Ctprime))
+a_t = Ctprime/(4+Ctprime)
 
 #Power Coefficient
-Cp_t = 4*a*((1-a)**2)
+Cp_t = 4*a_t*((1-a_t)**2)
 Cp_t = Cp_t[100:]
-min_length_cp = min(len(Cp_time), len(Cp_t))
-Cp_time = Cp_time[:min_length_cp]
+min_length_cp = min(len(Cp_les), len(Cp_t))
+Cp_les = Cp_les[:min_length_cp]
 Cp_t = Cp_t[:min_length_cp]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(Cp_time)), Cp_time, label='Simulated Cp', color='r', marker='.', s=5)
+plt.scatter(range(len(Cp_les)), Cp_les, label='Simulated Cp', color='r', marker='.', s=5)
 plt.plot(Cp_t, label = 'Theoretical Cp')
 plt.legend()
 plt.xlabel('Timestep')
@@ -68,7 +69,7 @@ plt.ylabel('Cp')
 plt.title('Power Coefficient Theoretical Comparison')
 plt.savefig("./Turbine_Cp_Comapre")
 
-percent_dif_cp = np.abs((Cp_t - Cp_time)/Cp_t)*100
+percent_dif_cp = np.abs((Cp_t - Cp_les)/Cp_t)*100
 
 plt.figure(figsize = (9,6))
 plt.plot(percent_dif_cp)
@@ -78,15 +79,15 @@ plt.title('Percent Difference B/W Theory and Simulated Cp')
 plt.savefig('./Turbine_Cp_PercentDif')
 
 #Thrust Coefficients
-ct_a = Ctprime*((1-a)**2)
-ct_a = ct_a[100:]
-ct_t = 4*a*(1-a)
+ct_les = Ctprime*((1-a_les)**2)
+ct_les = ct_les[100:]
+ct_t = 4*a_t*(1-a_t)
 ct_t = ct_t[100:]
-min_length_ct = min(len(ct_a), len(ct_t))
-ct_a = ct_a[:min_length_ct]
+min_length_ct = min(len(ct_les), len(ct_t))
+ct_les = ct_les[:min_length_ct]
 ct_t = ct_t[:min_length_ct]
 plt.figure(figsize = (9,6))
-plt.scatter(range(len(ct_a)), ct_a, label= 'Simulated Ct', marker = '.', s = 5)
+plt.scatter(range(len(ct_les)), ct_les, label= 'Simulated Ct', marker = '.', s = 5)
 plt.plot(ct_t, label = 'Theoretical Ct')
 plt.legend()
 plt.xlabel('Timestep')
@@ -94,7 +95,7 @@ plt.ylabel('Ct')
 plt.title('Thrust Coefficient Theoretical Comparison')
 plt.savefig("./Turbine_Ct_Comapre")
 
-percent_dif_ct = np.abs((ct_t - ct_a)/ct_t)*100
+percent_dif_ct = np.abs((ct_t - ct_les)/ct_t)*100
 
 plt.figure(figsize = (9,6))
 plt.plot(percent_dif_ct)
