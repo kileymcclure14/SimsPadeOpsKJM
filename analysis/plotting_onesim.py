@@ -38,6 +38,7 @@ plt.savefig("./U_Field_U_0011")
 #Turbine Thrust 
 Ctprime = sim.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
 ud_time = sim.read_turb_uvel("all", turb = 1)
+ud_time = ud_time[500:]
 thrust_time = ud_time**2 * Ctprime * 0.5 * (np.pi/4)
 thrust_time = thrust_time[500:]
 # plt.figure(figsize= (9, 6))
@@ -87,7 +88,10 @@ print(f"Cp percent difference: {percent_dif_cp}")
 # plt.savefig('./Turbine_Cp_PercentDif_U_0011')
 
 #Thrust Coefficients
-ct_les = Ctprime*((1-a_les)**2)
+ft_les = power_time/ud_time
+ctprime_les = ft_les/(0.5*(np.pi/4)*ud_time)
+ct_les = ctprime_les*(1-a_les)**2
+ct_les = ct_les[500:]
 #ct_t = 4*a_t*(1-a_t)
 ct_t = Ctprime*((1-a_t)**2)
 # min_length_ct = min(len(ct_les), len(ct_t))
@@ -101,7 +105,9 @@ plt.legend()
 plt.xlabel('Timestep')
 plt.ylabel('Ct')
 plt.title('Thrust Coefficient at Ct Prime = 1.50')
+plt.legend()
 plt.savefig("./Turbine_Ct_U_0011")
+
 
 ct_les_compare = ct_les[-1]
 percent_dif_ct = np.abs((ct_t - ct_les_compare)/ct_t)*100
@@ -115,3 +121,9 @@ print(f"Percent Difference Ct: {percent_dif_ct}")
 # plt.ylabel('Percent Difference')
 # plt.title('Percent Difference B/W Theory and Simulated Ct')
 # plt.savefig('./Turbine_Ct_PercentDif_U_0011')
+
+ud_t = (power_time/(0.5*(np.pi/4)*Ctprime*M**3))**(1/3)
+print(f"Ud_t = {ud_t}")
+print(f"LES Ud = {ud_time}")
+percent_dif_ud = np.abs((ud_t[-1]-ud_time[-1])/ud_t[-1])*100
+print(f"Percent Dif Ud = {percent_dif_ud}")
