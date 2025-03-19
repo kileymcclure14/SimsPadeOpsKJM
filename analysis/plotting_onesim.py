@@ -40,7 +40,7 @@ Ctprime = sim.ta[0].ct  # same as: sim.turbineArray.turbines[0].ct
 ud_time = sim.read_turb_uvel("all", turb = 1)
 ud_time = ud_time[500:]
 thrust_time = ud_time**2 * Ctprime * 0.5 * (np.pi/4)
-thrust_time = thrust_time[500:]
+thrust_time = thrust_time[50:]
 # plt.figure(figsize= (9, 6))
 # plt.plot(thrust_time, label = 'Ct Prime = 1.50')
 # plt.xlabel('Timestep')
@@ -89,8 +89,8 @@ print(f"Cp percent difference: {percent_dif_cp}")
 
 #Thrust Coefficients
 ft_les = power_time/ud_time
-ctprime_les = ft_les/(0.5*(np.pi/4)*ud_time)
-ct_les = ctprime_les*(1-a_les)**2
+#ctprime_les = ft_les/(0.5*(np.pi/4)*ud_time)
+ct_les = Ctprime*((1-a_les)**2)
 ct_les = ct_les[500:]
 #ct_t = 4*a_t*(1-a_t)
 ct_t = Ctprime*((1-a_t)**2)
