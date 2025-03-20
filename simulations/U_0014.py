@@ -27,6 +27,7 @@ single_inputs = dict(
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
+        useCorrection = True,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
@@ -43,3 +44,5 @@ varied_inputs = dict(turb = dict(cT = [1.0, 1.25, 1.50, 1.75] ))  # below and ab
 
 ju.write_padeops_suite(single_inputs, varied_inputs, nested = True, default_input = default_inputs,
     sim_template = sim_template, run_template = run_template, turb_template = turb_template)
+
+
