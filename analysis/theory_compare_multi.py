@@ -187,9 +187,9 @@ ct_les3 = thrust_les3/(0.5*(np.pi/4)*Ctprime3*(ud_les3**2))
 ct_les3_cor = thrust_les3_cor/(0.5*(np.pi/4)*Ctprime3*(ud_les3_cor**2))
 pdif_ct_les3 = np.abs((np.mean(ct_les3)-np.mean(ct_les3_cor))/np.mean(ct_les3))*100
 
-ct_les1 = thrust_les1/(0.5*(np.pi/4)*Ctprime1*(ud_les1**2))
-ct_les1_cor = thrust_les1_cor/(0.5*(np.pi/4)*Ctprime2*(ud_les1_cor**2))
-pdif_ct_les = np.abs((np.mean(ct_les1)-np.mean(ct_les1_cor))/np.mean(ct_les1))*100
+ct_les4 = thrust_les4/(0.5*(np.pi/4)*Ctprime4*(ud_les4**2))
+ct_les4_cor = thrust_les4_cor/(0.5*(np.pi/4)*Ctprime4*(ud_les4_cor**2))
+pdif_ct_les4 = np.abs((np.mean(ct_les4)-np.mean(ct_les4_cor))/np.mean(ct_les4))*100
 
 #Induction Factors
 a_les1 = 1-(p_les1/(0.5*(np.pi/4)*Ctprime1))**(1/3)
@@ -210,7 +210,123 @@ pdif_a_les4 = np.abs((np.mean(a_les4)-np.mean(a_les4_cor))/np.mean(a_les4))*100
 
 #Theory Values (No Correction Factor used in Theory Calcs)
 
-#Induction Factor
+#Induction Factor and Compare
 a_t1 = Ctprime1/(4+Ctprime1)
-pdif_a1 = np.abs((a_t1 - np.mean(a_les1))/np.mean(a_les1))*100
+pdif_a1 = np.abs((a_t1 - np.mean(a_les1))/np.mean(a_t1))*100
 pdif_a1_cor = np.abs((a_t1 - np.mean(a_les1_cor))/np.mean(a_t1))*100
+print(f"Induction Factor Percent Difference (No Correction) for Ct Prime = 1.0: {pdif_a1}")
+print(f"Induction Factor Percent Difference (Corrected) for Ct Prime = 1.0: {pdif_a1_cor}")
+
+a_t2 = Ctprime2/(4+Ctprime2)
+pdif_a2 = np.abs((a_t2 - np.mean(a_les2))/np.mean(a_t2))*100
+pdif_a2_cor = np.abs((a_t2 - np.mean(a_les2_cor))/np.mean(a_t2))*100
+print(f"Induction Factor Percent Difference (No Correction) for Ct Prime = 1.25: {pdif_a2}")
+print(f"Induction Factor Percent Difference (Corrected) for Ct Prime = 1.25: {pdif_a2_cor}")
+ 
+a_t3 = Ctprime3/(4+Ctprime3)
+pdif_a3 = np.abs((a_t3 - np.mean(a_les3))/np.mean(a_t3))*100
+pdif_a3_cor = np.abs((a_t3 - np.mean(a_les3_cor))/np.mean(a_t3))*100
+print(f"Induction Factor Percent Difference (No Correction) for Ct Prime = 1.5: {pdif_a3}")
+print(f"Induction Factor Percent Difference (Corrected) for Ct Prime = 1.5: {pdif_a3_cor}")
+
+a_t4 = Ctprime4/(4+Ctprime4)
+pdif_a4 = np.abs((a_t4 - np.mean(a_les4))/np.mean(a_t4))*100
+pdif_a4_cor = np.abs((a_t4 - np.mean(a_les4_cor))/np.mean(a_t4))*100
+print(f"Induction Factor Percent Difference (No Correction) for Ct Prime = 1.75: {pdif_a4}")
+print(f"Induction Factor Percent Difference (Corrected) for Ct Prime = 1.75: {pdif_a4_cor}")
+
+#Theororetical Cp and Compare
+cp_t1 = 4*a_t1*((1-a_t1)**2)
+pdif_cp1 = np.abs((cp_t1 - np.mean(cp_les1))/cp_t1)*100
+pdif_cp1_cor = np.abs((cp_t1 - np.mean(cp_les1_cor))/cp_t1)*100
+print(f"Percent Difference Cp (No Correction) at Ct Prime = 1.0: {pdif_cp1}")
+print(f"Percent Difference Cp (Correction) at Ct Prime = 1.0: {pdif_cp1_cor}")
+
+cp_t2 = 4*a_t2*((1-a_t2)**2)
+pdif_cp2 = np.abs((cp_t2 - np.mean(cp_les2))/cp_t2)*100
+pdif_cp2_cor = np.abs((cp_t2 - np.mean(cp_les2_cor))/cp_t2)*100
+print(f"Percent Difference Cp (No Correction) at Ct Prime = 1.25: {pdif_cp2}")
+print(f"Percent Difference Cp (Correction) at Ct Prime = 1.25: {pdif_cp2_cor}")
+
+cp_t3 = 4*a_t3*((1-a_t3)**2)
+pdif_cp3 = np.abs((cp_t3 - np.mean(cp_les3))/cp_t3)*100
+pdif_cp3_cor = np.abs((cp_t3 - np.mean(cp_les3_cor))/cp_t3)*100
+print(f"Percent Difference Cp (No Correction) at Ct Prime = 1.5: {pdif_cp3}")
+print(f"Percent Difference Cp (Correction) at Ct Prime = 1.5: {pdif_cp3_cor}")
+
+cp_t4 = 4*a_t4*((1-a_t4)**2)
+pdif_cp4 = np.abs((cp_t4 - np.mean(cp_les4))/cp_t4)*100
+pdif_cp4_cor = np.abs((cp_t4 - np.mean(cp_les4_cor))/cp_t4)*100
+print(f"Percent Difference Cp (No Correction) at Ct Prime = 1.75: {pdif_cp4}")
+print(f"Percent Difference Cp (Correction) at Ct Prime = 1.75: {pdif_cp4_cor}")
+
+#Ct and Compare
+ct_t1 = Ctprime1*((1-a_t1)**2)
+pdif_ct1 = np.abs((ct_t1 - np.mean(ct_les1))/ct_t1)*100
+pdif_ct1_cor = np.abs((ct_t1 - np.mean(ct_les1_cor))/ct_t1)*100
+print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.0: {pdif_ct1}")
+print(f"Percent Difference Ct (Correction) at Ct Prime = 1.0: {pdif_ct1_cor}")
+
+ct_t2 = Ctprime2*((1-a_t2)**2)
+pdif_ct2 = np.abs((ct_t2 - np.mean(ct_les2))/ct_t2)*100
+pdif_ct2_cor = np.abs((ct_t2 - np.mean(ct_les2_cor))/ct_t2)*100
+print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.25: {pdif_ct2}")
+print(f"Percent Difference Ct (Correction) at Ct Prime = 1.25: {pdif_ct2_cor}")
+
+ct_t3 = Ctprime3*((1-a_t3)**2)
+pdif_ct3 = np.abs((ct_t3 - np.mean(ct_les3))/ct_t3)*100
+pdif_ct3_cor = np.abs((ct_t3 - np.mean(ct_les3_cor))/ct_t3)*100
+print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.50: {pdif_ct3}")
+print(f"Percent Difference Ct (Correction) at Ct Prime = 1.50: {pdif_ct3_cor}")
+
+ct_t4 = Ctprime4*((1-a_t4)**2)
+pdif_ct4 = np.abs((ct_t4 - np.mean(ct_les4))/ct_t4)*100
+pdif_ct4_cor = np.abs((ct_t4 - np.mean(ct_les4_cor))/ct_t4)*100
+print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.0: {pdif_ct4}")
+print(f"Percent Difference Ct (Correction) at Ct Prime = 1.0: {pdif_ct4_cor}")
+
+#Set up arrays for plotting
+Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4]
+
+Cp_les_plot = [np.mean(cp_les1), np.mean(cp_les2), np.mean(cp_les3), np.mean(cp_les4)]
+Cp_les_cor_plot = [np.mean(cp_les1_cor), np.mean(cp_les2_cor), np.mean(cp_les3_cor), np.mean(cp_les4_cor)]
+Cp_t_plot = [np.mean(cp_t1), np.mean(cp_t2), np.mean(cp_t3), np.mean(cp_t4)]
+
+Ct_les_plot = [np.mean(ct_les1), np.mean(ct_les2), np.mean(ct_les3), np.mean(ct_les4)]
+Ct_les_cor_plot = [np.mean(ct_les1_cor), np.mean(ct_les2_cor), np.mean(ct_les3_cor), np.mean(ct_les4_cor)]
+Ct_t_plot = [np.mean(ct_t1), np.mean(ct_t2), np.mean(ct_t3), np.mean(ct_t4)]
+
+a_les_plot = [np.mean(a_les1), np.mean(a_les2), np.mean(a_les3), np.mean(a_les4)]
+a_les_cor_plot = [np.mean(a_les1_cor), np.mean(a_les2_cor), np.mean(a_les3_cor), np.mean(a_les4_cor)]
+a_t_plot = [np.mean(a_t1), np.mean(a_t2), np.mean(a_t3), np.mean(a_t4)]
+
+#Plotting
+#Cp
+plt.figure(figsize = (9,6))
+plt.plot(Ctprime_plot, Cp_les_plot, label = "LES Cp Uncorrected")
+plt.plot(Ctprime_plot, Cp_les_cor_plot, label = "LES Cp Corrected")
+plt.scatter(Ctprime_plot, Cp_t_plot, marker = 'o', label = "Theoretical Cp Values" )
+plt.xlabel("Ct Prime")
+plt.ylabel("Cp")
+plt.title("Corrected and Uncorrected LES Cp Values vs. Ct Prime and Theory")
+plt.savefig("./Cp_Compare")
+
+#Ct
+plt.figure(figsize = (9,6))
+plt.plot(Ctprime_plot, Ct_les_plot, label = "LES Ct Uncorrected")
+plt.plot(Ctprime_plot, Ct_les_cor_plot, label = "LES Ct Corrected")
+plt.scatter(Ctprime_plot, Ct_t_plot, marker = 'o', label = "Theoretical Ct Values" )
+plt.xlabel("Ct Prime")
+plt.ylabel("Ct")
+plt.title("Corrected and Uncorrected LES Ct Values vs. Ct Prime and Theory")
+plt.savefig("./Ct_Compare")
+
+#a
+plt.figure(figsize = (9,6))
+plt.plot(Ctprime_plot, a_les_plot, label = "LES a Uncorrected")
+plt.plot(Ctprime_plot, a_les_cor_plot, label = "LES a Corrected")
+plt.scatter(Ctprime_plot, a_t_plot, marker = 'o', label = "Theoretical a Values" )
+plt.xlabel("Ct Prime")
+plt.ylabel("a")
+plt.title("Corrected and Uncorrected LES a Values vs. Ct Prime and Theory")
+plt.savefig("./a_Compare")
