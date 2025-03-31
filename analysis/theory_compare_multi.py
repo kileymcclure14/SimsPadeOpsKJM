@@ -26,16 +26,16 @@ sim4_folder = os.path.join(au.DATA_PATH, "U_0013_Files/Sim_0003")
 sim4 = pio.BudgetIO("Data/U_0013_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim1_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0000")
-sim1_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0000")
+sim1_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim2_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0001")
-sim2_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0001")
+sim2_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim3_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0002")
-sim3_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0002")
+sim3_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim4_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0003")
-sim4_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0003")
+sim4_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Ct Prime Values (Ct Prime is the same for sets of corrected/non-corrected sims)
 Ctprime1 = sim1.ta[0].ct
@@ -45,27 +45,27 @@ Ctprime4 = sim4.ta[0].ct
 
 #Filter Widths, manual input, comment out if not using correction factor
 
-#fwidth1 = 
-#fwidth2=
-#fwidth3=
-#fwidth4=
+fwidth1 = 0.5
+fwidth2= 0.5
+fwidth3= 0.5
+fwidth4= 0.5
 
 #Correction Factors, comment out if not using
-#M1 = turbine.get_correction(Ctprime1, fwidth1, 1)
-#M2 = turbine.get_correction(Ctprime2, fwidth2, 1)
-#M3 = turbine.get_correction(Ctprime3, fwidth3, 1)
-#M4 = turbine.get_correction(Ctprime4, fwidth4, 1)
+M1 = turbine.get_correction(Ctprime1, fwidth1, 1)
+M2 = turbine.get_correction(Ctprime2, fwidth2, 1)
+M3 = turbine.get_correction(Ctprime3, fwidth3, 1)
+M4 = turbine.get_correction(Ctprime4, fwidth4, 1)
 
 #Turbine Power, adjust vector based on when simulation reaches steady state solution
-p_les1 = sim1.read_turb_power("all", turb =1)[500:]
-p_les2 = sim2.read_turb_power("all", turb =1)[500:]
-p_les3 = sim3.read_turb_power("all", turb =1)[500:]
-p_les4 = sim4.read_turb_power("all", turb =1)[500:]
+p_les1 = sim1.read_turb_power("all", turb =1)[-1]
+p_les2 = sim2.read_turb_power("all", turb =1)[-1]
+p_les3 = sim3.read_turb_power("all", turb =1)[-1]
+p_les4 = sim4.read_turb_power("all", turb =1)[-1]
 
-p_les1_cor = sim1_cor.read_turb_power("all", turb = 1)[500:]
-p_les2_cor = sim2_cor.read_turb_power("all", turb = 1)[500:]
-p_les3_cor = sim3_cor.read_turb_power("all", turb = 1)[500:]
-p_les4_cor = sim4_cor.read_turb_power("all", turb = 1)[500:]
+p_les1_cor = sim1_cor.read_turb_power("all", turb = 1)[-1]
+p_les2_cor = sim2_cor.read_turb_power("all", turb = 1)[-1]
+p_les3_cor = sim3_cor.read_turb_power("all", turb = 1)[-1]
+p_les4_cor = sim4_cor.read_turb_power("all", turb = 1)[-1]
 
 #Free Stream Velocities
 u_inf1 = sim1.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -77,6 +77,16 @@ u_inf1_cor = sim1_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y
 u_inf2_cor = sim2_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf3_cor = sim3_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf4_cor = sim4_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+
+# u_w1 = sim1.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w2 = sim2.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w3 = sim3.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w4 = sim4.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+
+# u_w1_cor = sim1_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w2_cor = sim2_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w3_cor = sim3_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+# u_w4_cor = sim4_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
 
 #Power Coefficients
 cp_les1 = p_les1 / (0.5*(np.pi/4)*(u_inf1**3))
@@ -115,39 +125,47 @@ print(f"Cp Percent Difference for Correcting Cp Prime = 1.75 = {pdif_cples4}")
 #Velocities at Disk
 ud_les1 = sim1.read_turb_uvel("all", steady = False)
 ud_les1_cor = sim1_cor.read_turb_uvel("all", steady = False)
+ud_les1 = ud_les1[-1]
+ud_les1_cor = ud_les1_cor[-1]
 
 ud_les2 = sim2.read_turb_uvel("all", steady = False)
 ud_les2_cor = sim2_cor.read_turb_uvel("all", steady = False)
+ud_les2 = ud_les2[-1]
+ud_les2_cor = ud_les2_cor[-1]
 
 ud_les3 = sim3.read_turb_uvel("all", steady = False)
 ud_les3_cor = sim3_cor.read_turb_uvel("all", steady = False)
+ud_les3 = ud_les3[-1]
+ud_les3_cor = ud_les3_cor[-1]
 
 ud_les4 = sim4.read_turb_uvel("all", steady = False)
 ud_les4_cor = sim4_cor.read_turb_uvel("all", steady = False)
+ud_les4 = ud_les4[-1]
+ud_les4_cor = ud_les4_cor[-1]
 
 #Disk Velocity Value Check (Should be within 0.5%, only use the solve to compare)
-ud_solve1 = (p_les1/(0.5*(np.pi/4)*Ctprime1))
+ud_solve1 = (p_les1/(0.5*(np.pi/4)*Ctprime1))**(1/3)
 pdif_ud1 = ((np.abs(np.mean(ud_solve1)-np.mean(ud_les1))/np.mean(ud_solve1)))*100
 
-ud_solve2 = (p_les2/(0.5*(np.pi/4)*Ctprime2))
+ud_solve2 = (p_les2/(0.5*(np.pi/4)*Ctprime2))**(1/3)
 pdif_ud2 = ((np.abs(np.mean(ud_solve2)-np.mean(ud_les2))/np.mean(ud_solve2)))*100
 
-ud_solve3 = (p_les3/(0.5*(np.pi/4)*Ctprime3))
+ud_solve3 = (p_les3/(0.5*(np.pi/4)*Ctprime3))**(1/3)
 pdif_ud3 = (((np.abs(np.mean(ud_solve3)-np.mean(ud_les3)))/np.mean(ud_solve3)))*100
 
-ud_solve4 = (p_les4/(0.5*(np.pi/4)*Ctprime4))
+ud_solve4 = (p_les4/(0.5*(np.pi/4)*Ctprime4))**(1/3)
 pdif_ud4 = ((np.abs(np.mean(ud_solve4)-np.mean(ud_les4))/np.mean(ud_solve4)))*100
 
-ud_solve1_cor = (p_les1_cor/(0.5*(np.pi/4)*Ctprime1*(M1**3)))
+ud_solve1_cor = (p_les1_cor/(0.5*(np.pi/4)*Ctprime1))**(1/3)
 pdif_ud1_cor = ((np.abs(np.mean(ud_solve1_cor)-np.mean(ud_les1_cor)))/np.mean(ud_solve1_cor))*100
 
-ud_solve2_cor = (p_les2_cor/(0.5*(np.pi/4)*Ctprime2*(M2**3)))
+ud_solve2_cor = (p_les2_cor/(0.5*(np.pi/4)*Ctprime2 ))**(1/3)
 pdif_ud2_cor = ((np.abs(np.mean(ud_solve2_cor)-np.mean(ud_les2_cor)))/np.mean(ud_solve2_cor))*100
 
-ud_solve3_cor = (p_les3_cor/(0.5*(np.pi/4)*Ctprime3*(M3**3)))
+ud_solve3_cor = (p_les3_cor/(0.5*(np.pi/4)*Ctprime3))**(1/3)
 pdif_ud3_cor = ((np.abs(np.mean(ud_solve3_cor)-np.mean(ud_les3_cor)))/np.mean(ud_solve3_cor))*100
 
-ud_solve4_cor = (p_les4_cor/(0.5*(np.pi/4)*Ctprime4*(M4**4)))
+ud_solve4_cor = (p_les4_cor/(0.5*(np.pi/4)*Ctprime4))**(1/3)
 pdif_ud4_cor = ((np.abs(np.mean(ud_solve4_cor)-np.mean(ud_les4_cor)))/np.mean(ud_solve4_cor))*100
 
 #Print Results by Simulation
@@ -164,48 +182,48 @@ print(f"Ud Percent Difference at Ct Prime = 1.75: {pdif_ud4}")
 print(f"Ud Percent Difference with Correction Factor at Ct Prime = 1.75: {pdif_ud4_cor}")
 
 #Thrust Force
-thrust_les1 = -p_les1/ud_les1
-thrust_les2 = -p_les2/ud_les2
-thrust_les3 = -p_les3/ud_les3
-thrust_les4 = -p_les4/ud_les4
+thrust_les1 = 0.5*(np.pi/4)*((u_inf1 - ud_les1)*(ud_les1 + u_inf1))
+thrust_les2 = 0.5*(np.pi/4)*((u_inf2 - ud_les2)*(ud_les2 + u_inf2))
+thrust_les3 = 0.5*(np.pi/4)*((u_inf3 - ud_les3)*(ud_les3 + u_inf3))
+thrust_les4 = 0.5*(np.pi/4)*((u_inf4 - ud_les4)*(ud_les4 + u_inf4))
 
-thrust_les1_cor = -p_les1_cor/ud_les1_cor
-thrust_les2_cor = -p_les2_cor/ud_les2_cor
-thrust_les3_cor = -p_les3_cor/ud_les3_cor
-thrust_les4_cor = -p_les3_cor/ud_les3_cor
+thrust_les1_cor = 0.5*(np.pi/4)*((u_inf1_cor - ud_les1_cor)*(ud_les1_cor + u_inf1_cor))
+thrust_les2_cor = 0.5*(np.pi/4)*((u_inf2_cor - ud_les2_cor)*(ud_les2_cor + u_inf2_cor))
+thrust_les3_cor = 0.5*(np.pi/4)*((u_inf3_cor - ud_les3_cor)*(ud_les3_cor + u_inf3_cor))
+thrust_les4_cor = 0.5*(np.pi/4)*((u_inf4_cor - ud_les4_cor)*(ud_les4_cor + u_inf4_cor))
 
 #Thrust Coefficients
-ct_les1 = thrust_les1/(0.5*(np.pi/4)*Ctprime1*(ud_les1**2))
-ct_les1_cor = thrust_les1_cor/(0.5*(np.pi/4)*Ctprime1*(ud_les1_cor**2)) #Check if M**3 is needed here
+ct_les1 = thrust_les1/(0.5*(np.pi/4)*(u_inf1**2))
+ct_les1_cor = thrust_les1_cor/(0.5*(np.pi/4)*(u_inf1_cor**2))
 pdif_ct_les1 = np.abs((np.mean(ct_les1)-np.mean(ct_les1_cor))/np.mean(ct_les1))*100
 
-ct_les2 = thrust_les2/(0.5*(np.pi/4)*Ctprime2*(ud_les2**2))
-ct_les2_cor = thrust_les2_cor/(0.5*(np.pi/4)*Ctprime2*(ud_les2_cor**2))
+ct_les2 = thrust_les2/(0.5*(np.pi/4)*(u_inf2**2))
+ct_les2_cor = thrust_les2_cor/(0.5*(np.pi/4)*(u_inf2_cor**2))
 pdif_ct_les2 = np.abs((np.mean(ct_les2)-np.mean(ct_les2_cor))/np.mean(ct_les2))*100
 
-ct_les3 = thrust_les3/(0.5*(np.pi/4)*Ctprime3*(ud_les3**2))
-ct_les3_cor = thrust_les3_cor/(0.5*(np.pi/4)*Ctprime3*(ud_les3_cor**2))
+ct_les3 = thrust_les3/(0.5*(np.pi/4)*(u_inf3**2))
+ct_les3_cor = thrust_les3_cor/(0.5*(np.pi/4)*(u_inf3_cor**2))
 pdif_ct_les3 = np.abs((np.mean(ct_les3)-np.mean(ct_les3_cor))/np.mean(ct_les3))*100
 
-ct_les4 = thrust_les4/(0.5*(np.pi/4)*Ctprime4*(ud_les4**2))
-ct_les4_cor = thrust_les4_cor/(0.5*(np.pi/4)*Ctprime4*(ud_les4_cor**2))
+ct_les4 = thrust_les4/(0.5*(np.pi/4)*(u_inf4**2))
+ct_les4_cor = thrust_les4_cor/(0.5*(np.pi/4)*(u_inf4_cor**2))
 pdif_ct_les4 = np.abs((np.mean(ct_les4)-np.mean(ct_les4_cor))/np.mean(ct_les4))*100
 
 #Induction Factors
 a_les1 = 1-(p_les1/(0.5*(np.pi/4)*Ctprime1))**(1/3)
-a_les1_cor = 1-(p_les1/(0.5*(np.pi/4)*Ctprime1*(M1**3)))**(1/3)
+a_les1_cor = 1-(p_les1_cor/(0.5*(np.pi/4)*Ctprime1))**(1/3)
 pdif_a_les1 = np.abs((np.mean(a_les1)-np.mean(a_les1_cor))/np.mean(a_les1))*100
 
 a_les2 = 1-(p_les2/(0.5*(np.pi/4)*Ctprime2))**(1/3)
-a_les2_cor = 1-(p_les2/(0.5*(np.pi/4)*Ctprime1*(M2**3)))**(1/3)
+a_les2_cor = 1-(p_les2_cor/(0.5*(np.pi/4)*Ctprime2))**(1/3)
 pdif_a_les2 = np.abs((np.mean(a_les2)-np.mean(a_les2_cor))/np.mean(a_les2))*100
 
 a_les3 = 1-(p_les3/(0.5*(np.pi/4)*Ctprime3))**(1/3)
-a_les3_cor = 1-(p_les3/(0.5*(np.pi/4)*Ctprime3*(M3**3)))**(1/3)
+a_les3_cor = 1-(p_les3_cor/(0.5*(np.pi/4)*Ctprime3))**(1/3)
 pdif_a_les3 = np.abs((np.mean(a_les3)-np.mean(a_les3_cor))/np.mean(a_les3))*100
 
 a_les4 = 1-(p_les4/(0.5*(np.pi/4)*Ctprime4))**(1/3)
-a_les4_cor = 1-(p_les4/(0.5*(np.pi/4)*Ctprime4*(M4**3)))**(1/3)
+a_les4_cor = 1-(p_les4_cor/(0.5*(np.pi/4)*Ctprime4))**(1/3)
 pdif_a_les4 = np.abs((np.mean(a_les4)-np.mean(a_les4_cor))/np.mean(a_les4))*100
 
 #Theory Values (No Correction Factor used in Theory Calcs)
@@ -306,6 +324,7 @@ plt.figure(figsize = (9,6))
 plt.plot(Ctprime_plot, Cp_les_plot, label = "LES Cp Uncorrected")
 plt.plot(Ctprime_plot, Cp_les_cor_plot, label = "LES Cp Corrected")
 plt.scatter(Ctprime_plot, Cp_t_plot, marker = 'o', label = "Theoretical Cp Values" )
+plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Cp")
 plt.title("Corrected and Uncorrected LES Cp Values vs. Ct Prime and Theory")
@@ -316,6 +335,7 @@ plt.figure(figsize = (9,6))
 plt.plot(Ctprime_plot, Ct_les_plot, label = "LES Ct Uncorrected")
 plt.plot(Ctprime_plot, Ct_les_cor_plot, label = "LES Ct Corrected")
 plt.scatter(Ctprime_plot, Ct_t_plot, marker = 'o', label = "Theoretical Ct Values" )
+plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Ct")
 plt.title("Corrected and Uncorrected LES Ct Values vs. Ct Prime and Theory")
@@ -326,7 +346,9 @@ plt.figure(figsize = (9,6))
 plt.plot(Ctprime_plot, a_les_plot, label = "LES a Uncorrected")
 plt.plot(Ctprime_plot, a_les_cor_plot, label = "LES a Corrected")
 plt.scatter(Ctprime_plot, a_t_plot, marker = 'o', label = "Theoretical a Values" )
+plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("a")
 plt.title("Corrected and Uncorrected LES a Values vs. Ct Prime and Theory")
 plt.savefig("./a_Compare")
+
