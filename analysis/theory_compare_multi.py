@@ -78,21 +78,21 @@ u_inf2_cor = sim2_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y
 u_inf3_cor = sim3_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf4_cor = sim4_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
-# u_w1 = sim1.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w2 = sim2.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w3 = sim3.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w4 = sim4.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+u_w1 = sim1.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w2 = sim2.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w3 = sim3.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w4 = sim4.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
 
-# u_w1_cor = sim1_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w2_cor = sim2_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w3_cor = sim3_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
-# u_w4_cor = sim4_cor.slice(field_terms = ['u'], xlim = 38.4, zlim = 0)['u'].mean("y").values
+u_w1_cor = sim1_cor.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w2_cor = sim2_cor.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w3_cor = sim3_cor.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
+u_w4_cor = sim4_cor.slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values
 
 #Power Coefficients
 cp_les1 = p_les1 / (0.5*(np.pi/4)*(u_inf1**3))
 cp_les2 = p_les2 / (0.5*(np.pi/4)*(u_inf2**3))
 cp_les3 = p_les3 / (0.5*(np.pi/4)*(u_inf3**3))
-cp_les4 = p_les1 / (0.5*(np.pi/4)*(u_inf4**3))
+cp_les4 = p_les4 / (0.5*(np.pi/4)*(u_inf4**3))
 
 cp_les1_cor = p_les1_cor/(0.5*(np.pi/4)*(u_inf1_cor**3))
 cp_les2_cor = p_les2_cor/(0.5*(np.pi/4)*(u_inf2_cor**3))
@@ -182,15 +182,15 @@ print(f"Ud Percent Difference at Ct Prime = 1.75: {pdif_ud4}")
 print(f"Ud Percent Difference with Correction Factor at Ct Prime = 1.75: {pdif_ud4_cor}")
 
 #Thrust Force
-thrust_les1 = 0.5*(np.pi/4)*((u_inf1 - ud_les1)*(ud_les1 + u_inf1))
-thrust_les2 = 0.5*(np.pi/4)*((u_inf2 - ud_les2)*(ud_les2 + u_inf2))
-thrust_les3 = 0.5*(np.pi/4)*((u_inf3 - ud_les3)*(ud_les3 + u_inf3))
-thrust_les4 = 0.5*(np.pi/4)*((u_inf4 - ud_les4)*(ud_les4 + u_inf4))
+thrust_les1 = 2*(np.pi/4)*(ud_les1)*(u_inf1 - ud_les1)
+thrust_les2 = 2*(np.pi/4)*(ud_les2)*(u_inf2 - ud_les2)
+thrust_les3 = 2*(np.pi/4)*(ud_les3)*(u_inf3 - ud_les3)
+thrust_les4 = 2*(np.pi/4)*(ud_les4)*(u_inf4 - ud_les4)
 
-thrust_les1_cor = 0.5*(np.pi/4)*((u_inf1_cor - ud_les1_cor)*(ud_les1_cor + u_inf1_cor))
-thrust_les2_cor = 0.5*(np.pi/4)*((u_inf2_cor - ud_les2_cor)*(ud_les2_cor + u_inf2_cor))
-thrust_les3_cor = 0.5*(np.pi/4)*((u_inf3_cor - ud_les3_cor)*(ud_les3_cor + u_inf3_cor))
-thrust_les4_cor = 0.5*(np.pi/4)*((u_inf4_cor - ud_les4_cor)*(ud_les4_cor + u_inf4_cor))
+thrust_les1_cor = 2*(np.pi/4)*(ud_les1_cor)*(u_inf1_cor - ud_les1_cor)
+thrust_les2_cor = 2*(np.pi/4)*(ud_les2_cor)*(u_inf2_cor - ud_les2_cor)
+thrust_les3_cor = 2*(np.pi/4)*(ud_les3_cor)*(u_inf3_cor - ud_les3_cor)
+thrust_les4_cor = 2*(np.pi/4)*(ud_les4_cor)*(u_inf4_cor - ud_les4_cor)
 
 #Thrust Coefficients
 ct_les1 = thrust_les1/(0.5*(np.pi/4)*(u_inf1**2))
@@ -300,8 +300,8 @@ print(f"Percent Difference Ct (Correction) at Ct Prime = 1.50: {pdif_ct3_cor}")
 ct_t4 = Ctprime4*((1-a_t4)**2)
 pdif_ct4 = np.abs((ct_t4 - np.mean(ct_les4))/ct_t4)*100
 pdif_ct4_cor = np.abs((ct_t4 - np.mean(ct_les4_cor))/ct_t4)*100
-print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.0: {pdif_ct4}")
-print(f"Percent Difference Ct (Correction) at Ct Prime = 1.0: {pdif_ct4_cor}")
+print(f"Percent Difference Ct (No Correction) at Ct Prime = 1.75: {pdif_ct4}")
+print(f"Percent Difference Ct (Correction) at Ct Prime = 1.75: {pdif_ct4_cor}")
 
 #Set up arrays for plotting
 Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4]
