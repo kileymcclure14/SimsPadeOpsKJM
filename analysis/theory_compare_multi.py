@@ -321,9 +321,9 @@ a_t_plot = [np.mean(a_t1), np.mean(a_t2), np.mean(a_t3), np.mean(a_t4)]
 #Plotting
 #Cp
 plt.figure(figsize = (9,6))
-plt.plot(Ctprime_plot, Cp_les_plot, label = "LES Cp Uncorrected")
-plt.plot(Ctprime_plot, Cp_les_cor_plot, label = "LES Cp Corrected")
-plt.scatter(Ctprime_plot, Cp_t_plot, marker = 'o', label = "Theoretical Cp Values" )
+plt.scatter(Ctprime_plot, Cp_les_plot, marker = 'o', color = "black", label = "LES Cp Uncorrected")
+plt.scatter(Ctprime_plot, Cp_les_cor_plot, marker = 'o', color = "orange", label = "LES Cp Corrected")
+plt.plot(Ctprime_plot, Cp_t_plot, label = "Theoretical Cp Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Cp")
@@ -332,9 +332,9 @@ plt.savefig("./Cp_Compare")
 
 #Ct
 plt.figure(figsize = (9,6))
-plt.plot(Ctprime_plot, Ct_les_plot, label = "LES Ct Uncorrected")
-plt.plot(Ctprime_plot, Ct_les_cor_plot, label = "LES Ct Corrected")
-plt.scatter(Ctprime_plot, Ct_t_plot, marker = 'o', label = "Theoretical Ct Values" )
+plt.scatter(Ctprime_plot, Ct_les_plot, marker = 'o', color = "black", label = "LES Ct Uncorrected")
+plt.scatter(Ctprime_plot, Ct_les_cor_plot, marker = 'o', color = "orange", label = 'LES Ct Corrected')
+plt.plot(Ctprime_plot, Ct_t_plot, label = "Theoretical Ct Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Ct")
@@ -343,9 +343,9 @@ plt.savefig("./Ct_Compare")
 
 #a
 plt.figure(figsize = (9,6))
-plt.plot(Ctprime_plot, a_les_plot, label = "LES a Uncorrected")
-plt.plot(Ctprime_plot, a_les_cor_plot, label = "LES a Corrected")
-plt.scatter(Ctprime_plot, a_t_plot, marker = 'o', label = "Theoretical a Values" )
+plt.scatter(Ctprime_plot, a_les_plot, marker = 'o', color = "black", label = "LES a Uncorrected")
+plt.scatter(Ctprime_plot, a_les_cor_plot, marker = 'o', color = "orange", label = "LES a Corrected")
+plt.plot(Ctprime_plot, a_t_plot, label = "Theroretical a Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("a")
