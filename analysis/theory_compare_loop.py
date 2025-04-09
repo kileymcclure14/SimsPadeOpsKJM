@@ -111,6 +111,24 @@ for i in range(17):
 
 ales_cor = {}
 for i in range(17):
-    ales_cor[f"a_les{i}"] = 1-(turbinepowers_cor[i]/(0.5*(np.pi/4)*Ctprimes_cor[i]))**(1/3)
+    ales_cor[f"a_les{i}"] = 1-(turbinepowers_cor[i]/(0.5*(np.pi/4)*Ctprimes[i]))**(1/3)
 
 #Theory Values
+#Induction Factor
+a_t = {}
+for i in range(17):
+    a_t[f"a_t{i}"] = Ctprimes[i]/(4+Ctprimes[i])
+
+#Cp
+cp_t = {}
+for i in range(17):
+    cp_t[f"cp_t{i}"] = 4*a_t[i]*((1-a_t[i])**2)
+
+#Ct
+ct_t = {}
+for i in range(17):
+    ct_t[f"ct_t{i}"] = Ctprimes[i]*((1-a_t[i])**2)
+
+#Plotting
+#Set up arrays
+ctprimes_plot = np.linspace(-4,4,100)
