@@ -13,28 +13,28 @@ from padeopsIO import turbine
 data_path = Path(au.DATA_PATH)
 
 #Change these in each sim
-sim1_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0000")
-sim1 = pio.BudgetIO("Data/U_0014_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
+sim1_folder = os.path.join(au.DATA_PATH, "U_0013_Files/Sim_0000")
+sim1 = pio.BudgetIO("Data/U_0013_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim2_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0001")
-sim2 = pio.BudgetIO("Data/U_0014_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
+sim2_folder = os.path.join(au.DATA_PATH, "U_0013_Files/Sim_0001")
+sim2 = pio.BudgetIO("Data/U_0013_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim3_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0002")
-sim3 = pio.BudgetIO("Data/U_0014_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
+sim3_folder = os.path.join(au.DATA_PATH, "U_0013_Files/Sim_0002")
+sim3 = pio.BudgetIO("Data/U_0013_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim4_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0003")
-sim4 = pio.BudgetIO("Data/U_0014_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
+sim4_folder = os.path.join(au.DATA_PATH, "U_0013_Files/Sim_0003")
+sim4 = pio.BudgetIO("Data/U_0013_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim1_cor_folder = os.path.join(au.DATA_PATH, "U_0015_Files/Sim_0000")
+sim1_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0000")
 sim1_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim2_cor_folder = os.path.join(au.DATA_PATH, "U_0015_Files/Sim_0001")
+sim2_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0001")
 sim2_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim3_cor_folder = os.path.join(au.DATA_PATH, "U_0015_Files/Sim_0002")
+sim3_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0002")
 sim3_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim4_cor_folder = os.path.join(au.DATA_PATH, "U_0015_Files/Sim_0003")
+sim4_cor_folder = os.path.join(au.DATA_PATH, "U_0014_Files/Sim_0003")
 sim4_cor = pio.BudgetIO("Data/U_0014_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Ct Prime Values (Ct Prime is the same for sets of corrected/non-corrected sims)
