@@ -37,7 +37,6 @@ fwidths = []
 for i in range(17):
     fwidths.append(0.5)
 
-
 #Correction Factors
 m = []
 for i in range(17):
@@ -65,7 +64,6 @@ for i in range(17):
 u_w = []
 for i in range(17):
     u_w.append(sim_list[i].slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values)
-print(u_w)
 
 u_w_cor = []
 for i in range(17):
@@ -80,14 +78,14 @@ cp_cor = []
 for i in range(17):
     cp_cor.append(turbine_powers_cor[i]/(0.5*(np.pi/4)*(u_inf_cor[i]**3)))
 
-#Velocity at Disk
+#Velocity at Dis
 ud = []
 for i in range(17):
-    ud.append(sim_list[i].read_turb_uvel(steady = False))
+    ud.append(sim_list[i].read_turb_uvel(steady = False)[-1])
 
 ud_cor = []
 for i in range(17):
-    ud_cor.append(sim_list_cor[i].read_turb_uvel(steady = False))
+    ud_cor.append(sim_list_cor[i].read_turb_uvel(steady = False)[-1])
 
 #Thrust Force
 thrust = []
@@ -143,9 +141,9 @@ for i in range(17):
 #Plotting
 #Cp
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes, cp, marker ='o', color = 'black', label = 'LES Cp Uncorrected')
-plt.scatter(Ctprimes, cp_cor, marker = 'o', color = 'orange', label = 'LES Cp Corrected')
-plt.plot(Ctprimes, cp_t, label = "Theoretical Cp Values")
+plt.scatter(Ctprimes[1:16], cp[1:16], marker ='o', color = 'black', label = 'LES Cp Uncorrected')
+plt.scatter(Ctprimes[1:16], cp_cor[1:16], marker = 'o', color = 'orange', label = 'LES Cp Corrected')
+plt.plot(Ctprimes[1:16], cp_t[1:16], label = "Theoretical Cp Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Cp")
@@ -154,9 +152,9 @@ plt.savefig("./Cp_Compare")
 
 #Ct
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes, ct, marker ='o', color = 'black', label = 'LES Ct Uncorrected')
-plt.scatter(Ctprimes, ct_cor, marker = 'o', color = 'orange', label = 'LES Ct Corrected')
-plt.plot(Ctprimes, ct_t, label = "Theoretical Ct Values")
+plt.scatter(Ctprimes[1:16], ct[1:16], marker ='o', color = 'black', label = 'LES Ct Uncorrected')
+plt.scatter(Ctprimes[1:16], ct_cor[1:16], marker = 'o', color = 'orange', label = 'LES Ct Corrected')
+plt.plot(Ctprimes[1:16], ct_t[1:16], label = "Theoretical Ct Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Ct")
@@ -165,12 +163,11 @@ plt.savefig("./Ct_Compare")
 
 #a
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes, a, marker ='o', color = 'black', label = 'LES a Uncorrected')
-plt.scatter(Ctprimes, a_cor, marker = 'o', color = 'orange', label = 'LES a Corrected')
-plt.plot(Ctprimes, a_t, label = "Theoretical a Values")
+plt.scatter(Ctprimes[1:16], a[1:16], marker ='o', color = 'black', label = 'LES a Uncorrected')
+plt.scatter(Ctprimes[1:16], a_cor[1:16], marker = 'o', color = 'orange', label = 'LES a Corrected')
+plt.plot(Ctprimes[1:16], a_t[1:16], label = "Theoretical a Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("a")
 plt.title("Corrected and Uncorrected LES a Values vs. Theory")
 plt.savefig("./a_Compare")
-
