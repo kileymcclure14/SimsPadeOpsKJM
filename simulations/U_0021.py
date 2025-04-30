@@ -34,11 +34,11 @@ single_inputs = dict(
         problem_name = "AD_coriolis_shear",
         job_name = "unblocked_ctprime_nocorrect_kjm",
         # if not provided, default_inputs will be used
-        n_hrs = 24,
+        n_hrs = 8,
     )
 )
 
-varied_inputs = dict(turb = dict(cT = [-2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0]))  # below and above the Betz limit
+varied_inputs = dict(turb = dict(cT = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]))  # below and above the Betz limit
 
 
 ju.write_padeops_suite(single_inputs, varied_inputs, nested = True, default_input = default_inputs,

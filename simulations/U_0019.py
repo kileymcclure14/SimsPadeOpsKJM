@@ -34,7 +34,7 @@ single_inputs = dict(
         problem_name = "AD_coriolis_shear",
         job_name = "unblocked_ctprime_nocorrect_kjm",
         # if not provided, default_inputs will be used
-        n_hrs = 24,
+        n_hrs = 8,
     )
 )
 

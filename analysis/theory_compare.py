@@ -15,114 +15,114 @@ data_path = Path(au.DATA_PATH)
 #Set Up Sims
 sim_list = []
 
-for i in range(17):  # Looping over Sim_0000 to Sim_0003
-    sim_folder = os.path.join(au.DATA_PATH, f"U_0017_Files/Sim_{i:04d}")
-    sim = pio.BudgetIO(f"Data/U_0017_Files/Sim_{i:04d}", padeops=True, runid=1, normalize_origin="turbine")
+for i in range(8):  
+    sim_folder = os.path.join(au.DATA_PATH, f"U_0021_Files/Sim_{i:04d}")
+    sim = pio.BudgetIO(f"Data/U_0021_Files/Sim_{i:04d}", padeops=True, runid=1, normalize_origin="turbine")
     sim_list.append(sim)
 
 sim_list_cor = []
 
-for i in range(17):  # Looping over Sim_0000 to Sim_0003
-    sim_folder_cor = os.path.join(au.DATA_PATH, f"U_0018_Files/Sim_{i:04d}")
-    sim_cor = pio.BudgetIO(f"Data/U_0018_Files/Sim_{i:04d}", padeops=True, runid=1, normalize_origin="turbine")
+for i in range(8):  
+    sim_folder_cor = os.path.join(au.DATA_PATH, f"U_0022_Files/Sim_{i:04d}")
+    sim_cor = pio.BudgetIO(f"Data/U_0022_Files/Sim_{i:04d}", padeops=True, runid=1, normalize_origin="turbine")
     sim_list_cor.append(sim)
 
 # Extract CtPrime Values
 Ctprimes = []
-for i in range(17):
+for i in range(8):
     Ctprimes.append(sim_list[i].ta[0].ct)
-
+print(Ctprimes)
 #Filter Widths (Manual Input)
 fwidths = []
-for i in range(17):
+for i in range(8):
     fwidths.append(0.5)
 
 #Correction Factors
 m = []
-for i in range(17):
+for i in range(8):
     m.append(turbine.get_correction(Ctprimes[i], fwidths[i], 1))
 
 #Turbine Power
 turbine_powers = []
-for i in range(17):
+for i in range(8):
     turbine_powers.append(sim_list[i].read_turb_power(turb = 1))
-
+print(turbine_powers)
 turbine_powers_cor = []
-for i in range(17):
+for i in range(8):
     turbine_powers_cor.append(sim_list_cor[i].read_turb_power(turb =1))
-
+print(turbine_powers)
 #Free Stream Velocities
 u_inf = []
-for i in range(17):
+for i in range(8):
     u_inf.append(sim_list[i].slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values)
 
 u_inf_cor = []
-for i in range(17):
+for i in range(8):
     u_inf_cor.append(sim_list_cor[i].slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values)
 
 #Wake/End Velocities
 u_w = []
-for i in range(17):
+for i in range(8):
     u_w.append(sim_list[i].slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values)
 
 u_w_cor = []
-for i in range(17):
+for i in range(8):
     u_w_cor.append(sim_list_cor[i].slice(field_terms = ['u'], xlim = 22, zlim = 0)['u'].mean("y").values)
 
 #Power Coefficients
 cp = []
-for i in range(17):
+for i in range(8):
     cp.append(turbine_powers[i]/(0.5*(np.pi/4)*(u_inf[i]**3)))
 
 cp_cor = []
-for i in range(17):
+for i in range(8):
     cp_cor.append(turbine_powers_cor[i]/(0.5*(np.pi/4)*(u_inf_cor[i]**3)))
 
-#Velocity at Dis
+#Velocity at Disk
 ud = []
-for i in range(17):
+for i in range(8):
     ud.append(sim_list[i].read_turb_uvel(steady = False)[-1])
 
 ud_cor = []
-for i in range(17):
+for i in range(8):
     ud_cor.append(sim_list_cor[i].read_turb_uvel(steady = False)[-1])
 
 #Thrust Force
 thrust = []
-for i in range(17):
+for i in range(8):
     thrust.append(2*(np.pi/4)*(ud[i])*(u_inf[i]-ud[i]))
 
 thrust_cor = []
-for i in range(17):
+for i in range(8):
     thrust_cor.append(2*(np.pi/4)*(ud_cor[i])*(u_inf_cor[i]-ud_cor[i]))
 
 #Thrust Coefficients
 ct = []
-for i in range(17):
+for i in range(8):
     ct.append(thrust[i]/(0.5*(np.pi/4)*(u_inf[i]**2)))
 
 ct_cor = []
-for i in range(17):
+for i in range(8):
     ct_cor.append(thrust_cor[i]/(0.5*(np.pi/4)*(u_inf_cor[i]**2)))
 
 #Induction Factors
 a = []
-for i in range(17):
+for i in range(8):
    if Ctprimes[i] == 0:
     a.append(0)
    else:
-    a.append(1 - (turbine_powers[i]/(0.5*(np.pi/4)*Ctprimes[i])**1/3))
+    a.append(1 - np.cbrt((turbine_powers[i]/(0.5*(np.pi/4)*Ctprimes[i]))))
 
 a_cor = []
-for i in range(17):
+for i in range(8):
    if Ctprimes[i] == 0:
     a_cor.append(0)
    else:
-    a_cor.append(1 - (turbine_powers_cor[i]/(0.5*(np.pi/4)*Ctprimes[i])**1/3))
+    a_cor.append(1 - np.cbrt((turbine_powers_cor[i]/(0.5*(np.pi/4)*Ctprimes[i]))))
 
 #Theororetical Induction
 a_t = []
-for i in range (17):
+for i in range (8):
   if Ctprimes[i] == -4:
      a_t.append(0)
   else:
@@ -130,20 +130,20 @@ for i in range (17):
 
 #Theroretical Cp
 cp_t = []
-for i in range(17):
+for i in range(8):
    cp_t.append(4*a_t[i]*((1-a_t[i])**2))
 
 #Theroretical Ct
 ct_t = []
-for i in range(17):
+for i in range(8):
    ct_t.append(Ctprimes[i]*((1-a_t[i])**2))
 
 #Plotting
 #Cp
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes[1:16], cp[1:16], marker ='o', color = 'black', label = 'LES Cp Uncorrected')
-plt.scatter(Ctprimes[1:16], cp_cor[1:16], marker = 'o', color = 'orange', label = 'LES Cp Corrected')
-plt.plot(Ctprimes[1:16], cp_t[1:16], label = "Theoretical Cp Values")
+plt.scatter(Ctprimes, cp, marker ='o', color = 'black', label = 'LES Cp Uncorrected')
+plt.scatter(Ctprimes, cp_cor, marker = 'o', color = 'orange', label = 'LES Cp Corrected')
+plt.plot(Ctprimes, cp_t, label = "Theoretical Cp Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Cp")
@@ -152,9 +152,9 @@ plt.savefig("./Cp_Compare")
 
 #Ct
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes[1:16], ct[1:16], marker ='o', color = 'black', label = 'LES Ct Uncorrected')
-plt.scatter(Ctprimes[1:16], ct_cor[1:16], marker = 'o', color = 'orange', label = 'LES Ct Corrected')
-plt.plot(Ctprimes[1:16], ct_t[1:16], label = "Theoretical Ct Values")
+plt.scatter(Ctprimes, ct, marker ='o', color = 'black', label = 'LES Ct Uncorrected')
+plt.scatter(Ctprimes, ct_cor, marker = 'o', color = 'orange', label = 'LES Ct Corrected')
+plt.plot(Ctprimes, ct_t, label = "Theoretical Ct Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("Ct")
@@ -163,9 +163,9 @@ plt.savefig("./Ct_Compare")
 
 #a
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprimes[1:16], a[1:16], marker ='o', color = 'black', label = 'LES a Uncorrected')
-plt.scatter(Ctprimes[1:16], a_cor[1:16], marker = 'o', color = 'orange', label = 'LES a Corrected')
-plt.plot(Ctprimes[1:16], a_t[1:16], label = "Theoretical a Values")
+plt.scatter(Ctprimes, a, marker ='o', color = 'black', label = 'LES a Uncorrected')
+plt.scatter(Ctprimes, a_cor, marker = 'o', color = 'orange', label = 'LES a Corrected')
+plt.plot(Ctprimes, a_t, label = "Theoretical a Values")
 plt.legend()
 plt.xlabel("Ct Prime")
 plt.ylabel("a")
