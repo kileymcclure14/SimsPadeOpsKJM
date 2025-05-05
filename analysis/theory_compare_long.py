@@ -54,7 +54,7 @@ sim13_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0012")
 sim13 = pio.BudgetIO("Data/U_0017_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim14_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0013")
-sim14 = pio.BudgetIO("Data/U_0017_Files/Sim_00013", padeops = True, runid = 1, normalize_origin = "turbine")
+sim14 = pio.BudgetIO("Data/U_0017_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim15_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0014")
 sim15 = pio.BudgetIO("Data/U_0017_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
@@ -63,7 +63,7 @@ sim16_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0015")
 sim16 = pio.BudgetIO("Data/U_0017_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim17_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0016")
-sim17 = pio.BudgetIO("Data/U_0017_Files/Sim_00016", padeops = True, runid = 1, normalize_origin = "turbine")
+sim17 = pio.BudgetIO("Data/U_0017_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Corrected
 sim1_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0000")
@@ -106,7 +106,7 @@ sim13_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0012")
 sim13_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim14_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0013")
-sim14_cor = pio.BudgetIO("Data/U_0018_Files/Sim_00013", padeops = True, runid = 1, normalize_origin = "turbine")
+sim14_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim15_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0014")
 sim15_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
@@ -115,7 +115,7 @@ sim16_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0015")
 sim16_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim17_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0016")
-sim17_cor = pio.BudgetIO("Data/U_0018_Files/Sim_00016", padeops = True, runid = 1, normalize_origin = "turbine")
+sim17_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Ct Prime Values
 Ctprime1 = sim1.ta[0].ct
@@ -427,7 +427,7 @@ a_les17 = 1-np.cbrt((p_les17/(0.5*(np.pi/4)*Ctprime17)))
 #Corrected
 a_les1_cor = 1-np.cbrt((p_les1_cor/(0.5*(np.pi/4)*Ctprime1)))
 a_les2_cor = 1-np.cbrt((p_les2_cor/(0.5*(np.pi/4)*Ctprime2)))
-a_les_cor = 1-np.cbrt((p_les3_cor/(0.5*(np.pi/4)*Ctprime3)))
+a_les3_cor = 1-np.cbrt((p_les3_cor/(0.5*(np.pi/4)*Ctprime3)))
 a_les4_cor = 1-np.cbrt((p_les4_cor/(0.5*(np.pi/4)*Ctprime4)))
 a_les5_cor = 1-np.cbrt((p_les5_cor/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_cor = 1-np.cbrt((p_les6_cor/(0.5*(np.pi/4)*Ctprime6)))
@@ -444,7 +444,7 @@ a_les16_cor = 1-np.cbrt((p_les16_cor/(0.5*(np.pi/4)*Ctprime16)))
 a_les17_cor = 1-np.cbrt((p_les17_cor/(0.5*(np.pi/4)*Ctprime17)))
 
 #Array for Theory Compare
-Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
+Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
 
 #Theory Values
 #a
@@ -464,3 +464,50 @@ for i in range(17):
 ct_t = []
 for i in range(17):
    ct_t.append(Ctprime_plot[i]*((1-a_t[i])**2))
+
+#Plotting Arrays
+cp_les_plot = [cp_les1, cp_les2, cp_les3, cp_les4, cp_les5, cp_les6, cp_les7, cp_les8, cp_les9, cp_les10, cp_les11, cp_les12, cp_les13, cp_les14, cp_les15, cp_les16, cp_les17]
+cp_les_plot_cor = [cp_les1_cor, cp_les2_cor, cp_les3_cor, cp_les4_cor, cp_les5_cor, cp_les6_cor, cp_les7_cor, cp_les8_cor, cp_les9_cor, cp_les10_cor, cp_les11_cor, cp_les12_cor, cp_les13_cor, cp_les14_cor, cp_les15_cor, cp_les16_cor, cp_les17_cor]
+
+ct_les_plot = [ct_les1, ct_les2, ct_les3, ct_les4, ct_les5, ct_les6, ct_les7, ct_les8, ct_les9, ct_les10, ct_les11, ct_les12, ct_les13, ct_les14, ct_les15, ct_les16, ct_les17]
+ct_les_cor_plot = [ct_les1_cor, ct_les2_cor, ct_les3_cor, ct_les4_cor, ct_les5_cor, ct_les6_cor, ct_les7_cor, ct_les8_cor, ct_les9_cor, ct_les10_cor, ct_les11_cor, ct_les12_cor, ct_les13_cor, ct_les14_cor, ct_les15_cor, ct_les16_cor, ct_les17_cor]
+
+a_les_plot = [a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8, a_les9, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17]
+a_les_cor_plot = [a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor, a_les9_cor, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor]
+
+#Plotting
+plt.figure(figsize = (9,6))
+plt.scatter(Ctprime_plot[1:16], cp_les_plot[1:16], marker = 'o', color = "black", label = "LES Cp Uncorrected")
+plt.scatter(Ctprime_plot[1:16], cp_les_plot_cor[1:16], marker = 'o', color = "orange", label = "LES Cp Corrected")
+plt.plot(Ctprime_plot[1:16], cp_t[1:16], label = "Theoretical Cp Values")
+plt.legend()
+plt.ylim(-1, 1)
+plt.xlabel("Ct Prime")
+plt.ylabel("Cp")
+plt.title("Corrected and Uncorrected LES Cp Values vs. Ct Prime and Theory")
+plt.savefig("./Cp_Compare")
+
+#Ct
+plt.figure(figsize = (9,6))
+plt.scatter(Ctprime_plot[1:16], ct_les_plot[1:16], marker = 'o', color = "black", label = "LES Ct Uncorrected")
+plt.scatter(Ctprime_plot[1:16], ct_les_cor_plot[1:16], marker = 'o', color = "orange", label = 'LES Ct Corrected')
+plt.plot(Ctprime_plot, ct_t, label = "Theoretical Ct Values")
+plt.ylim(-1, 1)
+plt.legend()
+plt.xlabel("Ct Prime")
+plt.ylabel("Ct")
+plt.title("Corrected and Uncorrected LES Ct Values vs. Ct Prime and Theory")
+plt.savefig("./Ct_Compare")
+
+#a
+plt.figure(figsize = (9,6))
+plt.scatter(Ctprime_plot[1:16], a_les_plot[1:16], marker = 'o', color = "black", label = "LES a Uncorrected")
+plt.scatter(Ctprime_plot[1:16], a_les_cor_plot[1:16], marker = 'o', color = "orange", label = "LES a Corrected")
+plt.plot(Ctprime_plot[1:16], a_t[1:16], label = "Theroretical a Values")
+plt.ylim(-1, 1)
+plt.legend()
+plt.xlabel("Ct Prime")
+plt.ylabel("a")
+plt.title("Corrected and Uncorrected LES a Values vs. Ct Prime and Theory")
+plt.savefig("./a_Compare")
+
