@@ -9,9 +9,10 @@ from scipy.signal import find_peaks
 import numpy as np
 from padeopsIO import turbine
 
-#Data Path and Folder Stuff
+#Data Path/Folder Stuff
 data_path = Path(au.DATA_PATH)
 
+#Change these with each sim
 #Change these in each sim
 #Uncorrected
 sim1_folder = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0000")
@@ -366,7 +367,7 @@ thrust_les16_cor = 2*(np.pi/4)*(ud_les16_cor)*(u_inf16_cor - ud_les16_cor)
 thrust_les17_cor = 2*(np.pi/4)*(ud_les17_cor)*(u_inf17_cor - ud_les17_cor)
 
 #Ct
-#Uncorrected\
+#Uncorrected
 ct_les1 = thrust_les1/(0.5*(np.pi/4)*(u_inf1**2))
 ct_les2 = thrust_les2/(0.5*(np.pi/4)*(u_inf2**2))
 ct_les3 = thrust_les3/(0.5*(np.pi/4)*(u_inf3**2))
@@ -446,7 +447,7 @@ a_les17_cor = 1-np.cbrt((p_les17_cor/(0.5*(np.pi/4)*Ctprime17)))
 #Array for Theory Compare
 Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
 
-#Theory Values
+#Momentum Theory Values
 #a
 a_t = []
 for i in range (17):
@@ -465,49 +466,48 @@ ct_t = []
 for i in range(17):
    ct_t.append(Ctprime_plot[i]*((1-a_t[i])**2))
 
-#Plotting Arrays
-cp_les_plot = [cp_les1, cp_les2, cp_les3, cp_les4, cp_les5, cp_les6, cp_les7, cp_les8, cp_les9, cp_les10, cp_les11, cp_les12, cp_les13, cp_les14, cp_les15, cp_les16, cp_les17]
-cp_les_plot_cor = [cp_les1_cor, cp_les2_cor, cp_les3_cor, cp_les4_cor, cp_les5_cor, cp_les6_cor, cp_les7_cor, cp_les8_cor, cp_les9_cor, cp_les10_cor, cp_les11_cor, cp_les12_cor, cp_les13_cor, cp_les14_cor, cp_les15_cor, cp_les16_cor, cp_les17_cor]
+#Glauert Model
+#Uncorrected V'
+u_inf_block1 = u_inf1*((ud_les1/u_inf1)**2 + (Ctprime1/4))/(ud_les1/u_inf1)
+u_inf_block2 = u_inf2*((ud_les2/u_inf2)**2 + (Ctprime2/4))/(ud_les2/u_inf2)
+u_inf_block3 = u_inf3*((ud_les3/u_inf3)**2 + (Ctprime3/4))/(ud_les3/u_inf3)
+u_inf_block4 = u_inf4*((ud_les4/u_inf4)**2 + (Ctprime4/4))/(ud_les4/u_inf4)
+u_inf_block5 = u_inf5*((ud_les5/u_inf5)**2 + (Ctprime5/4))/(ud_les5/u_inf5)
+u_inf_block6 = u_inf6*((ud_les6/u_inf6)**2 + (Ctprime6/4))/(ud_les6/u_inf6)
+u_inf_block7 = u_inf7*((ud_les7/u_inf7)**2 + (Ctprime7/4))/(ud_les7/u_inf7)
+u_inf_block8 = u_inf8*((ud_les8/u_inf8)**2 + (Ctprime8/4))/(ud_les8/u_inf8)
+u_inf_block9 = u_inf9*((ud_les9/u_inf9)**2 + (Ctprime9/4))/(ud_les9/u_inf9)
+u_inf_block10 = u_inf10*((ud_les10/u_inf10)**2 + (Ctprime10/4))/(ud_les10/u_inf10)
+u_inf_block11 = u_inf11*((ud_les11/u_inf11)**2 + (Ctprime11/4))/(ud_les11/u_inf11)
+u_inf_block12 = u_inf12*((ud_les12/u_inf12)**2 + (Ctprime12/4))/(ud_les12/u_inf12)
+u_inf_block13 = u_inf13*((ud_les13/u_inf13)**2 + (Ctprime13/4))/(ud_les13/u_inf13)
+u_inf_block14 = u_inf14*((ud_les14/u_inf14)**2 + (Ctprime14/4))/(ud_les14/u_inf14)
+u_inf_block15 = u_inf15*((ud_les15/u_inf15)**2 + (Ctprime15/4))/(ud_les15/u_inf15)
+u_inf_block16 = u_inf16*((ud_les16/u_inf16)**2 + (Ctprime16/4))/(ud_les16/u_inf16)
 
-ct_les_plot = [ct_les1, ct_les2, ct_les3, ct_les4, ct_les5, ct_les6, ct_les7, ct_les8, ct_les9, ct_les10, ct_les11, ct_les12, ct_les13, ct_les14, ct_les15, ct_les16, ct_les17]
-ct_les_cor_plot = [ct_les1_cor, ct_les2_cor, ct_les3_cor, ct_les4_cor, ct_les5_cor, ct_les6_cor, ct_les7_cor, ct_les8_cor, ct_les9_cor, ct_les10_cor, ct_les11_cor, ct_les12_cor, ct_les13_cor, ct_les14_cor, ct_les15_cor, ct_les16_cor, ct_les17_cor]
+#Corrected V'
+u_inf_block1_cor = u_inf1_cor*((ud_les1_cor/u_inf1_cor)**2 + (Ctprime1/4))/(ud_les1_cor/u_inf1_cor)
+u_inf_block2_cor = u_inf2_cor*((ud_les2_cor/u_inf2_cor)**2 + (Ctprime2/4))/(ud_les2_cor/u_inf2_cor)
+u_inf_block3_cor = u_inf3_cor*((ud_les3_cor/u_inf3_cor)**2 + (Ctprime3/4))/(ud_les3_cor/u_inf3_cor)
+u_inf_block4_cor = u_inf4_cor*((ud_les4_cor/u_inf4_cor)**2 + (Ctprime4/4))/(ud_les4_cor/u_inf4_cor)
+u_inf_block5_cor = u_inf5_cor*((ud_les5_cor/u_inf5_cor)**2 + (Ctprime5/4))/(ud_les5_cor/u_inf5_cor)
+u_inf_block6_cor = u_inf6_cor*((ud_les6_cor/u_inf6_cor)**2 + (Ctprime6/4))/(ud_les6_cor/u_inf6_cor)
+u_inf_block7_cor = u_inf7_cor*((ud_les7_cor/u_inf7_cor)**2 + (Ctprime7/4))/(ud_les7_cor/u_inf7_cor)
+u_inf_block8_cor = u_inf8_cor*((ud_les8_cor/u_inf8_cor)**2 + (Ctprime8/4))/(ud_les8_cor/u_inf8_cor)
+u_inf_block9_cor = u_inf9_cor*((ud_les9_cor/u_inf9_cor)**2 + (Ctprime9/4))/(ud_les9_cor/u_inf9_cor)
+u_inf_block10_cor = u_inf10_cor*((ud_les10_cor/u_inf10_cor)**2 + (Ctprime10/4))/(ud_les10_cor/u_inf10_cor)
+u_inf_block11_cor = u_inf11_cor*((ud_les11_cor/u_inf11_cor)**2 + (Ctprime11/4))/(ud_les11_cor/u_inf11_cor)
+u_inf_block12_cor = u_inf12_cor*((ud_les12_cor/u_inf12_cor)**2 + (Ctprime12/4))/(ud_les12_cor/u_inf12_cor)
+u_inf_block13_cor = u_inf13_cor*((ud_les13_cor/u_inf13_cor)**2 + (Ctprime13/4))/(ud_les13_cor/u_inf13_cor)
+u_inf_block14_cor = u_inf14_cor*((ud_les14_cor/u_inf14_cor)**2 + (Ctprime14/4))/(ud_les14_cor/u_inf14_cor)
+u_inf_block15_cor = u_inf15_cor*((ud_les15_cor/u_inf15_cor)**2 + (Ctprime15/4))/(ud_les15_cor/u_inf15_cor)
+u_inf_block16_cor = u_inf16_cor*((ud_les16_cor/u_inf16_cor)**2 + (Ctprime16/4))/(ud_les16_cor/u_inf16_cor)
 
-a_les_plot = [a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8, a_les9, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17]
-a_les_cor_plot = [a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor, a_les9_cor, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor]
-
-#Plotting
-plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], cp_les_plot[1:16], marker = 'o', color = "black", label = "LES Cp Uncorrected")
-plt.scatter(Ctprime_plot[1:16], cp_les_plot_cor[1:16], marker = 'o', color = "orange", label = "LES Cp Corrected")
-plt.plot(Ctprime_plot[1:16], cp_t[1:16], label = "Theoretical Cp Values")
-plt.legend()
-#plt.ylim(-1, 1)
-plt.xlabel("Ct Prime")
-plt.ylabel("Cp")
-plt.title("Corrected and Uncorrected LES Cp Values vs. Ct Prime and Theory")
-plt.savefig("./Cp_Compare")
-
-#Ct
-plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], ct_les_plot[1:16], marker = 'o', color = "black", label = "LES Ct Uncorrected")
-plt.scatter(Ctprime_plot[1:16], ct_les_cor_plot[1:16], marker = 'o', color = "orange", label = 'LES Ct Corrected')
-plt.plot(Ctprime_plot, ct_t, label = "Theoretical Ct Values")
-#plt.ylim(-1, 1)
-plt.legend()
-plt.xlabel("Ct Prime")
-plt.ylabel("Ct")
-plt.title("Corrected and Uncorrected LES Ct Values vs. Ct Prime and Theory")
-plt.savefig("./Ct_Compare")
-
-#a
-plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], a_les_plot[1:16], marker = 'o', color = "black", label = "LES a Uncorrected")
-plt.scatter(Ctprime_plot[1:16], a_les_cor_plot[1:16], marker = 'o', color = "orange", label = "LES a Corrected")
-plt.plot(Ctprime_plot[1:16], a_t[1:16], label = "Theroretical a Values")
-#plt.ylim(-1, 1)
-plt.legend()
-plt.xlabel("Ct Prime")
-plt.ylabel("a")
-plt.title("Corrected and Uncorrected LES a Values vs. Ct Prime and Theory")
-plt.savefig("./a_Compare")
-
+#Blockage Corrected Thery Values
+#Cp
+cp_block1 = cp_les1*((u_inf1/u_inf_block1)**3)
+cp_block2 = cp_les2*((u_inf2/u_inf_block2)**3)
+cp_block3 = cp_les3*((u_inf3/u_inf_block3)**3)
+cp_block4 = cp_les4*((u_inf4/u_inf_block4)**3)
+cp_block5 = cp_les5*((u_inf5/u_inf_block5)**3)
+cp_block6 = cp_les6*((u_inf6/u_inf_block6)**3)
