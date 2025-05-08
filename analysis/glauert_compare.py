@@ -690,3 +690,574 @@ thrust_les14_block_cor = 2*(np.pi/4)*(ud_les14_block_cor)*(u_inf14_block_cor - u
 thrust_les15_block_cor = 2*(np.pi/4)*(ud_les15_block_cor)*(u_inf15_block_cor - ud_les15_block_cor)
 thrust_les16_block_cor = 2*(np.pi/4)*(ud_les16_block_cor)*(u_inf16_block_cor - ud_les16_block_cor)
 thrust_les17_block_cor = 2*(np.pi/4)*(ud_les17_block_cor)*(u_inf17_block_cor - ud_les17_block_cor)
+
+#Ct
+#Uncorrected
+ct_les1 = thrust_les1/(0.5*(np.pi/4)*(u_inf1**2))
+ct_les2 = thrust_les2/(0.5*(np.pi/4)*(u_inf2**2))
+ct_les3 = thrust_les3/(0.5*(np.pi/4)*(u_inf3**2))
+ct_les4 = thrust_les4/(0.5*(np.pi/4)*(u_inf4**2))
+ct_les5 = thrust_les5/(0.5*(np.pi/4)*(u_inf5**2))
+ct_les6 = thrust_les6/(0.5*(np.pi/4)*(u_inf6**2))
+ct_les7 = thrust_les7/(0.5*(np.pi/4)*(u_inf7**2))
+ct_les8 = thrust_les8/(0.5*(np.pi/4)*(u_inf8**2))
+ct_les9 = thrust_les9/(0.5*(np.pi/4)*(u_inf9**2))
+ct_les10 = thrust_les10/(0.5*(np.pi/4)*(u_inf10**2))
+ct_les11 = thrust_les11/(0.5*(np.pi/4)*(u_inf11**2))
+ct_les12 = thrust_les12/(0.5*(np.pi/4)*(u_inf12**2))
+ct_les13 = thrust_les13/(0.5*(np.pi/4)*(u_inf13**2))
+ct_les14 = thrust_les14/(0.5*(np.pi/4)*(u_inf14**2))
+ct_les15 = thrust_les15/(0.5*(np.pi/4)*(u_inf15**2))
+ct_les16 = thrust_les16/(0.5*(np.pi/4)*(u_inf16**2))
+ct_les17 = thrust_les17/(0.5*(np.pi/4)*(u_inf17**2))
+
+#Corrected
+ct_les1_cor = thrust_les1_cor/(0.5*(np.pi/4)*(u_inf1_cor**2))
+ct_les2_cor = thrust_les2_cor/(0.5*(np.pi/4)*(u_inf2_cor**2))
+ct_les3_cor = thrust_les3_cor/(0.5*(np.pi/4)*(u_inf3_cor**2))
+ct_les4_cor = thrust_les4_cor/(0.5*(np.pi/4)*(u_inf4_cor**2))
+ct_les5_cor = thrust_les5_cor/(0.5*(np.pi/4)*(u_inf5_cor**2))
+ct_les6_cor = thrust_les6_cor/(0.5*(np.pi/4)*(u_inf6_cor**2))
+ct_les7_cor = thrust_les7_cor/(0.5*(np.pi/4)*(u_inf7_cor**2))
+ct_les8_cor = thrust_les8_cor/(0.5*(np.pi/4)*(u_inf8_cor**2))
+ct_les9_cor = thrust_les9_cor/(0.5*(np.pi/4)*(u_inf9_cor**2))
+ct_les10_cor = thrust_les10_cor/(0.5*(np.pi/4)*(u_inf10_cor**2))
+ct_les11_cor = thrust_les11_cor/(0.5*(np.pi/4)*(u_inf11_cor**2))
+ct_les12_cor = thrust_les12_cor/(0.5*(np.pi/4)*(u_inf12_cor**2))
+ct_les13_cor = thrust_les13_cor/(0.5*(np.pi/4)*(u_inf13_cor**2))
+ct_les14_cor = thrust_les14_cor/(0.5*(np.pi/4)*(u_inf14_cor**2))
+ct_les15_cor = thrust_les15_cor/(0.5*(np.pi/4)*(u_inf15_cor**2))
+ct_les16_cor = thrust_les16_cor/(0.5*(np.pi/4)*(u_inf16_cor**2))
+ct_les17_cor = thrust_les17_cor/(0.5*(np.pi/4)*(u_inf17_cor**2))
+
+#Blocked, No Correction
+ct_les1_block = thrust_les1_block/(0.5*(np.pi/4)*(u_inf1_block**2))
+ct_les2_block = thrust_les2_block/(0.5*(np.pi/4)*(u_inf2_block**2))
+ct_les3_block = thrust_les3_block/(0.5*(np.pi/4)*(u_inf3_block**2))
+ct_les4_block = thrust_les4_block/(0.5*(np.pi/4)*(u_inf4_block**2))
+ct_les5_block = thrust_les5_block/(0.5*(np.pi/4)*(u_inf5_block**2))
+ct_les6_block = thrust_les6_block/(0.5*(np.pi/4)*(u_inf6_block**2))
+ct_les7_block = thrust_les7_block/(0.5*(np.pi/4)*(u_inf7_block**2))
+ct_les8_block = thrust_les8_block/(0.5*(np.pi/4)*(u_inf8_block**2))
+ct_les9_block = thrust_les9_block/(0.5*(np.pi/4)*(u_inf9_block**2))
+ct_les10_block = thrust_les10_block/(0.5*(np.pi/4)*(u_inf10_block**2))
+ct_les11_block = thrust_les11_block/(0.5*(np.pi/4)*(u_inf11_block**2))
+ct_les12_block = thrust_les12_block/(0.5*(np.pi/4)*(u_inf12_block**2))
+ct_les13_block = thrust_les13_block/(0.5*(np.pi/4)*(u_inf13_block**2))
+ct_les14_block = thrust_les14_block/(0.5*(np.pi/4)*(u_inf14_block**2))
+ct_les15_block = thrust_les15_block/(0.5*(np.pi/4)*(u_inf15_block**2))
+ct_les16_block = thrust_les16_block/(0.5*(np.pi/4)*(u_inf16_block**2))
+ct_les17_block = thrust_les17_block/(0.5*(np.pi/4)*(u_inf17_block**2))
+
+#Blocked, Corrected
+ct_les1_block_cor = thrust_les1_block_cor/(0.5*(np.pi/4)*(u_inf1_block_cor**2))
+ct_les2_block_cor = thrust_les2_block_cor/(0.5*(np.pi/4)*(u_inf2_block_cor**2))
+ct_les3_block_cor = thrust_les3_block_cor/(0.5*(np.pi/4)*(u_inf3_block_cor**2))
+ct_les4_block_cor = thrust_les4_block_cor/(0.5*(np.pi/4)*(u_inf4_block_cor**2))
+ct_les5_block_cor = thrust_les5_block_cor/(0.5*(np.pi/4)*(u_inf5_block_cor**2))
+ct_les6_block_cor = thrust_les6_block_cor/(0.5*(np.pi/4)*(u_inf6_block_cor**2))
+ct_les7_block_cor = thrust_les7_block_cor/(0.5*(np.pi/4)*(u_inf7_block_cor**2))
+ct_les8_block_cor = thrust_les8_block_cor/(0.5*(np.pi/4)*(u_inf8_block_cor**2))
+ct_les9_block_cor = thrust_les9_block_cor/(0.5*(np.pi/4)*(u_inf9_block_cor**2))
+ct_les10_block_cor = thrust_les10_block_cor/(0.5*(np.pi/4)*(u_inf10_block_cor**2))
+ct_les11_block_cor = thrust_les11_block_cor/(0.5*(np.pi/4)*(u_inf11_block_cor**2))
+ct_les12_block_cor = thrust_les12_block_cor/(0.5*(np.pi/4)*(u_inf12_block_cor**2))
+ct_les13_block_cor = thrust_les13_block_cor/(0.5*(np.pi/4)*(u_inf13_block_cor**2))
+ct_les14_block_cor = thrust_les14_block_cor/(0.5*(np.pi/4)*(u_inf14_block_cor**2))
+ct_les15_block_cor = thrust_les15_block_cor/(0.5*(np.pi/4)*(u_inf15_block_cor**2))
+ct_les16_block_cor = thrust_les16_block_cor/(0.5*(np.pi/4)*(u_inf16_block_cor**2))
+ct_les17_block_cor = thrust_les17_block_cor/(0.5*(np.pi/4)*(u_inf17_block_cor**2))
+
+#Induction Factors
+#Uncorrected
+a_les1 = 1-np.cbrt((p_les1/(0.5*(np.pi/4)*Ctprime1)))
+a_les2 = 1-np.cbrt((p_les2/(0.5*(np.pi/4)*Ctprime2)))
+a_les3 = 1-np.cbrt((p_les3/(0.5*(np.pi/4)*Ctprime3)))
+a_les4 = 1-np.cbrt((p_les4/(0.5*(np.pi/4)*Ctprime4)))
+a_les5 = 1-np.cbrt((p_les5/(0.5*(np.pi/4)*Ctprime5)))
+a_les6 = 1-np.cbrt((p_les6/(0.5*(np.pi/4)*Ctprime6)))
+a_les7 = 1-np.cbrt((p_les7/(0.5*(np.pi/4)*Ctprime7)))
+a_les8 = 1-np.cbrt((p_les8/(0.5*(np.pi/4)*Ctprime8)))
+a_les9 = 1-np.cbrt((p_les9/(0.5*(np.pi/4)*Ctprime9)))
+a_les10 = 1-np.cbrt((p_les10/(0.5*(np.pi/4)*Ctprime10)))
+a_les11 = 1-np.cbrt((p_les11/(0.5*(np.pi/4)*Ctprime11)))
+a_les12 = 1-np.cbrt((p_les12/(0.5*(np.pi/4)*Ctprime12)))
+a_les13 = 1-np.cbrt((p_les13/(0.5*(np.pi/4)*Ctprime13)))
+a_les14 = 1-np.cbrt((p_les14/(0.5*(np.pi/4)*Ctprime14)))
+a_les15 = 1-np.cbrt((p_les15/(0.5*(np.pi/4)*Ctprime15)))
+a_les16 = 1-np.cbrt((p_les16/(0.5*(np.pi/4)*Ctprime16)))
+a_les17 = 1-np.cbrt((p_les17/(0.5*(np.pi/4)*Ctprime17)))
+
+#Corrected
+a_les1_cor = 1-np.cbrt((p_les1_cor/(0.5*(np.pi/4)*Ctprime1)))
+a_les2_cor = 1-np.cbrt((p_les2_cor/(0.5*(np.pi/4)*Ctprime2)))
+a_les3_cor = 1-np.cbrt((p_les3_cor/(0.5*(np.pi/4)*Ctprime3)))
+a_les4_cor = 1-np.cbrt((p_les4_cor/(0.5*(np.pi/4)*Ctprime4)))
+a_les5_cor = 1-np.cbrt((p_les5_cor/(0.5*(np.pi/4)*Ctprime5)))
+a_les6_cor = 1-np.cbrt((p_les6_cor/(0.5*(np.pi/4)*Ctprime6)))
+a_les7_cor = 1-np.cbrt((p_les7_cor/(0.5*(np.pi/4)*Ctprime7)))
+a_les8_cor = 1-np.cbrt((p_les8_cor/(0.5*(np.pi/4)*Ctprime8)))
+a_les9_cor = 1-np.cbrt((p_les9_cor/(0.5*(np.pi/4)*Ctprime9)))
+a_les10_cor = 1-np.cbrt((p_les10_cor/(0.5*(np.pi/4)*Ctprime10)))
+a_les11_cor = 1-np.cbrt((p_les11_cor/(0.5*(np.pi/4)*Ctprime11)))
+a_les12_cor = 1-np.cbrt((p_les12_cor/(0.5*(np.pi/4)*Ctprime12)))
+a_les13_cor = 1-np.cbrt((p_les13_cor/(0.5*(np.pi/4)*Ctprime13)))
+a_les14_cor = 1-np.cbrt((p_les14_cor/(0.5*(np.pi/4)*Ctprime14)))
+a_les15_cor = 1-np.cbrt((p_les15_cor/(0.5*(np.pi/4)*Ctprime15)))
+a_les16_cor = 1-np.cbrt((p_les16_cor/(0.5*(np.pi/4)*Ctprime16)))
+a_les17_cor = 1-np.cbrt((p_les17_cor/(0.5*(np.pi/4)*Ctprime17)))
+
+#Blocked, No Correction
+a_les1_block = 1-np.cbrt((p_les1_block/(0.5*(np.pi/4)*Ctprime1)))
+a_les2_block = 1-np.cbrt((p_les2_block/(0.5*(np.pi/4)*Ctprime2)))
+a_les3_block = 1-np.cbrt((p_les3_block/(0.5*(np.pi/4)*Ctprime3)))
+a_les4_block = 1-np.cbrt((p_les4_block/(0.5*(np.pi/4)*Ctprime4)))
+a_les5_block = 1-np.cbrt((p_les5_block/(0.5*(np.pi/4)*Ctprime5)))
+a_les6_block = 1-np.cbrt((p_les6_block/(0.5*(np.pi/4)*Ctprime6)))
+a_les7_block = 1-np.cbrt((p_les7_block/(0.5*(np.pi/4)*Ctprime7)))
+a_les8_block = 1-np.cbrt((p_les8_block/(0.5*(np.pi/4)*Ctprime8)))
+a_les9_block = 1-np.cbrt((p_les9_block/(0.5*(np.pi/4)*Ctprime9)))
+a_les10_block = 1-np.cbrt((p_les10_block/(0.5*(np.pi/4)*Ctprime10)))
+a_les11_block = 1-np.cbrt((p_les11_block/(0.5*(np.pi/4)*Ctprime11)))
+a_les12_block = 1-np.cbrt((p_les12_block/(0.5*(np.pi/4)*Ctprime12)))
+a_les13_block = 1-np.cbrt((p_les13_block/(0.5*(np.pi/4)*Ctprime13)))
+a_les14_block = 1-np.cbrt((p_les14_block/(0.5*(np.pi/4)*Ctprime14)))
+a_les15_block = 1-np.cbrt((p_les15_block/(0.5*(np.pi/4)*Ctprime15)))
+a_les16_block = 1-np.cbrt((p_les16_block/(0.5*(np.pi/4)*Ctprime16)))
+a_les17_block = 1-np.cbrt((p_les17_block/(0.5*(np.pi/4)*Ctprime17)))
+
+#Blocked, Corrected
+a_les1_block_cor = 1-np.cbrt((p_les1_block_cor/(0.5*(np.pi/4)*Ctprime1)))
+a_les2_block_cor = 1-np.cbrt((p_les2_block_cor/(0.5*(np.pi/4)*Ctprime2)))
+a_les3_block_cor = 1-np.cbrt((p_les3_block_cor/(0.5*(np.pi/4)*Ctprime3)))
+a_les4_block_cor = 1-np.cbrt((p_les4_block_cor/(0.5*(np.pi/4)*Ctprime4)))
+a_les5_block_cor = 1-np.cbrt((p_les5_block_cor/(0.5*(np.pi/4)*Ctprime5)))
+a_les6_block_cor = 1-np.cbrt((p_les6_block_cor/(0.5*(np.pi/4)*Ctprime6)))
+a_les7_block_cor = 1-np.cbrt((p_les7_block_cor/(0.5*(np.pi/4)*Ctprime7)))
+a_les8_block_cor = 1-np.cbrt((p_les8_block_cor/(0.5*(np.pi/4)*Ctprime8)))
+a_les9_block_cor = 1-np.cbrt((p_les9_block_cor/(0.5*(np.pi/4)*Ctprime9)))
+a_les10_block_cor = 1-np.cbrt((p_les10_block_cor/(0.5*(np.pi/4)*Ctprime10)))
+a_les11_block_cor = 1-np.cbrt((p_les11_block_cor/(0.5*(np.pi/4)*Ctprime11)))
+a_les12_block_cor = 1-np.cbrt((p_les12_block_cor/(0.5*(np.pi/4)*Ctprime12)))
+a_les13_block_cor = 1-np.cbrt((p_les13_block_cor/(0.5*(np.pi/4)*Ctprime13)))
+a_les14_block_cor = 1-np.cbrt((p_les14_block_cor/(0.5*(np.pi/4)*Ctprime14)))
+a_les15_block_cor = 1-np.cbrt((p_les15_block_cor/(0.5*(np.pi/4)*Ctprime15)))
+a_les16_block_cor = 1-np.cbrt((p_les16_block_cor/(0.5*(np.pi/4)*Ctprime16)))
+a_les17_block_cor = 1-np.cbrt((p_les17_block_cor/(0.5*(np.pi/4)*Ctprime17)))
+
+#Array for Theory Compare
+Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
+
+#Theory Values
+#a
+a_t = []
+for i in range (17):
+  if Ctprime_plot[i] == -4:
+     a_t.append(0)
+  else:
+     a_t.append(Ctprime_plot[i]/(4+Ctprime_plot[i]))
+
+#Cp
+cp_t = []
+for i in range(17):
+   cp_t.append(4*a_t[i]*((1-a_t[i])**2))
+
+#Ct
+ct_t = []
+for i in range(17):
+   ct_t.append(Ctprime_plot[i]*((1-a_t[i])**2))
+
+#Blockage Corrected Theory
+#Uinf Prime, Uncorrected
+u_inf1_prime = (u_inf1_block*((ud_les1_block/u_inf1_block)**2))/(ud_les1_block/u_inf1_block)
+u_inf2_prime = (u_inf2_block*((ud_les2_block/u_inf2_block)**2))/(ud_les2_block/u_inf2_block)
+u_inf3_prime = (u_inf3_block*((ud_les3_block/u_inf3_block)**2))/(ud_les3_block/u_inf3_block)
+u_inf4_prime = (u_inf4_block*((ud_les4_block/u_inf4_block)**2))/(ud_les4_block/u_inf4_block)
+u_inf5_prime = (u_inf5_block*((ud_les5_block/u_inf5_block)**2))/(ud_les5_block/u_inf5_block)
+u_inf6_prime = (u_inf6_block*((ud_les6_block/u_inf6_block)**2))/(ud_les6_block/u_inf6_block)
+u_inf7_prime = (u_inf7_block*((ud_les7_block/u_inf7_block)**2))/(ud_les7_block/u_inf7_block)
+u_inf8_prime = (u_inf8_block*((ud_les8_block/u_inf8_block)**2))/(ud_les8_block/u_inf8_block)
+u_inf9_prime = (u_inf9_block*((ud_les9_block/u_inf9_block)**2))/(ud_les9_block/u_inf9_block)
+u_inf10_prime = (u_inf10_block*((ud_les10_block/u_inf10_block)**2))/(ud_les10_block/u_inf10_block)
+u_inf11_prime = (u_inf11_block*((ud_les11_block/u_inf11_block)**2))/(ud_les11_block/u_inf11_block)
+u_inf12_prime = (u_inf12_block*((ud_les12_block/u_inf12_block)**2))/(ud_les12_block/u_inf12_block)
+u_inf13_prime = (u_inf13_block*((ud_les13_block/u_inf13_block)**2))/(ud_les13_block/u_inf13_block)
+u_inf14_prime = (u_inf14_block*((ud_les14_block/u_inf14_block)**2))/(ud_les14_block/u_inf14_block)
+u_inf15_prime = (u_inf15_block*((ud_les15_block/u_inf15_block)**2))/(ud_les15_block/u_inf15_block)
+u_inf16_prime = (u_inf16_block*((ud_les16_block/u_inf16_block)**2))/(ud_les16_block/u_inf16_block)
+u_inf17_prime = (u_inf17_block*((ud_les17_block/u_inf17_block)**2))/(ud_les17_block/u_inf17_block)
+
+#Uinf Prime, Corrected
+u_inf1_prime_cor = (u_inf1_block_cor*((ud_les1_block_cor/u_inf1_block_cor)**2))/(ud_les1_block_cor/u_inf1_block_cor)
+u_inf2_prime_cor = (u_inf2_block_cor*((ud_les2_block_cor/u_inf2_block_cor)**2))/(ud_les2_block_cor/u_inf2_block_cor)
+u_inf3_prime_cor = (u_inf3_block_cor*((ud_les3_block_cor/u_inf3_block_cor)**2))/(ud_les3_block_cor/u_inf3_block_cor)
+u_inf4_prime_cor = (u_inf4_block_cor*((ud_les4_block_cor/u_inf4_block_cor)**2))/(ud_les4_block_cor/u_inf4_block_cor)
+u_inf5_prime_cor = (u_inf5_block_cor*((ud_les5_block_cor/u_inf5_block_cor)**2))/(ud_les5_block_cor/u_inf5_block_cor)
+u_inf6_prime_cor = (u_inf6_block_cor*((ud_les6_block_cor/u_inf6_block_cor)**2))/(ud_les6_block_cor/u_inf6_block_cor)
+u_inf7_prime_cor = (u_inf7_block_cor*((ud_les7_block_cor/u_inf7_block_cor)**2))/(ud_les7_block_cor/u_inf7_block_cor)
+u_inf8_prime_cor = (u_inf8_block_cor*((ud_les8_block_cor/u_inf8_block_cor)**2))/(ud_les8_block_cor/u_inf8_block_cor)
+u_inf9_prime_cor = (u_inf9_block_cor*((ud_les9_block_cor/u_inf9_block_cor)**2))/(ud_les9_block_cor/u_inf9_block_cor)
+u_inf10_prime_cor = (u_inf10_block_cor*((ud_les10_block_cor/u_inf10_block_cor)**2))/(ud_les10_block_cor/u_inf10_block_cor)
+u_inf11_prime_cor = (u_inf11_block_cor*((ud_les11_block_cor/u_inf11_block_cor)**2))/(ud_les11_block_cor/u_inf11_block_cor)
+u_inf12_prime_cor = (u_inf12_block_cor*((ud_les12_block_cor/u_inf12_block_cor)**2))/(ud_les12_block_cor/u_inf12_block_cor)
+u_inf13_prime_cor = (u_inf13_block_cor*((ud_les13_block_cor/u_inf13_block_cor)**2))/(ud_les13_block_cor/u_inf13_block_cor)
+u_inf14_prime_cor = (u_inf14_block_cor*((ud_les14_block_cor/u_inf14_block_cor)**2))/(ud_les14_block_cor/u_inf14_block_cor)
+u_inf15_prime_cor = (u_inf15_block_cor*((ud_les15_block_cor/u_inf15_block_cor)**2))/(ud_les15_block_cor/u_inf15_block_cor)
+u_inf16_prime_cor = (u_inf16_block_cor*((ud_les16_block_cor/u_inf16_block_cor)**2))/(ud_les16_block_cor/u_inf16_block_cor)
+u_inf17_prime_cor = (u_inf17_block_cor*((ud_les17_block_cor/u_inf17_block_cor)**2))/(ud_les17_block_cor/u_inf17_block_cor)
+
+#Cp Prime, Uncorrected
+cp_prime1 = cp_les1_block*((u_inf1_block/u_inf1_prime)**3)
+cp_prime2 = cp_les2_block*((u_inf2_block/u_inf2_prime)**3)
+cp_prime3 = cp_les3_block*((u_inf3_block/u_inf3_prime)**3)
+cp_prime4 = cp_les4_block*((u_inf4_block/u_inf4_prime)**3)
+cp_prime5 = cp_les5_block*((u_inf5_block/u_inf5_prime)**3)
+cp_prime6 = cp_les6_block*((u_inf6_block/u_inf6_prime)**3)
+cp_prime7 = cp_les7_block*((u_inf7_block/u_inf7_prime)**3)
+cp_prime8 = cp_les8_block*((u_inf8_block/u_inf8_prime)**3)
+cp_prime9 = cp_les9_block*((u_inf9_block/u_inf9_prime)**3)
+cp_prime10 = cp_les10_block*((u_inf10_block/u_inf10_prime)**3)
+cp_prime11 = cp_les11_block*((u_inf11_block/u_inf11_prime)**3)
+cp_prime12 = cp_les12_block*((u_inf12_block/u_inf12_prime)**3)
+cp_prime13 = cp_les13_block*((u_inf13_block/u_inf13_prime)**3)
+cp_prime14 = cp_les14_block*((u_inf14_block/u_inf14_prime)**3)
+cp_prime15 = cp_les15_block*((u_inf15_block/u_inf15_prime)**3)
+cp_prime16 = cp_les16_block*((u_inf16_block/u_inf16_prime)**3)
+cp_prime17 = cp_les17_block*((u_inf17_block/u_inf17_prime)**3)
+
+#Cp Prime, Corrected
+cp_prime1_cor = cp_les1_block_cor*((u_inf1_block_cor/u_inf1_prime_cor)**3)
+cp_prime2_cor = cp_les2_block_cor*((u_inf2_block_cor/u_inf2_prime_cor)**3)
+cp_prime3_cor = cp_les3_block_cor*((u_inf3_block_cor/u_inf3_prime_cor)**3)
+cp_prime4_cor = cp_les4_block_cor*((u_inf4_block_cor/u_inf4_prime_cor)**3)
+cp_prime5_cor = cp_les5_block_cor*((u_inf5_block_cor/u_inf5_prime_cor)**3)
+cp_prime6_cor = cp_les6_block_cor*((u_inf6_block_cor/u_inf6_prime_cor)**3)
+cp_prime7_cor = cp_les7_block_cor*((u_inf7_block_cor/u_inf7_prime_cor)**3)
+cp_prime8_cor = cp_les8_block_cor*((u_inf8_block_cor/u_inf8_prime_cor)**3)
+cp_prime9_cor = cp_les9_block_cor*((u_inf9_block_cor/u_inf9_prime_cor)**3)
+cp_prime10_cor = cp_les10_block_cor*((u_inf10_block_cor/u_inf10_prime_cor)**3)
+cp_prime11_cor = cp_les11_block_cor*((u_inf11_block_cor/u_inf11_prime_cor)**3)
+cp_prime12_cor = cp_les12_block_cor*((u_inf12_block_cor/u_inf12_prime_cor)**3)
+cp_prime13_cor = cp_les13_block_cor*((u_inf13_block_cor/u_inf13_prime_cor)**3)
+cp_prime14_cor = cp_les14_block_cor*((u_inf14_block_cor/u_inf14_prime_cor)**3)
+cp_prime15_cor = cp_les15_block_cor*((u_inf15_block_cor/u_inf15_prime_cor)**3)
+cp_prime16_cor = cp_les16_block_cor*((u_inf16_block_cor/u_inf16_prime_cor)**3)
+cp_prime17_cor = cp_les17_block_cor*((u_inf17_block_cor/u_inf17_prime_cor)**3)
+
+#Ct Prime, Uncorrected
+ct_prime1 = ct_les1_block*((u_inf1_block/u_inf1_prime)**2)
+ct_prime2 = ct_les2_block*((u_inf2_block/u_inf2_prime)**2)
+ct_prime3 = ct_les3_block*((u_inf3_block/u_inf3_prime)**2)
+ct_prime4 = ct_les4_block*((u_inf4_block/u_inf4_prime)**2)
+ct_prime5 = ct_les5_block*((u_inf5_block/u_inf5_prime)**2)
+ct_prime6 = ct_les6_block*((u_inf6_block/u_inf6_prime)**2)
+ct_prime7 = ct_les7_block*((u_inf7_block/u_inf7_prime)**2)
+ct_prime8 = ct_les8_block*((u_inf8_block/u_inf8_prime)**2)
+ct_prime9 = ct_les9_block*((u_inf9_block/u_inf9_prime)**2)
+ct_prime10 = ct_les10_block*((u_inf10_block/u_inf10_prime)**2)
+ct_prime11 = ct_les11_block*((u_inf11_block/u_inf11_prime)**2)
+ct_prime12 = ct_les12_block*((u_inf12_block/u_inf12_prime)**2)
+ct_prime13 = ct_les13_block*((u_inf13_block/u_inf13_prime)**2)
+ct_prime14 = ct_les14_block*((u_inf14_block/u_inf14_prime)**2)
+ct_prime15 = ct_les15_block*((u_inf15_block/u_inf15_prime)**2)
+ct_prime16 = ct_les16_block*((u_inf16_block/u_inf16_prime)**2)
+ct_prime17 = ct_les17_block*((u_inf17_block/u_inf17_prime)**2)
+
+#Ct Prime, Corrected
+ct_prime1_cor = ct_les1_block_cor*((u_inf1_block_cor/u_inf1_prime_cor)**2)
+ct_prime2_cor = ct_les2_block_cor*((u_inf2_block_cor/u_inf2_prime_cor)**2)
+ct_prime3_cor = ct_les3_block_cor*((u_inf3_block_cor/u_inf3_prime_cor)**2)
+ct_prime4_cor = ct_les4_block_cor*((u_inf4_block_cor/u_inf4_prime_cor)**2)
+ct_prime5_cor = ct_les5_block_cor*((u_inf5_block_cor/u_inf5_prime_cor)**2)
+ct_prime6_cor = ct_les6_block_cor*((u_inf6_block_cor/u_inf6_prime_cor)**2)
+ct_prime7_cor = ct_les7_block_cor*((u_inf7_block_cor/u_inf7_prime_cor)**2)
+ct_prime8_cor = ct_les8_block_cor*((u_inf8_block_cor/u_inf8_prime_cor)**2)
+ct_prime9_cor = ct_les9_block_cor*((u_inf9_block_cor/u_inf9_prime_cor)**2)
+ct_prime10_cor = ct_les10_block_cor*((u_inf10_block_cor/u_inf10_prime_cor)**2)
+ct_prime11_cor = ct_les11_block_cor*((u_inf11_block_cor/u_inf11_prime_cor)**2)
+ct_prime12_cor = ct_les12_block_cor*((u_inf12_block_cor/u_inf12_prime_cor)**2)
+ct_prime13_cor = ct_les13_block_cor*((u_inf13_block_cor/u_inf13_prime_cor)**2)
+ct_prime14_cor = ct_les14_block_cor*((u_inf14_block_cor/u_inf14_prime_cor)**2)
+ct_prime15_cor = ct_les15_block_cor*((u_inf15_block_cor/u_inf15_prime_cor)**2)
+ct_prime16_cor = ct_les16_block_cor*((u_inf16_block_cor/u_inf16_prime_cor)**2)
+ct_prime17_cor = ct_les17_block_cor*((u_inf17_block_cor/u_inf17_prime_cor)**2)
+
+# Arrays for unblocked, uncorrected
+cp_plot = [
+    cp_les1, cp_les2, cp_les3, cp_les4, cp_les5, cp_les6, cp_les7, cp_les8,
+    cp_les9, cp_les10, cp_les11, cp_les12, cp_les13, cp_les14, cp_les15, cp_les16, cp_les17
+]
+ct_plot = [
+    ct_les1, ct_les2, ct_les3, ct_les4, ct_les5, ct_les6, ct_les7, ct_les8,
+    ct_les9, ct_les10, ct_les11, ct_les12, ct_les13, ct_les14, ct_les15, ct_les16, ct_les17
+]
+a_plot = [
+    a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8,
+    a_les9, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17
+]
+
+# Arrays for unblocked, corrected
+cp_plot_cor = [
+    cp_les1_cor, cp_les2_cor, cp_les3_cor, cp_les4_cor, cp_les5_cor, cp_les6_cor, cp_les7_cor, cp_les8_cor,
+    cp_les9_cor, cp_les10_cor, cp_les11_cor, cp_les12_cor, cp_les13_cor, cp_les14_cor, cp_les15_cor, cp_les16_cor, cp_les17_cor
+]
+ct_plot_cor = [
+    ct_les1_cor, ct_les2_cor, ct_les3_cor, ct_les4_cor, ct_les5_cor, ct_les6_cor, ct_les7_cor, ct_les8_cor,
+    ct_les9_cor, ct_les10_cor, ct_les11_cor, ct_les12_cor, ct_les13_cor, ct_les14_cor, ct_les15_cor, ct_les16_cor, ct_les17_cor
+]
+a_plot_cor = [
+    a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor,
+    a_les9_cor, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor
+]
+
+# Arrays for blocked, uncorrected
+cp_block_plot = [
+    cp_les1_block, cp_les2_block, cp_les3_block, cp_les4_block, cp_les5_block, cp_les6_block, cp_les7_block, cp_les8_block,
+    cp_les9_block, cp_les10_block, cp_les11_block, cp_les12_block, cp_les13_block, cp_les14_block, cp_les15_block, cp_les16_block, cp_les17_block
+]
+ct_block_plot = [
+    ct_les1_block, ct_les2_block, ct_les3_block, ct_les4_block, ct_les5_block, ct_les6_block, ct_les7_block, ct_les8_block,
+    ct_les9_block, ct_les10_block, ct_les11_block, ct_les12_block, ct_les13_block, ct_les14_block, ct_les15_block, ct_les16_block, ct_les17_block
+]
+a_block_plot = [
+    a_les1_block, a_les2_block, a_les3_block, a_les4_block, a_les5_block, a_les6_block, a_les7_block, a_les8_block,
+    a_les9_block, a_les10_block, a_les11_block, a_les12_block, a_les13_block, a_les14_block, a_les15_block, a_les16_block, a_les17_block
+]
+
+# Arrays for blocked, corrected
+cp_block_cor= [
+    cp_les1_block_cor, cp_les2_block_cor, cp_les3_block_cor, cp_les4_block_cor, cp_les5_block_cor, cp_les6_block_cor, cp_les7_block_cor, cp_les8_block_cor,
+    cp_les9_block_cor, cp_les10_block_cor, cp_les11_block_cor, cp_les12_block_cor, cp_les13_block_cor, cp_les14_block_cor, cp_les15_block_cor, cp_les16_block_cor, cp_les17_block_cor
+]
+ct_block_cor = [
+    ct_les1_block_cor, ct_les2_block_cor, ct_les3_block_cor, ct_les4_block_cor, ct_les5_block_cor, ct_les6_block_cor, ct_les7_block_cor, ct_les8_block_cor,
+    ct_les9_block_cor, ct_les10_block_cor, ct_les11_block_cor, ct_les12_block_cor, ct_les13_block_cor, ct_les14_block_cor, ct_les15_block_cor, ct_les16_block_cor, ct_les17_block_cor
+]
+a_block_cor = [
+    a_les1_block_cor, a_les2_block_cor, a_les3_block_cor, a_les4_block_cor, a_les5_block_cor, a_les6_block_cor, a_les7_block_cor, a_les8_block_cor,
+    a_les9_block_cor, a_les10_block_cor, a_les11_block_cor, a_les12_block_cor, a_les13_block_cor, a_les14_block_cor, a_les15_block_cor, a_les16_block_cor, a_les17_block_cor
+]
+
+# Arrays for cp_prime, uncorrected
+cp_prime_plot = [
+    cp_prime1, cp_prime2, cp_prime3, cp_prime4, cp_prime5, cp_prime6, cp_prime7, cp_prime8,
+    cp_prime9, cp_prime10, cp_prime11, cp_prime12, cp_prime13, cp_prime14, cp_prime15, cp_prime16, cp_prime17
+]
+
+# Arrays for cp_prime, corrected
+cp_prime_plot_cor = [
+    cp_prime1_cor, cp_prime2_cor, cp_prime3_cor, cp_prime4_cor, cp_prime5_cor, cp_prime6_cor, cp_prime7_cor, cp_prime8_cor,
+    cp_prime9_cor, cp_prime10_cor, cp_prime11_cor, cp_prime12_cor, cp_prime13_cor, cp_prime14_cor, cp_prime15_cor, cp_prime16_cor, cp_prime17_cor
+]
+
+# Arrays for ct_prime, uncorrected
+ct_prime_plot = [
+    ct_prime1, ct_prime2, ct_prime3, ct_prime4, ct_prime5, ct_prime6, ct_prime7, ct_prime8,
+    ct_prime9, ct_prime10, ct_prime11, ct_prime12, ct_prime13, ct_prime14, ct_prime15, ct_prime16, ct_prime17
+]
+
+# Arrays for ct_prime, corrected
+ct_prime_plot_cor = [
+    ct_prime1_cor, ct_prime2_cor, ct_prime3_cor, ct_prime4_cor, ct_prime5_cor, ct_prime6_cor, ct_prime7_cor, ct_prime8_cor,
+    ct_prime9_cor, ct_prime10_cor, ct_prime11_cor, ct_prime12_cor, ct_prime13_cor, ct_prime14_cor, ct_prime15_cor, ct_prime16_cor, ct_prime17_cor
+]
+#Plotting
+#ADM Compare
+#a
+plt.figure(figsize=(9, 6))
+plt.scatter(Ctprime_plot[1:16], a_plot[1:16], marker='o', color = 'blue', label='Unblocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], a_plot_cor[1:16], marker='o', color = 'red', label='Unblocked/Corrected')
+plt.scatter(Ctprime_plot[1:16], a_block_plot[1:16], marker='o', color = 'green', label='Blocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], a_block_cor[1:16], marker='o', color = 'orange', label='Blocked/Corrected')
+plt.plot(Ctprime_plot[1:16], a_t[1:16], color='black', label='ADM Theory')
+plt.title('LES Results vs. ADM Theory: Induction Factor')
+plt.xlabel('Ct Prime')
+plt.ylabel('Induction Factor')
+plt.legend()
+plt.savefig('./a_compare_glauert')
+
+#Cp
+plt.figure(figsize=(9, 6))
+plt.scatter(Ctprime_plot[1:16], cp_plot[1:16], marker='o', color = 'blue', label='Unblocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], cp_plot_cor[1:16], marker='o', color = 'red', label='Unblocked/Corrected')
+plt.scatter(Ctprime_plot[1:16], cp_block_plot[1:16], marker='o', color = 'green', label='Blocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], cp_block_cor[1:16], marker='o', color = 'orange', label='Blocked/Corrected')
+plt.plot(Ctprime_plot[1:16], cp_t[1:16], color='black', label='ADM Theory')
+plt.title('LES Results vs. ADM Theory: Power Coefficient')
+plt.xlabel('Ct Prime')
+plt.ylabel('Power Coefficient')
+plt.legend()
+plt.savefig('./cp_compare_glauert')
+
+#Ct
+plt.figure(figsize=(9, 6))
+plt.scatter(Ctprime_plot[1:16], ct_plot[1:16], marker='o', color = 'blue', label='Unblocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], ct_plot_cor[1:16], marker='o', color = 'red', label='Unblocked/Corrected')
+plt.scatter(Ctprime_plot[1:16], ct_block_plot[1:16], marker='o', color = 'green', label='Blocked/Uncorrected')
+plt.scatter(Ctprime_plot[1:16], ct_block_cor[1:16], marker='o', color = 'orange', label='Blocked/Corrected')
+plt.plot(Ctprime_plot[1:16], ct_t[1:16], color='black', label='ADM Theory')
+plt.title('LES Results vs. ADM Theory: Thrust Coefficient')
+plt.xlabel('Ct Prime')
+plt.ylabel('Thrust Coefficient')
+plt.legend()
+plt.savefig('./ct_compare_glauert')
+
+#Blockage Corrections
+#Cp
+plt.figure(figsize=(9, 6))
+plt.scatter(Ctprime_plot[1:16], cp_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
+plt.scatter(Ctprime_plot[1:16], cp_block_cor[1:16], marker='o', color = 'red', label='Corrected')
+plt.plot(Ctprime_plot[1:16], cp_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
+plt.title('LES Blockage Resutls vs. Glauert Correction for Cp')
+plt.xlabel('Ct Prime')
+plt.ylabel('Power Coefficient')
+plt.legend()
+
+#Ct
+plt.figure(figsize=(9, 6))
+plt.scatter(Ctprime_plot[1:16], ct_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
+plt.scatter(Ctprime_plot[1:16], ct_block_cor[1:16], marker='o', color = 'red', label='Corrected')
+plt.plot(Ctprime_plot[1:16], ct_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
+plt.title('LES Blockage Resutls vs. Glauert Correction for Ct')
+plt.xlabel('Ct Prime')
+plt.ylabel('Thrust Coefficient')
+plt.legend()
+
+#Blocked Velocity Fields
+#Corrected
+ds1 = sim1_block.slice(field_terms = 'u', ylim = 0)
+ds1['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0000')
+
+ds2 = sim2_block.slice(field_terms = 'u', ylim = 0)
+ds2['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0001')
+
+ds3 = sim3_block.slice(field_terms = 'u', ylim = 0)
+ds3['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0002')
+
+ds4 = sim4_block.slice(field_terms = 'u', ylim = 0)
+ds4['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0003')
+
+ds5 = sim5_block.slice(field_terms = 'u', ylim = 0)
+ds5['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0004')
+
+ds6 = sim6_block.slice(field_terms = 'u', ylim = 0)
+ds6['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0005')
+
+ds7 = sim7_block.slice(field_terms = 'u', ylim = 0)
+ds7['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0006')
+
+ds8 = sim8_block.slice(field_terms = 'u', ylim = 0)
+ds8['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0007')
+
+ds9 = sim9_block.slice(field_terms = 'u', ylim = 0)
+ds9['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0008')
+
+ds10 = sim10_block.slice(field_terms = 'u', ylim = 0)
+ds10['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0009')
+
+ds11 = sim11_block.slice(field_terms = 'u', ylim = 0)
+ds11['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0010')
+
+ds12 = sim12_block.slice(field_terms = 'u', ylim = 0)
+ds12['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0011')
+
+ds13 = sim13_block.slice(field_terms = 'u', ylim = 0)
+ds13['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0012')
+
+ds14 = sim14_block.slice(field_terms = 'u', ylim = 0)
+ds14['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0013')
+
+ds15 = sim15_block.slice(field_terms = 'u', ylim = 0)
+ds15['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0014')
+
+ds16 = sim16_block.slice(field_terms = 'u', ylim = 0)
+ds16['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0015')
+
+ds17 = sim17_block.slice(field_terms = 'u', ylim = 0)
+ds17['u'].imshow()
+plt.savefig('./u_field_B_0000/Sim_0016')
+
+#Corrected
+ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 0)
+ds1_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0000')
+
+ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 0)
+ds2_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0001')
+
+ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 0)
+ds3_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0002')
+
+ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 0)
+ds4_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0003')
+
+ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 0)
+ds5_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0004')
+
+ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 0)
+ds6_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0005')
+
+ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 0)
+ds7_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0006')
+
+ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 0)
+ds8_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0007')
+
+ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 0)
+ds9_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0008')
+
+ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 0)
+ds10_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0009')
+
+ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 0)
+ds11_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0010')
+
+ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 0)
+ds12_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0011')
+
+ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 0)
+ds13_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0012')
+
+ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 0)
+ds14_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0013')
+
+ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 0)
+ds15_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0014')
+
+ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 0)
+ds16_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0015')
+
+ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 0)
+ds17_cor['u'].imshow()
+plt.savefig('./u_field_B_0001/Sim_0016')
