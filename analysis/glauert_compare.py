@@ -1074,6 +1074,7 @@ plt.title('LES Results vs. ADM Theory: Induction Factor')
 plt.xlabel('Ct Prime')
 plt.ylabel('Induction Factor')
 plt.legend()
+plt.ylim(-1, 1)
 plt.savefig('./a_compare_glauert')
 
 #Cp
@@ -1087,6 +1088,7 @@ plt.title('LES Results vs. ADM Theory: Power Coefficient')
 plt.xlabel('Ct Prime')
 plt.ylabel('Power Coefficient')
 plt.legend()
+plt.ylim(-1, 1)
 plt.savefig('./cp_compare_glauert')
 
 #Ct
@@ -1100,164 +1102,165 @@ plt.title('LES Results vs. ADM Theory: Thrust Coefficient')
 plt.xlabel('Ct Prime')
 plt.ylabel('Thrust Coefficient')
 plt.legend()
+plt.ylim(-1, 1)
 plt.savefig('./ct_compare_glauert')
 
 #Blockage Corrections
 #Cp
-plt.figure(figsize=(9, 6))
-plt.scatter(Ctprime_plot[1:16], cp_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
-plt.scatter(Ctprime_plot[1:16], cp_block_cor[1:16], marker='o', color = 'red', label='Corrected')
-plt.plot(Ctprime_plot[1:16], cp_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
-plt.title('LES Blockage Resutls vs. Glauert Correction for Cp')
-plt.xlabel('Ct Prime')
-plt.ylabel('Power Coefficient')
-plt.legend()
+# plt.figure(figsize=(9, 6))
+# plt.scatter(Ctprime_plot[1:16], cp_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
+# plt.scatter(Ctprime_plot[1:16], cp_block_cor[1:16], marker='o', color = 'red', label='Corrected')
+# plt.plot(Ctprime_plot[1:16], cp_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
+# plt.title('LES Blockage Resutls vs. Glauert Correction for Cp')
+# plt.xlabel('Ct Prime')
+# plt.ylabel('Power Coefficient')
+# plt.legend()
 
 #Ct
-plt.figure(figsize=(9, 6))
-plt.scatter(Ctprime_plot[1:16], ct_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
-plt.scatter(Ctprime_plot[1:16], ct_block_cor[1:16], marker='o', color = 'red', label='Corrected')
-plt.plot(Ctprime_plot[1:16], ct_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
-plt.title('LES Blockage Resutls vs. Glauert Correction for Ct')
-plt.xlabel('Ct Prime')
-plt.ylabel('Thrust Coefficient')
-plt.legend()
+# plt.figure(figsize=(9, 6))
+# plt.scatter(Ctprime_plot[1:16], ct_block_plot[1:16], marker='o', color = 'blue', label='Uncorrected')
+# plt.scatter(Ctprime_plot[1:16], ct_block_cor[1:16], marker='o', color = 'red', label='Corrected')
+# plt.plot(Ctprime_plot[1:16], ct_prime_plot[1:16], color='black', label='Glauert Blockage Correction')
+# plt.title('LES Blockage Resutls vs. Glauert Correction for Ct')
+# plt.xlabel('Ct Prime')
+# plt.ylabel('Thrust Coefficient')
+# plt.legend()
 
 #Blocked Velocity Fields
 #Corrected
 ds1 = sim1_block.slice(field_terms = 'u', ylim = 0)
 ds1['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0000')
+plt.savefig('./u_field_B_0000_Sim_0000')
 
 ds2 = sim2_block.slice(field_terms = 'u', ylim = 0)
 ds2['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0001')
+plt.savefig('./u_field_B_0000_Sim_0001')
 
 ds3 = sim3_block.slice(field_terms = 'u', ylim = 0)
 ds3['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0002')
+plt.savefig('./u_field_B_0000_Sim_0002')
 
 ds4 = sim4_block.slice(field_terms = 'u', ylim = 0)
 ds4['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0003')
+plt.savefig('./u_field_B_0000_Sim_0003')
 
 ds5 = sim5_block.slice(field_terms = 'u', ylim = 0)
 ds5['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0004')
+plt.savefig('./u_field_B_0000_Sim_0004')
 
 ds6 = sim6_block.slice(field_terms = 'u', ylim = 0)
 ds6['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0005')
+plt.savefig('./u_field_B_0000_Sim_0005')
 
 ds7 = sim7_block.slice(field_terms = 'u', ylim = 0)
 ds7['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0006')
+plt.savefig('./u_field_B_0000_Sim_0006')
 
 ds8 = sim8_block.slice(field_terms = 'u', ylim = 0)
 ds8['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0007')
+plt.savefig('./u_field_B_0000_Sim_0007')
 
 ds9 = sim9_block.slice(field_terms = 'u', ylim = 0)
 ds9['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0008')
+plt.savefig('./u_field_B_0000_Sim_0008')
 
 ds10 = sim10_block.slice(field_terms = 'u', ylim = 0)
 ds10['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0009')
+plt.savefig('./u_field_B_0000_Sim_0009')
 
 ds11 = sim11_block.slice(field_terms = 'u', ylim = 0)
 ds11['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0010')
+plt.savefig('./u_field_B_0000_Sim_0010')
 
 ds12 = sim12_block.slice(field_terms = 'u', ylim = 0)
 ds12['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0011')
+plt.savefig('./u_field_B_0000_Sim_0011')
 
 ds13 = sim13_block.slice(field_terms = 'u', ylim = 0)
 ds13['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0012')
+plt.savefig('./u_field_B_0000_Sim_0012')
 
 ds14 = sim14_block.slice(field_terms = 'u', ylim = 0)
 ds14['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0013')
+plt.savefig('./u_field_B_0000_Sim_0013')
 
 ds15 = sim15_block.slice(field_terms = 'u', ylim = 0)
 ds15['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0014')
+plt.savefig('./u_field_B_0000_Sim_0014')
 
 ds16 = sim16_block.slice(field_terms = 'u', ylim = 0)
 ds16['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0015')
+plt.savefig('./u_field_B_0000_Sim_0015')
 
 ds17 = sim17_block.slice(field_terms = 'u', ylim = 0)
 ds17['u'].imshow()
-plt.savefig('./u_field_B_0000/Sim_0016')
+plt.savefig('./u_field_B_0000_Sim_0016')
 
 #Corrected
 ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 0)
 ds1_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0000')
+plt.savefig('./u_field_B_0001_Sim_0000')
 
 ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 0)
 ds2_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0001')
+plt.savefig('./u_field_B_0001_Sim_0001')
 
 ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 0)
 ds3_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0002')
+plt.savefig('./u_field_B_0001_Sim_0002')
 
 ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 0)
 ds4_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0003')
+plt.savefig('./u_field_B_0001_Sim_0003')
 
 ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 0)
 ds5_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0004')
+plt.savefig('./u_field_B_0001_Sim_0004')
 
 ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 0)
 ds6_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0005')
+plt.savefig('./u_field_B_0001_Sim_0005')
 
 ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 0)
 ds7_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0006')
+plt.savefig('./u_field_B_0001_Sim_0006')
 
 ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 0)
 ds8_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0007')
+plt.savefig('./u_field_B_0001_Sim_0007')
 
 ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 0)
 ds9_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0008')
+plt.savefig('./u_field_B_0001_Sim_0008')
 
 ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 0)
 ds10_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0009')
+plt.savefig('./u_field_B_0001_Sim_0009')
 
 ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 0)
 ds11_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0010')
+plt.savefig('./u_field_B_0001_Sim_0010')
 
 ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 0)
 ds12_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0011')
+plt.savefig('./u_field_B_0001_Sim_0011')
 
 ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 0)
 ds13_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0012')
+plt.savefig('./u_field_B_0001_Sim_0012')
 
 ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 0)
 ds14_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0013')
+plt.savefig('./u_field_B_0001_Sim_0013')
 
 ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 0)
 ds15_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0014')
+plt.savefig('./u_field_B_0001_Sim_0014')
 
 ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 0)
 ds16_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0015')
+plt.savefig('./u_field_B_0001_Sim_0015')
 
 ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 0)
 ds17_cor['u'].imshow()
-plt.savefig('./u_field_B_0001/Sim_0016')
+plt.savefig('./u_field_B_0001_Sim_0016')
