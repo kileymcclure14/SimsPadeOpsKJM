@@ -16,7 +16,7 @@ sim1_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0000")
 sim1 = pio.BudgetIO("Data/U_0017_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim2_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0001")
-sim2 = pio.BudgetIO("Data/U_0017_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine") 
+sim2 = pio.BudgetIO("Data/U_0017_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
 sim3_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0002")
 sim3 = pio.BudgetIO("Data/U_0017_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
@@ -1126,141 +1126,280 @@ plt.savefig('./ct_compare_glauert')
 # plt.ylabel('Thrust Coefficient')
 # plt.legend()
 
+#Unblicked Velocity Fields
+#Corrected
+ds1_u = sim1.slice(field_terms = 'u', ylim = 5)
+ds1_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0000')
+
+ds2_u = sim2.slice(field_terms = 'u', ylim = 5)
+ds2_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0001')
+
+ds3_u = sim3.slice(field_terms = 'u', ylim = 5)
+ds3_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0002')
+
+ds4_u = sim4.slice(field_terms = 'u', ylim = 5)
+ds4_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0003')
+
+ds5_u = sim5.slice(field_terms = 'u', ylim = 5)
+ds5_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0004')
+
+ds6_u = sim6.slice(field_terms = 'u', ylim = 5)
+ds6_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0005')
+
+ds7_u = sim7.slice(field_terms = 'u', ylim = 5)
+ds7_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0006')
+
+ds8_u = sim8.slice(field_terms = 'u', ylim = 5)
+ds8_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0007')
+
+ds9_u = sim9.slice(field_terms = 'u', ylim = 5)
+ds9_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0008')
+
+ds10_u = sim10.slice(field_terms = 'u', ylim = 5)
+ds10_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0009')
+
+ds11_u = sim11.slice(field_terms = 'u', ylim = 5)
+ds11_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0010')
+
+ds12_u = sim12.slice(field_terms = 'u', ylim = 5)
+ds12_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0011')
+
+ds13_u = sim13.slice(field_terms = 'u', ylim = 5)
+ds13_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0012')
+
+ds14_u = sim14.slice(field_terms = 'u', ylim = 5)
+ds14_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0013')
+
+ds15_u = sim15.slice(field_terms = 'u', ylim = 5)
+ds15_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0014')
+
+ds16_u = sim16.slice(field_terms = 'u', ylim = 5)
+ds16_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0015')
+
+ds17_u = sim17.slice(field_terms = 'u', ylim = 5)
+ds17_u['u'].imshow()
+plt.savefig('./u_field_U_0017_Sim_0016')
+
+#Corrected
+ds1_u_cor = sim1_cor.slice(field_terms = 'u', ylim = 5)
+ds1_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0000')
+
+ds2_u_cor = sim2_cor.slice(field_terms = 'u', ylim = 5)
+ds2_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0001')
+
+ds3_u_cor = sim3_cor.slice(field_terms = 'u', ylim = 5)
+ds3_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0002')
+
+ds4_u_cor = sim4_cor.slice(field_terms = 'u', ylim = 5)
+ds4_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0003')
+
+ds5_u_cor = sim5_cor.slice(field_terms = 'u', ylim = 5)
+ds5_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0004')
+
+ds6_u_cor = sim6_cor.slice(field_terms = 'u', ylim = 5)
+ds6_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0005')
+
+ds7_u_cor = sim7_cor.slice(field_terms = 'u', ylim = 5)
+ds7_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0006')
+
+ds8_u_cor = sim8_cor.slice(field_terms = 'u', ylim = 5)
+ds8_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0007')
+
+ds9_u_cor = sim9_cor.slice(field_terms = 'u', ylim = 5)
+ds9_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0008')
+
+ds10_u_cor = sim10_cor.slice(field_terms = 'u', ylim = 5)
+ds10_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0009')
+
+ds11_u_cor = sim11_cor.slice(field_terms = 'u', ylim = 5)
+ds11_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0010')
+
+ds12_u_cor = sim12_cor.slice(field_terms = 'u', ylim = 5)
+ds12_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0011')
+
+ds13_u_cor = sim13_cor.slice(field_terms = 'u', ylim = 5)
+ds13_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0012')
+
+ds14_u_cor = sim14_cor.slice(field_terms = 'u', ylim = 5)
+ds14_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0013')
+
+ds15_u_cor = sim15_cor.slice(field_terms = 'u', ylim = 5)
+ds15_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0014')
+
+ds16_u_cor = sim16_cor.slice(field_terms = 'u', ylim = 5)
+ds16_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0015')
+
+ds17_u_cor = sim17_cor.slice(field_terms = 'u', ylim = 5)
+ds17_u_cor['u'].imshow()
+plt.savefig('./u_field_U_0018_Sim_0016')
+
 #Blocked Velocity Fields
 #Corrected
-ds1 = sim1_block.slice(field_terms = 'u', ylim = 0)
+ds1 = sim1_block.slice(field_terms = 'u', ylim = 5)
 ds1['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0000')
 
-ds2 = sim2_block.slice(field_terms = 'u', ylim = 0)
+ds2 = sim2_block.slice(field_terms = 'u', ylim = 5)
 ds2['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0001')
 
-ds3 = sim3_block.slice(field_terms = 'u', ylim = 0)
+ds3 = sim3_block.slice(field_terms = 'u', ylim = 5)
 ds3['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0002')
 
-ds4 = sim4_block.slice(field_terms = 'u', ylim = 0)
+ds4 = sim4_block.slice(field_terms = 'u', ylim = 5)
 ds4['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0003')
 
-ds5 = sim5_block.slice(field_terms = 'u', ylim = 0)
+ds5 = sim5_block.slice(field_terms = 'u', ylim = 5)
 ds5['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0004')
 
-ds6 = sim6_block.slice(field_terms = 'u', ylim = 0)
+ds6 = sim6_block.slice(field_terms = 'u', ylim = 5)
 ds6['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0005')
 
-ds7 = sim7_block.slice(field_terms = 'u', ylim = 0)
+ds7 = sim7_block.slice(field_terms = 'u', ylim = 5)
 ds7['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0006')
 
-ds8 = sim8_block.slice(field_terms = 'u', ylim = 0)
+ds8 = sim8_block.slice(field_terms = 'u', ylim = 5)
 ds8['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0007')
 
-ds9 = sim9_block.slice(field_terms = 'u', ylim = 0)
+ds9 = sim9_block.slice(field_terms = 'u', ylim = 5)
 ds9['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0008')
 
-ds10 = sim10_block.slice(field_terms = 'u', ylim = 0)
+ds10 = sim10_block.slice(field_terms = 'u', ylim = 5)
 ds10['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0009')
 
-ds11 = sim11_block.slice(field_terms = 'u', ylim = 0)
+ds11 = sim11_block.slice(field_terms = 'u', ylim = 5)
 ds11['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0010')
 
-ds12 = sim12_block.slice(field_terms = 'u', ylim = 0)
+ds12 = sim12_block.slice(field_terms = 'u', ylim = 5)
 ds12['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0011')
 
-ds13 = sim13_block.slice(field_terms = 'u', ylim = 0)
+ds13 = sim13_block.slice(field_terms = 'u', ylim = 5)
 ds13['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0012')
 
-ds14 = sim14_block.slice(field_terms = 'u', ylim = 0)
+ds14 = sim14_block.slice(field_terms = 'u', ylim = 5)
 ds14['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0013')
 
-ds15 = sim15_block.slice(field_terms = 'u', ylim = 0)
+ds15 = sim15_block.slice(field_terms = 'u', ylim = 5)
 ds15['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0014')
 
-ds16 = sim16_block.slice(field_terms = 'u', ylim = 0)
+ds16 = sim16_block.slice(field_terms = 'u', ylim = 5)
 ds16['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0015')
 
-ds17 = sim17_block.slice(field_terms = 'u', ylim = 0)
+ds17 = sim17_block.slice(field_terms = 'u', ylim = 5)
 ds17['u'].imshow()
 plt.savefig('./u_field_B_0000_Sim_0016')
 
 #Corrected
-ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 0)
+ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 5)
 ds1_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0000')
 
-ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 0)
+ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 5)
 ds2_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0001')
 
-ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 0)
+ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 5)
 ds3_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0002')
 
-ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 0)
+ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 5)
 ds4_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0003')
 
-ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 0)
+ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 5)
 ds5_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0004')
 
-ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 0)
+ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 5)
 ds6_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0005')
 
-ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 0)
+ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 5)
 ds7_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0006')
 
-ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 0)
+ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 5)
 ds8_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0007')
 
-ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 0)
+ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 5)
 ds9_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0008')
 
-ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 0)
+ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 5)
 ds10_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0009')
 
-ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 0)
+ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 5)
 ds11_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0010')
 
-ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 0)
+ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 5)
 ds12_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0011')
 
-ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 0)
+ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 5)
 ds13_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0012')
 
-ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 0)
+ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 5)
 ds14_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0013')
 
-ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 0)
+ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 5)
 ds15_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0014')
 
-ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 0)
+ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 5)
 ds16_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0015')
 
-ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 0)
+ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 5)
 ds17_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0016')

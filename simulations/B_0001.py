@@ -28,6 +28,8 @@ single_inputs = dict(
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
         useCorrection = True,
+        xLoc = 5,
+        zLoc = 5,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
