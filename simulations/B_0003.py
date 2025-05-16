@@ -22,11 +22,12 @@ single_inputs = dict(
        nz = 128,
        Lx = 38.4,
        Ly = 12.8,
-       Lz = 10,
+       Lz = 2.857,
 
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
+        useCorrection = True,
         xLoc = 5,
         zLoc = 5,
     ),
@@ -34,13 +35,13 @@ single_inputs = dict(
         # always need to provide the filepaths (no defaults)
         problem_dir = "turbines",
         problem_name = "AD_coriolis_shear",
-        job_name = "blocked_ctprime_nocorrect_kjm",
+        job_name = "unblocked_ctprime_correct_kjm",
         # if not provided, default_inputs will be used
         n_hrs = 24,
     )
 )
 
-varied_inputs = dict(turb = dict(cT = [-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0, 0.5, 1, 1.5, 2.0, 2.5, 3, 3.5, 4]))  # below and above the Betz limit
+varied_inputs = dict(turb = dict(cT = [-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0] ))  # below and above the Betz limit
 
 
 ju.write_padeops_suite(single_inputs, varied_inputs, nested = True, default_input = default_inputs,

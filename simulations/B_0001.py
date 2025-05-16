@@ -21,15 +21,15 @@ single_inputs = dict(
        ny = 128,
        nz = 128,
        Lx = 38.4,
-       Ly = 6.66,
-       Lz = 12.8,
+       Ly = 12.8,
+       Lz = 2.857,
 
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
         useCorrection = True,
         xLoc = 5,
-        zLoc = 5,
+        zLoc = 1.4285,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
