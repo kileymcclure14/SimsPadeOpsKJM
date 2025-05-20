@@ -34,7 +34,7 @@ single_inputs = dict(
         # always need to provide the filepaths (no defaults)
         problem_dir = "turbines",
         problem_name = "AD_coriolis_shear",
-        job_name = "blocked_ctprime_nocorrect_kjm",
+        job_name = "hblocked_ctprime_nocorrect_kjm",
         # if not provided, default_inputs will be used
         n_hrs = 24,
     )
