@@ -497,80 +497,80 @@ u_inf16_cor = sim16_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean(
 u_inf17_cor = sim17_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # Med Blocked, No Correction
-u_inf1_mblock = sim1_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_mblock = sim2_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_mblock = sim3_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_mblock = sim4_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_mblock = sim5_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_mblock = sim6_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_mblock = sim7_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_mblock = sim8_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_mblock = sim9_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_mblock = sim10_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_mblock = sim11_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_mblock = sim12_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_mblock = sim13_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_mblock = sim14_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_mblock = sim15_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_mblock = sim16_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_mblock = sim17_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf1_mblock = sim1_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf2_mblock = sim2_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf3_mblock = sim3_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf4_mblock = sim4_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf5_mblock = sim5_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf6_mblock = sim6_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf7_mblock = sim7_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf8_mblock = sim8_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf9_mblock = sim9_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf10_mblock = sim10_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf11_mblock = sim11_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf12_mblock = sim12_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf13_mblock = sim13_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf14_mblock = sim14_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf15_mblock = sim15_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf16_mblock = sim16_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf17_mblock = sim17_mblock.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
 
 # Med Blocked, Corrected
-u_inf1_mblock_cor = sim1_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_mblock_cor = sim2_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_mblock_cor = sim3_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_mblock_cor = sim4_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_mblock_cor = sim5_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_mblock_cor = sim6_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_mblock_cor = sim7_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_mblock_cor = sim8_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_mblock_cor = sim9_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_mblock_cor = sim10_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_mblock_cor = sim11_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_mblock_cor = sim12_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_mblock_cor = sim13_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_mblock_cor = sim14_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_mblock_cor = sim15_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_mblock_cor = sim16_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_mblock_cor = sim17_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf1_mblock_cor = sim1_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf2_mblock_cor = sim2_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf3_mblock_cor = sim3_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf4_mblock_cor = sim4_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf5_mblock_cor = sim5_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf6_mblock_cor = sim6_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf7_mblock_cor = sim7_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf8_mblock_cor = sim8_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf9_mblock_cor = sim9_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf10_mblock_cor = sim10_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf11_mblock_cor = sim11_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf12_mblock_cor = sim12_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf13_mblock_cor = sim13_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf14_mblock_cor = sim14_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf15_mblock_cor = sim15_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf16_mblock_cor = sim16_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
+u_inf17_mblock_cor = sim17_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 5)['u'].mean("y").values
 
 # High Blocked, Uncorrected
-u_inf1_hblock = sim1_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_hblock = sim2_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_hblock = sim3_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_hblock = sim4_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_hblock = sim5_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_hblock = sim6_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_hblock = sim7_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_hblock = sim8_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_hblock = sim9_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_hblock = sim10_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_hblock = sim11_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_hblock = sim12_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_hblock = sim13_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_hblock = sim14_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_hblock = sim15_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_hblock = sim16_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_hblock = sim17_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf1_hblock = sim1_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf2_hblock = sim2_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf3_hblock = sim3_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf4_hblock = sim4_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf5_hblock = sim5_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf6_hblock = sim6_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf7_hblock = sim7_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf8_hblock = sim8_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf9_hblock = sim9_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf10_hblock = sim10_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf11_hblock = sim11_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf12_hblock = sim12_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf13_hblock = sim13_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf14_hblock = sim14_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf15_hblock = sim15_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf16_hblock = sim16_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf17_hblock = sim17_hblock.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
 
 # High Blocked, Corrected
-u_inf1_hblock_cor = sim1_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_hblock_cor = sim2_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_hblock_cor = sim3_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_hblock_cor = sim4_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_hblock_cor = sim5_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_hblock_cor = sim6_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_hblock_cor = sim7_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_hblock_cor = sim8_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_hblock_cor = sim9_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_hblock_cor = sim10_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_hblock_cor = sim11_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_hblock_cor = sim12_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_hblock_cor = sim13_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_hblock_cor = sim14_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_hblock_cor = sim15_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_hblock_cor = sim16_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_hblock_cor = sim17_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf1_hblock_cor = sim1_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf2_hblock_cor = sim2_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf3_hblock_cor = sim3_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf4_hblock_cor = sim4_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf5_hblock_cor = sim5_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf6_hblock_cor = sim6_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf7_hblock_cor = sim7_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf8_hblock_cor = sim8_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf9_hblock_cor = sim9_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf10_hblock_cor = sim10_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf11_hblock_cor = sim11_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf12_hblock_cor = sim12_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf13_hblock_cor = sim13_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf14_hblock_cor = sim14_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf15_hblock_cor = sim15_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf16_hblock_cor = sim16_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
+u_inf17_hblock_cor = sim17_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 1.4285)['u'].mean("y").values
 
 
 #Power Coefficients
@@ -963,7 +963,7 @@ thrust_les15_mblock = 2*(np.pi/4)*(ud_les15_mblock)*(u_inf15_mblock - ud_les15_m
 thrust_les16_mblock = 2*(np.pi/4)*(ud_les16_mblock)*(u_inf16_mblock - ud_les16_mblock)
 thrust_les17_mblock = 2*(np.pi/4)*(ud_les17_mblock)*(u_inf17_mblock - ud_les17_mblock)
 
-#Blocked, Corrected
+#Med Blocked, Corrected
 thrust_les1_mblock_cor = 2*(np.pi/4)*(ud_les1_mblock_cor)*(u_inf1_mblock_cor - ud_les1_mblock_cor)
 thrust_les2_mblock_cor = 2*(np.pi/4)*(ud_les2_mblock_cor)*(u_inf2_mblock_cor - ud_les2_mblock_cor)
 thrust_les3_mblock_cor = 2*(np.pi/4)*(ud_les3_mblock_cor)*(u_inf3_mblock_cor - ud_les3_mblock_cor)
@@ -1067,8 +1067,8 @@ ct_les4_mblock = thrust_les4_mblock/(0.5*(np.pi/4)*(u_inf4_mblock**2))
 ct_les5_mblock = thrust_les5_mblock/(0.5*(np.pi/4)*(u_inf5_mblock**2))
 ct_les6_mblock = thrust_les6_mblock/(0.5*(np.pi/4)*(u_inf6_mblock**2))
 ct_les7_mblock = thrust_les7_mblock/(0.5*(np.pi/4)*(u_inf7_mblock**2))
-ct_les8_mblock = thrust_les8_block/(0.5*(np.pi/4)*(u_inf8_block**2))
-ct_les9_mblock = thrust_les9_block/(0.5*(np.pi/4)*(u_inf9_block**2))
+ct_les8_mblock = thrust_les8_mblock/(0.5*(np.pi/4)*(u_inf8_mblock**2))
+ct_les9_mblock = thrust_les9_mblock/(0.5*(np.pi/4)*(u_inf9_mblock**2))
 ct_les10_mblock = thrust_les10_mblock/(0.5*(np.pi/4)*(u_inf10_mblock**2))
 ct_les11_mblock = thrust_les11_mblock/(0.5*(np.pi/4)*(u_inf11_mblock**2))
 ct_les12_mblock = thrust_les12_mblock/(0.5*(np.pi/4)*(u_inf12_mblock**2))

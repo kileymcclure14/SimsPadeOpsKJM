@@ -29,7 +29,7 @@ single_inputs = dict(
         # if not provided, default_inputs will be used
         useCorrection = True,
         xLoc = 5,
-        zLoc = 5,
+        zLoc = 1.4285,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
