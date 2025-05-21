@@ -982,85 +982,6 @@ ct_prime15_cor = ct_les15_block_cor*((u_inf15_block_cor/u_inf15_prime_cor)**2)
 ct_prime16_cor = ct_les16_block_cor*((u_inf16_block_cor/u_inf16_prime_cor)**2)
 ct_prime17_cor = ct_les17_block_cor*((u_inf17_block_cor/u_inf17_prime_cor)**2)
 
-# Arrays for unblocked, uncorrected
-cp_plot = [
-    cp_les1, cp_les2, cp_les3, cp_les4, cp_les5, cp_les6, cp_les7, cp_les8,
-    cp_les9, cp_les10, cp_les11, cp_les12, cp_les13, cp_les14, cp_les15, cp_les16, cp_les17
-]
-ct_plot = [
-    ct_les1, ct_les2, ct_les3, ct_les4, ct_les5, ct_les6, ct_les7, ct_les8,
-    ct_les9, ct_les10, ct_les11, ct_les12, ct_les13, ct_les14, ct_les15, ct_les16, ct_les17
-]
-a_plot = [
-    a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8,
-    a_les9, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17
-]
-
-# Arrays for unblocked, corrected
-cp_plot_cor = [
-    cp_les1_cor, cp_les2_cor, cp_les3_cor, cp_les4_cor, cp_les5_cor, cp_les6_cor, cp_les7_cor, cp_les8_cor,
-    cp_les9_cor, cp_les10_cor, cp_les11_cor, cp_les12_cor, cp_les13_cor, cp_les14_cor, cp_les15_cor, cp_les16_cor, cp_les17_cor
-]
-ct_plot_cor = [
-    ct_les1_cor, ct_les2_cor, ct_les3_cor, ct_les4_cor, ct_les5_cor, ct_les6_cor, ct_les7_cor, ct_les8_cor,
-    ct_les9_cor, ct_les10_cor, ct_les11_cor, ct_les12_cor, ct_les13_cor, ct_les14_cor, ct_les15_cor, ct_les16_cor, ct_les17_cor
-]
-a_plot_cor = [
-    a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor,
-    a_les9_cor, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor
-]
-
-# Arrays for blocked, uncorrected
-cp_block_plot = [
-    cp_les1_block, cp_les2_block, cp_les3_block, cp_les4_block, cp_les5_block, cp_les6_block, cp_les7_block, cp_les8_block,
-    cp_les9_block, cp_les10_block, cp_les11_block, cp_les12_block, cp_les13_block, cp_les14_block, cp_les15_block, cp_les16_block, cp_les17_block
-]
-ct_block_plot = [
-    ct_les1_block, ct_les2_block, ct_les3_block, ct_les4_block, ct_les5_block, ct_les6_block, ct_les7_block, ct_les8_block,
-    ct_les9_block, ct_les10_block, ct_les11_block, ct_les12_block, ct_les13_block, ct_les14_block, ct_les15_block, ct_les16_block, ct_les17_block
-]
-a_block_plot = [
-    a_les1_block, a_les2_block, a_les3_block, a_les4_block, a_les5_block, a_les6_block, a_les7_block, a_les8_block,
-    a_les9_block, a_les10_block, a_les11_block, a_les12_block, a_les13_block, a_les14_block, a_les15_block, a_les16_block, a_les17_block
-]
-
-# Arrays for blocked, corrected
-cp_block_cor= [
-    cp_les1_block_cor, cp_les2_block_cor, cp_les3_block_cor, cp_les4_block_cor, cp_les5_block_cor, cp_les6_block_cor, cp_les7_block_cor, cp_les8_block_cor,
-    cp_les9_block_cor, cp_les10_block_cor, cp_les11_block_cor, cp_les12_block_cor, cp_les13_block_cor, cp_les14_block_cor, cp_les15_block_cor, cp_les16_block_cor, cp_les17_block_cor
-]
-ct_block_cor = [
-    ct_les1_block_cor, ct_les2_block_cor, ct_les3_block_cor, ct_les4_block_cor, ct_les5_block_cor, ct_les6_block_cor, ct_les7_block_cor, ct_les8_block_cor,
-    ct_les9_block_cor, ct_les10_block_cor, ct_les11_block_cor, ct_les12_block_cor, ct_les13_block_cor, ct_les14_block_cor, ct_les15_block_cor, ct_les16_block_cor, ct_les17_block_cor
-]
-a_block_cor = [
-    a_les1_block_cor, a_les2_block_cor, a_les3_block_cor, a_les4_block_cor, a_les5_block_cor, a_les6_block_cor, a_les7_block_cor, a_les8_block_cor,
-    a_les9_block_cor, a_les10_block_cor, a_les11_block_cor, a_les12_block_cor, a_les13_block_cor, a_les14_block_cor, a_les15_block_cor, a_les16_block_cor, a_les17_block_cor
-]
-
-# Arrays for cp_prime, uncorrected
-cp_prime_plot = [
-    cp_prime1, cp_prime2, cp_prime3, cp_prime4, cp_prime5, cp_prime6, cp_prime7, cp_prime8,
-    cp_prime9, cp_prime10, cp_prime11, cp_prime12, cp_prime13, cp_prime14, cp_prime15, cp_prime16, cp_prime17
-]
-
-# Arrays for cp_prime, corrected
-cp_prime_plot_cor = [
-    cp_prime1_cor, cp_prime2_cor, cp_prime3_cor, cp_prime4_cor, cp_prime5_cor, cp_prime6_cor, cp_prime7_cor, cp_prime8_cor,
-    cp_prime9_cor, cp_prime10_cor, cp_prime11_cor, cp_prime12_cor, cp_prime13_cor, cp_prime14_cor, cp_prime15_cor, cp_prime16_cor, cp_prime17_cor
-]
-
-# Arrays for ct_prime, uncorrected
-ct_prime_plot = [
-    ct_prime1, ct_prime2, ct_prime3, ct_prime4, ct_prime5, ct_prime6, ct_prime7, ct_prime8,
-    ct_prime9, ct_prime10, ct_prime11, ct_prime12, ct_prime13, ct_prime14, ct_prime15, ct_prime16, ct_prime17
-]
-
-# Arrays for ct_prime, corrected
-ct_prime_plot_cor = [
-    ct_prime1_cor, ct_prime2_cor, ct_prime3_cor, ct_prime4_cor, ct_prime5_cor, ct_prime6_cor, ct_prime7_cor, ct_prime8_cor,
-    ct_prime9_cor, ct_prime10_cor, ct_prime11_cor, ct_prime12_cor, ct_prime13_cor, ct_prime14_cor, ct_prime15_cor, ct_prime16_cor, ct_prime17_cor
-]
 
 #Unblicked Velocity Fields
 #Corrected
@@ -1339,3 +1260,76 @@ plt.savefig('./u_field_B_0001_Sim_0015')
 ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 5)
 ds17_cor['u'].imshow()
 plt.savefig('./u_field_B_0001_Sim_0016')
+
+#Print Results for Feed in
+print(f"Cp Prime for -4 Ct Prime and Uncorrected: {cp_prime1}")
+print(f"Cp Prime for -3.5 Ct Prime and Uncorrected: {cp_prime2}")
+print(f"Cp Prime for -3 Ct Prime and Uncorrected: {cp_prime3}")
+print(f"Cp Prime for -2.5 Ct Prime and Uncorrected: {cp_prime4}")
+print(f"Cp Prime for -2 Ct Prime and Uncorrected: {cp_prime5}")
+print(f"Cp Prime for -1.5 Ct Prime and Uncorrected: {cp_prime6}")
+print(f"Cp Prime for -1 Ct Prime and Uncorrected: {cp_prime7}")
+print(f"Cp Prime for -0.5 Ct Prime and Uncorrected: {cp_prime8}")
+print(f"Cp Prime for 0 Ct Prime and Uncorrected: {cp_prime9}")
+print(f"Cp Prime for 0.5 Ct Prime and Uncorrected: {cp_prime10}")
+print(f"Cp Prime for 1 Ct Prime and Uncorrected: {cp_prime11}")
+print(f"Cp Prime for 1.5 Ct Prime and Uncorrected: {cp_prime12}")
+print(f"Cp Prime for 2.0 Ct Prime and Uncorrected: {cp_prime13}")
+print(f"Cp Prime for 2.5 Ct Prime and Uncorrected: {cp_prime14}")
+print(f"Cp Prime for 3 Ct Prime and Uncorrected: {cp_prime15}")
+print(f"Cp Prime for 3.5 Ct Prime and Uncorrected: {cp_prime16}")
+print(f"Cp Prime for 4 Ct Prime and Uncorrected: {cp_prime17}")
+
+print(f"Cp Prime for -4 Ct Prime and Corrected: {cp_prime1_cor}")
+print(f"Cp Prime for -3.5 Ct Prime and Corrected: {cp_prime2_cor}")
+print(f"Cp Prime for -3 Ct Prime and Corrected: {cp_prime3_cor}")
+print(f"Cp Prime for -2.5 Ct Prime and Corrected: {cp_prime4_cor}")
+print(f"Cp Prime for -2 Ct Prime and Corrected: {cp_prime5_cor}")
+print(f"Cp Prime for -1.5 Ct Prime and Corrected: {cp_prime6_cor}")
+print(f"Cp Prime for -1 Ct Prime and Corrected: {cp_prime7_cor}")
+print(f"Cp Prime for -0.5 Ct Prime and Corrected: {cp_prime8_cor}")
+print(f"Cp Prime for 0 Ct Prime and Corrected: {cp_prime9_cor}")
+print(f"Cp Prime for 0.5 Ct Prime and Corrected: {cp_prime10_cor}")
+print(f"Cp Prime for 1 Ct Prime and Corrected: {cp_prime11_cor}")
+print(f"Cp Prime for 1.5 Ct Prime and Corrected: {cp_prime12_cor}")
+print(f"Cp Prime for 2.0 Ct Prime and Corrected: {cp_prime13_cor}")
+print(f"Cp Prime for 2.5 Ct Prime and Corrected: {cp_prime14_cor}")
+print(f"Cp Prime for 3.0 Ct Prime and Corrected: {cp_prime15_cor}")
+print(f"Cp Prime for 3.5 Ct Prime and Corrected: {cp_prime16_cor}")
+print(f"Cp Prime for 4 Ct Prime and Corrected: {cp_prime17_cor}")
+
+print(f"Ct Prime for -4 Ct Prime and Uncorrected: {ct_prime1}")
+print(f"Ct Prime for -3.5 Ct Prime and Uncorrected: {ct_prime2}")
+print(f"Ct Prime for -3 Ct Prime and Uncorrected: {ct_prime3}")
+print(f"Ct Prime for -2.5 Ct Prime and Uncorrected: {ct_prime4}")
+print(f"Ct Prime for -2 Ct Prime and Uncorrected: {ct_prime5}")
+print(f"Ct Prime for -1.5 Ct Prime and Uncorrected: {ct_prime6}")
+print(f"Ct Prime for -1 Ct Prime and Uncorrected: {ct_prime7}")
+print(f"Ct Prime for -0.5 Ct Prime and Uncorrected: {ct_prime8}")
+print(f"Ct Prime for 0 Ct Prime and Uncorrected: {ct_prime9}")
+print(f"Ct Prime for 0.5 Ct Prime and Uncorrected: {ct_prime10}")
+print(f"Ct Prime for 1 Ct Prime and Uncorrected: {ct_prime11}")
+print(f"Ct Prime for 1.5 Ct Prime and Uncorrected: {ct_prime12}")
+print(f"Ct Prime for 2.0 Ct Prime and Uncorrected: {ct_prime13}")
+print(f"Ct Prime for 2.5 Ct Prime and Uncorrected: {ct_prime14}")
+print(f"Ct Prime for 3 Ct Prime and Uncorrected: {ct_prime15}")
+print(f"Ct Prime for 3.5 Ct Prime and Uncorrected: {ct_prime16}")
+print(f"Ct Prime for 4 Ct Prime and Uncorrected: {ct_prime17}")
+
+print(f"Ct Prime for -4 Ct Prime and Corrected: {ct_prime1_cor}")
+print(f"Ct Prime for -3.5 Ct Prime and Corrected: {ct_prime2_cor}")
+print(f"Ct Prime for -3 Ct Prime and Corrected: {ct_prime3_cor}")
+print(f"Ct Prime for -2.5 Ct Prime and Corrected: {ct_prime4_cor}")
+print(f"Ct Prime for -2 Ct Prime and Corrected: {ct_prime5_cor}")
+print(f"Ct Prime for -1.5 Ct Prime and Corrected: {ct_prime6_cor}")
+print(f"Ct Prime for -1 Ct Prime and Corrected: {ct_prime7_cor}")
+print(f"Ct Prime for -0.5 Ct Prime and Corrected: {ct_prime8_cor}")
+print(f"Ct Prime for 0 Ct Prime and Corrected: {ct_prime9_cor}")
+print(f"Ct Prime for 0.5 Ct Prime and Corrected: {ct_prime10_cor}")
+print(f"Ct Prime for 1 Ct Prime and Corrected: {ct_prime11_cor}")
+print(f"Ct Prime for 1.5 Ct Prime and Corrected: {ct_prime12_cor}")
+print(f"Ct Prime for 2.0 Ct Prime and Corrected: {ct_prime13_cor}")
+print(f"Ct Prime for 2.5 Ct Prime and Corrected: {ct_prime14_cor}")
+print(f"Ct Prime for 3.0 Ct Prime and Corrected: {ct_prime15_cor}")
+print(f"Ct Prime for 3.5 Ct Prime and Corrected: {ct_prime16_cor}")
+print(f"Ct Prime for 4 Ct Prime and Corrected: {ct_prime17_cor}")

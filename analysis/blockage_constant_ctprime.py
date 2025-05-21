@@ -203,7 +203,7 @@ plt.scatter(blockage, cp_cor_plot, marker = 'o', color = 'red', label = 'Correct
 plt.legend()
 plt.xlabel('Blockage %')
 plt.ylabel('Power Coefficient')
-plt.title('Power Coefficient by Blockage % at Ct Prime = 2')
+plt.title('Power Coefficient by Blockage pct at Ct Prime = 2')
 
 #a
 plt.figure(figsize = (9,6))
@@ -212,7 +212,7 @@ plt.scatter(blockage, a_cor_plot, marker = 'o', color = 'red', label = 'Correcte
 plt.legend()
 plt.xlabel('Blockage %')
 plt.ylabel('Induction Factor')
-plt.title('Induction Factor by Blockage % at Ct Prime = 2')
+plt.title('Induction Factor by Blockage pct at Ct Prime = 2')
 
 #Ct
 plt.figure(figsize = (9,6))
@@ -221,4 +221,4 @@ plt.scatter(blockage, ct_cor_plot, marker = 'o', color = 'red', label = 'Correct
 plt.legend()
 plt.xlabel('Blockage %')
 plt.ylabal('Thrust Coefficient')
-plt.title('Thrust Coefficient by Blockage % at Ct Prime = 2')
+plt.title('Thrust Coefficient by Blockage pct at Ct Prime = 2')
