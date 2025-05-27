@@ -1145,7 +1145,7 @@ a_les5 = 1-np.cbrt((p_les5/(0.5*(np.pi/4)*Ctprime5)))
 a_les6 = 1-np.cbrt((p_les6/(0.5*(np.pi/4)*Ctprime6)))
 a_les7 = 1-np.cbrt((p_les7/(0.5*(np.pi/4)*Ctprime7)))
 a_les8 = 1-np.cbrt((p_les8/(0.5*(np.pi/4)*Ctprime8)))
-a_les9 = 1-np.cbrt((p_les9/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9 = 1-np.cbrt((p_les9/(0.5*(np.pi/4)*Ctprime9)))
 a_les10 = 1-np.cbrt((p_les10/(0.5*(np.pi/4)*Ctprime10)))
 a_les11 = 1-np.cbrt((p_les11/(0.5*(np.pi/4)*Ctprime11)))
 a_les12 = 1-np.cbrt((p_les12/(0.5*(np.pi/4)*Ctprime12)))
@@ -1164,7 +1164,7 @@ a_les5_cor = 1-np.cbrt((p_les5_cor/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_cor = 1-np.cbrt((p_les6_cor/(0.5*(np.pi/4)*Ctprime6)))
 a_les7_cor = 1-np.cbrt((p_les7_cor/(0.5*(np.pi/4)*Ctprime7)))
 a_les8_cor = 1-np.cbrt((p_les8_cor/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_cor = 1-np.cbrt((p_les9_cor/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9_cor = 1-np.cbrt((p_les9_cor/(0.5*(np.pi/4)*Ctprime9)))
 a_les10_cor = 1-np.cbrt((p_les10_cor/(0.5*(np.pi/4)*Ctprime10)))
 a_les11_cor = 1-np.cbrt((p_les11_cor/(0.5*(np.pi/4)*Ctprime11)))
 a_les12_cor = 1-np.cbrt((p_les12_cor/(0.5*(np.pi/4)*Ctprime12)))
@@ -1183,7 +1183,7 @@ a_les5_mblock = 1-np.cbrt((p_les5_mblock/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_mblock = 1-np.cbrt((p_les6_mblock/(0.5*(np.pi/4)*Ctprime6)))
 a_les7_mblock = 1-np.cbrt((p_les7_mblock/(0.5*(np.pi/4)*Ctprime7)))
 a_les8_mblock = 1-np.cbrt((p_les8_mblock/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_mblock = 1-np.cbrt((p_les9_mblock/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9_mblock = 1-np.cbrt((p_les9_mblock/(0.5*(np.pi/4)*Ctprime9)))
 a_les10_mblock = 1-np.cbrt((p_les10_mblock/(0.5*(np.pi/4)*Ctprime10)))
 a_les11_mblock = 1-np.cbrt((p_les11_mblock/(0.5*(np.pi/4)*Ctprime11)))
 a_les12_mblock = 1-np.cbrt((p_les12_mblock/(0.5*(np.pi/4)*Ctprime12)))
@@ -1202,7 +1202,7 @@ a_les5_mblock_cor = 1-np.cbrt((p_les5_mblock_cor/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_mblock_cor = 1-np.cbrt((p_les6_mblock_cor/(0.5*(np.pi/4)*Ctprime6)))
 a_les7_mblock_cor = 1-np.cbrt((p_les7_mblock_cor/(0.5*(np.pi/4)*Ctprime7)))
 a_les8_mblock_cor = 1-np.cbrt((p_les8_mblock_cor/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_mblock_cor = 1-np.cbrt((p_les9_mblock_cor/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9_mblock_cor = 1-np.cbrt((p_les9_mblock_cor/(0.5*(np.pi/4)*Ctprime9)))
 a_les10_mblock_cor = 1-np.cbrt((p_les10_mblock_cor/(0.5*(np.pi/4)*Ctprime10)))
 a_les11_mblock_cor = 1-np.cbrt((p_les11_mblock_cor/(0.5*(np.pi/4)*Ctprime11)))
 a_les12_mblock_cor = 1-np.cbrt((p_les12_mblock_cor/(0.5*(np.pi/4)*Ctprime12)))
@@ -1221,7 +1221,7 @@ a_les5_hblock = 1-np.cbrt((p_les5_hblock/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_hblock = 1-np.cbrt((p_les6_hblock/(0.5*(np.pi/4)*Ctprime6)))
 a_les7_hblock = 1-np.cbrt((p_les7_hblock/(0.5*(np.pi/4)*Ctprime7)))
 a_les8_hblock = 1-np.cbrt((p_les8_hblock/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_hblock = 1-np.cbrt((p_les9_hblock/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9_hblock = 1-np.cbrt((p_les9_hblock/(0.5*(np.pi/4)*Ctprime9)))
 a_les10_hblock = 1-np.cbrt((p_les10_hblock/(0.5*(np.pi/4)*Ctprime10)))
 a_les11_hblock = 1-np.cbrt((p_les11_hblock/(0.5*(np.pi/4)*Ctprime11)))
 a_les12_hblock = 1-np.cbrt((p_les12_hblock/(0.5*(np.pi/4)*Ctprime12)))
@@ -1240,7 +1240,7 @@ a_les5_hblock_cor = 1-np.cbrt((p_les5_hblock_cor/(0.5*(np.pi/4)*Ctprime5)))
 a_les6_hblock_cor = 1-np.cbrt((p_les6_hblock_cor/(0.5*(np.pi/4)*Ctprime6)))
 a_les7_hblock_cor = 1-np.cbrt((p_les7_hblock_cor/(0.5*(np.pi/4)*Ctprime7)))
 a_les8_hblock_cor = 1-np.cbrt((p_les8_hblock_cor/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_hblock_cor = 1-np.cbrt((p_les9_hblock_cor/(0.5*(np.pi/4)*Ctprime9)))
+#a_les9_hblock_cor = 1-np.cbrt((p_les9_hblock_cor/(0.5*(np.pi/4)*Ctprime9)))
 a_les10_hblock_cor = 1-np.cbrt((p_les10_hblock_cor/(0.5*(np.pi/4)*Ctprime10)))
 a_les11_hblock_cor = 1-np.cbrt((p_les11_hblock_cor/(0.5*(np.pi/4)*Ctprime11)))
 a_les12_hblock_cor = 1-np.cbrt((p_les12_hblock_cor/(0.5*(np.pi/4)*Ctprime12)))
@@ -1264,12 +1264,12 @@ ct_plot_mblock = [ct_les1_mblock, ct_les2_mblock, ct_les3_mblock, ct_les4_mblock
 ct_plot_mblock_cor = [ct_les1_mblock_cor, ct_les2_mblock_cor, ct_les3_mblock_cor, ct_les4_mblock_cor, ct_les5_mblock_cor, ct_les6_mblock_cor, ct_les7_mblock_cor, ct_les8_mblock_cor, ct_les9_mblock_cor, ct_les10_mblock_cor, ct_les11_mblock_cor, ct_les12_mblock_cor, ct_les13_mblock_cor, ct_les14_mblock_cor, ct_les15_mblock_cor, ct_les16_mblock_cor, ct_les17_mblock_cor]   
 ct_plot_hblock = [ct_les1_hblock, ct_les2_hblock, ct_les3_hblock, ct_les4_hblock, ct_les5_hblock, ct_les6_hblock, ct_les7_hblock, ct_les8_hblock, ct_les9_hblock, ct_les10_hblock, ct_les11_hblock, ct_les12_hblock, ct_les13_hblock, ct_les14_hblock, ct_les15_hblock, ct_les16_hblock, ct_les17_hblock]   
 ct_plot_hblock_cor = [ct_les1_hblock_cor, ct_les2_hblock_cor, ct_les3_hblock_cor, ct_les4_hblock_cor, ct_les5_hblock_cor, ct_les6_hblock_cor, ct_les7_hblock_cor, ct_les8_hblock_cor, ct_les9_hblock_cor, ct_les10_hblock_cor, ct_les11_hblock_cor, ct_les12_hblock_cor, ct_les13_hblock_cor, ct_les14_hblock_cor, ct_les15_hblock_cor, ct_les16_hblock_cor, ct_les17_hblock_cor]   
-a_plot = [a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8, a_les9, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17]   
-a_plot_cor = [a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor, a_les9_cor, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor]   
-a_plot_mblock = [a_les1_mblock, a_les2_mblock, a_les3_mblock, a_les4_mblock, a_les5_mblock, a_les6_mblock, a_les7_mblock, a_les8_mblock, a_les9_mblock, a_les10_mblock, a_les11_mblock, a_les12_mblock, a_les13_mblock, a_les14_mblock, a_les15_mblock, a_les16_mblock, a_les17_mblock] 
-a_plot_mblock_cor = [a_les1_mblock_cor, a_les2_mblock_cor, a_les3_mblock_cor, a_les4_mblock_cor, a_les5_mblock_cor, a_les6_mblock_cor, a_les7_mblock_cor, a_les8_mblock_cor, a_les9_mblock_cor, a_les10_mblock_cor, a_les11_mblock_cor, a_les12_mblock_cor, a_les13_mblock_cor, a_les14_mblock_cor, a_les15_mblock_cor, a_les16_mblock_cor, a_les17_mblock_cor] 
-a_plot_hblock = [a_les1_hblock, a_les2_hblock, a_les3_hblock, a_les4_hblock, a_les5_hblock, a_les6_hblock, a_les7_hblock, a_les8_hblock, a_les9_hblock, a_les10_hblock, a_les11_hblock, a_les12_hblock, a_les13_hblock, a_les14_hblock, a_les15_hblock, a_les16_hblock, a_les17_hblock] 
-a_plot_hblock_cor = [a_les1_hblock_cor, a_les2_hblock_cor, a_les3_hblock_cor, a_les4_hblock_cor, a_les5_hblock_cor, a_les6_hblock_cor, a_les7_hblock_cor, a_les8_hblock_cor, a_les9_hblock_cor, a_les10_hblock_cor, a_les11_hblock_cor, a_les12_hblock_cor, a_les13_hblock_cor, a_les14_hblock_cor, a_les15_hblock_cor, a_les16_hblock_cor, a_les17_hblock_cor] 
+a_plot = [a_les1, a_les2, a_les3, a_les4, a_les5, a_les6, a_les7, a_les8, 0, a_les10, a_les11, a_les12, a_les13, a_les14, a_les15, a_les16, a_les17]   
+a_plot_cor = [a_les1_cor, a_les2_cor, a_les3_cor, a_les4_cor, a_les5_cor, a_les6_cor, a_les7_cor, a_les8_cor, 0, a_les10_cor, a_les11_cor, a_les12_cor, a_les13_cor, a_les14_cor, a_les15_cor, a_les16_cor, a_les17_cor]   
+a_plot_mblock = [a_les1_mblock, a_les2_mblock, a_les3_mblock, a_les4_mblock, a_les5_mblock, a_les6_mblock, a_les7_mblock, a_les8_mblock, 0, a_les10_mblock, a_les11_mblock, a_les12_mblock, a_les13_mblock, a_les14_mblock, a_les15_mblock, a_les16_mblock, a_les17_mblock] 
+a_plot_mblock_cor = [a_les1_mblock_cor, a_les2_mblock_cor, a_les3_mblock_cor, a_les4_mblock_cor, a_les5_mblock_cor, a_les6_mblock_cor, a_les7_mblock_cor, a_les8_mblock_cor, 0, a_les10_mblock_cor, a_les11_mblock_cor, a_les12_mblock_cor, a_les13_mblock_cor, a_les14_mblock_cor, a_les15_mblock_cor, a_les16_mblock_cor, a_les17_mblock_cor] 
+a_plot_hblock = [a_les1_hblock, a_les2_hblock, a_les3_hblock, a_les4_hblock, a_les5_hblock, a_les6_hblock, a_les7_hblock, a_les8_hblock, 0, a_les10_hblock, a_les11_hblock, a_les12_hblock, a_les13_hblock, a_les14_hblock, a_les15_hblock, a_les16_hblock, a_les17_hblock] 
+a_plot_hblock_cor = [a_les1_hblock_cor, a_les2_hblock_cor, a_les3_hblock_cor, a_les4_hblock_cor, a_les5_hblock_cor, a_les6_hblock_cor, a_les7_hblock_cor, a_les8_hblock_cor, 0, a_les10_hblock_cor, a_les11_hblock_cor, a_les12_hblock_cor, a_les13_hblock_cor, a_les14_hblock_cor, a_les15_hblock_cor, a_les16_hblock_cor, a_les17_hblock_cor] 
 
 #Theory Values
 #a
@@ -1293,8 +1293,8 @@ for i in range(17):
 #Plotting
 #a
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], a_plot[1:16], marker = 'o', color ='blue', label = 'Unblocked, No Correction')
-plt.scatter(Ctprime_plot[1:16], a_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
+#plt.scatter(Ctprime_plot[1:16], a_plot[1:16], marker = 'o', color ='blue', label = 'Unblocked, No Correction')
+#plt.scatter(Ctprime_plot[1:16], a_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
 plt.scatter(Ctprime_plot[1:16], a_plot_mblock[1:16], marker = 'o', color = 'green', label = '10% Blockage, No Correction')
 plt.scatter(Ctprime_plot[1:16], a_plot_mblock_cor[1:16], marker = 'o', color = 'orange', label = '10% Blockage, Corrected')
 plt.scatter(Ctprime_plot[1:16], a_plot_hblock[1:16], marker = 'o', color ='purple', label = '35% Blockage, No Correction')
@@ -1303,14 +1303,14 @@ plt.plot(Ctprime_plot[1:16], a_t[1:16], color = 'black', label = 'ADM Theory')
 plt.title('LES Results Blocked, Unblocked, and ADM Theory: Induction Factor')
 plt.xlabel('Ct Prime')
 plt.ylabel('Induction Factor')
-plt.legend
+plt.legend()
 plt.ylim(-1, 1)
 plt.savefig('./a_compare_all')
 
 #Cp
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], cp_plot[1:16], marker = 'o', color = 'blue', label = 'Unblocked, No Correction')
-plt.scatter(Ctprime_plot[1:16], cp_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
+#plt.scatter(Ctprime_plot[1:16], cp_plot[1:16], marker = 'o', color = 'blue', label = 'Unblocked, No Correction')
+#plt.scatter(Ctprime_plot[1:16], cp_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
 plt.scatter(Ctprime_plot[1:16], cp_plot_mblock[1:16], marker = 'o', color = 'green', label = '10% Blockage, No Correction')
 plt.scatter(Ctprime_plot[1:16], cp_plot_mblock_cor[1:16], marker = 'o', color = 'orange', label = '10% Blockage, Corrected')
 plt.scatter(Ctprime_plot[1:16], cp_plot_hblock[1:16], marker = 'o', color = 'purple', label = '35% Blockage, No Correction')
@@ -1319,14 +1319,14 @@ plt.plot(Ctprime_plot[1:16], cp_t[1:16], color = 'black', label = 'ADM Theory')
 plt.title('LES Results Blocked, Unblocked, and ADM Theory: Power Coefficient')
 plt.xlabel('Ct Prime')
 plt.ylabel('Power Coefficient')
-plt.legend
+plt.legend()
 plt.ylim(-1, 1)
 plt.savefig('./cp_compare_all')
 
 #Ct
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], ct_plot[1:16], marker = 'o', color = 'blue', label = 'Unblocked, No Correction')
-plt.scatter(Ctprime_plot[1:16], ct_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
+#plt.scatter(Ctprime_plot[1:16], ct_plot[1:16], marker = 'o', color = 'blue', label = 'Unblocked, No Correction')
+#plt.scatter(Ctprime_plot[1:16], ct_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
 plt.scatter(Ctprime_plot[1:16], ct_plot_mblock[1:16], marker = 'o', color = 'green', label = '10% Blockage, No Correction')
 plt.scatter(Ctprime_plot[1:16], ct_plot_mblock_cor[1:16], marker = 'o', color = 'orange', label = '10% Blockage, Corrected')
 plt.scatter(Ctprime_plot[1:16], ct_plot_hblock[1:16], marker = 'o', color = 'purple', label = '35% Blockage, No Correction')
@@ -1335,6 +1335,7 @@ plt.plot(Ctprime_plot[1:16], ct_t[1:16], color = 'black', label = 'ADM Theory')
 plt.title('LES Results Blocked, Unblocked, and ADM Theory: Thrust Coefficient')
 plt.xlabel('Ct Prime')
 plt.ylabel('Thrust Coefficient')
-plt.legend
+plt.legend()
 plt.ylim(-1, 1)
 plt.savefig('./ct_compare_all')
+
