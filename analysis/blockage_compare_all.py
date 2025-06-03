@@ -1293,8 +1293,8 @@ for i in range(17):
 #Plotting
 #a
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], a_plot[1:16], marker = 'o', color ='blue', label = 'Unblocked, No Correction')
-plt.scatter(Ctprime_plot[1:16], a_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
+#plt.scatter(Ctprime_plot[1:16], a_plot[1:16], marker = 'o', color ='blue', label = 'Unblocked, No Correction')
+#plt.scatter(Ctprime_plot[1:16], a_plot_cor[1:16], marker = 'o', color = 'red', label = 'Unblocked, Corrected')
 plt.scatter(Ctprime_plot[1:16], a_plot_mblock[1:16], marker = 'o', color = 'green', label = '10% Blockage, No Correction')
 plt.scatter(Ctprime_plot[1:16], a_plot_mblock_cor[1:16], marker = 'o', color = 'orange', label = '10% Blockage, Corrected')
 plt.scatter(Ctprime_plot[1:16], a_plot_hblock[1:16], marker = 'o', color ='magenta', label = '35% Blockage, No Correction')
@@ -1338,4 +1338,3 @@ plt.ylabel('Thrust Coefficient')
 plt.legend()
 plt.ylim(-1, 1)
 plt.savefig('./ct_compare_all')
-
