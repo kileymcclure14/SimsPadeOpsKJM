@@ -11,7 +11,7 @@ from padeopsIO import turbine
 
 #Data and Path Stuff
 data_path = Path(au.DATA_PATH)
-#Uncorrected
+#Unblocked Uncorrected
 sim1_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0000")
 sim1 = pio.BudgetIO("Data/U_0017_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -63,7 +63,7 @@ sim16 = pio.BudgetIO("Data/U_0017_Files/Sim_0015", padeops = True, runid = 1, no
 sim17_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0016")
 sim17 = pio.BudgetIO("Data/U_0017_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
-#Corrected
+#Unblocked Corrected
 sim1_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0000")
 sim1_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -115,109 +115,213 @@ sim16_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0015", padeops = True, runid = 1
 sim17_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0016")
 sim17_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
-#Blocked, No Correction
-sim1_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0000")
-sim1_block = pio.BudgetIO("Data/B_0000_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
+#Medium Blocked, No Correction
+sim1_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0000")
+sim1_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim2_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0001")
-sim2_block = pio.BudgetIO("Data/B_0000_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
+sim2_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0001")
+sim2_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim3_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0002")
-sim3_block = pio.BudgetIO("Data/B_0000_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
+sim3_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0002")
+sim3_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim4_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0003")
-sim4_block = pio.BudgetIO("Data/B_0000_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
+sim4_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0003")
+sim4_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim5_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0004")
-sim5_block = pio.BudgetIO("Data/B_0000_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
+sim5_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0004")
+sim5_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim6_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0005")
-sim6_block = pio.BudgetIO("Data/B_0000_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
+sim6_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0005")
+sim6_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim7_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0006")
-sim7_block = pio.BudgetIO("Data/B_0000_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
+sim7_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0006")
+sim7_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim8_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0007")
-sim8_block = pio.BudgetIO("Data/B_0000_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
+sim8_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0007")
+sim8_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim9_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0008")
-sim9_block = pio.BudgetIO("Data/B_0000_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
+sim9_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0008")
+sim9_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim10_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0009")
-sim10_block = pio.BudgetIO("Data/B_0000_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
+sim10_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0009")
+sim10_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim11_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0010")
-sim11_block = pio.BudgetIO("Data/B_0000_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
+sim11_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0010")
+sim11_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim12_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0011")
-sim12_block = pio.BudgetIO("Data/B_0000_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
+sim12_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0011")
+sim12_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim13_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0012")
-sim13_block = pio.BudgetIO("Data/B_0000_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
+sim13_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0012")
+sim13_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim14_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0013")
-sim14_block = pio.BudgetIO("Data/B_0000_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
+sim14_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0013")
+sim14_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim15_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0014")
-sim15_block = pio.BudgetIO("Data/B_0000_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
+sim15_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0014")
+sim15_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim16_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0015")
-sim16_block = pio.BudgetIO("Data/B_0000_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
+sim16_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0015")
+sim16_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim17_folder_block = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0016")
-sim17_block = pio.BudgetIO("Data/B_0000_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
+sim17_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0016")
+sim17_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
-#Blocked, Corrected
-sim1_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0000")
-sim1_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
+#Medium Blocked, Corrected
+sim1_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0000")
+sim1_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim2_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0001")
-sim2_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
+sim2_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0001")
+sim2_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim3_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0002")
-sim3_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
+sim3_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0002")
+sim3_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim4_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0003")
-sim4_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
+sim4_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0003")
+sim4_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim5_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0004")
-sim5_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
+sim5_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0004")
+sim5_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim6_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0005")
-sim6_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
+sim6_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0005")
+sim6_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim7_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0006")
-sim7_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
+sim7_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0006")
+sim7_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim8_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0007")
-sim8_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
+sim8_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0007")
+sim8_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim9_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0008")
-sim9_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
+sim9_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0008")
+sim9_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim10_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0009")
-sim10_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
+sim10_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0009")
+sim10_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim11_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0010")
-sim11_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
+sim11_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0010")
+sim11_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim12_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0011")
-sim12_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
+sim12_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0011")
+sim12_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim13_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0012")
-sim13_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
+sim13_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0012")
+sim13_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim14_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0013")
-sim14_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
+sim14_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0013")
+sim14_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim15_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0014")
-sim15_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
+sim15_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0014")
+sim15_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim16_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0015")
-sim16_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
+sim16_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0015")
+sim16_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
 
-sim17_folder_block_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0016")
-sim17_block_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
+sim17_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0016")
+sim17_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
+
+#High Blocked, No Correction
+sim1_folder_mblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0000")
+sim1_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim2_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0001")
+sim2_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim3_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0002")
+sim3_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim4_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0003")
+sim4_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim5_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0004")
+sim5_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim6_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0005")
+sim6_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim7_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0006")
+sim7_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim8_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0007")
+sim8_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim9_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0008")
+sim9_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim10_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0009")
+sim10_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim11_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0010")
+sim11_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim12_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0011")
+sim12_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim13_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0012")
+sim13_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim14_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0013")
+sim14_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim15_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0014")
+sim15_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim16_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0015")
+sim16_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim17_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0016")
+sim17_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
+
+#High Blocked, Corrected
+sim1_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0000")
+sim1_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0000", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim2_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0001")
+sim2_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0001", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim3_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0002")
+sim3_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0002", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim4_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0003")
+sim4_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0003", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim5_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0004")
+sim5_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0004", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim6_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0005")
+sim6_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0005", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim7_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0006")
+sim7_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0006", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim8_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0007")
+sim8_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0007", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim9_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0008")
+sim9_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim10_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0009")
+sim10_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim11_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0010")
+sim11_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0010", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim12_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0011")
+sim12_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0011", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim13_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0012")
+sim13_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0012", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim14_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0013")
+sim14_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0013", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim15_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0014")
+sim15_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0014", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim16_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0015")
+sim16_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0015", padeops = True, runid = 1, normalize_origin = "turbine")
+
+sim17_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0016")
+sim17_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Ct Primes
 Ctprime1 = sim1.ta[0].ct
@@ -277,43 +381,81 @@ p_les15_cor = sim15_cor.read_turb_power("all", turb = 1)[-1]
 p_les16_cor = sim16_cor.read_turb_power("all", turb = 1)[-1]
 p_les17_cor = sim17_cor.read_turb_power("all", turb = 1)[-1]
 
-#Blocked, No Correction
-p_les1_block = sim1_block.read_turb_power("all", turb = 1)[-1]
-p_les2_block = sim2_block.read_turb_power("all", turb = 1)[-1]
-p_les3_block = sim3_block.read_turb_power("all", turb = 1)[-1]
-p_les4_block = sim4_block.read_turb_power("all", turb = 1)[-1]
-p_les5_block = sim5_block.read_turb_power("all", turb = 1)[-1]
-p_les6_block = sim6_block.read_turb_power("all", turb = 1)[-1]
-p_les7_block = sim7_block.read_turb_power("all", turb = 1)[-1]
-p_les8_block = sim8_block.read_turb_power("all", turb = 1)[-1]
-p_les9_block = sim9_block.read_turb_power("all", turb = 1)[-1]
-p_les10_block = sim10_block.read_turb_power("all", turb = 1)[-1]
-p_les11_block = sim11_block.read_turb_power("all", turb = 1)[-1]
-p_les12_block = sim12_block.read_turb_power("all", turb = 1)[-1]
-p_les13_block = sim13_block.read_turb_power("all", turb = 1)[-1]
-p_les14_block = sim14_block.read_turb_power("all", turb = 1)[-1]
-p_les15_block = sim15_block.read_turb_power("all", turb = 1)[-1]
-p_les16_block = sim16_block.read_turb_power("all", turb = 1)[-1]
-p_les17_block = sim17_block.read_turb_power("all", turb = 1)[-1]
+#Medium Blocked, No Correction
+p_les1_mblock = sim1_mblock.read_turb_power("all", turb = 1)[-1]
+p_les2_mblock = sim2_mblock.read_turb_power("all", turb = 1)[-1]
+p_les3_mblock = sim3_mblock.read_turb_power("all", turb = 1)[-1]
+p_les4_mblock = sim4_mblock.read_turb_power("all", turb = 1)[-1]
+p_les5_mblock = sim5_mblock.read_turb_power("all", turb = 1)[-1]
+p_les6_mblock = sim6_mblock.read_turb_power("all", turb = 1)[-1]
+p_les7_mblock = sim7_mblock.read_turb_power("all", turb = 1)[-1]
+p_les8_mblock = sim8_mblock.read_turb_power("all", turb = 1)[-1]
+p_les9_mblock = sim9_mblock.read_turb_power("all", turb = 1)[-1]
+p_les10_mblock = sim10_mblock.read_turb_power("all", turb = 1)[-1]
+p_les11_mblock = sim11_mblock.read_turb_power("all", turb = 1)[-1]
+p_les12_mblock = sim12_mblock.read_turb_power("all", turb = 1)[-1]
+p_les13_mblock = sim13_mblock.read_turb_power("all", turb = 1)[-1]
+p_les14_mblock = sim14_mblock.read_turb_power("all", turb = 1)[-1]
+p_les15_mblock = sim15_mblock.read_turb_power("all", turb = 1)[-1]
+p_les16_mblock = sim16_mblock.read_turb_power("all", turb = 1)[-1]
+p_les17_mblock = sim17_mblock.read_turb_power("all", turb = 1)[-1]
 
-#Blocked, Corrected
-p_les1_block_cor = sim1_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les2_block_cor = sim2_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les3_block_cor = sim3_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les4_block_cor = sim4_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les5_block_cor = sim5_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les6_block_cor = sim6_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les7_block_cor = sim7_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les8_block_cor = sim8_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les9_block_cor = sim9_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les10_block_cor = sim10_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les11_block_cor = sim11_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les12_block_cor = sim12_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les13_block_cor = sim13_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les14_block_cor = sim14_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les15_block_cor = sim15_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les16_block_cor = sim16_block_cor.read_turb_power("all", turb = 1)[-1]
-p_les17_block_cor = sim17_block_cor.read_turb_power("all", turb = 1)[-1]
+#Medium Blocked, Corrected
+p_les1_mblock_cor = sim1_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les2_mblock_cor = sim2_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les3_mblock_cor = sim3_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les4_mblock_cor = sim4_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les5_mblock_cor = sim5_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les6_mblock_cor = sim6_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les7_mblock_cor = sim7_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les8_mblock_cor = sim8_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les9_mblock_cor = sim9_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les10_mblock_cor = sim10_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les11_mblock_cor = sim11_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les12_mblock_cor = sim12_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les13_mblock_cor = sim13_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les14_mblock_cor = sim14_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les15_mblock_cor = sim15_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les16_mblock_cor = sim16_mblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les17_mblock_cor = sim17_mblock_cor.read_turb_power("all", turb = 1)[-1]
+
+#High Blocked, No Correction
+p_les1_hblock = sim1_hblock.read_turb_power("all", turb = 1)[-1]
+p_les2_hblock = sim2_hblock.read_turb_power("all", turb = 1)[-1]
+p_les3_hblock = sim3_hblock.read_turb_power("all", turb = 1)[-1]
+p_les4_hblock = sim4_hblock.read_turb_power("all", turb = 1)[-1]
+p_les5_hblock = sim5_hblock.read_turb_power("all", turb = 1)[-1]
+p_les6_hblock = sim6_hblock.read_turb_power("all", turb = 1)[-1]
+p_les7_hblock = sim7_hblock.read_turb_power("all", turb = 1)[-1]
+p_les8_hblock = sim8_hblock.read_turb_power("all", turb = 1)[-1]
+p_les9_hblock = sim9_hblock.read_turb_power("all", turb = 1)[-1]
+p_les10_hblock = sim10_hblock.read_turb_power("all", turb = 1)[-1]
+p_les11_hblock = sim11_hblock.read_turb_power("all", turb = 1)[-1]
+p_les12_hblock = sim12_hblock.read_turb_power("all", turb = 1)[-1]
+p_les13_hblock = sim13_hblock.read_turb_power("all", turb = 1)[-1]
+p_les14_hblock = sim14_hblock.read_turb_power("all", turb = 1)[-1]
+p_les15_hblock = sim15_hblock.read_turb_power("all", turb = 1)[-1]
+p_les16_hblock = sim16_hblock.read_turb_power("all", turb = 1)[-1]
+p_les17_hblock = sim17_hblock.read_turb_power("all", turb = 1)[-1]
+
+#High Blocked, Corrected
+p_les1_hblock_cor = sim1_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les2_hblock_cor = sim2_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les3_hblock_cor = sim3_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les4_hblock_cor = sim4_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les5_hblock_cor = sim5_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les6_hblock_cor = sim6_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les7_hblock_cor = sim7_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les8_hblock_cor = sim8_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les9_hblock_cor = sim9_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les10_hblock_cor = sim10_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les11_hblock_cor = sim11_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les12_hblock_cor = sim12_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les13_hblock_cor = sim13_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les14_hblock_cor = sim14_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les15_hblock_cor = sim15_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les16_hblock_cor = sim16_hblock_cor.read_turb_power("all", turb = 1)[-1]
+p_les17_hblock_cor = sim17_hblock_cor.read_turb_power("all", turb = 1)[-1]
 
 #Free Stream Velocities
 # Uncorrected
@@ -354,43 +496,81 @@ u_inf15_cor = sim15_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean(
 u_inf16_cor = sim16_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf17_cor = sim17_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
-# Blocked, No Correction
-u_inf1_block = sim1_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_block = sim2_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_block = sim3_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_block = sim4_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_block = sim5_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_block = sim6_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_block = sim7_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_block = sim8_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_block = sim9_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_block = sim10_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_block = sim11_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_block = sim12_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_block = sim13_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_block = sim14_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_block = sim15_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_block = sim16_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_block = sim17_block.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+# Medium Blocked, No Correction
+u_inf1_mblock = sim1_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf2_mblock = sim2_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf3_mblock = sim3_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf4_mblock = sim4_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf5_mblock = sim5_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf6_mblock = sim6_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf7_mblock = sim7_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf8_mblock = sim8_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf9_mblock = sim9_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf10_mblock = sim10_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf11_mblock = sim11_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf12_mblock = sim12_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf13_mblock = sim13_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf14_mblock = sim14_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf15_mblock = sim15_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf16_mblock = sim16_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf17_mblock = sim17_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
-# Blocked, Corrected
-u_inf1_block_cor = sim1_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf2_block_cor = sim2_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf3_block_cor = sim3_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf4_block_cor = sim4_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf5_block_cor = sim5_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf6_block_cor = sim6_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf7_block_cor = sim7_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf8_block_cor = sim8_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf9_block_cor = sim9_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf10_block_cor = sim10_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf11_block_cor = sim11_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf12_block_cor = sim12_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf13_block_cor = sim13_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf14_block_cor = sim14_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf15_block_cor = sim15_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf16_block_cor = sim16_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
-u_inf17_block_cor = sim17_block_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+# Medium Blocked, Corrected
+u_inf1_mblock_cor = sim1_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf2_mblock_cor = sim2_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf3_mblock_cor = sim3_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf4_mblock_cor = sim4_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf5_mblock_cor = sim5_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf6_mblock_cor = sim6_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf7_mblock_cor = sim7_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf8_mblock_cor = sim8_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf9_mblock_cor = sim9_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf10_mblock_cor = sim10_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf11_mblock_cor = sim11_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf12_mblock_cor = sim12_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf13_mblock_cor = sim13_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf14_mblock_cor = sim14_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf15_mblock_cor = sim15_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf16_mblock_cor = sim16_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf17_mblock_cor = sim17_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+
+# High Blocked, No Correction
+u_inf1_hblock = sim1_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf2_hblock = sim2_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf3_hblock = sim3_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf4_hblock = sim4_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf5_hblock = sim5_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf6_hblock = sim6_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf7_hblock = sim7_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf8_hblock = sim8_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf9_hblock = sim9_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf10_hblock = sim10_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf11_hblock = sim11_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf12_hblock = sim12_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf13_hblock = sim13_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf14_hblock = sim14_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf15_hblock = sim15_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf16_hblock = sim16_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf17_hblock = sim17_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+
+# High Blocked, Corrected
+u_inf1_hblock_cor = sim1_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf2_hblock_cor = sim2_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf3_hblock_cor = sim3_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf4_hblock_cor = sim4_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf5_hblock_cor = sim5_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf6_hblock_cor = sim6_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf7_hblock_cor = sim7_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf8_hblock_cor = sim8_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf9_hblock_cor = sim9_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf10_hblock_cor = sim10_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf11_hblock_cor = sim11_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf12_hblock_cor = sim12_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf13_hblock_cor = sim13_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf14_hblock_cor = sim14_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf15_hblock_cor = sim15_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf16_hblock_cor = sim16_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
+u_inf17_hblock_cor = sim17_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 #Power Coefficients
 #Uncorrected
@@ -431,43 +611,118 @@ cp_les15_cor = p_les15_cor / (0.5*(np.pi/4)*(u_inf15_cor**3))
 cp_les16_cor = p_les16_cor / (0.5*(np.pi/4)*(u_inf16_cor**3))
 cp_les17_cor = p_les17_cor / (0.5*(np.pi/4)*(u_inf17_cor**3))
 
-#Blocked, No Correction
-cp_les1_block = p_les1_block / (0.5*(np.pi/4)*(u_inf1_block**3))
-cp_les2_block = p_les2_block / (0.5*(np.pi/4)*(u_inf2_block**3))
-cp_les3_block = p_les3_block / (0.5*(np.pi/4)*(u_inf3_block**3))
-cp_les4_block = p_les4_block / (0.5*(np.pi/4)*(u_inf4_block**3))
-cp_les5_block = p_les5_block / (0.5*(np.pi/4)*(u_inf5_block**3))
-cp_les6_block = p_les6_block / (0.5*(np.pi/4)*(u_inf6_block**3))
-cp_les7_block = p_les7_block / (0.5*(np.pi/4)*(u_inf7_block**3))
-cp_les8_block = p_les8_block / (0.5*(np.pi/4)*(u_inf8_block**3))
-cp_les9_block = p_les9_block / (0.5*(np.pi/4)*(u_inf9_block**3))
-cp_les10_block = p_les10_block / (0.5*(np.pi/4)*(u_inf10_block**3))
-cp_les11_block = p_les11_block / (0.5*(np.pi/4)*(u_inf11_block**3))
-cp_les12_block = p_les12_block / (0.5*(np.pi/4)*(u_inf12_block**3))
-cp_les13_block = p_les13_block / (0.5*(np.pi/4)*(u_inf13_block**3))
-cp_les14_block = p_les14_block / (0.5*(np.pi/4)*(u_inf14_block**3))
-cp_les15_block = p_les15_block / (0.5*(np.pi/4)*(u_inf15_block**3))
-cp_les16_block = p_les16_block / (0.5*(np.pi/4)*(u_inf16_block**3))
-cp_les17_block = p_les17_block / (0.5*(np.pi/4)*(u_inf17_block**3))
+#Medium Blocked, No Correction
+cp_les1_mblock = p_les1_mblock / (0.5*(np.pi/4)*(u_inf1_mblock**3))
+cp_les2_mblock = p_les2_mblock / (0.5*(np.pi/4)*(u_inf2_mblock**3))
+cp_les3_mblock = p_les3_mblock / (0.5*(np.pi/4)*(u_inf3_mblock**3))
+cp_les4_mblock = p_les4_mblock / (0.5*(np.pi/4)*(u_inf4_mblock**3))
+cp_les5_mblock = p_les5_mblock / (0.5*(np.pi/4)*(u_inf5_mblock**3))
+cp_les6_mblock = p_les6_mblock / (0.5*(np.pi/4)*(u_inf6_mblock**3))
+cp_les7_mblock = p_les7_mblock / (0.5*(np.pi/4)*(u_inf7_mblock**3))
+cp_les8_mblock = p_les8_mblock / (0.5*(np.pi/4)*(u_inf8_mblock**3))
+cp_les9_mblock = p_les9_mblock / (0.5*(np.pi/4)*(u_inf9_mblock**3))
+cp_les10_mblock = p_les10_mblock / (0.5*(np.pi/4)*(u_inf10_mblock**3))
+cp_les11_mblock = p_les11_mblock / (0.5*(np.pi/4)*(u_inf11_mblock**3))
+cp_les12_mblock = p_les12_mblock / (0.5*(np.pi/4)*(u_inf12_mblock**3))
+cp_les13_mblock = p_les13_mblock / (0.5*(np.pi/4)*(u_inf13_mblock**3))
+cp_les14_mblock = p_les14_mblock / (0.5*(np.pi/4)*(u_inf14_mblock**3))
+cp_les15_mblock = p_les15_mblock / (0.5*(np.pi/4)*(u_inf15_mblock**3))
+cp_les16_mblock = p_les16_mblock / (0.5*(np.pi/4)*(u_inf16_mblock**3))
+cp_les17_mblock = p_les17_mblock / (0.5*(np.pi/4)*(u_inf17_mblock**3))
 
-#Blocked, Corrected
-cp_les1_block_cor = p_les1_block_cor / (0.5*(np.pi/4)*(u_inf1_block_cor**3))
-cp_les2_block_cor = p_les2_block_cor / (0.5*(np.pi/4)*(u_inf2_block_cor**3))
-cp_les3_block_cor = p_les3_block_cor / (0.5*(np.pi/4)*(u_inf3_block_cor**3))
-cp_les4_block_cor = p_les4_block_cor / (0.5*(np.pi/4)*(u_inf4_block_cor**3))
-cp_les5_block_cor = p_les5_block_cor / (0.5*(np.pi/4)*(u_inf5_block_cor**3))
-cp_les6_block_cor = p_les6_block_cor / (0.5*(np.pi/4)*(u_inf6_block_cor**3))
-cp_les7_block_cor = p_les7_block_cor / (0.5*(np.pi/4)*(u_inf7_block_cor**3))
-cp_les8_block_cor = p_les8_block_cor / (0.5*(np.pi/4)*(u_inf8_block_cor**3))
-cp_les9_block_cor = p_les9_block_cor / (0.5*(np.pi/4)*(u_inf9_block_cor**3))
-cp_les10_block_cor = p_les10_block_cor / (0.5*(np.pi/4)*(u_inf10_block_cor**3))
-cp_les11_block_cor = p_les11_block_cor / (0.5*(np.pi/4)*(u_inf11_block_cor**3))
-cp_les12_block_cor = p_les12_block_cor / (0.5*(np.pi/4)*(u_inf12_block_cor**3))
-cp_les13_block_cor = p_les13_block_cor / (0.5*(np.pi/4)*(u_inf13_block_cor**3))
-cp_les14_block_cor = p_les14_block_cor / (0.5*(np.pi/4)*(u_inf14_block_cor**3))
-cp_les15_block_cor = p_les15_block_cor / (0.5*(np.pi/4)*(u_inf15_block_cor**3))
-cp_les16_block_cor = p_les16_block_cor / (0.5*(np.pi/4)*(u_inf16_block_cor**3))
-cp_les17_block_cor = p_les17_block_cor / (0.5*(np.pi/4)*(u_inf17_block_cor**3))
+# Medium Blocked, Corrected
+cp_les1_mblock_cor = p_les1_mblock_cor / (0.5*(np.pi/4)*(u_inf1_mblock_cor**3))
+cp_les2_mblock_cor = p_les2_mblock_cor / (0.5*(np.pi/4)*(u_inf2_mblock_cor**3))
+cp_les3_mblock_cor = p_les3_mblock_cor / (0.5*(np.pi/4)*(u_inf3_mblock_cor**3))
+cp_les4_mblock_cor = p_les4_mblock_cor / (0.5*(np.pi/4)*(u_inf4_mblock_cor**3))
+cp_les5_mblock_cor = p_les5_mblock_cor / (0.5*(np.pi/4)*(u_inf5_mblock_cor**3))
+cp_les6_mblock_cor = p_les6_mblock_cor / (0.5*(np.pi/4)*(u_inf6_mblock_cor**3))
+cp_les7_mblock_cor = p_les7_mblock_cor / (0.5*(np.pi/4)*(u_inf7_mblock_cor**3))
+cp_les8_mblock_cor = p_les8_mblock_cor / (0.5*(np.pi/4)*(u_inf8_mblock_cor**3))
+cp_les9_mblock_cor = p_les9_mblock_cor / (0.5*(np.pi/4)*(u_inf9_mblock_cor**3))
+cp_les10_mblock_cor = p_les10_mblock_cor / (0.5*(np.pi/4)*(u_inf10_mblock_cor**3))
+cp_les11_mblock_cor = p_les11_mblock_cor / (0.5*(np.pi/4)*(u_inf11_mblock_cor**3))
+cp_les12_mblock_cor = p_les12_mblock_cor / (0.5*(np.pi/4)*(u_inf12_mblock_cor**3))
+cp_les13_mblock_cor = p_les13_mblock_cor / (0.5*(np.pi/4)*(u_inf13_mblock_cor**3))
+cp_les14_mblock_cor = p_les14_mblock_cor / (0.5*(np.pi/4)*(u_inf14_mblock_cor**3))
+cp_les15_mblock_cor = p_les15_mblock_cor / (0.5*(np.pi/4)*(u_inf15_mblock_cor**3))
+cp_les16_mblock_cor = p_les16_mblock_cor / (0.5*(np.pi/4)*(u_inf16_mblock_cor**3))
+cp_les17_mblock_cor = p_les17_mblock_cor / (0.5*(np.pi/4)*(u_inf17_mblock_cor**3))
+#Medium Blocked, No Correction
+cp_les1_mblock = p_les1_mblock / (0.5*(np.pi/4)*(u_inf1_mblock**3))
+cp_les2_mblock = p_les2_mblock / (0.5*(np.pi/4)*(u_inf2_mblock**3))
+cp_les3_mblock = p_les3_mblock / (0.5*(np.pi/4)*(u_inf3_mblock**3))
+cp_les4_mblock = p_les4_mblock / (0.5*(np.pi/4)*(u_inf4_mblock**3))
+cp_les5_mblock = p_les5_mblock / (0.5*(np.pi/4)*(u_inf5_mblock**3))
+cp_les6_mblock = p_les6_mblock / (0.5*(np.pi/4)*(u_inf6_mblock**3))
+cp_les7_mblock = p_les7_mblock / (0.5*(np.pi/4)*(u_inf7_mblock**3))
+cp_les8_mblock = p_les8_mblock / (0.5*(np.pi/4)*(u_inf8_mblock**3))
+cp_les9_mblock = p_les9_mblock / (0.5*(np.pi/4)*(u_inf9_mblock**3))
+cp_les10_mblock = p_les10_mblock / (0.5*(np.pi/4)*(u_inf10_mblock**3))
+cp_les11_mblock = p_les11_mblock / (0.5*(np.pi/4)*(u_inf11_mblock**3))
+cp_les12_mblock = p_les12_mblock / (0.5*(np.pi/4)*(u_inf12_mblock**3))
+cp_les13_mblock = p_les13_mblock / (0.5*(np.pi/4)*(u_inf13_mblock**3))
+cp_les14_mblock = p_les14_mblock / (0.5*(np.pi/4)*(u_inf14_mblock**3))
+cp_les15_mblock = p_les15_mblock / (0.5*(np.pi/4)*(u_inf15_mblock**3))
+cp_les16_mblock = p_les16_mblock / (0.5*(np.pi/4)*(u_inf16_mblock**3))
+cp_les17_mblock = p_les17_mblock / (0.5*(np.pi/4)*(u_inf17_mblock**3))
+
+# Medium Blocked, Corrected
+cp_les1_mblock_cor = p_les1_mblock_cor / (0.5*(np.pi/4)*(u_inf1_mblock_cor**3))
+cp_les2_mblock_cor = p_les2_mblock_cor / (0.5*(np.pi/4)*(u_inf2_mblock_cor**3))
+cp_les3_mblock_cor = p_les3_mblock_cor / (0.5*(np.pi/4)*(u_inf3_mblock_cor**3))
+cp_les4_mblock_cor = p_les4_mblock_cor / (0.5*(np.pi/4)*(u_inf4_mblock_cor**3))
+cp_les5_mblock_cor = p_les5_mblock_cor / (0.5*(np.pi/4)*(u_inf5_mblock_cor**3))
+cp_les6_mblock_cor = p_les6_mblock_cor / (0.5*(np.pi/4)*(u_inf6_mblock_cor**3))
+cp_les7_mblock_cor = p_les7_mblock_cor / (0.5*(np.pi/4)*(u_inf7_mblock_cor**3))
+cp_les8_mblock_cor = p_les8_mblock_cor / (0.5*(np.pi/4)*(u_inf8_mblock_cor**3))
+cp_les9_mblock_cor = p_les9_mblock_cor / (0.5*(np.pi/4)*(u_inf9_mblock_cor**3))
+cp_les10_mblock_cor = p_les10_mblock_cor / (0.5*(np.pi/4)*(u_inf10_mblock_cor**3))
+cp_les11_mblock_cor = p_les11_mblock_cor / (0.5*(np.pi/4)*(u_inf11_mblock_cor**3))
+cp_les12_mblock_cor = p_les12_mblock_cor / (0.5*(np.pi/4)*(u_inf12_mblock_cor**3))
+cp_les13_mblock_cor = p_les13_mblock_cor / (0.5*(np.pi/4)*(u_inf13_mblock_cor**3))
+cp_les14_mblock_cor = p_les14_mblock_cor / (0.5*(np.pi/4)*(u_inf14_mblock_cor**3))
+cp_les15_mblock_cor = p_les15_mblock_cor / (0.5*(np.pi/4)*(u_inf15_mblock_cor**3))
+cp_les16_mblock_cor = p_les16_mblock_cor / (0.5*(np.pi/4)*(u_inf16_mblock_cor**3))
+cp_les17_mblock_cor = p_les17_mblock_cor / (0.5*(np.pi/4)*(u_inf17_mblock_cor**3))
+
+# High Blocked, No Correction
+cp_les1_hblock = p_les1_hblock / (0.5*(np.pi/4)*(u_inf1_hblock**3))
+cp_les2_hblock = p_les2_hblock / (0.5*(np.pi/4)*(u_inf2_hblock**3))
+cp_les3_hblock = p_les3_hblock / (0.5*(np.pi/4)*(u_inf3_hblock**3))
+cp_les4_hblock = p_les4_hblock / (0.5*(np.pi/4)*(u_inf4_hblock**3))
+cp_les5_hblock = p_les5_hblock / (0.5*(np.pi/4)*(u_inf5_hblock**3))
+cp_les6_hblock = p_les6_hblock / (0.5*(np.pi/4)*(u_inf6_hblock**3))
+cp_les7_hblock = p_les7_hblock / (0.5*(np.pi/4)*(u_inf7_hblock**3))
+cp_les8_hblock = p_les8_hblock / (0.5*(np.pi/4)*(u_inf8_hblock**3))
+cp_les9_hblock = p_les9_hblock / (0.5*(np.pi/4)*(u_inf9_hblock**3))
+cp_les10_hblock = p_les10_hblock / (0.5*(np.pi/4)*(u_inf10_hblock**3))
+cp_les11_hblock = p_les11_hblock / (0.5*(np.pi/4)*(u_inf11_hblock**3))
+cp_les12_hblock = p_les12_hblock / (0.5*(np.pi/4)*(u_inf12_hblock**3))
+cp_les13_hblock = p_les13_hblock / (0.5*(np.pi/4)*(u_inf13_hblock**3))
+cp_les14_hblock = p_les14_hblock / (0.5*(np.pi/4)*(u_inf14_hblock**3))
+cp_les15_hblock = p_les15_hblock / (0.5*(np.pi/4)*(u_inf15_hblock**3))
+cp_les16_hblock = p_les16_hblock / (0.5*(np.pi/4)*(u_inf16_hblock**3))
+cp_les17_hblock = p_les17_hblock / (0.5*(np.pi/4)*(u_inf17_hblock**3))
+
+# High Blocked, Corrected
+cp_les1_hblock_cor = p_les1_hblock_cor / (0.5*(np.pi/4)*(u_inf1_hblock_cor**3))
+cp_les2_hblock_cor = p_les2_hblock_cor / (0.5*(np.pi/4)*(u_inf2_hblock_cor**3))
+cp_les3_hblock_cor = p_les3_hblock_cor / (0.5*(np.pi/4)*(u_inf3_hblock_cor**3))
+cp_les4_hblock_cor = p_les4_hblock_cor / (0.5*(np.pi/4)*(u_inf4_hblock_cor**3))
+cp_les5_hblock_cor = p_les5_hblock_cor / (0.5*(np.pi/4)*(u_inf5_hblock_cor**3))
+cp_les6_hblock_cor = p_les6_hblock_cor / (0.5*(np.pi/4)*(u_inf6_hblock_cor**3))
+cp_les7_hblock_cor = p_les7_hblock_cor / (0.5*(np.pi/4)*(u_inf7_hblock_cor**3))
+cp_les8_hblock_cor = p_les8_hblock_cor / (0.5*(np.pi/4)*(u_inf8_hblock_cor**3))
+cp_les9_hblock_cor = p_les9_hblock_cor / (0.5*(np.pi/4)*(u_inf9_hblock_cor**3))
+cp_les10_hblock_cor = p_les10_hblock_cor / (0.5*(np.pi/4)*(u_inf10_hblock_cor**3))
+cp_les11_hblock_cor = p_les11_hblock_cor / (0.5*(np.pi/4)*(u_inf11_hblock_cor**3))
+cp_les12_hblock_cor = p_les12_hblock_cor / (0.5*(np.pi/4)*(u_inf12_hblock_cor**3))
+cp_les13_hblock_cor = p_les13_hblock_cor / (0.5*(np.pi/4)*(u_inf13_hblock_cor**3))
+cp_les14_hblock_cor = p_les14_hblock_cor / (0.5*(np.pi/4)*(u_inf14_hblock_cor**3))
+cp_les15_hblock_cor = p_les15_hblock_cor / (0.5*(np.pi/4)*(u_inf15_hblock_cor**3))
+cp_les16_hblock_cor = p_les16_hblock_cor / (0.5*(np.pi/4)*(u_inf16_hblock_cor**3))
+cp_les17_hblock_cor = p_les17_hblock_cor / (0.5*(np.pi/4)*(u_inf17_hblock_cor**3))
 
 #Disk Velocities
 #Uncorrected
@@ -542,77 +797,149 @@ ud_les16_cor = ud_les16_cor[-1]
 ud_les17_cor = sim17_cor.read_turb_uvel("all", steady = False)
 ud_les17_cor = ud_les17_cor[-1]
 
-#Blocked, No Correction
-ud_les1_block = sim1_block.read_turb_uvel("all", steady = False)
-ud_les1_block = ud_les1_block[-1]
-ud_les2_block = sim2_block.read_turb_uvel("all", steady = False)
-ud_les2_block = ud_les2_block[-1]
-ud_les3_block = sim3_block.read_turb_uvel("all", steady = False)
-ud_les3_block = ud_les3_block[-1]
-ud_les4_block = sim4_block.read_turb_uvel("all", steady = False)
-ud_les4_block = ud_les4_block[-1]
-ud_les5_block = sim5_block.read_turb_uvel("all", steady = False)
-ud_les5_block = ud_les5_block[-1]
-ud_les6_block = sim6_block.read_turb_uvel("all", steady = False)
-ud_les6_block = ud_les6_block[-1]
-ud_les7_block = sim7_block.read_turb_uvel("all", steady = False)
-ud_les7_block = ud_les7_block[-1]
-ud_les8_block = sim8_block.read_turb_uvel("all", steady = False)
-ud_les8_block = ud_les8_block[-1]
-ud_les9_block = sim9_block.read_turb_uvel("all", steady = False)
-ud_les9_block = ud_les9_block[-1]
-ud_les10_block = sim10_block.read_turb_uvel("all", steady = False)
-ud_les10_block = ud_les10_block[-1]
-ud_les11_block = sim11_block.read_turb_uvel("all", steady = False)
-ud_les11_block = ud_les11_block[-1]
-ud_les12_block = sim12_block.read_turb_uvel("all", steady = False)
-ud_les12_block = ud_les12_block[-1]
-ud_les13_block = sim13_block.read_turb_uvel("all", steady = False)
-ud_les13_block = ud_les13_block[-1]
-ud_les14_block = sim14_block.read_turb_uvel("all", steady = False)
-ud_les14_block = ud_les14_block[-1]
-ud_les15_block = sim15_block.read_turb_uvel("all", steady = False)
-ud_les15_block = ud_les15_block[-1]
-ud_les16_block = sim16_block.read_turb_uvel("all", steady = False)
-ud_les16_block = ud_les16_block[-1]
-ud_les17_block = sim17_block.read_turb_uvel("all", steady = False)
-ud_les17_block = ud_les17_block[-1]
+# Medium Blocked, No Correction
+ud_les1_mblock = sim1_mblock.read_turb_uvel("all", steady = False)
+ud_les1_mblock = ud_les1_mblock[-1]
+ud_les2_mblock = sim2_mblock.read_turb_uvel("all", steady = False)
+ud_les2_mblock = ud_les2_mblock[-1]
+ud_les3_mblock = sim3_mblock.read_turb_uvel("all", steady = False)
+ud_les3_mblock = ud_les3_mblock[-1]
+ud_les4_mblock = sim4_mblock.read_turb_uvel("all", steady = False)
+ud_les4_mblock = ud_les4_mblock[-1]
+ud_les5_mblock = sim5_mblock.read_turb_uvel("all", steady = False)
+ud_les5_mblock = ud_les5_mblock[-1]
+ud_les6_mblock = sim6_mblock.read_turb_uvel("all", steady = False)
+ud_les6_mblock = ud_les6_mblock[-1]
+ud_les7_mblock = sim7_mblock.read_turb_uvel("all", steady = False)
+ud_les7_mblock = ud_les7_mblock[-1]
+ud_les8_mblock = sim8_mblock.read_turb_uvel("all", steady = False)
+ud_les8_mblock = ud_les8_mblock[-1]
+ud_les9_mblock = sim9_mblock.read_turb_uvel("all", steady = False)
+ud_les9_mblock = ud_les9_mblock[-1]
+ud_les10_mblock = sim10_mblock.read_turb_uvel("all", steady = False)
+ud_les10_mblock = ud_les10_mblock[-1]
+ud_les11_mblock = sim11_mblock.read_turb_uvel("all", steady = False)
+ud_les11_mblock = ud_les11_mblock[-1]
+ud_les12_mblock = sim12_mblock.read_turb_uvel("all", steady = False)
+ud_les12_mblock = ud_les12_mblock[-1]
+ud_les13_mblock = sim13_mblock.read_turb_uvel("all", steady = False)
+ud_les13_mblock = ud_les13_mblock[-1]
+ud_les14_mblock = sim14_mblock.read_turb_uvel("all", steady = False)
+ud_les14_mblock = ud_les14_mblock[-1]
+ud_les15_mblock = sim15_mblock.read_turb_uvel("all", steady = False)
+ud_les15_mblock = ud_les15_mblock[-1]
+ud_les16_mblock = sim16_mblock.read_turb_uvel("all", steady = False)
+ud_les16_mblock = ud_les16_mblock[-1]
+ud_les17_mblock = sim17_mblock.read_turb_uvel("all", steady = False)
+ud_les17_mblock = ud_les17_mblock[-1]
 
-#Blocked, Corrected
-ud_les1_block_cor = sim1_block_cor.read_turb_uvel("all", steady = False)
-ud_les1_block_cor = ud_les1_block_cor[-1]
-ud_les2_block_cor = sim2_block_cor.read_turb_uvel("all", steady = False)
-ud_les2_block_cor = ud_les2_block_cor[-1]
-ud_les3_block_cor = sim3_block_cor.read_turb_uvel("all", steady = False)
-ud_les3_block_cor = ud_les3_block_cor[-1]
-ud_les4_block_cor = sim4_block_cor.read_turb_uvel("all", steady = False)
-ud_les4_block_cor = ud_les4_block_cor[-1]
-ud_les5_block_cor = sim5_block_cor.read_turb_uvel("all", steady = False)
-ud_les5_block_cor = ud_les5_block_cor[-1]
-ud_les6_block_cor = sim6_block_cor.read_turb_uvel("all", steady = False)
-ud_les6_block_cor = ud_les6_block_cor[-1]
-ud_les7_block_cor = sim7_block_cor.read_turb_uvel("all", steady = False)
-ud_les7_block_cor = ud_les7_block_cor[-1]
-ud_les8_block_cor = sim8_block_cor.read_turb_uvel("all", steady = False)
-ud_les8_block_cor = ud_les8_block_cor[-1]
-ud_les9_block_cor = sim9_block_cor.read_turb_uvel("all", steady = False)
-ud_les9_block_cor = ud_les9_block_cor[-1]
-ud_les10_block_cor = sim10_block_cor.read_turb_uvel("all", steady = False)
-ud_les10_block_cor = ud_les10_block_cor[-1]
-ud_les11_block_cor = sim11_block_cor.read_turb_uvel("all", steady = False)
-ud_les11_block_cor = ud_les11_block_cor[-1]
-ud_les12_block_cor = sim12_block_cor.read_turb_uvel("all", steady = False)
-ud_les12_block_cor = ud_les12_block_cor[-1]
-ud_les13_block_cor = sim13_block_cor.read_turb_uvel("all", steady = False)
-ud_les13_block_cor = ud_les13_block_cor[-1]
-ud_les14_block_cor = sim14_block_cor.read_turb_uvel("all", steady = False)
-ud_les14_block_cor = ud_les14_block_cor[-1]
-ud_les15_block_cor = sim15_block_cor.read_turb_uvel("all", steady = False)
-ud_les15_block_cor = ud_les15_block_cor[-1]
-ud_les16_block_cor = sim16_block_cor.read_turb_uvel("all", steady = False)
-ud_les16_block_cor = ud_les16_block_cor[-1]
-ud_les17_block_cor = sim17_block_cor.read_turb_uvel("all", steady = False)
-ud_les17_block_cor = ud_les17_block_cor[-1]
+# Medium Blocked, Corrected
+ud_les1_mblock_cor = sim1_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les1_mblock_cor = ud_les1_mblock_cor[-1]
+ud_les2_mblock_cor = sim2_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les2_mblock_cor = ud_les2_mblock_cor[-1]
+ud_les3_mblock_cor = sim3_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les3_mblock_cor = ud_les3_mblock_cor[-1]
+ud_les4_mblock_cor = sim4_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les4_mblock_cor = ud_les4_mblock_cor[-1]
+ud_les5_mblock_cor = sim5_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les5_mblock_cor = ud_les5_mblock_cor[-1]
+ud_les6_mblock_cor = sim6_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les6_mblock_cor = ud_les6_mblock_cor[-1]
+ud_les7_mblock_cor = sim7_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les7_mblock_cor = ud_les7_mblock_cor[-1]
+ud_les8_mblock_cor = sim8_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les8_mblock_cor = ud_les8_mblock_cor[-1]
+ud_les9_mblock_cor = sim9_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les9_mblock_cor = ud_les9_mblock_cor[-1]
+ud_les10_mblock_cor = sim10_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les10_mblock_cor = ud_les10_mblock_cor[-1]
+ud_les11_mblock_cor = sim11_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les11_mblock_cor = ud_les11_mblock_cor[-1]
+ud_les12_mblock_cor = sim12_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les12_mblock_cor = ud_les12_mblock_cor[-1]
+ud_les13_mblock_cor = sim13_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les13_mblock_cor = ud_les13_mblock_cor[-1]
+ud_les14_mblock_cor = sim14_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les14_mblock_cor = ud_les14_mblock_cor[-1]
+ud_les15_mblock_cor = sim15_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les15_mblock_cor = ud_les15_mblock_cor[-1]
+ud_les16_mblock_cor = sim16_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les16_mblock_cor = ud_les16_mblock_cor[-1]
+ud_les17_mblock_cor = sim17_mblock_cor.read_turb_uvel("all", steady = False)
+ud_les17_mblock_cor = ud_les17_mblock_cor[-1]
+
+# High Blocked, No Correction
+ud_les1_hblock = sim1_hblock.read_turb_uvel("all", steady = False)
+ud_les1_hblock = ud_les1_hblock[-1]
+ud_les2_hblock = sim2_hblock.read_turb_uvel("all", steady = False)
+ud_les2_hblock = ud_les2_hblock[-1]
+ud_les3_hblock = sim3_hblock.read_turb_uvel("all", steady = False)
+ud_les3_hblock = ud_les3_hblock[-1]
+ud_les4_hblock = sim4_hblock.read_turb_uvel("all", steady = False)
+ud_les4_hblock = ud_les4_hblock[-1]
+ud_les5_hblock = sim5_hblock.read_turb_uvel("all", steady = False)
+ud_les5_hblock = ud_les5_hblock[-1]
+ud_les6_hblock = sim6_hblock.read_turb_uvel("all", steady = False)
+ud_les6_hblock = ud_les6_hblock[-1]
+ud_les7_hblock = sim7_hblock.read_turb_uvel("all", steady = False)
+ud_les7_hblock = ud_les7_hblock[-1]
+ud_les8_hblock = sim8_hblock.read_turb_uvel("all", steady = False)
+ud_les8_hblock = ud_les8_hblock[-1]
+ud_les9_hblock = sim9_hblock.read_turb_uvel("all", steady = False)
+ud_les9_hblock = ud_les9_hblock[-1]
+ud_les10_hblock = sim10_hblock.read_turb_uvel("all", steady = False)
+ud_les10_hblock = ud_les10_hblock[-1]
+ud_les11_hblock = sim11_hblock.read_turb_uvel("all", steady = False)
+ud_les11_hblock = ud_les11_hblock[-1]
+ud_les12_hblock = sim12_hblock.read_turb_uvel("all", steady = False)
+ud_les12_hblock = ud_les12_hblock[-1]
+ud_les13_hblock = sim13_hblock.read_turb_uvel("all", steady = False)
+ud_les13_hblock = ud_les13_hblock[-1]
+ud_les14_hblock = sim14_hblock.read_turb_uvel("all", steady = False)
+ud_les14_hblock = ud_les14_hblock[-1]
+ud_les15_hblock = sim15_hblock.read_turb_uvel("all", steady = False)
+ud_les15_hblock = ud_les15_hblock[-1]
+ud_les16_hblock = sim16_hblock.read_turb_uvel("all", steady = False)
+ud_les16_hblock = ud_les16_hblock[-1]
+ud_les17_hblock = sim17_hblock.read_turb_uvel("all", steady = False)
+ud_les17_hblock = ud_les17_hblock[-1]
+
+# High Blocked, Corrected
+ud_les1_hblock_cor = sim1_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les1_hblock_cor = ud_les1_hblock_cor[-1]
+ud_les2_hblock_cor = sim2_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les2_hblock_cor = ud_les2_hblock_cor[-1]
+ud_les3_hblock_cor = sim3_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les3_hblock_cor = ud_les3_hblock_cor[-1]
+ud_les4_hblock_cor = sim4_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les4_hblock_cor = ud_les4_hblock_cor[-1]
+ud_les5_hblock_cor = sim5_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les5_hblock_cor = ud_les5_hblock_cor[-1]
+ud_les6_hblock_cor = sim6_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les6_hblock_cor = ud_les6_hblock_cor[-1]
+ud_les7_hblock_cor = sim7_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les7_hblock_cor = ud_les7_hblock_cor[-1]
+ud_les8_hblock_cor = sim8_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les8_hblock_cor = ud_les8_hblock_cor[-1]
+ud_les9_hblock_cor = sim9_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les9_hblock_cor = ud_les9_hblock_cor[-1]
+ud_les10_hblock_cor = sim10_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les10_hblock_cor = ud_les10_hblock_cor[-1]
+ud_les11_hblock_cor = sim11_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les11_hblock_cor = ud_les11_hblock_cor[-1]
+ud_les12_hblock_cor = sim12_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les12_hblock_cor = ud_les12_hblock_cor[-1]
+ud_les13_hblock_cor = sim13_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les13_hblock_cor = ud_les13_hblock_cor[-1]
+ud_les14_hblock_cor = sim14_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les14_hblock_cor = ud_les14_hblock_cor[-1]
+ud_les15_hblock_cor = sim15_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les15_hblock_cor = ud_les15_hblock_cor[-1]
+ud_les16_hblock_cor = sim16_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les16_hblock_cor = ud_les16_hblock_cor[-1]
+ud_les17_hblock_cor = sim17_hblock_cor.read_turb_uvel("all", steady = False)
+ud_les17_hblock_cor = ud_les17_hblock_cor[-1]
 
 #Thrust Force 
 #Uncorrected
@@ -653,43 +980,81 @@ thrust_les15_cor = 2*(np.pi/4)*(ud_les15_cor)*(u_inf15_cor - ud_les15_cor)
 thrust_les16_cor = 2*(np.pi/4)*(ud_les16_cor)*(u_inf16_cor - ud_les16_cor)
 thrust_les17_cor = 2*(np.pi/4)*(ud_les17_cor)*(u_inf17_cor - ud_les17_cor)
 
-#Blocked, No Correction
-thrust_les1_block = 2*(np.pi/4)*(ud_les1_block)*(u_inf1_block - ud_les1_block)
-thrust_les2_block = 2*(np.pi/4)*(ud_les2_block)*(u_inf2_block - ud_les2_block)
-thrust_les3_block = 2*(np.pi/4)*(ud_les3_block)*(u_inf3_block - ud_les3_block)
-thrust_les4_block = 2*(np.pi/4)*(ud_les4_block)*(u_inf4_block - ud_les4_block)
-thrust_les5_block = 2*(np.pi/4)*(ud_les5_block)*(u_inf5_block - ud_les5_block)
-thrust_les6_block = 2*(np.pi/4)*(ud_les6_block)*(u_inf6_block - ud_les6_block)
-thrust_les7_block = 2*(np.pi/4)*(ud_les7_block)*(u_inf7_block - ud_les7_block)
-thrust_les8_block = 2*(np.pi/4)*(ud_les8_block)*(u_inf8_block - ud_les8_block)
-thrust_les9_block = 2*(np.pi/4)*(ud_les9_block)*(u_inf9_block - ud_les9_block)
-thrust_les10_block = 2*(np.pi/4)*(ud_les10_block)*(u_inf10_block - ud_les10_block)
-thrust_les11_block = 2*(np.pi/4)*(ud_les11_block)*(u_inf11_block - ud_les11_block)
-thrust_les12_block = 2*(np.pi/4)*(ud_les12_block)*(u_inf12_block - ud_les12_block)
-thrust_les13_block = 2*(np.pi/4)*(ud_les13_block)*(u_inf13_block - ud_les13_block)
-thrust_les14_block = 2*(np.pi/4)*(ud_les14_block)*(u_inf14_block - ud_les14_block)
-thrust_les15_block = 2*(np.pi/4)*(ud_les15_block)*(u_inf15_block - ud_les15_block)
-thrust_les16_block = 2*(np.pi/4)*(ud_les16_block)*(u_inf16_block - ud_les16_block)
-thrust_les17_block = 2*(np.pi/4)*(ud_les17_block)*(u_inf17_block - ud_les17_block)
+# Medium Blocked, No Correction
+thrust_les1_mblock = 2*(np.pi/4)*(ud_les1_mblock)*(u_inf1_mblock - ud_les1_mblock)
+thrust_les2_mblock = 2*(np.pi/4)*(ud_les2_mblock)*(u_inf2_mblock - ud_les2_mblock)
+thrust_les3_mblock = 2*(np.pi/4)*(ud_les3_mblock)*(u_inf3_mblock - ud_les3_mblock)
+thrust_les4_mblock = 2*(np.pi/4)*(ud_les4_mblock)*(u_inf4_mblock - ud_les4_mblock)
+thrust_les5_mblock = 2*(np.pi/4)*(ud_les5_mblock)*(u_inf5_mblock - ud_les5_mblock)
+thrust_les6_mblock = 2*(np.pi/4)*(ud_les6_mblock)*(u_inf6_mblock - ud_les6_mblock)
+thrust_les7_mblock = 2*(np.pi/4)*(ud_les7_mblock)*(u_inf7_mblock - ud_les7_mblock)
+thrust_les8_mblock = 2*(np.pi/4)*(ud_les8_mblock)*(u_inf8_mblock - ud_les8_mblock)
+thrust_les9_mblock = 2*(np.pi/4)*(ud_les9_mblock)*(u_inf9_mblock - ud_les9_mblock)
+thrust_les10_mblock = 2*(np.pi/4)*(ud_les10_mblock)*(u_inf10_mblock - ud_les10_mblock)
+thrust_les11_mblock = 2*(np.pi/4)*(ud_les11_mblock)*(u_inf11_mblock - ud_les11_mblock)
+thrust_les12_mblock = 2*(np.pi/4)*(ud_les12_mblock)*(u_inf12_mblock - ud_les12_mblock)
+thrust_les13_mblock = 2*(np.pi/4)*(ud_les13_mblock)*(u_inf13_mblock - ud_les13_mblock)
+thrust_les14_mblock = 2*(np.pi/4)*(ud_les14_mblock)*(u_inf14_mblock - ud_les14_mblock)
+thrust_les15_mblock = 2*(np.pi/4)*(ud_les15_mblock)*(u_inf15_mblock - ud_les15_mblock)
+thrust_les16_mblock = 2*(np.pi/4)*(ud_les16_mblock)*(u_inf16_mblock - ud_les16_mblock)
+thrust_les17_mblock = 2*(np.pi/4)*(ud_les17_mblock)*(u_inf17_mblock - ud_les17_mblock)
 
-#Blocked, Corrected
-thrust_les1_block_cor = 2*(np.pi/4)*(ud_les1_block_cor)*(u_inf1_block_cor - ud_les1_block_cor)
-thrust_les2_block_cor = 2*(np.pi/4)*(ud_les2_block_cor)*(u_inf2_block_cor - ud_les2_block_cor)
-thrust_les3_block_cor = 2*(np.pi/4)*(ud_les3_block_cor)*(u_inf3_block_cor - ud_les3_block_cor)
-thrust_les4_block_cor = 2*(np.pi/4)*(ud_les4_block_cor)*(u_inf4_block_cor - ud_les4_block_cor)
-thrust_les5_block_cor = 2*(np.pi/4)*(ud_les5_block_cor)*(u_inf5_block_cor - ud_les5_block_cor)
-thrust_les6_block_cor = 2*(np.pi/4)*(ud_les6_block_cor)*(u_inf6_block_cor - ud_les6_block_cor)
-thrust_les7_block_cor = 2*(np.pi/4)*(ud_les7_block_cor)*(u_inf7_block_cor - ud_les7_block_cor)
-thrust_les8_block_cor = 2*(np.pi/4)*(ud_les8_block_cor)*(u_inf8_block_cor - ud_les8_block_cor)
-thrust_les9_block_cor = 2*(np.pi/4)*(ud_les9_block_cor)*(u_inf9_block_cor - ud_les9_block_cor)
-thrust_les10_block_cor = 2*(np.pi/4)*(ud_les10_block_cor)*(u_inf10_block_cor - ud_les10_block_cor)
-thrust_les11_block_cor = 2*(np.pi/4)*(ud_les11_block_cor)*(u_inf11_block_cor - ud_les11_block_cor)
-thrust_les12_block_cor = 2*(np.pi/4)*(ud_les12_block_cor)*(u_inf12_block_cor - ud_les12_block_cor)
-thrust_les13_block_cor = 2*(np.pi/4)*(ud_les13_block_cor)*(u_inf13_block_cor - ud_les13_block_cor)
-thrust_les14_block_cor = 2*(np.pi/4)*(ud_les14_block_cor)*(u_inf14_block_cor - ud_les14_block_cor)
-thrust_les15_block_cor = 2*(np.pi/4)*(ud_les15_block_cor)*(u_inf15_block_cor - ud_les15_block_cor)
-thrust_les16_block_cor = 2*(np.pi/4)*(ud_les16_block_cor)*(u_inf16_block_cor - ud_les16_block_cor)
-thrust_les17_block_cor = 2*(np.pi/4)*(ud_les17_block_cor)*(u_inf17_block_cor - ud_les17_block_cor)
+# Medium Blocked, Corrected
+thrust_les1_mblock_cor = 2*(np.pi/4)*(ud_les1_mblock_cor)*(u_inf1_mblock_cor - ud_les1_mblock_cor)
+thrust_les2_mblock_cor = 2*(np.pi/4)*(ud_les2_mblock_cor)*(u_inf2_mblock_cor - ud_les2_mblock_cor)
+thrust_les3_mblock_cor = 2*(np.pi/4)*(ud_les3_mblock_cor)*(u_inf3_mblock_cor - ud_les3_mblock_cor)
+thrust_les4_mblock_cor = 2*(np.pi/4)*(ud_les4_mblock_cor)*(u_inf4_mblock_cor - ud_les4_mblock_cor)
+thrust_les5_mblock_cor = 2*(np.pi/4)*(ud_les5_mblock_cor)*(u_inf5_mblock_cor - ud_les5_mblock_cor)
+thrust_les6_mblock_cor = 2*(np.pi/4)*(ud_les6_mblock_cor)*(u_inf6_mblock_cor - ud_les6_mblock_cor)
+thrust_les7_mblock_cor = 2*(np.pi/4)*(ud_les7_mblock_cor)*(u_inf7_mblock_cor - ud_les7_mblock_cor)
+thrust_les8_mblock_cor = 2*(np.pi/4)*(ud_les8_mblock_cor)*(u_inf8_mblock_cor - ud_les8_mblock_cor)
+thrust_les9_mblock_cor = 2*(np.pi/4)*(ud_les9_mblock_cor)*(u_inf9_mblock_cor - ud_les9_mblock_cor)
+thrust_les10_mblock_cor = 2*(np.pi/4)*(ud_les10_mblock_cor)*(u_inf10_mblock_cor - ud_les10_mblock_cor)
+thrust_les11_mblock_cor = 2*(np.pi/4)*(ud_les11_mblock_cor)*(u_inf11_mblock_cor - ud_les11_mblock_cor)
+thrust_les12_mblock_cor = 2*(np.pi/4)*(ud_les12_mblock_cor)*(u_inf12_mblock_cor - ud_les12_mblock_cor)
+thrust_les13_mblock_cor = 2*(np.pi/4)*(ud_les13_mblock_cor)*(u_inf13_mblock_cor - ud_les13_mblock_cor)
+thrust_les14_mblock_cor = 2*(np.pi/4)*(ud_les14_mblock_cor)*(u_inf14_mblock_cor - ud_les14_mblock_cor)
+thrust_les15_mblock_cor = 2*(np.pi/4)*(ud_les15_mblock_cor)*(u_inf15_mblock_cor - ud_les15_mblock_cor)
+thrust_les16_mblock_cor = 2*(np.pi/4)*(ud_les16_mblock_cor)*(u_inf16_mblock_cor - ud_les16_mblock_cor)
+thrust_les17_mblock_cor = 2*(np.pi/4)*(ud_les17_mblock_cor)*(u_inf17_mblock_cor - ud_les17_mblock_cor)
+
+# High Blocked, No Correction
+thrust_les1_hblock = 2*(np.pi/4)*(ud_les1_hblock)*(u_inf1_hblock - ud_les1_hblock)
+thrust_les2_hblock = 2*(np.pi/4)*(ud_les2_hblock)*(u_inf2_hblock - ud_les2_hblock)
+thrust_les3_hblock = 2*(np.pi/4)*(ud_les3_hblock)*(u_inf3_hblock - ud_les3_hblock)
+thrust_les4_hblock = 2*(np.pi/4)*(ud_les4_hblock)*(u_inf4_hblock - ud_les4_hblock)
+thrust_les5_hblock = 2*(np.pi/4)*(ud_les5_hblock)*(u_inf5_hblock - ud_les5_hblock)
+thrust_les6_hblock = 2*(np.pi/4)*(ud_les6_hblock)*(u_inf6_hblock - ud_les6_hblock)
+thrust_les7_hblock = 2*(np.pi/4)*(ud_les7_hblock)*(u_inf7_hblock - ud_les7_hblock)
+thrust_les8_hblock = 2*(np.pi/4)*(ud_les8_hblock)*(u_inf8_hblock - ud_les8_hblock)
+thrust_les9_hblock = 2*(np.pi/4)*(ud_les9_hblock)*(u_inf9_hblock - ud_les9_hblock)
+thrust_les10_hblock = 2*(np.pi/4)*(ud_les10_hblock)*(u_inf10_hblock - ud_les10_hblock)
+thrust_les11_hblock = 2*(np.pi/4)*(ud_les11_hblock)*(u_inf11_hblock - ud_les11_hblock)
+thrust_les12_hblock = 2*(np.pi/4)*(ud_les12_hblock)*(u_inf12_hblock - ud_les12_hblock)
+thrust_les13_hblock = 2*(np.pi/4)*(ud_les13_hblock)*(u_inf13_hblock - ud_les13_hblock)
+thrust_les14_hblock = 2*(np.pi/4)*(ud_les14_hblock)*(u_inf14_hblock - ud_les14_hblock)
+thrust_les15_hblock = 2*(np.pi/4)*(ud_les15_hblock)*(u_inf15_hblock - ud_les15_hblock)
+thrust_les16_hblock = 2*(np.pi/4)*(ud_les16_hblock)*(u_inf16_hblock - ud_les16_hblock)
+thrust_les17_hblock = 2*(np.pi/4)*(ud_les17_hblock)*(u_inf17_hblock - ud_les17_hblock)
+
+# High Blocked, Corrected
+thrust_les1_hblock_cor = 2*(np.pi/4)*(ud_les1_hblock_cor)*(u_inf1_hblock_cor - ud_les1_hblock_cor)
+thrust_les2_hblock_cor = 2*(np.pi/4)*(ud_les2_hblock_cor)*(u_inf2_hblock_cor - ud_les2_hblock_cor)
+thrust_les3_hblock_cor = 2*(np.pi/4)*(ud_les3_hblock_cor)*(u_inf3_hblock_cor - ud_les3_hblock_cor)
+thrust_les4_hblock_cor = 2*(np.pi/4)*(ud_les4_hblock_cor)*(u_inf4_hblock_cor - ud_les4_hblock_cor)
+thrust_les5_hblock_cor = 2*(np.pi/4)*(ud_les5_hblock_cor)*(u_inf5_hblock_cor - ud_les5_hblock_cor)
+thrust_les6_hblock_cor = 2*(np.pi/4)*(ud_les6_hblock_cor)*(u_inf6_hblock_cor - ud_les6_hblock_cor)
+thrust_les7_hblock_cor = 2*(np.pi/4)*(ud_les7_hblock_cor)*(u_inf7_hblock_cor - ud_les7_hblock_cor)
+thrust_les8_hblock_cor = 2*(np.pi/4)*(ud_les8_hblock_cor)*(u_inf8_hblock_cor - ud_les8_hblock_cor)
+thrust_les9_hblock_cor = 2*(np.pi/4)*(ud_les9_hblock_cor)*(u_inf9_hblock_cor - ud_les9_hblock_cor)
+thrust_les10_hblock_cor = 2*(np.pi/4)*(ud_les10_hblock_cor)*(u_inf10_hblock_cor - ud_les10_hblock_cor)
+thrust_les11_hblock_cor = 2*(np.pi/4)*(ud_les11_hblock_cor)*(u_inf11_hblock_cor - ud_les11_hblock_cor)
+thrust_les12_hblock_cor = 2*(np.pi/4)*(ud_les12_hblock_cor)*(u_inf12_hblock_cor - ud_les12_hblock_cor)
+thrust_les13_hblock_cor = 2*(np.pi/4)*(ud_les13_hblock_cor)*(u_inf13_hblock_cor - ud_les13_hblock_cor)
+thrust_les14_hblock_cor = 2*(np.pi/4)*(ud_les14_hblock_cor)*(u_inf14_hblock_cor - ud_les14_hblock_cor)
+thrust_les15_hblock_cor = 2*(np.pi/4)*(ud_les15_hblock_cor)*(u_inf15_hblock_cor - ud_les15_hblock_cor)
+thrust_les16_hblock_cor = 2*(np.pi/4)*(ud_les16_hblock_cor)*(u_inf16_hblock_cor - ud_les16_hblock_cor)
+thrust_les17_hblock_cor = 2*(np.pi/4)*(ud_les17_hblock_cor)*(u_inf17_hblock_cor - ud_les17_hblock_cor)
 
 #Ct
 #Uncorrected
@@ -730,43 +1095,81 @@ ct_les15_cor = thrust_les15_cor/(0.5*(np.pi/4)*(u_inf15_cor**2))
 ct_les16_cor = thrust_les16_cor/(0.5*(np.pi/4)*(u_inf16_cor**2))
 ct_les17_cor = thrust_les17_cor/(0.5*(np.pi/4)*(u_inf17_cor**2))
 
-#Blocked, No Correction
-ct_les1_block = thrust_les1_block/(0.5*(np.pi/4)*(u_inf1_block**2))
-ct_les2_block = thrust_les2_block/(0.5*(np.pi/4)*(u_inf2_block**2))
-ct_les3_block = thrust_les3_block/(0.5*(np.pi/4)*(u_inf3_block**2))
-ct_les4_block = thrust_les4_block/(0.5*(np.pi/4)*(u_inf4_block**2))
-ct_les5_block = thrust_les5_block/(0.5*(np.pi/4)*(u_inf5_block**2))
-ct_les6_block = thrust_les6_block/(0.5*(np.pi/4)*(u_inf6_block**2))
-ct_les7_block = thrust_les7_block/(0.5*(np.pi/4)*(u_inf7_block**2))
-ct_les8_block = thrust_les8_block/(0.5*(np.pi/4)*(u_inf8_block**2))
-ct_les9_block = thrust_les9_block/(0.5*(np.pi/4)*(u_inf9_block**2))
-ct_les10_block = thrust_les10_block/(0.5*(np.pi/4)*(u_inf10_block**2))
-ct_les11_block = thrust_les11_block/(0.5*(np.pi/4)*(u_inf11_block**2))
-ct_les12_block = thrust_les12_block/(0.5*(np.pi/4)*(u_inf12_block**2))
-ct_les13_block = thrust_les13_block/(0.5*(np.pi/4)*(u_inf13_block**2))
-ct_les14_block = thrust_les14_block/(0.5*(np.pi/4)*(u_inf14_block**2))
-ct_les15_block = thrust_les15_block/(0.5*(np.pi/4)*(u_inf15_block**2))
-ct_les16_block = thrust_les16_block/(0.5*(np.pi/4)*(u_inf16_block**2))
-ct_les17_block = thrust_les17_block/(0.5*(np.pi/4)*(u_inf17_block**2))
+# Medium Blocked, No Correction
+ct_les1_mblock = thrust_les1_mblock/(0.5*(np.pi/4)*(u_inf1_mblock**2))
+ct_les2_mblock = thrust_les2_mblock/(0.5*(np.pi/4)*(u_inf2_mblock**2))
+ct_les3_mblock = thrust_les3_mblock/(0.5*(np.pi/4)*(u_inf3_mblock**2))
+ct_les4_mblock = thrust_les4_mblock/(0.5*(np.pi/4)*(u_inf4_mblock**2))
+ct_les5_mblock = thrust_les5_mblock/(0.5*(np.pi/4)*(u_inf5_mblock**2))
+ct_les6_mblock = thrust_les6_mblock/(0.5*(np.pi/4)*(u_inf6_mblock**2))
+ct_les7_mblock = thrust_les7_mblock/(0.5*(np.pi/4)*(u_inf7_mblock**2))
+ct_les8_mblock = thrust_les8_mblock/(0.5*(np.pi/4)*(u_inf8_mblock**2))
+ct_les9_mblock = thrust_les9_mblock/(0.5*(np.pi/4)*(u_inf9_mblock**2))
+ct_les10_mblock = thrust_les10_mblock/(0.5*(np.pi/4)*(u_inf10_mblock**2))
+ct_les11_mblock = thrust_les11_mblock/(0.5*(np.pi/4)*(u_inf11_mblock**2))
+ct_les12_mblock = thrust_les12_mblock/(0.5*(np.pi/4)*(u_inf12_mblock**2))
+ct_les13_mblock = thrust_les13_mblock/(0.5*(np.pi/4)*(u_inf13_mblock**2))
+ct_les14_mblock = thrust_les14_mblock/(0.5*(np.pi/4)*(u_inf14_mblock**2))
+ct_les15_mblock = thrust_les15_mblock/(0.5*(np.pi/4)*(u_inf15_mblock**2))
+ct_les16_mblock = thrust_les16_mblock/(0.5*(np.pi/4)*(u_inf16_mblock**2))
+ct_les17_mblock = thrust_les17_mblock/(0.5*(np.pi/4)*(u_inf17_mblock**2))
 
-#Blocked, Corrected
-ct_les1_block_cor = thrust_les1_block_cor/(0.5*(np.pi/4)*(u_inf1_block_cor**2))
-ct_les2_block_cor = thrust_les2_block_cor/(0.5*(np.pi/4)*(u_inf2_block_cor**2))
-ct_les3_block_cor = thrust_les3_block_cor/(0.5*(np.pi/4)*(u_inf3_block_cor**2))
-ct_les4_block_cor = thrust_les4_block_cor/(0.5*(np.pi/4)*(u_inf4_block_cor**2))
-ct_les5_block_cor = thrust_les5_block_cor/(0.5*(np.pi/4)*(u_inf5_block_cor**2))
-ct_les6_block_cor = thrust_les6_block_cor/(0.5*(np.pi/4)*(u_inf6_block_cor**2))
-ct_les7_block_cor = thrust_les7_block_cor/(0.5*(np.pi/4)*(u_inf7_block_cor**2))
-ct_les8_block_cor = thrust_les8_block_cor/(0.5*(np.pi/4)*(u_inf8_block_cor**2))
-ct_les9_block_cor = thrust_les9_block_cor/(0.5*(np.pi/4)*(u_inf9_block_cor**2))
-ct_les10_block_cor = thrust_les10_block_cor/(0.5*(np.pi/4)*(u_inf10_block_cor**2))
-ct_les11_block_cor = thrust_les11_block_cor/(0.5*(np.pi/4)*(u_inf11_block_cor**2))
-ct_les12_block_cor = thrust_les12_block_cor/(0.5*(np.pi/4)*(u_inf12_block_cor**2))
-ct_les13_block_cor = thrust_les13_block_cor/(0.5*(np.pi/4)*(u_inf13_block_cor**2))
-ct_les14_block_cor = thrust_les14_block_cor/(0.5*(np.pi/4)*(u_inf14_block_cor**2))
-ct_les15_block_cor = thrust_les15_block_cor/(0.5*(np.pi/4)*(u_inf15_block_cor**2))
-ct_les16_block_cor = thrust_les16_block_cor/(0.5*(np.pi/4)*(u_inf16_block_cor**2))
-ct_les17_block_cor = thrust_les17_block_cor/(0.5*(np.pi/4)*(u_inf17_block_cor**2))
+#Medium Blocked, Corrected
+ct_les1_mblock_cor = thrust_les1_mblock_cor/(0.5*(np.pi/4)*(u_inf1_mblock_cor**2))
+ct_les2_mblock_cor = thrust_les2_mblock_cor/(0.5*(np.pi/4)*(u_inf2_mblock_cor**2))
+ct_les3_mblock_cor = thrust_les3_mblock_cor/(0.5*(np.pi/4)*(u_inf3_mblock_cor**2))
+ct_les4_mblock_cor = thrust_les4_mblock_cor/(0.5*(np.pi/4)*(u_inf4_mblock_cor**2))
+ct_les5_mblock_cor = thrust_les5_mblock_cor/(0.5*(np.pi/4)*(u_inf5_mblock_cor**2))
+ct_les6_mblock_cor = thrust_les6_mblock_cor/(0.5*(np.pi/4)*(u_inf6_mblock_cor**2))
+ct_les7_mblock_cor = thrust_les7_mblock_cor/(0.5*(np.pi/4)*(u_inf7_mblock_cor**2))
+ct_les8_mblock_cor = thrust_les8_mblock_cor/(0.5*(np.pi/4)*(u_inf8_mblock_cor**2))
+ct_les9_mblock_cor = thrust_les9_mblock_cor/(0.5*(np.pi/4)*(u_inf9_mblock_cor**2))
+ct_les10_mblock_cor = thrust_les10_mblock_cor/(0.5*(np.pi/4)*(u_inf10_mblock_cor**2))
+ct_les11_mblock_cor = thrust_les11_mblock_cor/(0.5*(np.pi/4)*(u_inf11_mblock_cor**2))
+ct_les12_mblock_cor = thrust_les12_mblock_cor/(0.5*(np.pi/4)*(u_inf12_mblock_cor**2))
+ct_les13_mblock_cor = thrust_les13_mblock_cor/(0.5*(np.pi/4)*(u_inf13_mblock_cor**2))
+ct_les14_mblock_cor = thrust_les14_mblock_cor/(0.5*(np.pi/4)*(u_inf14_mblock_cor**2))
+ct_les15_mblock_cor = thrust_les15_mblock_cor/(0.5*(np.pi/4)*(u_inf15_mblock_cor**2))
+ct_les16_mblock_cor = thrust_les16_mblock_cor/(0.5*(np.pi/4)*(u_inf16_mblock_cor**2))
+ct_les17_mblock_cor = thrust_les17_mblock_cor/(0.5*(np.pi/4)*(u_inf17_mblock_cor**2))
+
+# High Blocked, No Correction
+ct_les1_hblock = thrust_les1_hblock/(0.5*(np.pi/4)*(u_inf1_hblock**2))
+ct_les2_hblock = thrust_les2_hblock/(0.5*(np.pi/4)*(u_inf2_hblock**2))
+ct_les3_hblock = thrust_les3_hblock/(0.5*(np.pi/4)*(u_inf3_hblock**2))
+ct_les4_hblock = thrust_les4_hblock/(0.5*(np.pi/4)*(u_inf4_hblock**2))
+ct_les5_hblock = thrust_les5_hblock/(0.5*(np.pi/4)*(u_inf5_hblock**2))
+ct_les6_hblock = thrust_les6_hblock/(0.5*(np.pi/4)*(u_inf6_hblock**2))
+ct_les7_hblock = thrust_les7_hblock/(0.5*(np.pi/4)*(u_inf7_hblock**2))
+ct_les8_hblock = thrust_les8_hblock/(0.5*(np.pi/4)*(u_inf8_hblock**2))
+ct_les9_hblock = thrust_les9_hblock/(0.5*(np.pi/4)*(u_inf9_hblock**2))
+ct_les10_hblock = thrust_les10_hblock/(0.5*(np.pi/4)*(u_inf10_hblock**2))
+ct_les11_hblock = thrust_les11_hblock/(0.5*(np.pi/4)*(u_inf11_hblock**2))
+ct_les12_hblock = thrust_les12_hblock/(0.5*(np.pi/4)*(u_inf12_hblock**2))
+ct_les13_hblock = thrust_les13_hblock/(0.5*(np.pi/4)*(u_inf13_hblock**2))
+ct_les14_hblock = thrust_les14_hblock/(0.5*(np.pi/4)*(u_inf14_hblock**2))
+ct_les15_hblock = thrust_les15_hblock/(0.5*(np.pi/4)*(u_inf15_hblock**2))
+ct_les16_hblock = thrust_les16_hblock/(0.5*(np.pi/4)*(u_inf16_hblock**2))
+ct_les17_hblock = thrust_les17_hblock/(0.5*(np.pi/4)*(u_inf17_hblock**2))
+
+# High Blocked, Corrected
+ct_les1_hblock_cor = thrust_les1_hblock_cor/(0.5*(np.pi/4)*(u_inf1_hblock_cor**2))
+ct_les2_hblock_cor = thrust_les2_hblock_cor/(0.5*(np.pi/4)*(u_inf2_hblock_cor**2))
+ct_les3_hblock_cor = thrust_les3_hblock_cor/(0.5*(np.pi/4)*(u_inf3_hblock_cor**2))
+ct_les4_hblock_cor = thrust_les4_hblock_cor/(0.5*(np.pi/4)*(u_inf4_hblock_cor**2))
+ct_les5_hblock_cor = thrust_les5_hblock_cor/(0.5*(np.pi/4)*(u_inf5_hblock_cor**2))
+ct_les6_hblock_cor = thrust_les6_hblock_cor/(0.5*(np.pi/4)*(u_inf6_hblock_cor**2))
+ct_les7_hblock_cor = thrust_les7_hblock_cor/(0.5*(np.pi/4)*(u_inf7_hblock_cor**2))
+ct_les8_hblock_cor = thrust_les8_hblock_cor/(0.5*(np.pi/4)*(u_inf8_hblock_cor**2))
+ct_les9_hblock_cor = thrust_les9_hblock_cor/(0.5*(np.pi/4)*(u_inf9_hblock_cor**2))
+ct_les10_hblock_cor = thrust_les10_hblock_cor/(0.5*(np.pi/4)*(u_inf10_hblock_cor**2))
+ct_les11_hblock_cor = thrust_les11_hblock_cor/(0.5*(np.pi/4)*(u_inf11_hblock_cor**2))
+ct_les12_hblock_cor = thrust_les12_hblock_cor/(0.5*(np.pi/4)*(u_inf12_hblock_cor**2))
+ct_les13_hblock_cor = thrust_les13_hblock_cor/(0.5*(np.pi/4)*(u_inf13_hblock_cor**2))
+ct_les14_hblock_cor = thrust_les14_hblock_cor/(0.5*(np.pi/4)*(u_inf14_hblock_cor**2))
+ct_les15_hblock_cor = thrust_les15_hblock_cor/(0.5*(np.pi/4)*(u_inf15_hblock_cor**2))
+ct_les16_hblock_cor = thrust_les16_hblock_cor/(0.5*(np.pi/4)*(u_inf16_hblock_cor**2))
+ct_les17_hblock_cor = thrust_les17_hblock_cor/(0.5*(np.pi/4)*(u_inf17_hblock_cor**2))
 
 #Induction Factors
 #Uncorrected
@@ -807,43 +1210,43 @@ a_les15_cor = 1-np.cbrt((p_les15_cor/(0.5*(np.pi/4)*Ctprime15)))
 a_les16_cor = 1-np.cbrt((p_les16_cor/(0.5*(np.pi/4)*Ctprime16)))
 a_les17_cor = 1-np.cbrt((p_les17_cor/(0.5*(np.pi/4)*Ctprime17)))
 
-#Blocked, No Correction
-a_les1_block = 1-np.cbrt((p_les1_block/(0.5*(np.pi/4)*Ctprime1)))
-a_les2_block = 1-np.cbrt((p_les2_block/(0.5*(np.pi/4)*Ctprime2)))
-a_les3_block = 1-np.cbrt((p_les3_block/(0.5*(np.pi/4)*Ctprime3)))
-a_les4_block = 1-np.cbrt((p_les4_block/(0.5*(np.pi/4)*Ctprime4)))
-a_les5_block = 1-np.cbrt((p_les5_block/(0.5*(np.pi/4)*Ctprime5)))
-a_les6_block = 1-np.cbrt((p_les6_block/(0.5*(np.pi/4)*Ctprime6)))
-a_les7_block = 1-np.cbrt((p_les7_block/(0.5*(np.pi/4)*Ctprime7)))
-a_les8_block = 1-np.cbrt((p_les8_block/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_block = 1-np.cbrt((p_les9_block/(0.5*(np.pi/4)*Ctprime9)))
-a_les10_block = 1-np.cbrt((p_les10_block/(0.5*(np.pi/4)*Ctprime10)))
-a_les11_block = 1-np.cbrt((p_les11_block/(0.5*(np.pi/4)*Ctprime11)))
-a_les12_block = 1-np.cbrt((p_les12_block/(0.5*(np.pi/4)*Ctprime12)))
-a_les13_block = 1-np.cbrt((p_les13_block/(0.5*(np.pi/4)*Ctprime13)))
-a_les14_block = 1-np.cbrt((p_les14_block/(0.5*(np.pi/4)*Ctprime14)))
-a_les15_block = 1-np.cbrt((p_les15_block/(0.5*(np.pi/4)*Ctprime15)))
-a_les16_block = 1-np.cbrt((p_les16_block/(0.5*(np.pi/4)*Ctprime16)))
-a_les17_block = 1-np.cbrt((p_les17_block/(0.5*(np.pi/4)*Ctprime17)))
+# Medium Blocked, No Correction
+a_les1_mblock = 1-np.cbrt((p_les1_mblock/(0.5*(np.pi/4)*Ctprime1)))
+a_les2_mblock = 1-np.cbrt((p_les2_mblock/(0.5*(np.pi/4)*Ctprime2)))
+a_les3_mblock = 1-np.cbrt((p_les3_mblock/(0.5*(np.pi/4)*Ctprime3)))
+a_les4_mblock = 1-np.cbrt((p_les4_mblock/(0.5*(np.pi/4)*Ctprime4)))
+a_les5_mblock = 1-np.cbrt((p_les5_mblock/(0.5*(np.pi/4)*Ctprime5)))
+a_les6_mblock = 1-np.cbrt((p_les6_mblock/(0.5*(np.pi/4)*Ctprime6)))
+a_les7_mblock = 1-np.cbrt((p_les7_mblock/(0.5*(np.pi/4)*Ctprime7)))
+a_les8_mblock = 1-np.cbrt((p_les8_mblock/(0.5*(np.pi/4)*Ctprime8)))
+a_les9_mblock = 1-np.cbrt((p_les9_mblock/(0.5*(np.pi/4)*Ctprime9)))
+a_les10_mblock = 1-np.cbrt((p_les10_mblock/(0.5*(np.pi/4)*Ctprime10)))
+a_les11_mblock = 1-np.cbrt((p_les11_mblock/(0.5*(np.pi/4)*Ctprime11)))
+a_les12_mblock = 1-np.cbrt((p_les12_mblock/(0.5*(np.pi/4)*Ctprime12)))
+a_les13_mblock = 1-np.cbrt((p_les13_mblock/(0.5*(np.pi/4)*Ctprime13)))
+a_les14_mblock = 1-np.cbrt((p_les14_mblock/(0.5*(np.pi/4)*Ctprime14)))
+a_les15_mblock = 1-np.cbrt((p_les15_mblock/(0.5*(np.pi/4)*Ctprime15)))
+a_les16_mblock = 1-np.cbrt((p_les16_mblock/(0.5*(np.pi/4)*Ctprime16)))
+a_les17_mblock = 1-np.cbrt((p_les17_mblock/(0.5*(np.pi/4)*Ctprime17)))
 
-#Blocked, Corrected
-a_les1_block_cor = 1-np.cbrt((p_les1_block_cor/(0.5*(np.pi/4)*Ctprime1)))
-a_les2_block_cor = 1-np.cbrt((p_les2_block_cor/(0.5*(np.pi/4)*Ctprime2)))
-a_les3_block_cor = 1-np.cbrt((p_les3_block_cor/(0.5*(np.pi/4)*Ctprime3)))
-a_les4_block_cor = 1-np.cbrt((p_les4_block_cor/(0.5*(np.pi/4)*Ctprime4)))
-a_les5_block_cor = 1-np.cbrt((p_les5_block_cor/(0.5*(np.pi/4)*Ctprime5)))
-a_les6_block_cor = 1-np.cbrt((p_les6_block_cor/(0.5*(np.pi/4)*Ctprime6)))
-a_les7_block_cor = 1-np.cbrt((p_les7_block_cor/(0.5*(np.pi/4)*Ctprime7)))
-a_les8_block_cor = 1-np.cbrt((p_les8_block_cor/(0.5*(np.pi/4)*Ctprime8)))
-a_les9_block_cor = 1-np.cbrt((p_les9_block_cor/(0.5*(np.pi/4)*Ctprime9)))
-a_les10_block_cor = 1-np.cbrt((p_les10_block_cor/(0.5*(np.pi/4)*Ctprime10)))
-a_les11_block_cor = 1-np.cbrt((p_les11_block_cor/(0.5*(np.pi/4)*Ctprime11)))
-a_les12_block_cor = 1-np.cbrt((p_les12_block_cor/(0.5*(np.pi/4)*Ctprime12)))
-a_les13_block_cor = 1-np.cbrt((p_les13_block_cor/(0.5*(np.pi/4)*Ctprime13)))
-a_les14_block_cor = 1-np.cbrt((p_les14_block_cor/(0.5*(np.pi/4)*Ctprime14)))
-a_les15_block_cor = 1-np.cbrt((p_les15_block_cor/(0.5*(np.pi/4)*Ctprime15)))
-a_les16_block_cor = 1-np.cbrt((p_les16_block_cor/(0.5*(np.pi/4)*Ctprime16)))
-a_les17_block_cor = 1-np.cbrt((p_les17_block_cor/(0.5*(np.pi/4)*Ctprime17)))
+# Medium Blocked, Corrected
+a_les1_block_cor = 1-np.cbrt((p_les1_mblock_cor/(0.5*(np.pi/4)*Ctprime1)))
+a_les2_block_cor = 1-np.cbrt((p_les2_mblock_cor/(0.5*(np.pi/4)*Ctprime2)))
+a_les3_block_cor = 1-np.cbrt((p_les3_mblock_cor/(0.5*(np.pi/4)*Ctprime3)))
+a_les4_block_cor = 1-np.cbrt((p_les4_mblock_cor/(0.5*(np.pi/4)*Ctprime4)))
+a_les5_block_cor = 1-np.cbrt((p_les5_mblock_cor/(0.5*(np.pi/4)*Ctprime5)))
+a_les6_block_cor = 1-np.cbrt((p_les6_mblock_cor/(0.5*(np.pi/4)*Ctprime6)))
+a_les7_block_cor = 1-np.cbrt((p_les7_mblock_cor/(0.5*(np.pi/4)*Ctprime7)))
+a_les8_block_cor = 1-np.cbrt((p_les8_mblock_cor/(0.5*(np.pi/4)*Ctprime8)))
+a_les9_block_cor = 1-np.cbrt((p_les9_mblock_cor/(0.5*(np.pi/4)*Ctprime9)))
+a_les10_block_cor = 1-np.cbrt((p_les10_mblock_cor/(0.5*(np.pi/4)*Ctprime10)))
+a_les11_block_cor = 1-np.cbrt((p_les11_mblock_cor/(0.5*(np.pi/4)*Ctprime11)))
+a_les12_block_cor = 1-np.cbrt((p_les12_mblock_cor/(0.5*(np.pi/4)*Ctprime12)))
+a_les13_block_cor = 1-np.cbrt((p_les13_mblock_cor/(0.5*(np.pi/4)*Ctprime13)))
+a_les14_block_cor = 1-np.cbrt((p_les14_mblock_cor/(0.5*(np.pi/4)*Ctprime14)))
+a_les15_block_cor = 1-np.cbrt((p_les15_mblock_cor/(0.5*(np.pi/4)*Ctprime15)))
+a_les16_block_cor = 1-np.cbrt((p_les16_mblock_cor/(0.5*(np.pi/4)*Ctprime16)))
+a_les17_block_cor = 1-np.cbrt((p_les17_mblock_cor/(0.5*(np.pi/4)*Ctprime17)))
 
 #Array for Theory Compare
 Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
@@ -868,468 +1271,601 @@ for i in range(17):
    ct_t.append(Ctprime_plot[i]*((1-a_t[i])**2))
 
 #Blockage Corrected Theory
-#Uinf Prime, Uncorrected
-u_inf1_prime = (u_inf1_block*((ud_les1_block/u_inf1_block)**2 + (ct_les1_block/4)))/(ud_les1_block/u_inf1_block)
-u_inf2_prime = (u_inf2_block*((ud_les2_block/u_inf2_block)**2 + (ct_les2_block/4) ))/(ud_les2_block/u_inf2_block)
-u_inf3_prime = (u_inf3_block*((ud_les3_block/u_inf3_block)**2 + (ct_les3_block/4)))/(ud_les3_block/u_inf3_block)
-u_inf4_prime = (u_inf4_block*((ud_les4_block/u_inf4_block)**2 + (ct_les4_block/4)))/(ud_les4_block/u_inf4_block)
-u_inf5_prime = (u_inf5_block*((ud_les5_block/u_inf5_block)**2 + (ct_les5_block/4)))/(ud_les5_block/u_inf5_block)
-u_inf6_prime = (u_inf6_block*((ud_les6_block/u_inf6_block)**2 + (ct_les6_block/4)))/(ud_les6_block/u_inf6_block)
-u_inf7_prime = (u_inf7_block*((ud_les7_block/u_inf7_block)**2 + (ct_les7_block/4)))/(ud_les7_block/u_inf7_block)
-u_inf8_prime = (u_inf8_block*((ud_les8_block/u_inf8_block)**2 + (ct_les8_block/4)))/(ud_les8_block/u_inf8_block)
-u_inf9_prime = (u_inf9_block*((ud_les9_block/u_inf9_block)**2 + (ct_les9_block/4)))/(ud_les9_block/u_inf9_block)
-u_inf10_prime = (u_inf10_block*((ud_les10_block/u_inf10_block)**2 + (ct_les10_block/4)))/(ud_les10_block/u_inf10_block)
-u_inf11_prime = (u_inf11_block*((ud_les11_block/u_inf11_block)**2 + (ct_les11_block/4)))/(ud_les11_block/u_inf11_block)
-u_inf12_prime = (u_inf12_block*((ud_les12_block/u_inf12_block)**2 + (ct_les12_block/4)))/(ud_les12_block/u_inf12_block)
-u_inf13_prime = (u_inf13_block*((ud_les13_block/u_inf13_block)**2 + (ct_les13_block/4)))/(ud_les13_block/u_inf13_block)
-u_inf14_prime = (u_inf14_block*((ud_les14_block/u_inf14_block)**2 + (ct_les14_block/4)))/(ud_les14_block/u_inf14_block)
-u_inf15_prime = (u_inf15_block*((ud_les15_block/u_inf15_block)**2 + (ct_les15_block/4)))/(ud_les15_block/u_inf15_block)
-u_inf16_prime = (u_inf16_block*((ud_les16_block/u_inf16_block)**2 + (ct_les16_block/4)))/(ud_les16_block/u_inf16_block)
-u_inf17_prime = (u_inf17_block*((ud_les17_block/u_inf17_block)**2 + (ct_les17_block/4)))/(ud_les17_block/u_inf17_block)
-
-#Uinf Prime, Corrected
-u_inf1_prime_cor = (u_inf1_block_cor*((ud_les1_block_cor/u_inf1_block_cor)**2 + (ct_les1_block_cor/4)))/(ud_les1_block_cor/u_inf1_block_cor)
-u_inf2_prime_cor = (u_inf2_block_cor*((ud_les2_block_cor/u_inf2_block_cor)**2 + (ct_les2_block_cor/4)))/(ud_les2_block_cor/u_inf2_block_cor)
-u_inf3_prime_cor = (u_inf3_block_cor*((ud_les3_block_cor/u_inf3_block_cor)**2 + (ct_les3_block_cor/4)))/(ud_les3_block_cor/u_inf3_block_cor)
-u_inf4_prime_cor = (u_inf4_block_cor*((ud_les4_block_cor/u_inf4_block_cor)**2 + (ct_les4_block_cor/4)))/(ud_les4_block_cor/u_inf4_block_cor)
-u_inf5_prime_cor = (u_inf5_block_cor*((ud_les5_block_cor/u_inf5_block_cor)**2 + (ct_les5_block_cor/4)))/(ud_les5_block_cor/u_inf5_block_cor)
-u_inf6_prime_cor = (u_inf6_block_cor*((ud_les6_block_cor/u_inf6_block_cor)**2 + (ct_les6_block_cor/4)))/(ud_les6_block_cor/u_inf6_block_cor)
-u_inf7_prime_cor = (u_inf7_block_cor*((ud_les7_block_cor/u_inf7_block_cor)**2 + (ct_les7_block_cor/4)))/(ud_les7_block_cor/u_inf7_block_cor)
-u_inf8_prime_cor = (u_inf8_block_cor*((ud_les8_block_cor/u_inf8_block_cor)**2 + (ct_les8_block_cor/4)))/(ud_les8_block_cor/u_inf8_block_cor)
-u_inf9_prime_cor = (u_inf9_block_cor*((ud_les9_block_cor/u_inf9_block_cor)**2 + (ct_les9_block_cor/4)))/(ud_les9_block_cor/u_inf9_block_cor)
-u_inf10_prime_cor = (u_inf10_block_cor*((ud_les10_block_cor/u_inf10_block_cor)**2 + (ct_les10_block_cor/4)))/(ud_les10_block_cor/u_inf10_block_cor)
-u_inf11_prime_cor = (u_inf11_block_cor*((ud_les11_block_cor/u_inf11_block_cor)**2 + (ct_les11_block_cor/4)))/(ud_les11_block_cor/u_inf11_block_cor)
-u_inf12_prime_cor = (u_inf12_block_cor*((ud_les12_block_cor/u_inf12_block_cor)**2 + (ct_les12_block_cor/4)))/(ud_les12_block_cor/u_inf12_block_cor)
-u_inf13_prime_cor = (u_inf13_block_cor*((ud_les13_block_cor/u_inf13_block_cor)**2 + (ct_les13_block_cor/4)))/(ud_les13_block_cor/u_inf13_block_cor)
-u_inf14_prime_cor = (u_inf14_block_cor*((ud_les14_block_cor/u_inf14_block_cor)**2 + (ct_les14_block_cor/4)))/(ud_les14_block_cor/u_inf14_block_cor)
-u_inf15_prime_cor = (u_inf15_block_cor*((ud_les15_block_cor/u_inf15_block_cor)**2 + (ct_les15_block_cor/4)))/(ud_les15_block_cor/u_inf15_block_cor)
-u_inf16_prime_cor = (u_inf16_block_cor*((ud_les16_block_cor/u_inf16_block_cor)**2 + (ct_les15_block_cor/4)))/(ud_les16_block_cor/u_inf16_block_cor)
-u_inf17_prime_cor = (u_inf17_block_cor*((ud_les17_block_cor/u_inf17_block_cor)**2 + (ct_les16_block_cor/4)))/(ud_les17_block_cor/u_inf17_block_cor)
-
-#Cp Prime, Uncorrected
-cp_prime1 = cp_les1_block*((u_inf1_block/u_inf1_prime)**3)
-cp_prime2 = cp_les2_block*((u_inf2_block/u_inf2_prime)**3)
-cp_prime3 = cp_les3_block*((u_inf3_block/u_inf3_prime)**3)
-cp_prime4 = cp_les4_block*((u_inf4_block/u_inf4_prime)**3)
-cp_prime5 = cp_les5_block*((u_inf5_block/u_inf5_prime)**3)
-cp_prime6 = cp_les6_block*((u_inf6_block/u_inf6_prime)**3)
-cp_prime7 = cp_les7_block*((u_inf7_block/u_inf7_prime)**3)
-cp_prime8 = cp_les8_block*((u_inf8_block/u_inf8_prime)**3)
-cp_prime9 = cp_les9_block*((u_inf9_block/u_inf9_prime)**3)
-cp_prime10 = cp_les10_block*((u_inf10_block/u_inf10_prime)**3)
-cp_prime11 = cp_les11_block*((u_inf11_block/u_inf11_prime)**3)
-cp_prime12 = cp_les12_block*((u_inf12_block/u_inf12_prime)**3)
-cp_prime13 = cp_les13_block*((u_inf13_block/u_inf13_prime)**3)
-cp_prime14 = cp_les14_block*((u_inf14_block/u_inf14_prime)**3)
-cp_prime15 = cp_les15_block*((u_inf15_block/u_inf15_prime)**3)
-cp_prime16 = cp_les16_block*((u_inf16_block/u_inf16_prime)**3)
-cp_prime17 = cp_les17_block*((u_inf17_block/u_inf17_prime)**3)
-
-#Cp Prime, Corrected
-cp_prime1_cor = cp_les1_block_cor*((u_inf1_block_cor/u_inf1_prime_cor)**3)
-cp_prime2_cor = cp_les2_block_cor*((u_inf2_block_cor/u_inf2_prime_cor)**3)
-cp_prime3_cor = cp_les3_block_cor*((u_inf3_block_cor/u_inf3_prime_cor)**3)
-cp_prime4_cor = cp_les4_block_cor*((u_inf4_block_cor/u_inf4_prime_cor)**3)
-cp_prime5_cor = cp_les5_block_cor*((u_inf5_block_cor/u_inf5_prime_cor)**3)
-cp_prime6_cor = cp_les6_block_cor*((u_inf6_block_cor/u_inf6_prime_cor)**3)
-cp_prime7_cor = cp_les7_block_cor*((u_inf7_block_cor/u_inf7_prime_cor)**3)
-cp_prime8_cor = cp_les8_block_cor*((u_inf8_block_cor/u_inf8_prime_cor)**3)
-cp_prime9_cor = cp_les9_block_cor*((u_inf9_block_cor/u_inf9_prime_cor)**3)
-cp_prime10_cor = cp_les10_block_cor*((u_inf10_block_cor/u_inf10_prime_cor)**3)
-cp_prime11_cor = cp_les11_block_cor*((u_inf11_block_cor/u_inf11_prime_cor)**3)
-cp_prime12_cor = cp_les12_block_cor*((u_inf12_block_cor/u_inf12_prime_cor)**3)
-cp_prime13_cor = cp_les13_block_cor*((u_inf13_block_cor/u_inf13_prime_cor)**3)
-cp_prime14_cor = cp_les14_block_cor*((u_inf14_block_cor/u_inf14_prime_cor)**3)
-cp_prime15_cor = cp_les15_block_cor*((u_inf15_block_cor/u_inf15_prime_cor)**3)
-cp_prime16_cor = cp_les16_block_cor*((u_inf16_block_cor/u_inf16_prime_cor)**3)
-cp_prime17_cor = cp_les17_block_cor*((u_inf17_block_cor/u_inf17_prime_cor)**3)
-
-#Ct Prime, Uncorrected
-ct_prime1 = ct_les1_block*((u_inf1_block/u_inf1_prime)**2)
-ct_prime2 = ct_les2_block*((u_inf2_block/u_inf2_prime)**2)
-ct_prime3 = ct_les3_block*((u_inf3_block/u_inf3_prime)**2)
-ct_prime4 = ct_les4_block*((u_inf4_block/u_inf4_prime)**2)
-ct_prime5 = ct_les5_block*((u_inf5_block/u_inf5_prime)**2)
-ct_prime6 = ct_les6_block*((u_inf6_block/u_inf6_prime)**2)
-ct_prime7 = ct_les7_block*((u_inf7_block/u_inf7_prime)**2)
-ct_prime8 = ct_les8_block*((u_inf8_block/u_inf8_prime)**2)
-ct_prime9 = ct_les9_block*((u_inf9_block/u_inf9_prime)**2)
-ct_prime10 = ct_les10_block*((u_inf10_block/u_inf10_prime)**2)
-ct_prime11 = ct_les11_block*((u_inf11_block/u_inf11_prime)**2)
-ct_prime12 = ct_les12_block*((u_inf12_block/u_inf12_prime)**2)
-ct_prime13 = ct_les13_block*((u_inf13_block/u_inf13_prime)**2)
-ct_prime14 = ct_les14_block*((u_inf14_block/u_inf14_prime)**2)
-ct_prime15 = ct_les15_block*((u_inf15_block/u_inf15_prime)**2)
-ct_prime16 = ct_les16_block*((u_inf16_block/u_inf16_prime)**2)
-ct_prime17 = ct_les17_block*((u_inf17_block/u_inf17_prime)**2)
-
-#Ct Prime, Corrected
-ct_prime1_cor = ct_les1_block_cor*((u_inf1_block_cor/u_inf1_prime_cor)**2)
-ct_prime2_cor = ct_les2_block_cor*((u_inf2_block_cor/u_inf2_prime_cor)**2)
-ct_prime3_cor = ct_les3_block_cor*((u_inf3_block_cor/u_inf3_prime_cor)**2)
-ct_prime4_cor = ct_les4_block_cor*((u_inf4_block_cor/u_inf4_prime_cor)**2)
-ct_prime5_cor = ct_les5_block_cor*((u_inf5_block_cor/u_inf5_prime_cor)**2)
-ct_prime6_cor = ct_les6_block_cor*((u_inf6_block_cor/u_inf6_prime_cor)**2)
-ct_prime7_cor = ct_les7_block_cor*((u_inf7_block_cor/u_inf7_prime_cor)**2)
-ct_prime8_cor = ct_les8_block_cor*((u_inf8_block_cor/u_inf8_prime_cor)**2)
-ct_prime9_cor = ct_les9_block_cor*((u_inf9_block_cor/u_inf9_prime_cor)**2)
-ct_prime10_cor = ct_les10_block_cor*((u_inf10_block_cor/u_inf10_prime_cor)**2)
-ct_prime11_cor = ct_les11_block_cor*((u_inf11_block_cor/u_inf11_prime_cor)**2)
-ct_prime12_cor = ct_les12_block_cor*((u_inf12_block_cor/u_inf12_prime_cor)**2)
-ct_prime13_cor = ct_les13_block_cor*((u_inf13_block_cor/u_inf13_prime_cor)**2)
-ct_prime14_cor = ct_les14_block_cor*((u_inf14_block_cor/u_inf14_prime_cor)**2)
-ct_prime15_cor = ct_les15_block_cor*((u_inf15_block_cor/u_inf15_prime_cor)**2)
-ct_prime16_cor = ct_les16_block_cor*((u_inf16_block_cor/u_inf16_prime_cor)**2)
-ct_prime17_cor = ct_les17_block_cor*((u_inf17_block_cor/u_inf17_prime_cor)**2)
-
-
-#Unblicked Velocity Fields
-#Corrected
-ds1_u = sim1.slice(field_terms = 'u', ylim = 5)
-ds1_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0000')
-
-ds2_u = sim2.slice(field_terms = 'u', ylim = 5)
-ds2_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0001')
-
-ds3_u = sim3.slice(field_terms = 'u', ylim = 5)
-ds3_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0002')
-
-ds4_u = sim4.slice(field_terms = 'u', ylim = 5)
-ds4_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0003')
-
-ds5_u = sim5.slice(field_terms = 'u', ylim = 5)
-ds5_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0004')
-
-ds6_u = sim6.slice(field_terms = 'u', ylim = 5)
-ds6_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0005')
-
-ds7_u = sim7.slice(field_terms = 'u', ylim = 5)
-ds7_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0006')
-
-ds8_u = sim8.slice(field_terms = 'u', ylim = 5)
-ds8_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0007')
-
-ds9_u = sim9.slice(field_terms = 'u', ylim = 5)
-ds9_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0008')
-
-ds10_u = sim10.slice(field_terms = 'u', ylim = 5)
-ds10_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0009')
-
-ds11_u = sim11.slice(field_terms = 'u', ylim = 5)
-ds11_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0010')
-
-ds12_u = sim12.slice(field_terms = 'u', ylim = 5)
-ds12_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0011')
-
-ds13_u = sim13.slice(field_terms = 'u', ylim = 5)
-ds13_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0012')
-
-ds14_u = sim14.slice(field_terms = 'u', ylim = 5)
-ds14_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0013')
-
-ds15_u = sim15.slice(field_terms = 'u', ylim = 5)
-ds15_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0014')
-
-ds16_u = sim16.slice(field_terms = 'u', ylim = 5)
-ds16_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0015')
-
-ds17_u = sim17.slice(field_terms = 'u', ylim = 5)
-ds17_u['u'].imshow()
-plt.savefig('./u_field_U_0017_Sim_0016')
-
-#Corrected
-ds1_u_cor = sim1_cor.slice(field_terms = 'u', ylim = 5)
-ds1_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0000')
-
-ds2_u_cor = sim2_cor.slice(field_terms = 'u', ylim = 5)
-ds2_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0001')
-
-ds3_u_cor = sim3_cor.slice(field_terms = 'u', ylim = 5)
-ds3_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0002')
-
-ds4_u_cor = sim4_cor.slice(field_terms = 'u', ylim = 5)
-ds4_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0003')
-
-ds5_u_cor = sim5_cor.slice(field_terms = 'u', ylim = 5)
-ds5_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0004')
-
-ds6_u_cor = sim6_cor.slice(field_terms = 'u', ylim = 5)
-ds6_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0005')
-
-ds7_u_cor = sim7_cor.slice(field_terms = 'u', ylim = 5)
-ds7_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0006')
-
-ds8_u_cor = sim8_cor.slice(field_terms = 'u', ylim = 5)
-ds8_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0007')
-
-ds9_u_cor = sim9_cor.slice(field_terms = 'u', ylim = 5)
-ds9_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0008')
-
-ds10_u_cor = sim10_cor.slice(field_terms = 'u', ylim = 5)
-ds10_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0009')
-
-ds11_u_cor = sim11_cor.slice(field_terms = 'u', ylim = 5)
-ds11_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0010')
-
-ds12_u_cor = sim12_cor.slice(field_terms = 'u', ylim = 5)
-ds12_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0011')
-
-ds13_u_cor = sim13_cor.slice(field_terms = 'u', ylim = 5)
-ds13_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0012')
-
-ds14_u_cor = sim14_cor.slice(field_terms = 'u', ylim = 5)
-ds14_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0013')
-
-ds15_u_cor = sim15_cor.slice(field_terms = 'u', ylim = 5)
-ds15_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0014')
-
-ds16_u_cor = sim16_cor.slice(field_terms = 'u', ylim = 5)
-ds16_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0015')
-
-ds17_u_cor = sim17_cor.slice(field_terms = 'u', ylim = 5)
-ds17_u_cor['u'].imshow()
-plt.savefig('./u_field_U_0018_Sim_0016')
-
-#Blocked Velocity Fields
-#Corrected
-ds1 = sim1_block.slice(field_terms = 'u', ylim = 5)
-ds1['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0000')
-
-ds2 = sim2_block.slice(field_terms = 'u', ylim = 5)
-ds2['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0001')
-
-ds3 = sim3_block.slice(field_terms = 'u', ylim = 5)
-ds3['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0002')
-
-ds4 = sim4_block.slice(field_terms = 'u', ylim = 5)
-ds4['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0003')
-
-ds5 = sim5_block.slice(field_terms = 'u', ylim = 5)
-ds5['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0004')
-
-ds6 = sim6_block.slice(field_terms = 'u', ylim = 5)
-ds6['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0005')
-
-ds7 = sim7_block.slice(field_terms = 'u', ylim = 5)
-ds7['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0006')
-
-ds8 = sim8_block.slice(field_terms = 'u', ylim = 5)
-ds8['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0007')
-
-ds9 = sim9_block.slice(field_terms = 'u', ylim = 5)
-ds9['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0008')
-
-ds10 = sim10_block.slice(field_terms = 'u', ylim = 5)
-ds10['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0009')
-
-ds11 = sim11_block.slice(field_terms = 'u', ylim = 5)
-ds11['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0010')
-
-ds12 = sim12_block.slice(field_terms = 'u', ylim = 5)
-ds12['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0011')
-
-ds13 = sim13_block.slice(field_terms = 'u', ylim = 5)
-ds13['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0012')
-
-ds14 = sim14_block.slice(field_terms = 'u', ylim = 5)
-ds14['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0013')
-
-ds15 = sim15_block.slice(field_terms = 'u', ylim = 5)
-ds15['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0014')
-
-ds16 = sim16_block.slice(field_terms = 'u', ylim = 5)
-ds16['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0015')
-
-ds17 = sim17_block.slice(field_terms = 'u', ylim = 5)
-ds17['u'].imshow()
-plt.savefig('./u_field_B_0000_Sim_0016')
-
-#Corrected
-ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 5)
-ds1_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0000')
-
-ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 5)
-ds2_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0001')
-
-ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 5)
-ds3_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0002')
-
-ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 5)
-ds4_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0003')
-
-ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 5)
-ds5_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0004')
-
-ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 5)
-ds6_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0005')
-
-ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 5)
-ds7_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0006')
-
-ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 5)
-ds8_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0007')
-
-ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 5)
-ds9_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0008')
-
-ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 5)
-ds10_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0009')
-
-ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 5)
-ds11_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0010')
-
-ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 5)
-ds12_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0011')
-
-ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 5)
-ds13_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0012')
-
-ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 5)
-ds14_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0013')
-
-ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 5)
-ds15_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0014')
-
-ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 5)
-ds16_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0015')
-
-ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 5)
-ds17_cor['u'].imshow()
-plt.savefig('./u_field_B_0001_Sim_0016')
-
-#Print Results for Feed in
-print(f"Cp Prime for -4 Ct Prime and Uncorrected: {cp_prime1}")
-print(f"Cp Prime for -3.5 Ct Prime and Uncorrected: {cp_prime2}")
-print(f"Cp Prime for -3 Ct Prime and Uncorrected: {cp_prime3}")
-print(f"Cp Prime for -2.5 Ct Prime and Uncorrected: {cp_prime4}")
-print(f"Cp Prime for -2 Ct Prime and Uncorrected: {cp_prime5}")
-print(f"Cp Prime for -1.5 Ct Prime and Uncorrected: {cp_prime6}")
-print(f"Cp Prime for -1 Ct Prime and Uncorrected: {cp_prime7}")
-print(f"Cp Prime for -0.5 Ct Prime and Uncorrected: {cp_prime8}")
-print(f"Cp Prime for 0 Ct Prime and Uncorrected: {cp_prime9}")
-print(f"Cp Prime for 0.5 Ct Prime and Uncorrected: {cp_prime10}")
-print(f"Cp Prime for 1 Ct Prime and Uncorrected: {cp_prime11}")
-print(f"Cp Prime for 1.5 Ct Prime and Uncorrected: {cp_prime12}")
-print(f"Cp Prime for 2.0 Ct Prime and Uncorrected: {cp_prime13}")
-print(f"Cp Prime for 2.5 Ct Prime and Uncorrected: {cp_prime14}")
-print(f"Cp Prime for 3 Ct Prime and Uncorrected: {cp_prime15}")
-print(f"Cp Prime for 3.5 Ct Prime and Uncorrected: {cp_prime16}")
-print(f"Cp Prime for 4 Ct Prime and Uncorrected: {cp_prime17}")
-
-print(f"Cp Prime for -4 Ct Prime and Corrected: {cp_prime1_cor}")
-print(f"Cp Prime for -3.5 Ct Prime and Corrected: {cp_prime2_cor}")
-print(f"Cp Prime for -3 Ct Prime and Corrected: {cp_prime3_cor}")
-print(f"Cp Prime for -2.5 Ct Prime and Corrected: {cp_prime4_cor}")
-print(f"Cp Prime for -2 Ct Prime and Corrected: {cp_prime5_cor}")
-print(f"Cp Prime for -1.5 Ct Prime and Corrected: {cp_prime6_cor}")
-print(f"Cp Prime for -1 Ct Prime and Corrected: {cp_prime7_cor}")
-print(f"Cp Prime for -0.5 Ct Prime and Corrected: {cp_prime8_cor}")
-print(f"Cp Prime for 0 Ct Prime and Corrected: {cp_prime9_cor}")
-print(f"Cp Prime for 0.5 Ct Prime and Corrected: {cp_prime10_cor}")
-print(f"Cp Prime for 1 Ct Prime and Corrected: {cp_prime11_cor}")
-print(f"Cp Prime for 1.5 Ct Prime and Corrected: {cp_prime12_cor}")
-print(f"Cp Prime for 2.0 Ct Prime and Corrected: {cp_prime13_cor}")
-print(f"Cp Prime for 2.5 Ct Prime and Corrected: {cp_prime14_cor}")
-print(f"Cp Prime for 3.0 Ct Prime and Corrected: {cp_prime15_cor}")
-print(f"Cp Prime for 3.5 Ct Prime and Corrected: {cp_prime16_cor}")
-print(f"Cp Prime for 4 Ct Prime and Corrected: {cp_prime17_cor}")
-
-print(f"Ct Prime for -4 Ct Prime and Uncorrected: {ct_prime1}")
-print(f"Ct Prime for -3.5 Ct Prime and Uncorrected: {ct_prime2}")
-print(f"Ct Prime for -3 Ct Prime and Uncorrected: {ct_prime3}")
-print(f"Ct Prime for -2.5 Ct Prime and Uncorrected: {ct_prime4}")
-print(f"Ct Prime for -2 Ct Prime and Uncorrected: {ct_prime5}")
-print(f"Ct Prime for -1.5 Ct Prime and Uncorrected: {ct_prime6}")
-print(f"Ct Prime for -1 Ct Prime and Uncorrected: {ct_prime7}")
-print(f"Ct Prime for -0.5 Ct Prime and Uncorrected: {ct_prime8}")
-print(f"Ct Prime for 0 Ct Prime and Uncorrected: {ct_prime9}")
-print(f"Ct Prime for 0.5 Ct Prime and Uncorrected: {ct_prime10}")
-print(f"Ct Prime for 1 Ct Prime and Uncorrected: {ct_prime11}")
-print(f"Ct Prime for 1.5 Ct Prime and Uncorrected: {ct_prime12}")
-print(f"Ct Prime for 2.0 Ct Prime and Uncorrected: {ct_prime13}")
-print(f"Ct Prime for 2.5 Ct Prime and Uncorrected: {ct_prime14}")
-print(f"Ct Prime for 3 Ct Prime and Uncorrected: {ct_prime15}")
-print(f"Ct Prime for 3.5 Ct Prime and Uncorrected: {ct_prime16}")
-print(f"Ct Prime for 4 Ct Prime and Uncorrected: {ct_prime17}")
-
-print(f"Ct Prime for -4 Ct Prime and Corrected: {ct_prime1_cor}")
-print(f"Ct Prime for -3.5 Ct Prime and Corrected: {ct_prime2_cor}")
-print(f"Ct Prime for -3 Ct Prime and Corrected: {ct_prime3_cor}")
-print(f"Ct Prime for -2.5 Ct Prime and Corrected: {ct_prime4_cor}")
-print(f"Ct Prime for -2 Ct Prime and Corrected: {ct_prime5_cor}")
-print(f"Ct Prime for -1.5 Ct Prime and Corrected: {ct_prime6_cor}")
-print(f"Ct Prime for -1 Ct Prime and Corrected: {ct_prime7_cor}")
-print(f"Ct Prime for -0.5 Ct Prime and Corrected: {ct_prime8_cor}")
-print(f"Ct Prime for 0 Ct Prime and Corrected: {ct_prime9_cor}")
-print(f"Ct Prime for 0.5 Ct Prime and Corrected: {ct_prime10_cor}")
-print(f"Ct Prime for 1 Ct Prime and Corrected: {ct_prime11_cor}")
-print(f"Ct Prime for 1.5 Ct Prime and Corrected: {ct_prime12_cor}")
-print(f"Ct Prime for 2.0 Ct Prime and Corrected: {ct_prime13_cor}")
-print(f"Ct Prime for 2.5 Ct Prime and Corrected: {ct_prime14_cor}")
-print(f"Ct Prime for 3.0 Ct Prime and Corrected: {ct_prime15_cor}")
-print(f"Ct Prime for 3.5 Ct Prime and Corrected: {ct_prime16_cor}")
-print(f"Ct Prime for 4 Ct Prime and Corrected: {ct_prime17_cor}")
+# Medium Uinf Prime, Uncorrected
+u_inf1_prime_m = (u_inf1_mblock*((ud_les1_mblock/u_inf1_mblock)**2 + (ct_les1_mblock/4)))/(ud_les1_mblock/u_inf1_mblock)
+u_inf2_prime_m = (u_inf2_mblock*((ud_les2_mblock/u_inf2_mblock)**2 + (ct_les2_mblock/4) ))/(ud_les2_mblock/u_inf2_mblock)
+u_inf3_prime_m = (u_inf3_mblock*((ud_les3_mblock/u_inf3_mblock)**2 + (ct_les3_mblock/4)))/(ud_les3_mblock/u_inf3_mblock)
+u_inf4_prime_m = (u_inf4_mblock*((ud_les4_mblock/u_inf4_mblock)**2 + (ct_les4_mblock/4)))/(ud_les4_mblock/u_inf4_mblock)
+u_inf5_prime_m = (u_inf5_mblock*((ud_les5_mblock/u_inf5_mblock)**2 + (ct_les5_mblock/4)))/(ud_les5_mblock/u_inf5_mblock)
+u_inf6_prime_m = (u_inf6_mblock*((ud_les6_mblock/u_inf6_mblock)**2 + (ct_les6_mblock/4)))/(ud_les6_mblock/u_inf6_mblock)
+u_inf7_prime_m = (u_inf7_mblock*((ud_les7_mblock/u_inf7_mblock)**2 + (ct_les7_mblock/4)))/(ud_les7_mblock/u_inf7_mblock)
+u_inf8_prime_m = (u_inf8_mblock*((ud_les8_mblock/u_inf8_mblock)**2 + (ct_les8_mblock/4)))/(ud_les8_mblock/u_inf8_mblock)
+u_inf9_prime_m = (u_inf9_mblock*((ud_les9_mblock/u_inf9_mblock)**2 + (ct_les9_mblock/4)))/(ud_les9_mblock/u_inf9_mblock)
+u_inf10_prime_m = (u_inf10_mblock*((ud_les10_mblock/u_inf10_mblock)**2 + (ct_les10_mblock/4)))/(ud_les10_mblock/u_inf10_mblock)
+u_inf11_prime_m = (u_inf11_mblock*((ud_les11_mblock/u_inf11_mblock)**2 + (ct_les11_mblock/4)))/(ud_les11_mblock/u_inf11_mblock)
+u_inf12_prime_m = (u_inf12_mblock*((ud_les12_mblock/u_inf12_mblock)**2 + (ct_les12_mblock/4)))/(ud_les12_mblock/u_inf12_mblock)
+u_inf13_prime_m = (u_inf13_mblock*((ud_les13_mblock/u_inf13_mblock)**2 + (ct_les13_mblock/4)))/(ud_les13_mblock/u_inf13_mblock)
+u_inf14_prime_m = (u_inf14_mblock*((ud_les14_mblock/u_inf14_mblock)**2 + (ct_les14_mblock/4)))/(ud_les14_mblock/u_inf14_mblock)
+u_inf15_prime_m = (u_inf15_mblock*((ud_les15_mblock/u_inf15_mblock)**2 + (ct_les15_mblock/4)))/(ud_les15_mblock/u_inf15_mblock)
+u_inf16_prime_m = (u_inf16_mblock*((ud_les16_mblock/u_inf16_mblock)**2 + (ct_les16_mblock/4)))/(ud_les16_mblock/u_inf16_mblock)
+u_inf17_prime_m = (u_inf17_mblock*((ud_les17_mblock/u_inf17_mblock)**2 + (ct_les17_mblock/4)))/(ud_les17_mblock/u_inf17_mblock)
+
+# Medium Uinf Prime, Corrected
+u_inf1_prime_mcor = (u_inf1_mblock_cor*((ud_les1_mblock_cor/u_inf1_mblock_cor)**2 + (ct_les1_mblock_cor/4)))/(ud_les1_mblock_cor/u_inf1_mblock_cor)
+u_inf2_prime_mcor = (u_inf2_mblock_cor*((ud_les2_mblock_cor/u_inf2_mblock_cor)**2 + (ct_les2_mblock_cor/4)))/(ud_les2_mblock_cor/u_inf2_mblock_cor)
+u_inf3_prime_mcor = (u_inf3_mblock_cor*((ud_les3_mblock_cor/u_inf3_mblock_cor)**2 + (ct_les3_mblock_cor/4)))/(ud_les3_mblock_cor/u_inf3_mblock_cor)
+u_inf4_prime_mcor = (u_inf4_mblock_cor*((ud_les4_mblock_cor/u_inf4_mblock_cor)**2 + (ct_les4_mblock_cor/4)))/(ud_les4_mblock_cor/u_inf4_mblock_cor)
+u_inf5_prime_mcor = (u_inf5_mblock_cor*((ud_les5_mblock_cor/u_inf5_mblock_cor)**2 + (ct_les5_mblock_cor/4)))/(ud_les5_mblock_cor/u_inf5_mblock_cor)
+u_inf6_prime_mcor = (u_inf6_mblock_cor*((ud_les6_mblock_cor/u_inf6_mblock_cor)**2 + (ct_les6_mblock_cor/4)))/(ud_les6_mblock_cor/u_inf6_mblock_cor)
+u_inf7_prime_mcor = (u_inf7_mblock_cor*((ud_les7_mblock_cor/u_inf7_mblock_cor)**2 + (ct_les7_mblock_cor/4)))/(ud_les7_mblock_cor/u_inf7_mblock_cor)
+u_inf8_prime_mcor = (u_inf8_mblock_cor*((ud_les8_mblock_cor/u_inf8_mblock_cor)**2 + (ct_les8_mblock_cor/4)))/(ud_les8_mblock_cor/u_inf8_mblock_cor)
+u_inf9_prime_mcor = (u_inf9_mblock_cor*((ud_les9_mblock_cor/u_inf9_mblock_cor)**2 + (ct_les9_mblock_cor/4)))/(ud_les9_mblock_cor/u_inf9_mblock_cor)
+u_inf10_prime_mcor = (u_inf10_mblock_cor*((ud_les10_mblock_cor/u_inf10_mblock_cor)**2 + (ct_les10_mblock_cor/4)))/(ud_les10_mblock_cor/u_inf10_mblock_cor)
+u_inf11_prime_mcor = (u_inf11_mblock_cor*((ud_les11_mblock_cor/u_inf11_mblock_cor)**2 + (ct_les11_mblock_cor/4)))/(ud_les11_mblock_cor/u_inf11_mblock_cor)
+u_inf12_prime_mcor = (u_inf12_mblock_cor*((ud_les12_mblock_cor/u_inf12_mblock_cor)**2 + (ct_les12_mblock_cor/4)))/(ud_les12_mblock_cor/u_inf12_mblock_cor)
+u_inf13_prime_mcor = (u_inf13_mblock_cor*((ud_les13_mblock_cor/u_inf13_mblock_cor)**2 + (ct_les13_mblock_cor/4)))/(ud_les13_mblock_cor/u_inf13_mblock_cor)
+u_inf14_prime_mcor = (u_inf14_mblock_cor*((ud_les14_mblock_cor/u_inf14_mblock_cor)**2 + (ct_les14_mblock_cor/4)))/(ud_les14_mblock_cor/u_inf14_mblock_cor)
+u_inf15_prime_mcor = (u_inf15_mblock_cor*((ud_les15_mblock_cor/u_inf15_mblock_cor)**2 + (ct_les15_mblock_cor/4)))/(ud_les15_mblock_cor/u_inf15_mblock_cor)
+u_inf16_prime_mcor = (u_inf16_mblock_cor*((ud_les16_mblock_cor/u_inf16_mblock_cor)**2 + (ct_les15_mblock_cor/4)))/(ud_les16_mblock_cor/u_inf16_mblock_cor)
+u_inf17_prime_mcor = (u_inf17_mblock_cor*((ud_les17_mblock_cor/u_inf17_mblock_cor)**2 + (ct_les16_mblock_cor/4)))/(ud_les17_mblock_cor/u_inf17_mblock_cor)
+
+# High Uinf Prime, Uncorrected
+u_inf1_prime_h = (u_inf1_hblock*((ud_les1_hblock/u_inf1_hblock)**2 + (ct_les1_hblock/4)))/(ud_les1_hblock/u_inf1_hblock)
+u_inf2_prime_h = (u_inf2_hblock*((ud_les2_hblock/u_inf2_hblock)**2 + (ct_les2_hblock/4) ))/(ud_les2_hblock/u_inf2_hblock)
+u_inf3_prime_h = (u_inf3_hblock*((ud_les3_hblock/u_inf3_hblock)**2 + (ct_les3_hblock/4)))/(ud_les3_hblock/u_inf3_hblock)
+u_inf4_prime_h = (u_inf4_hblock*((ud_les4_hblock/u_inf4_hblock)**2 + (ct_les4_hblock/4)))/(ud_les4_hblock/u_inf4_hblock)
+u_inf5_prime_h = (u_inf5_hblock*((ud_les5_hblock/u_inf5_hblock)**2 + (ct_les5_hblock/4)))/(ud_les5_hblock/u_inf5_hblock)
+u_inf6_prime_h = (u_inf6_hblock*((ud_les6_hblock/u_inf6_hblock)**2 + (ct_les6_hblock/4)))/(ud_les6_hblock/u_inf6_hblock)
+u_inf7_prime_h = (u_inf7_hblock*((ud_les7_hblock/u_inf7_hblock)**2 + (ct_les7_hblock/4)))/(ud_les7_hblock/u_inf7_hblock)
+u_inf8_prime_h = (u_inf8_hblock*((ud_les8_hblock/u_inf8_hblock)**2 + (ct_les8_hblock/4)))/(ud_les8_hblock/u_inf8_hblock)
+u_inf9_prime_h = (u_inf9_hblock*((ud_les9_hblock/u_inf9_hblock)**2 + (ct_les9_hblock/4)))/(ud_les9_hblock/u_inf9_hblock)
+u_inf10_prime_h = (u_inf10_hblock*((ud_les10_hblock/u_inf10_hblock)**2 + (ct_les10_hblock/4)))/(ud_les10_hblock/u_inf10_hblock)
+u_inf11_prime_h = (u_inf11_hblock*((ud_les11_hblock/u_inf11_hblock)**2 + (ct_les11_hblock/4)))/(ud_les11_hblock/u_inf11_hblock)
+u_inf12_prime_h = (u_inf12_hblock*((ud_les12_hblock/u_inf12_hblock)**2 + (ct_les12_hblock/4)))/(ud_les12_hblock/u_inf12_hblock)
+u_inf13_prime_h = (u_inf13_hblock*((ud_les13_hblock/u_inf13_hblock)**2 + (ct_les13_hblock/4)))/(ud_les13_hblock/u_inf13_hblock)
+u_inf14_prime_h = (u_inf14_hblock*((ud_les14_hblock/u_inf14_hblock)**2 + (ct_les14_hblock/4)))/(ud_les14_hblock/u_inf14_hblock)
+u_inf15_prime_h = (u_inf15_hblock*((ud_les15_hblock/u_inf15_hblock)**2 + (ct_les15_hblock/4)))/(ud_les15_hblock/u_inf15_hblock)
+u_inf16_prime_h = (u_inf16_hblock*((ud_les16_hblock/u_inf16_hblock)**2 + (ct_les16_hblock/4)))/(ud_les16_hblock/u_inf16_hblock)
+u_inf17_prime_h = (u_inf17_hblock*((ud_les17_hblock/u_inf17_hblock)**2 + (ct_les17_hblock/4)))/(ud_les17_hblock/u_inf17_hblock)
+
+# High Uinf Prime, Corrected
+u_inf1_prime_hcor = (u_inf1_hblock_cor*((ud_les1_hblock_cor/u_inf1_hblock_cor)**2 + (ct_les1_hblock_cor/4)))/(ud_les1_hblock_cor/u_inf1_hblock_cor)
+u_inf2_prime_hcor = (u_inf2_hblock_cor*((ud_les2_hblock_cor/u_inf2_hblock_cor)**2 + (ct_les2_hblock_cor/4)))/(ud_les2_hblock_cor/u_inf2_hblock_cor)
+u_inf3_prime_hcor = (u_inf3_hblock_cor*((ud_les3_hblock_cor/u_inf3_hblock_cor)**2 + (ct_les3_hblock_cor/4)))/(ud_les3_hblock_cor/u_inf3_hblock_cor)
+u_inf4_prime_hcor = (u_inf4_hblock_cor*((ud_les4_hblock_cor/u_inf4_hblock_cor)**2 + (ct_les4_hblock_cor/4)))/(ud_les4_hblock_cor/u_inf4_hblock_cor)
+u_inf5_prime_hcor = (u_inf5_hblock_cor*((ud_les5_hblock_cor/u_inf5_hblock_cor)**2 + (ct_les5_hblock_cor/4)))/(ud_les5_hblock_cor/u_inf5_hblock_cor)
+u_inf6_prime_hcor = (u_inf6_hblock_cor*((ud_les6_hblock_cor/u_inf6_hblock_cor)**2 + (ct_les6_hblock_cor/4)))/(ud_les6_hblock_cor/u_inf6_hblock_cor)
+u_inf7_prime_hcor = (u_inf7_hblock_cor*((ud_les7_hblock_cor/u_inf7_hblock_cor)**2 + (ct_les7_hblock_cor/4)))/(ud_les7_hblock_cor/u_inf7_hblock_cor)
+u_inf8_prime_hcor = (u_inf8_hblock_cor*((ud_les8_hblock_cor/u_inf8_hblock_cor)**2 + (ct_les8_hblock_cor/4)))/(ud_les8_hblock_cor/u_inf8_hblock_cor)
+u_inf9_prime_hcor = (u_inf9_hblock_cor*((ud_les9_hblock_cor/u_inf9_hblock_cor)**2 + (ct_les9_hblock_cor/4)))/(ud_les9_hblock_cor/u_inf9_hblock_cor)
+u_inf10_prime_hcor = (u_inf10_hblock_cor*((ud_les10_hblock_cor/u_inf10_hblock_cor)**2 + (ct_les10_hblock_cor/4)))/(ud_les10_hblock_cor/u_inf10_hblock_cor)
+u_inf11_prime_hcor = (u_inf11_hblock_cor*((ud_les11_hblock_cor/u_inf11_hblock_cor)**2 + (ct_les11_hblock_cor/4)))/(ud_les11_hblock_cor/u_inf11_hblock_cor)
+u_inf12_prime_hcor = (u_inf12_hblock_cor*((ud_les12_hblock_cor/u_inf12_hblock_cor)**2 + (ct_les12_hblock_cor/4)))/(ud_les12_hblock_cor/u_inf12_hblock_cor)
+u_inf13_prime_hcor = (u_inf13_hblock_cor*((ud_les13_hblock_cor/u_inf13_hblock_cor)**2 + (ct_les13_hblock_cor/4)))/(ud_les13_hblock_cor/u_inf13_hblock_cor)
+u_inf14_prime_hcor = (u_inf14_hblock_cor*((ud_les14_hblock_cor/u_inf14_hblock_cor)**2 + (ct_les14_hblock_cor/4)))/(ud_les14_hblock_cor/u_inf14_hblock_cor)
+u_inf15_prime_hcor = (u_inf15_hblock_cor*((ud_les15_hblock_cor/u_inf15_hblock_cor)**2 + (ct_les15_hblock_cor/4)))/(ud_les15_hblock_cor/u_inf15_hblock_cor)
+u_inf16_prime_hcor = (u_inf16_hblock_cor*((ud_les16_hblock_cor/u_inf16_hblock_cor)**2 + (ct_les15_hblock_cor/4)))/(ud_les16_hblock_cor/u_inf16_hblock_cor)
+u_inf17_prime_hcor = (u_inf17_hblock_cor*((ud_les17_hblock_cor/u_inf17_hblock_cor)**2 + (ct_les16_hblock_cor/4)))/(ud_les17_hblock_cor/u_inf17_hblock_cor)
+
+#Medium Cp Prime, Uncorrected
+cp_prime1_m = cp_les1_mblock*((u_inf1_mblock/u_inf1_prime_m)**3)
+cp_prime2_m = cp_les2_mblock*((u_inf2_mblock/u_inf2_prime_m)**3)
+cp_prime3_m = cp_les3_mblock*((u_inf3_mblock/u_inf3_prime_m)**3)
+cp_prime4_m = cp_les4_mblock*((u_inf4_mblock/u_inf4_prime_m)**3)
+cp_prime5_m = cp_les5_mblock*((u_inf5_mblock/u_inf5_prime_m)**3)
+cp_prime6_m = cp_les6_mblock*((u_inf6_mblock/u_inf6_prime_m)**3)
+cp_prime7_m = cp_les7_mblock*((u_inf7_mblock/u_inf7_prime_m)**3)
+cp_prime8_m = cp_les8_mblock*((u_inf8_mblock/u_inf8_prime_m)**3)
+cp_prime9_m = cp_les9_mblock*((u_inf9_mblock/u_inf9_prime_m)**3)
+cp_prime10_m = cp_les10_mblock*((u_inf10_mblock/u_inf10_prime_m)**3)
+cp_prime11_m = cp_les11_mblock*((u_inf11_mblock/u_inf11_prime_m)**3)
+cp_prime12_m = cp_les12_mblock*((u_inf12_mblock/u_inf12_prime_m)**3)
+cp_prime13_m = cp_les13_mblock*((u_inf13_mblock/u_inf13_prime_m)**3)
+cp_prime14_m = cp_les14_mblock*((u_inf14_mblock/u_inf14_prime_m)**3)
+cp_prime15_m = cp_les15_mblock*((u_inf15_mblock/u_inf15_prime_m)**3)
+cp_prime16_m = cp_les16_mblock*((u_inf16_mblock/u_inf16_prime_m)**3)
+cp_prime17_m = cp_les17_mblock*((u_inf17_mblock/u_inf17_prime_m)**3)
+
+#Medium Cp Prime, Corrected
+cp_prime1_mcor = cp_les1_mblock_cor*((u_inf1_mblock_cor/u_inf1_prime_mcor)**3)
+cp_prime2_mcor = cp_les2_mblock_cor*((u_inf2_mblock_cor/u_inf2_prime_mcor)**3)
+cp_prime3_mcor = cp_les3_mblock_cor*((u_inf3_mblock_cor/u_inf3_prime_mcor)**3)
+cp_prime4_mcor = cp_les4_mblock_cor*((u_inf4_mblock_cor/u_inf4_prime_mcor)**3)
+cp_prime5_mcor = cp_les5_mblock_cor*((u_inf5_mblock_cor/u_inf5_prime_mcor)**3)
+cp_prime6_mcor = cp_les6_mblock_cor*((u_inf6_mblock_cor/u_inf6_prime_mcor)**3)
+cp_prime7_mcor = cp_les7_mblock_cor*((u_inf7_mblock_cor/u_inf7_prime_mcor)**3)
+cp_prime8_mcor = cp_les8_mblock_cor*((u_inf8_mblock_cor/u_inf8_prime_mcor)**3)
+cp_prime9_mcor = cp_les9_mblock_cor*((u_inf9_mblock_cor/u_inf9_prime_mcor)**3)
+cp_prime10_mcor = cp_les10_mblock_cor*((u_inf10_mblock_cor/u_inf10_prime_mcor)**3)
+cp_prime11_mcor = cp_les11_mblock_cor*((u_inf11_mblock_cor/u_inf11_prime_mcor)**3)
+cp_prime12_mcor = cp_les12_mblock_cor*((u_inf12_mblock_cor/u_inf12_prime_mcor)**3)
+cp_prime13_mcor = cp_les13_mblock_cor*((u_inf13_mblock_cor/u_inf13_prime_mcor)**3)
+cp_prime14_mcor = cp_les14_mblock_cor*((u_inf14_mblock_cor/u_inf14_prime_mcor)**3)
+cp_prime15_mcor = cp_les15_mblock_cor*((u_inf15_mblock_cor/u_inf15_prime_mcor)**3)
+cp_prime16_mcor = cp_les16_mblock_cor*((u_inf16_mblock_cor/u_inf16_prime_mcor)**3)
+cp_prime17_mcor = cp_les17_mblock_cor*((u_inf17_mblock_cor/u_inf17_prime_mcor)**3)
+
+#High Cp Prime, Uncorrected
+cp_prime1_h = cp_les1_hblock*((u_inf1_hblock/u_inf1_prime_h)**3)
+cp_prime2_h = cp_les2_hblock*((u_inf2_hblock/u_inf2_prime_h)**3)
+cp_prime3_h = cp_les3_hblock*((u_inf3_hblock/u_inf3_prime_h)**3)
+cp_prime4_h = cp_les4_hblock*((u_inf4_hblock/u_inf4_prime_h)**3)
+cp_prime5_h = cp_les5_hblock*((u_inf5_hblock/u_inf5_prime_h)**3)
+cp_prime6_h = cp_les6_hblock*((u_inf6_hblock/u_inf6_prime_h)**3)
+cp_prime7_h = cp_les7_hblock*((u_inf7_hblock/u_inf7_prime_h)**3)
+cp_prime8_h = cp_les8_hblock*((u_inf8_hblock/u_inf8_prime_h)**3)
+cp_prime9_h = cp_les9_hblock*((u_inf9_hblock/u_inf9_prime_h)**3)
+cp_prime10_h = cp_les10_hblock*((u_inf10_hblock/u_inf10_prime_h)**3)
+cp_prime11_h = cp_les11_hblock*((u_inf11_hblock/u_inf11_prime_h)**3)
+cp_prime12_h = cp_les12_hblock*((u_inf12_hblock/u_inf12_prime_h)**3)
+cp_prime13_h = cp_les13_hblock*((u_inf13_hblock/u_inf13_prime_h)**3)
+cp_prime14_h = cp_les14_hblock*((u_inf14_hblock/u_inf14_prime_h)**3)
+cp_prime15_h = cp_les15_hblock*((u_inf15_hblock/u_inf15_prime_h)**3)
+cp_prime16_h = cp_les16_hblock*((u_inf16_hblock/u_inf16_prime_h)**3)
+cp_prime17_h = cp_les17_hblock*((u_inf17_hblock/u_inf17_prime_h)**3)
+
+#High Cp Prime, Corrected
+cp_prime1_hcor = cp_les1_hblock_cor*((u_inf1_hblock_cor/u_inf1_prime_hcor)**3)
+cp_prime2_hcor = cp_les2_hblock_cor*((u_inf2_hblock_cor/u_inf2_prime_hcor)**3)
+cp_prime3_hcor = cp_les3_hblock_cor*((u_inf3_hblock_cor/u_inf3_prime_hcor)**3)
+cp_prime4_hcor = cp_les4_hblock_cor*((u_inf4_hblock_cor/u_inf4_prime_hcor)**3)
+cp_prime5_hcor = cp_les5_hblock_cor*((u_inf5_hblock_cor/u_inf5_prime_hcor)**3)
+cp_prime6_hcor = cp_les6_hblock_cor*((u_inf6_hblock_cor/u_inf6_prime_hcor)**3)
+cp_prime7_hcor = cp_les7_hblock_cor*((u_inf7_hblock_cor/u_inf7_prime_hcor)**3)
+cp_prime8_hcor = cp_les8_hblock_cor*((u_inf8_hblock_cor/u_inf8_prime_hcor)**3)
+cp_prime9_hcor = cp_les9_hblock_cor*((u_inf9_hblock_cor/u_inf9_prime_hcor)**3)
+cp_prime10_hcor = cp_les10_hblock_cor*((u_inf10_hblock_cor/u_inf10_prime_hcor)**3)
+cp_prime11_hcor = cp_les11_hblock_cor*((u_inf11_hblock_cor/u_inf11_prime_hcor)**3)
+cp_prime12_hcor = cp_les12_hblock_cor*((u_inf12_hblock_cor/u_inf12_prime_hcor)**3)
+cp_prime13_hcor = cp_les13_hblock_cor*((u_inf13_hblock_cor/u_inf13_prime_hcor)**3)
+cp_prime14_hcor = cp_les14_hblock_cor*((u_inf14_hblock_cor/u_inf14_prime_hcor)**3)
+cp_prime15_hcor = cp_les15_hblock_cor*((u_inf15_hblock_cor/u_inf15_prime_hcor)**3)
+cp_prime16_hcor = cp_les16_hblock_cor*((u_inf16_hblock_cor/u_inf16_prime_hcor)**3)
+cp_prime17_hcor = cp_les17_hblock_cor*((u_inf17_hblock_cor/u_inf17_prime_hcor)**3)
+
+# Medium Ct Prime, Uncorrected
+ct_prime1_m = ct_les1_mblock*((u_inf1_mblock/u_inf1_prime_m)**2)
+ct_prime2_m = ct_les2_mblock*((u_inf2_mblock/u_inf2_prime_m)**2)
+ct_prime3_m = ct_les3_mblock*((u_inf3_mblock/u_inf3_prime_m)**2)
+ct_prime4_m = ct_les4_mblock*((u_inf4_mblock/u_inf4_prime_m)**2)
+ct_prime5_m = ct_les5_mblock*((u_inf5_mblock/u_inf5_prime_m)**2)
+ct_prime6_m = ct_les6_mblock*((u_inf6_mblock/u_inf6_prime_m)**2)
+ct_prime7_m = ct_les7_mblock*((u_inf7_mblock/u_inf7_prime_m)**2)
+ct_prime8_m = ct_les8_mblock*((u_inf8_mblock/u_inf8_prime_m)**2)
+ct_prime9_m = ct_les9_mblock*((u_inf9_mblock/u_inf9_prime_m)**2)
+ct_prime10_m = ct_les10_mblock*((u_inf10_mblock/u_inf10_prime_m)**2)
+ct_prime11_m = ct_les11_mblock*((u_inf11_mblock/u_inf11_prime_m)**2)
+ct_prime12_m = ct_les12_mblock*((u_inf12_mblock/u_inf12_prime_m)**2)
+ct_prime13_m = ct_les13_mblock*((u_inf13_mblock/u_inf13_prime_m)**2)
+ct_prime14_m = ct_les14_mblock*((u_inf14_mblock/u_inf14_prime_m)**2)
+ct_prime15_m = ct_les15_mblock*((u_inf15_mblock/u_inf15_prime_m)**2)
+ct_prime16_m = ct_les16_mblock*((u_inf16_mblock/u_inf16_prime_m)**2)
+ct_prime17_m = ct_les17_mblock*((u_inf17_mblock/u_inf17_prime_m)**2)
+
+# Medium Ct Prime, Corrected
+ct_prime1_mcor = ct_les1_mblock_cor*((u_inf1_mblock_cor/u_inf1_prime_mcor)**2)
+ct_prime2_mcor = ct_les2_mblock_cor*((u_inf2_mblock_cor/u_inf2_prime_mcor)**2)
+ct_prime3_mcor = ct_les3_mblock_cor*((u_inf3_mblock_cor/u_inf3_prime_mcor)**2)
+ct_prime4_mcor = ct_les4_mblock_cor*((u_inf4_mblock_cor/u_inf4_prime_mcor)**2)
+ct_prime5_mcor = ct_les5_mblock_cor*((u_inf5_mblock_cor/u_inf5_prime_mcor)**2)
+ct_prime6_mcor = ct_les6_mblock_cor*((u_inf6_mblock_cor/u_inf6_prime_mcor)**2)
+ct_prime7_mcor = ct_les7_mblock_cor*((u_inf7_mblock_cor/u_inf7_prime_mcor)**2)
+ct_prime8_mcor = ct_les8_mblock_cor*((u_inf8_mblock_cor/u_inf8_prime_mcor)**2)
+ct_prime9_mcor = ct_les9_mblock_cor*((u_inf9_mblock_cor/u_inf9_prime_mcor)**2)
+ct_prime10_mcor = ct_les10_mblock_cor*((u_inf10_mblock_cor/u_inf10_prime_mcor)**2)
+ct_prime11_mcor = ct_les11_mblock_cor*((u_inf11_mblock_cor/u_inf11_prime_mcor)**2)
+ct_prime12_mcor = ct_les12_mblock_cor*((u_inf12_mblock_cor/u_inf12_prime_mcor)**2)
+ct_prime13_mcor = ct_les13_mblock_cor*((u_inf13_mblock_cor/u_inf13_prime_mcor)**2)
+ct_prime14_mcor = ct_les14_mblock_cor*((u_inf14_mblock_cor/u_inf14_prime_mcor)**2)
+ct_prime15_mcor = ct_les15_mblock_cor*((u_inf15_mblock_cor/u_inf15_prime_mcor)**2)
+ct_prime16_mcor = ct_les16_mblock_cor*((u_inf16_mblock_cor/u_inf16_prime_mcor)**2)
+ct_prime17_mcor = ct_les17_mblock_cor*((u_inf17_mblock_cor/u_inf17_prime_mcor)**2)
+
+# High Ct Prime, Uncorrected
+ct_prime1_h = ct_les1_hblock*((u_inf1_hblock/u_inf1_prime_h)**2)
+ct_prime2_h = ct_les2_hblock*((u_inf2_hblock/u_inf2_prime_h)**2)
+ct_prime3_h = ct_les3_hblock*((u_inf3_hblock/u_inf3_prime_h)**2)
+ct_prime4_h = ct_les4_hblock*((u_inf4_hblock/u_inf4_prime_h)**2)
+ct_prime5_h = ct_les5_hblock*((u_inf5_hblock/u_inf5_prime_h)**2)
+ct_prime6_h = ct_les6_hblock*((u_inf6_hblock/u_inf6_prime_h)**2)
+ct_prime7_h = ct_les7_hblock*((u_inf7_hblock/u_inf7_prime_h)**2)
+ct_prime8_h = ct_les8_hblock*((u_inf8_hblock/u_inf8_prime_h)**2)
+ct_prime9_h = ct_les9_hblock*((u_inf9_hblock/u_inf9_prime_h)**2)
+ct_prime10_h = ct_les10_hblock*((u_inf10_hblock/u_inf10_prime_h)**2)
+ct_prime11_h = ct_les11_hblock*((u_inf11_hblock/u_inf11_prime_h)**2)
+ct_prime12_h = ct_les12_hblock*((u_inf12_hblock/u_inf12_prime_h)**2)
+ct_prime13_h = ct_les13_hblock*((u_inf13_hblock/u_inf13_prime_h)**2)
+ct_prime14_h = ct_les14_hblock*((u_inf14_hblock/u_inf14_prime_h)**2)
+ct_prime15_h = ct_les15_hblock*((u_inf15_hblock/u_inf15_prime_h)**2)
+ct_prime16_h = ct_les16_hblock*((u_inf16_hblock/u_inf16_prime_h)**2)
+ct_prime17_h = ct_les17_hblock*((u_inf17_hblock/u_inf17_prime_h)**2)
+
+# High Ct Prime, Corrected
+ct_prime1_hcor = ct_les1_hblock_cor*((u_inf1_hblock_cor/u_inf1_prime_hcor)**2)
+ct_prime2_hcor = ct_les2_hblock_cor*((u_inf2_hblock_cor/u_inf2_prime_hcor)**2)
+ct_prime3_hcor = ct_les3_hblock_cor*((u_inf3_hblock_cor/u_inf3_prime_hcor)**2)
+ct_prime4_hcor = ct_les4_hblock_cor*((u_inf4_hblock_cor/u_inf4_prime_hcor)**2)
+ct_prime5_hcor = ct_les5_hblock_cor*((u_inf5_hblock_cor/u_inf5_prime_hcor)**2)
+ct_prime6_hcor = ct_les6_hblock_cor*((u_inf6_hblock_cor/u_inf6_prime_hcor)**2)
+ct_prime7_hcor = ct_les7_hblock_cor*((u_inf7_hblock_cor/u_inf7_prime_hcor)**2)
+ct_prime8_hcor = ct_les8_hblock_cor*((u_inf8_hblock_cor/u_inf8_prime_hcor)**2)
+ct_prime9_hcor = ct_les9_hblock_cor*((u_inf9_hblock_cor/u_inf9_prime_hcor)**2)
+ct_prime10_hcor = ct_les10_hblock_cor*((u_inf10_hblock_cor/u_inf10_prime_hcor)**2)
+ct_prime11_hcor = ct_les11_hblock_cor*((u_inf11_hblock_cor/u_inf11_prime_hcor)**2)
+ct_prime12_hcor = ct_les12_hblock_cor*((u_inf12_hblock_cor/u_inf12_prime_hcor)**2)
+ct_prime13_hcor = ct_les13_hblock_cor*((u_inf13_hblock_cor/u_inf13_prime_hcor)**2)
+ct_prime14_hcor = ct_les14_hblock_cor*((u_inf14_hblock_cor/u_inf14_prime_hcor)**2)
+ct_prime15_hcor = ct_les15_hblock_cor*((u_inf15_hblock_cor/u_inf15_prime_hcor)**2)
+ct_prime16_hcor = ct_les16_hblock_cor*((u_inf16_hblock_cor/u_inf16_prime_hcor)**2)
+ct_prime17_hcor = ct_les17_hblock_cor*((u_inf17_hblock_cor/u_inf17_prime_hcor)**2)
+
+# Arrays to import to compare code
+cp_prime_mblock_gl = [cp_prime1_m, cp_prime2_m, cp_prime3_m, cp_prime4_m, cp_prime5_m, cp_prime6_m, cp_prime6_m, cp_prime7_m, cp_prime8_m, cp_prime9_m, cp_prime10_m, cp_prime11_m, cp_prime11_m, cp_prime12_m, cp_prime13_m, cp_prime14_m, cp_prime15_m, cp_prime16_m, cp_prime17_m ]
+cp_prime_mblock_cor_gl = [cp_prime1_mcor, cp_prime2_mcor, cp_prime3_mcor, cp_prime4_mcor, cp_prime5_mcor, cp_prime6_mcor, cp_prime7_mcor, cp_prime8_mcor, cp_prime9_mcor, cp_prime10_mcor, cp_prime11_mcor, cp_prime12_mcor, cp_prime13_mcor, cp_prime14_mcor, cp_prime15_mcor, cp_prime16_mcor, cp_prime17_mcor]
+cp_prime_hblock_gl = [cp_prime1_h, cp_prime2_h, cp_prime3_h, cp_prime4_h, cp_prime5_h, cp_prime6_h, cp_prime7_h, cp_prime8_h, cp_prime9_h, cp_prime10_h, cp_prime11_h, cp_prime12_h, cp_prime13_h, cp_prime14_h, cp_prime15_h, cp_prime16_h, cp_prime17_h]
+cp_prime_hblock_cor_gl = [cp_prime1_hcor, cp_prime2_hcor, cp_prime3_hcor, cp_prime4_hcor, cp_prime5_hcor, cp_prime6_hcor, cp_prime7_hcor, cp_prime8_hcor, cp_prime9_hcor, cp_prime10_hcor, cp_prime11_hcor, cp_prime12_hcor, cp_prime13_hcor, cp_prime14_hcor, cp_prime15_hcor, cp_prime16_hcor, cp_prime17_hcor]
+ct_prime_mblock_gl = [ct_prime1_m, ct_prime2_m, ct_prime3_m, ct_prime4_m, ct_prime5_m, ct_prime6_m, ct_prime6_m, ct_prime7_m, ct_prime8_m, ct_prime9_m, ct_prime10_m, ct_prime11_m, ct_prime12_m, ct_prime13_m, ct_prime14_m, ct_prime15_m, ct_prime16_m, ct_prime17_m]
+ct_prime_mblock_cor_gl = [ct_prime1_mcor, ct_prime2_mcor, ct_prime3_mcor, ct_prime4_mcor, ct_prime5_mcor, ct_prime6_mcor, ct_prime7_mcor, ct_prime8_mcor, ct_prime9_mcor, ct_prime10_mcor, ct_prime11_mcor, ct_prime12_mcor, ct_prime13_mcor, ct_prime14_mcor, ct_prime15_mcor, ct_prime16_mcor, ct_prime17_mcor]
+ct_prime_hblock_gl = [ct_prime1_h, ct_prime2_h, ct_prime3_h, ct_prime4_h, ct_prime5_h, ct_prime6_h, ct_prime7_h, ct_prime8_h, ct_prime9_h, ct_prime10_h, ct_prime12_h, ct_prime13_h, ct_prime14_h, ct_prime15_h, ct_prime16_h, ct_prime17_h]
+ct_prime_hblock_cor_gl = [ct_prime1_hcor, ct_prime2_hcor, ct_prime3_hcor, ct_prime4_hcor, ct_prime5_hcor, ct_prime6_hcor, ct_prime7_hcor, ct_prime8_hcor, ct_prime9_hcor, ct_prime10_hcor, ct_prime11_hcor, ct_prime12_hcor, ct_prime13_hcor, ct_prime14_hcor, ct_prime15_hcor, ct_prime16_hcor, ct_prime17_hcor]
+
+#Sace Arrays
+np.save("cp_prime_mblock_gl.npy", cp_prime_mblock_gl)
+np.save("cp_prime_mblock_cor_gl.npy", cp_prime_mblock_cor_gl)
+np.save("cp_prime_hblock_gl.npy", cp_prime_hblock_gl)
+np.save("cp_prime_hblock_cor_gl.npy", cp_prime_hblock_cor_gl)
+np.save("ct_prime_mblock_gl.npy", ct_prime_mblock_gl)
+np.save("ct_prime_mblock_cor_gl.npy", ct_prime_mblock_cor_gl)
+np.save("ct_prime_hblock_gl.npy", ct_prime_hblock_gl)
+np.save("ct_prime_hblock_cor_gl.npy", ct_prime_hblock_cor_gl)
+
+# #Unblocked Velocity Fields
+# #Corrected
+# ds1_u = sim1.slice(field_terms = 'u', ylim = 5)
+# ds1_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0000')
+
+# ds2_u = sim2.slice(field_terms = 'u', ylim = 5)
+# ds2_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0001')
+
+# ds3_u = sim3.slice(field_terms = 'u', ylim = 5)
+# ds3_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0002')
+
+# ds4_u = sim4.slice(field_terms = 'u', ylim = 5)
+# ds4_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0003')
+
+# ds5_u = sim5.slice(field_terms = 'u', ylim = 5)
+# ds5_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0004')
+
+# ds6_u = sim6.slice(field_terms = 'u', ylim = 5)
+# ds6_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0005')
+
+# ds7_u = sim7.slice(field_terms = 'u', ylim = 5)
+# ds7_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0006')
+
+# ds8_u = sim8.slice(field_terms = 'u', ylim = 5)
+# ds8_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0007')
+
+# ds9_u = sim9.slice(field_terms = 'u', ylim = 5)
+# ds9_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0008')
+
+# ds10_u = sim10.slice(field_terms = 'u', ylim = 5)
+# ds10_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0009')
+
+# ds11_u = sim11.slice(field_terms = 'u', ylim = 5)
+# ds11_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0010')
+
+# ds12_u = sim12.slice(field_terms = 'u', ylim = 5)
+# ds12_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0011')
+
+# ds13_u = sim13.slice(field_terms = 'u', ylim = 5)
+# ds13_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0012')
+
+# ds14_u = sim14.slice(field_terms = 'u', ylim = 5)
+# ds14_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0013')
+
+# ds15_u = sim15.slice(field_terms = 'u', ylim = 5)
+# ds15_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0014')
+
+# ds16_u = sim16.slice(field_terms = 'u', ylim = 5)
+# ds16_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0015')
+
+# ds17_u = sim17.slice(field_terms = 'u', ylim = 5)
+# ds17_u['u'].imshow()
+# plt.savefig('./u_field_U_0017_Sim_0016')
+
+# #Corrected
+# ds1_u_cor = sim1_cor.slice(field_terms = 'u', ylim = 5)
+# ds1_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0000')
+
+# ds2_u_cor = sim2_cor.slice(field_terms = 'u', ylim = 5)
+# ds2_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0001')
+
+# ds3_u_cor = sim3_cor.slice(field_terms = 'u', ylim = 5)
+# ds3_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0002')
+
+# ds4_u_cor = sim4_cor.slice(field_terms = 'u', ylim = 5)
+# ds4_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0003')
+
+# ds5_u_cor = sim5_cor.slice(field_terms = 'u', ylim = 5)
+# ds5_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0004')
+
+# ds6_u_cor = sim6_cor.slice(field_terms = 'u', ylim = 5)
+# ds6_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0005')
+
+# ds7_u_cor = sim7_cor.slice(field_terms = 'u', ylim = 5)
+# ds7_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0006')
+
+# ds8_u_cor = sim8_cor.slice(field_terms = 'u', ylim = 5)
+# ds8_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0007')
+
+# ds9_u_cor = sim9_cor.slice(field_terms = 'u', ylim = 5)
+# ds9_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0008')
+
+# ds10_u_cor = sim10_cor.slice(field_terms = 'u', ylim = 5)
+# ds10_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0009')
+
+# ds11_u_cor = sim11_cor.slice(field_terms = 'u', ylim = 5)
+# ds11_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0010')
+
+# ds12_u_cor = sim12_cor.slice(field_terms = 'u', ylim = 5)
+# ds12_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0011')
+
+# ds13_u_cor = sim13_cor.slice(field_terms = 'u', ylim = 5)
+# ds13_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0012')
+
+# ds14_u_cor = sim14_cor.slice(field_terms = 'u', ylim = 5)
+# ds14_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0013')
+
+# ds15_u_cor = sim15_cor.slice(field_terms = 'u', ylim = 5)
+# ds15_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0014')
+
+# ds16_u_cor = sim16_cor.slice(field_terms = 'u', ylim = 5)
+# ds16_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0015')
+
+# ds17_u_cor = sim17_cor.slice(field_terms = 'u', ylim = 5)
+# ds17_u_cor['u'].imshow()
+# plt.savefig('./u_field_U_0018_Sim_0016')
+
+# #Blocked Velocity Fields
+# #Corrected
+# ds1 = sim1_block.slice(field_terms = 'u', ylim = 5)
+# ds1['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0000')
+
+# ds2 = sim2_block.slice(field_terms = 'u', ylim = 5)
+# ds2['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0001')
+
+# ds3 = sim3_block.slice(field_terms = 'u', ylim = 5)
+# ds3['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0002')
+
+# ds4 = sim4_block.slice(field_terms = 'u', ylim = 5)
+# ds4['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0003')
+
+# ds5 = sim5_block.slice(field_terms = 'u', ylim = 5)
+# ds5['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0004')
+
+# ds6 = sim6_block.slice(field_terms = 'u', ylim = 5)
+# ds6['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0005')
+
+# ds7 = sim7_block.slice(field_terms = 'u', ylim = 5)
+# ds7['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0006')
+
+# ds8 = sim8_block.slice(field_terms = 'u', ylim = 5)
+# ds8['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0007')
+
+# ds9 = sim9_block.slice(field_terms = 'u', ylim = 5)
+# ds9['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0008')
+
+# ds10 = sim10_block.slice(field_terms = 'u', ylim = 5)
+# ds10['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0009')
+
+# ds11 = sim11_block.slice(field_terms = 'u', ylim = 5)
+# ds11['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0010')
+
+# ds12 = sim12_block.slice(field_terms = 'u', ylim = 5)
+# ds12['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0011')
+
+# ds13 = sim13_block.slice(field_terms = 'u', ylim = 5)
+# ds13['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0012')
+
+# ds14 = sim14_block.slice(field_terms = 'u', ylim = 5)
+# ds14['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0013')
+
+# ds15 = sim15_block.slice(field_terms = 'u', ylim = 5)
+# ds15['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0014')
+
+# ds16 = sim16_block.slice(field_terms = 'u', ylim = 5)
+# ds16['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0015')
+
+# ds17 = sim17_block.slice(field_terms = 'u', ylim = 5)
+# ds17['u'].imshow()
+# plt.savefig('./u_field_B_0000_Sim_0016')
+
+# #Corrected
+# ds1_cor = sim1_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds1_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0000')
+
+# ds2_cor = sim2_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds2_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0001')
+
+# ds3_cor = sim3_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds3_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0002')
+
+# ds4_cor = sim4_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds4_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0003')
+
+# ds5_cor = sim5_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds5_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0004')
+
+# ds6_cor = sim6_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds6_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0005')
+
+# ds7_cor = sim7_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds7_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0006')
+
+# ds8_cor = sim8_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds8_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0007')
+
+# ds9_cor = sim9_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds9_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0008')
+
+# ds10_cor = sim10_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds10_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0009')
+
+# ds11_cor = sim11_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds11_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0010')
+
+# ds12_cor = sim12_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds12_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0011')
+
+# ds13_cor = sim13_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds13_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0012')
+
+# ds14_cor = sim14_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds14_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0013')
+
+# ds15_cor = sim15_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds15_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0014')
+
+# ds16_cor = sim16_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds16_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0015')
+
+# ds17_cor = sim17_block_cor.slice(field_terms = 'u', ylim = 5)
+# ds17_cor['u'].imshow()
+# plt.savefig('./u_field_B_0001_Sim_0016')
+
+# #Print Results for Feed in
+# print(f"Cp Prime for -4 Ct Prime and Uncorrected: {cp_prime1}")
+# print(f"Cp Prime for -3.5 Ct Prime and Uncorrected: {cp_prime2}")
+# print(f"Cp Prime for -3 Ct Prime and Uncorrected: {cp_prime3}")
+# print(f"Cp Prime for -2.5 Ct Prime and Uncorrected: {cp_prime4}")
+# print(f"Cp Prime for -2 Ct Prime and Uncorrected: {cp_prime5}")
+# print(f"Cp Prime for -1.5 Ct Prime and Uncorrected: {cp_prime6}")
+# print(f"Cp Prime for -1 Ct Prime and Uncorrected: {cp_prime7}")
+# print(f"Cp Prime for -0.5 Ct Prime and Uncorrected: {cp_prime8}")
+# print(f"Cp Prime for 0 Ct Prime and Uncorrected: {cp_prime9}")
+# print(f"Cp Prime for 0.5 Ct Prime and Uncorrected: {cp_prime10}")
+# print(f"Cp Prime for 1 Ct Prime and Uncorrected: {cp_prime11}")
+# print(f"Cp Prime for 1.5 Ct Prime and Uncorrected: {cp_prime12}")
+# print(f"Cp Prime for 2.0 Ct Prime and Uncorrected: {cp_prime13}")
+# print(f"Cp Prime for 2.5 Ct Prime and Uncorrected: {cp_prime14}")
+# print(f"Cp Prime for 3 Ct Prime and Uncorrected: {cp_prime15}")
+# print(f"Cp Prime for 3.5 Ct Prime and Uncorrected: {cp_prime16}")
+# print(f"Cp Prime for 4 Ct Prime and Uncorrected: {cp_prime17}")
+
+# print(f"Cp Prime for -4 Ct Prime and Corrected: {cp_prime1_cor}")
+# print(f"Cp Prime for -3.5 Ct Prime and Corrected: {cp_prime2_cor}")
+# print(f"Cp Prime for -3 Ct Prime and Corrected: {cp_prime3_cor}")
+# print(f"Cp Prime for -2.5 Ct Prime and Corrected: {cp_prime4_cor}")
+# print(f"Cp Prime for -2 Ct Prime and Corrected: {cp_prime5_cor}")
+# print(f"Cp Prime for -1.5 Ct Prime and Corrected: {cp_prime6_cor}")
+# print(f"Cp Prime for -1 Ct Prime and Corrected: {cp_prime7_cor}")
+# print(f"Cp Prime for -0.5 Ct Prime and Corrected: {cp_prime8_cor}")
+# print(f"Cp Prime for 0 Ct Prime and Corrected: {cp_prime9_cor}")
+# print(f"Cp Prime for 0.5 Ct Prime and Corrected: {cp_prime10_cor}")
+# print(f"Cp Prime for 1 Ct Prime and Corrected: {cp_prime11_cor}")
+# print(f"Cp Prime for 1.5 Ct Prime and Corrected: {cp_prime12_cor}")
+# print(f"Cp Prime for 2.0 Ct Prime and Corrected: {cp_prime13_cor}")
+# print(f"Cp Prime for 2.5 Ct Prime and Corrected: {cp_prime14_cor}")
+# print(f"Cp Prime for 3.0 Ct Prime and Corrected: {cp_prime15_cor}")
+# print(f"Cp Prime for 3.5 Ct Prime and Corrected: {cp_prime16_cor}")
+# print(f"Cp Prime for 4 Ct Prime and Corrected: {cp_prime17_cor}")
+
+# print(f"Ct Prime for -4 Ct Prime and Uncorrected: {ct_prime1}")
+# print(f"Ct Prime for -3.5 Ct Prime and Uncorrected: {ct_prime2}")
+# print(f"Ct Prime for -3 Ct Prime and Uncorrected: {ct_prime3}")
+# print(f"Ct Prime for -2.5 Ct Prime and Uncorrected: {ct_prime4}")
+# print(f"Ct Prime for -2 Ct Prime and Uncorrected: {ct_prime5}")
+# print(f"Ct Prime for -1.5 Ct Prime and Uncorrected: {ct_prime6}")
+# print(f"Ct Prime for -1 Ct Prime and Uncorrected: {ct_prime7}")
+# print(f"Ct Prime for -0.5 Ct Prime and Uncorrected: {ct_prime8}")
+# print(f"Ct Prime for 0 Ct Prime and Uncorrected: {ct_prime9}")
+# print(f"Ct Prime for 0.5 Ct Prime and Uncorrected: {ct_prime10}")
+# print(f"Ct Prime for 1 Ct Prime and Uncorrected: {ct_prime11}")
+# print(f"Ct Prime for 1.5 Ct Prime and Uncorrected: {ct_prime12}")
+# print(f"Ct Prime for 2.0 Ct Prime and Uncorrected: {ct_prime13}")
+# print(f"Ct Prime for 2.5 Ct Prime and Uncorrected: {ct_prime14}")
+# print(f"Ct Prime for 3 Ct Prime and Uncorrected: {ct_prime15}")
+# print(f"Ct Prime for 3.5 Ct Prime and Uncorrected: {ct_prime16}")
+# print(f"Ct Prime for 4 Ct Prime and Uncorrected: {ct_prime17}")
+
+# print(f"Ct Prime for -4 Ct Prime and Corrected: {ct_prime1_cor}")
+# print(f"Ct Prime for -3.5 Ct Prime and Corrected: {ct_prime2_cor}")
+# print(f"Ct Prime for -3 Ct Prime and Corrected: {ct_prime3_cor}")
+# print(f"Ct Prime for -2.5 Ct Prime and Corrected: {ct_prime4_cor}")
+# print(f"Ct Prime for -2 Ct Prime and Corrected: {ct_prime5_cor}")
+# print(f"Ct Prime for -1.5 Ct Prime and Corrected: {ct_prime6_cor}")
+# print(f"Ct Prime for -1 Ct Prime and Corrected: {ct_prime7_cor}")
+# print(f"Ct Prime for -0.5 Ct Prime and Corrected: {ct_prime8_cor}")
+# print(f"Ct Prime for 0 Ct Prime and Corrected: {ct_prime9_cor}")
+# print(f"Ct Prime for 0.5 Ct Prime and Corrected: {ct_prime10_cor}")
+# print(f"Ct Prime for 1 Ct Prime and Corrected: {ct_prime11_cor}")
+# print(f"Ct Prime for 1.5 Ct Prime and Corrected: {ct_prime12_cor}")
+# print(f"Ct Prime for 2.0 Ct Prime and Corrected: {ct_prime13_cor}")
+# print(f"Ct Prime for 2.5 Ct Prime and Corrected: {ct_prime14_cor}")
+# print(f"Ct Prime for 3.0 Ct Prime and Corrected: {ct_prime15_cor}")
+# print(f"Ct Prime for 3.5 Ct Prime and Corrected: {ct_prime16_cor}")
+# print(f"Ct Prime for 4 Ct Prime and Corrected: {ct_prime17_cor}")

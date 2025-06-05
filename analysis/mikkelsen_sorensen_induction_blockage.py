@@ -1740,10 +1740,11 @@ plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_cor_plot[1:16], color = 'green',
 plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_plot[1:16], color = 'magenta', label = '35 pct Blockage Uncorrected')
 plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_cor_plot[1:16], color = 'purple', label = '35 pct Blockage Corrected')
 plt.title('Emperical Blockage Correction Results')
+plt.ylim(-1, 1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Cp Prime (Equivalent Cp in Unblocked Flow)')
 plt.legend()
-plt.savefig('./cp_prime_comapare')
+plt.savefig('./cp_prime_comapare_ind')
 
 #Ct
 plt.figure(figsize = (9,6))
@@ -1754,7 +1755,8 @@ plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_cor_plot[1:16], color = 'green',
 plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_plot[1:16], color = 'magenta', label = '35 pct Blockage Uncorrected')
 plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_cor_plot[1:16], color = 'purple', label = '35 pct Blockage Corrected')
 plt.title('Emperical Blockage Correction Results')
+plt.ylim(-1, 1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Ct Prime (Equivalent Ct in Unblocked Flow)')
 plt.legend()
-plt.savefig('./ct_prime_comapare')
+plt.savefig('./ct_prime_comapare_ind')
