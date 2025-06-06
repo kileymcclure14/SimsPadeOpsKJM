@@ -1449,7 +1449,7 @@ v0_U1_h17_cor_23 = np.sqrt(((u2_u1_h17_cor**2)-1)/ct_les17_hblock_cor)
 #Loops to Establish Convergence + Calculate V'0
 # Medium Uncorrected
 if np.absolute(v0_U1_m1_22 - v0_U1_m1_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0000")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim1")
 else:
     v0_u1_m1 = np.mean([v0_U1_m1_22, v0_U1_m1_23])
     ut_v0_m1 = ut_u1_m1/v0_u1_m1
@@ -1458,7 +1458,7 @@ else:
     ct_prime_m1 = ct_les1_mblock*((u_inf1_mblock/v0_prime_m1)**2)
 
 if np.absolute(v0_U1_m2_22 - v0_U1_m2_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0001")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim2")
 else:
     v0_u1_m2 = np.mean([v0_U1_m2_22, v0_U1_m2_23])
     ut_v0_m2 = ut_u1_m2/v0_u1_m2
@@ -1467,7 +1467,7 @@ else:
     ct_prime_m2 = ct_les2_mblock*((u_inf2_mblock/v0_prime_m2)**2)
 
 if np.absolute(v0_U1_m3_22 - v0_U1_m3_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0002")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim3")
 else:
     v0_u1_m3 = np.mean([v0_U1_m3_22, v0_U1_m3_23])
     ut_v0_m3 = ut_u1_m3/v0_u1_m3
@@ -1476,16 +1476,16 @@ else:
     ct_prime_m3 = ct_les3_mblock*((u_inf3_mblock/v0_prime_m3)**2)
 
 if np.absolute(v0_U1_m4_22 - v0_U1_m4_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0003")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim4")
 else:
     v0_u1_m4 = np.mean([v0_U1_m4_22, v0_U1_m4_23])
     ut_v0_m4 = ut_u1_m4/v0_u1_m4
-    v0_prime_m4 = (u_inf4_mblock*((ut_v0_m4**2 + (ct_les4m_block/4))))/(ut_v0_m4)
+    v0_prime_m4 = (u_inf4_mblock*((ut_v0_m4**2 + (ct_les4_mblock/4))))/(ut_v0_m4)
     cp_prime_m4 = cp_les4_mblock*((u_inf4_mblock/v0_prime_m4)**3)
     ct_prime_m4 = ct_les4_mblock*((u_inf4_mblock/v0_prime_m4)**2)
 
 if np.absolute(v0_U1_m5_22 - v0_U1_m5_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0004")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim5")
 else:
     v0_u1_m5 = np.mean([v0_U1_m5_22, v0_U1_m5_23])
     ut_v0_m5 = ut_u1_m5/v0_u1_m5
@@ -1494,7 +1494,7 @@ else:
     ct_prime_m5 = ct_les5_mblock*((u_inf5_mblock/v0_prime_m5)**2)
 
 if np.absolute(v0_U1_m6_22 - v0_U1_m6_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0005")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim6")
 else:
     v0_u1_m6 = np.mean([v0_U1_m6_22, v0_U1_m6_23])
     ut_v0_m6 = ut_u1_m6/v0_u1_m6
@@ -1503,7 +1503,7 @@ else:
     ct_prime_m6 = ct_les6_mblock*((u_inf6_mblock/v0_prime_m6)**2)
 
 if np.absolute(v0_U1_m7_22 - v0_U1_m7_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0006")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim7")
 else:
     v0_u1_m7 = np.mean([v0_U1_m7_22, v0_U1_m7_23])
     ut_v0_m7 = ut_u1_m7/v0_u1_m7
@@ -1512,7 +1512,7 @@ else:
     ct_prime_m7 = ct_les7_mblock*((u_inf7_mblock/v0_prime_m7)**2)
 
 if np.absolute(v0_U1_m8_22 - v0_U1_m8_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0007")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim8")
 else:
     v0_u1_m8 = np.mean([v0_U1_m8_22, v0_U1_m8_23])
     ut_v0_m8 = ut_u1_m8/v0_u1_m8
@@ -1521,7 +1521,7 @@ else:
     ct_prime_m8 = ct_les8_mblock*((u_inf8_mblock/v0_prime_m8)**2)
 
 if np.absolute(v0_U1_m9_22 - v0_U1_m9_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0008")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim9")
 else:
     v0_u1_m9 = np.mean([v0_U1_m9_22, v0_U1_m9_23])
     ut_v0_m9 = ut_u1_m9/v0_u1_m9
@@ -1530,7 +1530,7 @@ else:
     ct_prime_m9 = ct_les9_mblock*((u_inf9_mblock/v0_prime_m9)**2)
 
 if np.absolute(v0_U1_m10_22 - v0_U1_m10_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0009")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim10")
 else:
     v0_u1_m10 = np.mean([v0_U1_m10_22, v0_U1_m10_23])
     ut_v0_m10 = ut_u1_m10/v0_u1_m10
@@ -1539,7 +1539,7 @@ else:
     ct_prime_m10 = ct_les10_mblock*((u_inf10_mblock/v0_prime_m10)**2)
 
 if np.absolute(v0_U1_m11_22 - v0_U1_m11_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0010")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim11")
 else:
     v0_u1_m11 = np.mean([v0_U1_m11_22, v0_U1_m11_23])
     ut_v0_m11 = ut_u1_m11/v0_u1_m11
@@ -1548,16 +1548,16 @@ else:
     ct_prime_m11 = ct_les11_mblock*((u_inf11_mblock/v0_prime_m11)**2)
 
 if np.absolute(v0_U1_m12_22 - v0_U1_m12_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0011")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim12")
 else:
-    v0_u1_m12 = np.mean([v0_U1_12_22, v0_U1_12_23])
+    v0_u1_m12 = np.mean([v0_U1_m12_22, v0_U1_m12_23])
     ut_v0_m12 = ut_u1_m12/v0_u1_m12
     v0_prime_m12 = (u_inf12_mblock*((ut_v0_m12**2 + (ct_les12_mblock/4))))/(ut_v0_m12)
     cp_prime_m12 = cp_les12_mblock*((u_inf12_mblock/v0_prime_m12)**3)
     ct_prime_m12 = ct_les12_mblock*((u_inf12_mblock/v0_prime_m12)**2)
 
 if np.absolute(v0_U1_m13_22 - v0_U1_m13_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0012")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim13")
 else:
     v0_u1_m13 = np.mean([v0_U1_m13_22, v0_U1_m13_23])
     ut_v0_m13 = ut_u1_m13/v0_u1_m13
@@ -1566,7 +1566,7 @@ else:
     ct_prime_m13 = ct_les13_mblock*((u_inf13_mblock/v0_prime_m13)**2)
 
 if np.absolute(v0_U1_m14_22 - v0_U1_m14_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0013")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim14")
 else:
     v0_u1_m14 = np.mean([v0_U1_m14_22, v0_U1_m14_23])
     ut_v0_m14 = ut_u1_m14/v0_u1_m14
@@ -1575,7 +1575,7 @@ else:
     ct_prime_m14 = ct_les14_mblock*((u_inf14_mblock/v0_prime_m14)**2)
 
 if np.absolute(v0_U1_m15_22 - v0_U1_m15_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0014")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim15")
 else:
     v0_u1_m15 = np.mean([v0_U1_m15_22, v0_U1_m15_23])
     ut_v0_m15 = ut_u1_m15/v0_u1_m15
@@ -1583,8 +1583,8 @@ else:
     cp_prime_m15 = cp_les15_mblock*((u_inf15_mblock/v0_prime_m15)**3)
     ct_prime_m15 = ct_les15_mblock*((u_inf15_mblock/v0_prime_m15)**2)
 
-if np.absolute(v0_U1_m16_22 - v0_U1_1m6_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0015")
+if np.absolute(v0_U1_m16_22 - v0_U1_m16_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim16")
 else:
     v0_u1_m16 = np.mean([v0_U1_m16_22, v0_U1_m16_23])
     ut_v0_m16 = ut_u1_m16/v0_u1_m16
@@ -1593,7 +1593,7 @@ else:
     ct_prime_m16 = ct_les16_mblock*((u_inf16_mblock/v0_prime_m16)**2)
 
 if np.absolute(v0_U1_m17_22 - v0_U1_m17_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0016")
+    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim17")
 else:
     v0_u1_m17 = np.mean([v0_U1_m17_22, v0_U1_m17_23])
     ut_v0_m17 = ut_u1_m17/v0_u1_m17
@@ -1602,8 +1602,8 @@ else:
     ct_prime_m17 = ct_les17_mblock*((u_inf17_mblock/v0_prime_m17)**2)
 
 # Medium Corrected
-if np.absolute(v0_U1_1_cor_m22 - v0_U1_1_cor_m23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0000")
+if np.absolute(v0_U1_m1_cor_22 - v0_U1_m1_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for Mediumn Corrected Sim1")
 else:
     v0_u1_m1_cor = np.mean([v0_U1_m1_cor_22, v0_U1_m1_cor_23])
     ut_v0_m1_cor = ut_u1_m1_cor/v0_u1_m1_cor
@@ -1612,7 +1612,7 @@ else:
     ct_prime_m1_cor = ct_les1_mblock_cor*((u_inf1_mblock_cor/v0_prime_m1_cor)**2)
 
 if np.absolute(v0_U1_m2_cor_22 - v0_U1_m2_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0001")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim2")
 else:
     v0_u1_m2_cor = np.mean([v0_U1_m2_cor_22, v0_U1_m2_cor_23])
     ut_v0_m2_cor = ut_u1_m2_cor/v0_u1_m2_cor
@@ -1621,7 +1621,7 @@ else:
     ct_prime_m2_cor = ct_les2_mblock_cor*((u_inf2_mblock_cor/v0_prime_m2_cor)**2)
 
 if np.absolute(v0_U1_m3_cor_22 - v0_U1_m3_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0002")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim3")
 else:
     v0_u1_m3_cor = np.mean([v0_U1_m3_cor_22, v0_U1_m3_cor_23])
     ut_v0_m3_cor = ut_u1_m3_cor/v0_u1_m3_cor
@@ -1630,7 +1630,7 @@ else:
     ct_prime_m3_cor = ct_les3_mblock_cor*((u_inf3_mblock_cor/v0_prime_m3_cor)**2)
 
 if np.absolute(v0_U1_m4_cor_22 - v0_U1_m4_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0003")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim4")
 else:
     v0_u1_m4_cor = np.mean([v0_U1_m4_cor_22, v0_U1_m4_cor_23])
     ut_v0_m4_cor = ut_u1_m4_cor/v0_u1_m4_cor
@@ -1639,7 +1639,7 @@ else:
     ct_prime_m4_cor = ct_les4_mblock_cor*((u_inf4_mblock_cor/v0_prime_m4_cor)**2)
 
 if np.absolute(v0_U1_m5_cor_22 - v0_U1_m5_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0004")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim5")
 else:
     v0_u1_m5_cor = np.mean([v0_U1_m5_cor_22, v0_U1_m5_cor_23])
     ut_v0_m5_cor = ut_u1_m5_cor/v0_u1_m5_cor
@@ -1648,7 +1648,7 @@ else:
     ct_prime_m5_cor = ct_les5_mblock_cor*((u_inf5_mblock_cor/v0_prime_m5_cor)**2)
 
 if np.absolute(v0_U1_m6_cor_22 - v0_U1_m6_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0005")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim6")
 else:
     v0_u1_m6_cor = np.mean([v0_U1_m6_cor_22, v0_U1_m6_cor_23])
     ut_v0_m6_cor = ut_u1_m6_cor/v0_u1_m6_cor
@@ -1657,7 +1657,7 @@ else:
     ct_prime_m6_cor = ct_les6_mblock_cor*((u_inf6_mblock_cor/v0_prime_m6_cor)**2)
 
 if np.absolute(v0_U1_m7_cor_22 - v0_U1_m7_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0006")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim7")
 else:
     v0_u1_m7_cor = np.mean([v0_U1_m7_cor_22, v0_U1_m7_cor_23])
     ut_v0_m7_cor = ut_u1_m7_cor/v0_u1_m7_cor
@@ -1666,7 +1666,7 @@ else:
     ct_prime_m7_cor = ct_les7_mblock_cor*((u_inf7_mblock_cor/v0_prime_m7_cor)**2)
 
 if np.absolute(v0_U1_m8_cor_22 - v0_U1_m8_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0007")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim8")
 else:
     v0_u1_m8_cor = np.mean([v0_U1_m8_cor_22, v0_U1_m8_cor_23])
     ut_v0_m8_cor = ut_u1_m8_cor/v0_u1_m8_cor
@@ -1675,7 +1675,7 @@ else:
     ct_prime_m8_cor = ct_les8_mblock_cor*((u_inf8_mblock_cor/v0_prime_m8_cor)**2)
 
 if np.absolute(v0_U1_m9_cor_22 - v0_U1_m9_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0008")
+    print(f"Enter a new guess for U2/U1 for Meidum Corrected Sim9")
 else:
     v0_u1_m9_cor = np.mean([v0_U1_m9_cor_22, v0_U1_m9_cor_23])
     ut_v0_m9_cor = ut_u1_m9_cor/v0_u1_m9_cor
@@ -1684,16 +1684,16 @@ else:
     ct_prime_m9_cor = ct_les9_mblock_cor*((u_inf9_mblock_cor/v0_prime_m9_cor)**2)
 
 if np.absolute(v0_U1_m10_cor_22 - v0_U1_m10_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0009")
+    print(f"Enter a new guess for U2/U1 for Mecium Corrected Sim10")
 else:
     v0_u1_m10_cor = np.mean([v0_U1_m10_cor_22, v0_U1_m10_cor_23])
-    ut_v0_m10_cor = ut_u1_m10_cor/v0_u1_10_cor
+    ut_v0_m10_cor = ut_u1_m10_cor/v0_u1_m10_cor
     v0_prime_m10_cor = (u_inf10_mblock_cor*((ut_v0_m10_cor**2 + (ct_les10_mblock_cor/4))))/(ut_v0_m10_cor)
     cp_prime_m10_cor = cp_les10_mblock_cor*((u_inf10_mblock_cor/v0_prime_m10_cor)**3)
     ct_prime_m10_cor = ct_les10_mblock_cor*((u_inf10_mblock_cor/v0_prime_m10_cor)**2)
 
 if np.absolute(v0_U1_m11_cor_22 - v0_U1_m11_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0010")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim11")
 else:
     v0_u1_m11_cor = np.mean([v0_U1_m11_cor_22, v0_U1_m11_cor_23])
     ut_v0_m11_cor = ut_u1_m11_cor/v0_u1_m11_cor
@@ -1702,7 +1702,7 @@ else:
     ct_prime_m11_cor = ct_les11_mblock_cor*((u_inf11_mblock_cor/v0_prime_m11_cor)**2)
 
 if np.absolute(v0_U1_m12_cor_22 - v0_U1_m12_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0011")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim12")
 else:
     v0_u1_m12_cor = np.mean([v0_U1_m12_cor_22, v0_U1_m12_cor_23])
     ut_v0_m12_cor = ut_u1_m12_cor/v0_u1_m12_cor
@@ -1711,16 +1711,16 @@ else:
     ct_prime_m12_cor = ct_les12_mblock_cor*((u_inf12_mblock_cor/v0_prime_m12_cor)**2)
 
 if np.absolute(v0_U1_m13_cor_22 - v0_U1_m13_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0012")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim13")
 else:
     v0_u1_m13_cor = np.mean([v0_U1_m13_cor_22, v0_U1_m13_cor_23])
-    ut_v0_m13_cor = ut_u1_m13_cor/v0_u1_13_cor
+    ut_v0_m13_cor = ut_u1_m13_cor/v0_u1_m13_cor
     v0_prime_m13_cor = (u_inf13_mblock_cor*((ut_v0_m13_cor**2 + (ct_les13_mblock_cor/4))))/(ut_v0_m13_cor)
     cp_prime_m13_cor = cp_les13_mblock_cor*((u_inf13_mblock_cor/v0_prime_m13_cor)**3)
     ct_prime_m13_cor = ct_les13_mblock_cor*((u_inf13_mblock_cor/v0_prime_m13_cor)**2)
 
 if np.absolute(v0_U1_m14_cor_22 - v0_U1_m14_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0013")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim14")
 else:
     v0_u1_m14_cor = np.mean([v0_U1_m14_cor_22, v0_U1_m14_cor_23])
     ut_v0_m14_cor = ut_u1_m14_cor/v0_u1_m14_cor
@@ -1729,7 +1729,7 @@ else:
     ct_prime_m14_cor = ct_les14_mblock_cor*((u_inf14_mblock_cor/v0_prime_m14_cor)**2)
 
 if np.absolute(v0_U1_m15_cor_22 - v0_U1_m15_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0014")
+    print(f"Enter a new guess for U2/U1 for Medium Corrected Sim15")
 else:
     v0_u1_m15_cor = np.mean([v0_U1_m15_cor_22, v0_U1_m15_cor_23])
     ut_v0_m15_cor = ut_u1_m15_cor/v0_u1_m15_cor
@@ -1738,7 +1738,7 @@ else:
     ct_prime_m15_cor = ct_les15_mblock_cor*((u_inf15_mblock_cor/v0_prime_m15_cor)**2)
 
 if np.absolute(v0_U1_m16_cor_22 - v0_U1_m16_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0015")
+    print(f"Enter a new guess for U2/U1 for Meidum Corrected Sim16")
 else:
     v0_u1_m16_cor = np.mean([v0_U1_m16_cor_22, v0_U1_m16_cor_23])
     ut_v0_m16_cor = ut_u1_m16_cor/v0_u1_m16_cor
@@ -1747,7 +1747,7 @@ else:
     ct_prime_m16_cor = ct_les16_mblock_cor*((u_inf16_mblock_cor/v0_prime_m16_cor)**2)
 
 if np.absolute(v0_U1_m17_cor_22 - v0_U1_m17_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0016")
+    print(f"Enter a new guess for U2/U1 for Meidum Corrected Sim17")
 else:
     v0_u1_m17_cor = np.mean([v0_U1_m17_cor_22, v0_U1_m17_cor_23])
     ut_v0_m17_cor = ut_u1_m17_cor/v0_u1_m17_cor
@@ -1757,7 +1757,7 @@ else:
 
 # High Uncorrected
 if np.absolute(v0_U1_h1_22 - v0_U1_h1_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0000")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim1")
 else:
     v0_u1_h1 = np.mean([v0_U1_h1_22, v0_U1_h1_23])
     ut_v0_h1 = ut_u1_h1/v0_u1_h1
@@ -1766,7 +1766,7 @@ else:
     ct_prime_h1 = ct_les1_hblock*((u_inf1_hblock/v0_prime_h1)**2)
 
 if np.absolute(v0_U1_h2_22 - v0_U1_h2_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0001")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim2")
 else:
     v0_u1_h2 = np.mean([v0_U1_h2_22, v0_U1_h2_23])
     ut_v0_h2 = ut_u1_h2/v0_u1_h2
@@ -1775,7 +1775,7 @@ else:
     ct_prime_h2 = ct_les2_hblock*((u_inf2_hblock/v0_prime_h2)**2)
 
 if np.absolute(v0_U1_h3_22 - v0_U1_h3_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0002")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim3")
 else:
     v0_u1_h3 = np.mean([v0_U1_h3_22, v0_U1_h3_23])
     ut_v0_h3 = ut_u1_h3/v0_u1_h3
@@ -1784,7 +1784,7 @@ else:
     ct_prime_h3 = ct_les3_hblock*((u_inf3_hblock/v0_prime_h3)**2)
 
 if np.absolute(v0_U1_h4_22 - v0_U1_h4_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0003")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim4")
 else:
     v0_u1_h4 = np.mean([v0_U1_h4_22, v0_U1_h4_23])
     ut_v0_h4 = ut_u1_h4/v0_u1_h4
@@ -1793,7 +1793,7 @@ else:
     ct_prime_h4 = ct_les4_hblock*((u_inf4_hblock/v0_prime_h4)**2)
 
 if np.absolute(v0_U1_h5_22 - v0_U1_h5_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0004")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim5")
 else:
     v0_u1_h5 = np.mean([v0_U1_h5_22, v0_U1_h5_23])
     ut_v0_h5 = ut_u1_h5/v0_u1_h5
@@ -1802,7 +1802,7 @@ else:
     ct_prime_h5 = ct_les5_hblock*((u_inf5_hblock/v0_prime_h5)**2)
 
 if np.absolute(v0_U1_h6_22 - v0_U1_h6_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0005")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim6")
 else:
     v0_u1_h6 = np.mean([v0_U1_h6_22, v0_U1_h6_23])
     ut_v0_h6 = ut_u1_h6/v0_u1_h6
@@ -1811,7 +1811,7 @@ else:
     ct_prime_h6 = ct_les6_hblock*((u_inf6_hblock/v0_prime_h6)**2)
 
 if np.absolute(v0_U1_h7_22 - v0_U1_h7_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0006")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim7")
 else:
     v0_u1_h7 = np.mean([v0_U1_h7_22, v0_U1_h7_23])
     ut_v0_h7 = ut_u1_h7/v0_u1_h7
@@ -1820,7 +1820,7 @@ else:
     ct_prime_h7 = ct_les7_hblock*((u_inf7_hblock/v0_prime_h7)**2)
 
 if np.absolute(v0_U1_h8_22 - v0_U1_h8_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0007")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim8")
 else:
     v0_u1_h8 = np.mean([v0_U1_h8_22, v0_U1_h8_23])
     ut_v0_h8 = ut_u1_h8/v0_u1_h8
@@ -1829,7 +1829,7 @@ else:
     ct_prime_h8 = ct_les8_hblock*((u_inf8_hblock/v0_prime_h8)**2)
 
 if np.absolute(v0_U1_h9_22 - v0_U1_h9_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0008")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim9")
 else:
     v0_u1_h9 = np.mean([v0_U1_h9_22, v0_U1_h9_23])
     ut_v0_h9 = ut_u1_h9/v0_u1_h9
@@ -1838,7 +1838,7 @@ else:
     ct_prime_h9 = ct_les9_hblock*((u_inf9_hblock/v0_prime_h9)**2)
 
 if np.absolute(v0_U1_h10_22 - v0_U1_h10_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0009")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim10")
 else:
     v0_u1_h10 = np.mean([v0_U1_h10_22, v0_U1_h10_23])
     ut_v0_h10 = ut_u1_h10/v0_u1_h10
@@ -1847,16 +1847,16 @@ else:
     ct_prime_h10 = ct_les10_hblock*((u_inf10_hblock/v0_prime_h10)**2)
 
 if np.absolute(v0_U1_h11_22 - v0_U1_h11_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0010")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim11")
 else:
     v0_u1_h11 = np.mean([v0_U1_h11_22, v0_U1_h11_23])
     ut_v0_h11 = ut_u1_h11/v0_u1_h11
     v0_prime_h11 = (u_inf11_hblock*((ut_v0_h11**2 + (ct_les11_hblock/4))))/(ut_v0_h11)
     cp_prime_h11 = cp_les11_hblock*((u_inf11_hblock/v0_prime_h11)**3)
-    ct_prime_h11 = ct_les11_bhlock*((u_inf11_hblock/v0_prime_h11)**2)
+    ct_prime_h11 = ct_les11_hblock*((u_inf11_hblock/v0_prime_h11)**2)
 
 if np.absolute(v0_U1_h12_22 - v0_U1_h12_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0011")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim12")
 else:
     v0_u1_h12 = np.mean([v0_U1_h12_22, v0_U1_h12_23])
     ut_v0_h12 = ut_u1_h12/v0_u1_h12
@@ -1865,7 +1865,7 @@ else:
     ct_prime_h12 = ct_les12_hblock*((u_inf12_hblock/v0_prime_h12)**2)
 
 if np.absolute(v0_U1_h13_22 - v0_U1_h13_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0012")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim13")
 else:
     v0_u1_h13 = np.mean([v0_U1_h13_22, v0_U1_h13_23])
     ut_v0_h13 = ut_u1_h13/v0_u1_h13
@@ -1874,7 +1874,7 @@ else:
     ct_prime_h13 = ct_les13_hblock*((u_inf13_hblock/v0_prime_h13)**2)
 
 if np.absolute(v0_U1_h14_22 - v0_U1_h14_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0013")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim14")
 else:
     v0_u1_h14 = np.mean([v0_U1_h14_22, v0_U1_h14_23])
     ut_v0_h14 = ut_u1_h14/v0_u1_h14
@@ -1883,7 +1883,7 @@ else:
     ct_prime_h14 = ct_les14_hblock*((u_inf14_hblock/v0_prime_h14)**2)
 
 if np.absolute(v0_U1_h15_22 - v0_U1_h15_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0014")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim15")
 else:
     v0_u1_h15 = np.mean([v0_U1_h15_22, v0_U1_h15_23])
     ut_v0_h15 = ut_u1_h15/v0_u1_h15
@@ -1892,7 +1892,7 @@ else:
     ct_prime_h15 = ct_les15_hblock*((u_inf15_hblock/v0_prime_h15)**2)
 
 if np.absolute(v0_U1_h16_22 - v0_U1_h16_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0015")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim16")
 else:
     v0_u1_h16 = np.mean([v0_U1_h16_22, v0_U1_h16_23])
     ut_v0_h16 = ut_u1_h16/v0_u1_h16
@@ -1901,164 +1901,164 @@ else:
     ct_prime_h16 = ct_les16_hblock*((u_inf16_hblock/v0_prime_h16)**2)
 
 if np.absolute(v0_U1_h17_22 - v0_U1_h17_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Uncorrected Sim0016")
+    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim17")
 else:
     v0_u1_h17 = np.mean([v0_U1_h17_22, v0_U1_h17_23])
     ut_v0_h17 = ut_u1_h17/v0_u1_h17
-    v0_phrme_h17 = (u_inf17_hblock*((ut_v0_h17**2 + (ct_les17_hblock/4))))/(ut_v0_h17)
+    v0_prime_h17 = (u_inf17_hblock*((ut_v0_h17**2 + (ct_les17_hblock/4))))/(ut_v0_h17)
     cp_prime_h17 = cp_les17_hblock*((u_inf17_hblock/v0_prime_h17)**3)
     ct_prime_1h7 = ct_les17_hblock*((u_inf17_hblock/v0_prime_h17)**2)
 
 # High Corrected
-if np.absolute(v0_U1_1_cor_22 - v0_U1_1_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0000")
+if np.absolute(v0_U1_h1_cor_22 - v0_U1_h1_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim1")
 else:
-    v0_u1_1_cor = np.mean([v0_U1_1_cor_22, v0_U1_1_cor_23])
-    ut_v0_1_cor = ut_u1_1_cor/v0_u1_1_cor
-    v0_prime_1_cor = (u_inf1_block_cor*((ut_v0_1_cor**2 + (ct_les1_block_cor/4))))/(ut_v0_1_cor)
-    cp_prime_1_cor = cp_les1_block_cor*((u_inf1_block_cor/v0_prime_1_cor)**3)
-    ct_prime_1_cor = ct_les1_block_cor*((u_inf1_block_cor/v0_prime_1_cor)**2)
+    v0_u1_h1_cor = np.mean([v0_U1_h1_cor_22, v0_U1_h1_cor_23])
+    ut_v0_h1_cor = ut_u1_h1_cor/v0_u1_h1_cor
+    v0_prime_h1_cor = (u_inf1_hblock_cor*((ut_v0_h1_cor**2 + (ct_les1_hblock_cor/4))))/(ut_v0_h1_cor)
+    cp_prime_h1_cor = cp_les1_hblock_cor*((u_inf1_hblock_cor/v0_prime_h1_cor)**3)
+    ct_prime_h1_cor = ct_les1_hblock_cor*((u_inf1_hblock_cor/v0_prime_h1_cor)**2)
 
-if np.absolute(v0_U1_2_cor_22 - v0_U1_2_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0001")
+if np.absolute(v0_U1_h2_cor_22 - v0_U1_h2_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim2")
 else:
-    v0_u1_2_cor = np.mean([v0_U1_2_cor_22, v0_U1_2_cor_23])
-    ut_v0_2_cor = ut_u1_2_cor/v0_u1_2_cor
-    v0_prime_2_cor = (u_inf2_block_cor*((ut_v0_2_cor**2 + (ct_les2_block_cor/4))))/(ut_v0_2_cor)
-    cp_prime_2_cor = cp_les2_block_cor*((u_inf2_block_cor/v0_prime_2_cor)**3)
-    ct_prime_2_cor = ct_les2_block_cor*((u_inf2_block_cor/v0_prime_2_cor)**2)
+    v0_u1_h2_cor = np.mean([v0_U1_h2_cor_22, v0_U1_h2_cor_23])
+    ut_v0_h2_cor = ut_u1_h2_cor/v0_u1_h2_cor
+    v0_prime_h2_cor = (u_inf2_hblock_cor*((ut_v0_h2_cor**2 + (ct_les2_hblock_cor/4))))/(ut_v0_h2_cor)
+    cp_prime_h2_cor = cp_les2_hblock_cor*((u_inf2_hblock_cor/v0_prime_h2_cor)**3)
+    ct_prime_h2_cor = ct_les2_hblock_cor*((u_inf2_hblock_cor/v0_prime_h2_cor)**2)
 
-if np.absolute(v0_U1_3_cor_22 - v0_U1_3_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0002")
+if np.absolute(v0_U1_h3_cor_22 - v0_U1_h3_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim3")
 else:
-    v0_u1_3_cor = np.mean([v0_U1_3_cor_22, v0_U1_3_cor_23])
-    ut_v0_3_cor = ut_u1_3_cor/v0_u1_3_cor
-    v0_prime_3_cor = (u_inf3_block_cor*((ut_v0_3_cor**2 + (ct_les3_block_cor/4))))/(ut_v0_3_cor)
-    cp_prime_3_cor = cp_les3_block_cor*((u_inf3_block_cor/v0_prime_3_cor)**3)
-    ct_prime_3_cor = ct_les3_block_cor*((u_inf3_block_cor/v0_prime_3_cor)**2)
+    v0_u1_h3_cor = np.mean([v0_U1_h3_cor_22, v0_U1_h3_cor_23])
+    ut_v0_h3_cor = ut_u1_h3_cor/v0_u1_h3_cor
+    v0_prime_h3_cor = (u_inf3_hblock_cor*((ut_v0_h3_cor**2 + (ct_les3_hblock_cor/4))))/(ut_v0_h3_cor)
+    cp_prime_h3_cor = cp_les3_hblock_cor*((u_inf3_hblock_cor/v0_prime_h3_cor)**3)
+    ct_prime_h3_cor = ct_les3_hblock_cor*((u_inf3_hblock_cor/v0_prime_h3_cor)**2)
 
-if np.absolute(v0_U1_4_cor_22 - v0_U1_4_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0003")
+if np.absolute(v0_U1_h4_cor_22 - v0_U1_h4_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim4")
 else:
-    v0_u1_4_cor = np.mean([v0_U1_4_cor_22, v0_U1_4_cor_23])
-    ut_v0_4_cor = ut_u1_4_cor/v0_u1_4_cor
-    v0_prime_4_cor = (u_inf4_block_cor*((ut_v0_4_cor**2 + (ct_les4_block_cor/4))))/(ut_v0_4_cor)
-    cp_prime_4_cor = cp_les4_block_cor*((u_inf4_block_cor/v0_prime_4_cor)**3)
-    ct_prime_4_cor = ct_les4_block_cor*((u_inf4_block_cor/v0_prime_4_cor)**2)
+    v0_u1_h4_cor = np.mean([v0_U1_h4_cor_22, v0_U1_h4_cor_23])
+    ut_v0_h4_cor = ut_u1_h4_cor/v0_u1_h4_cor
+    v0_prime_h4_cor = (u_inf4_hblock_cor*((ut_v0_h4_cor**2 + (ct_les4_hblock_cor/4))))/(ut_v0_h4_cor)
+    cp_prime_h4_cor = cp_les4_hblock_cor*((u_inf4_hblock_cor/v0_prime_h4_cor)**3)
+    ct_prime_h4_cor = ct_les4_hblock_cor*((u_inf4_hblock_cor/v0_prime_h4_cor)**2)
 
-if np.absolute(v0_U1_5_cor_22 - v0_U1_5_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0004")
+if np.absolute(v0_U1_h5_cor_22 - v0_U1_h5_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim5")
 else:
-    v0_u1_5_cor = np.mean([v0_U1_5_cor_22, v0_U1_5_cor_23])
-    ut_v0_5_cor = ut_u1_5_cor/v0_u1_5_cor
-    v0_prime_5_cor = (u_inf5_block_cor*((ut_v0_5_cor**2 + (ct_les5_block_cor/4))))/(ut_v0_5_cor)
-    cp_prime_5_cor = cp_les5_block_cor*((u_inf5_block_cor/v0_prime_5_cor)**3)
-    ct_prime_5_cor = ct_les5_block_cor*((u_inf5_block_cor/v0_prime_5_cor)**2)
+    v0_u1_h5_cor = np.mean([v0_U1_h5_cor_22, v0_U1_h5_cor_23])
+    ut_v0_h5_cor = ut_u1_h5_cor/v0_u1_h5_cor
+    v0_prime_h5_cor = (u_inf5_hblock_cor*((ut_v0_h5_cor**2 + (ct_les5_hblock_cor/4))))/(ut_v0_h5_cor)
+    cp_prime_h5_cor = cp_les5_hblock_cor*((u_inf5_hblock_cor/v0_prime_h5_cor)**3)
+    ct_prime_h5_cor = ct_les5_hblock_cor*((u_inf5_hblock_cor/v0_prime_h5_cor)**2)
 
-if np.absolute(v0_U1_6_cor_22 - v0_U1_6_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0005")
+if np.absolute(v0_U1_h6_cor_22 - v0_U1_h6_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim7")
 else:
-    v0_u1_6_cor = np.mean([v0_U1_6_cor_22, v0_U1_6_cor_23])
-    ut_v0_6_cor = ut_u1_6_cor/v0_u1_6_cor
-    v0_prime_6_cor = (u_inf6_block_cor*((ut_v0_6_cor**2 + (ct_les6_block_cor/4))))/(ut_v0_6_cor)
-    cp_prime_6_cor = cp_les6_block_cor*((u_inf6_block_cor/v0_prime_6_cor)**3)
-    ct_prime_6_cor = ct_les6_block_cor*((u_inf6_block_cor/v0_prime_6_cor)**2)
+    v0_u1_h6_cor = np.mean([v0_U1_h6_cor_22, v0_U1_h6_cor_23])
+    ut_v0_h6_cor = ut_u1_h6_cor/v0_u1_h6_cor
+    v0_prime_h6_cor = (u_inf6_hblock_cor*((ut_v0_h6_cor**2 + (ct_les6_hblock_cor/4))))/(ut_v0_h6_cor)
+    cp_prime_h6_cor = cp_les6_hblock_cor*((u_inf6_hblock_cor/v0_prime_h6_cor)**3)
+    ct_prime_h6_cor = ct_les6_hblock_cor*((u_inf6_hblock_cor/v0_prime_h6_cor)**2)
 
-if np.absolute(v0_U1_7_cor_22 - v0_U1_7_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0006")
+if np.absolute(v0_U1_h7_cor_22 - v0_U1_h7_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim7")
 else:
-    v0_u1_7_cor = np.mean([v0_U1_7_cor_22, v0_U1_7_cor_23])
-    ut_v0_7_cor = ut_u1_7_cor/v0_u1_7_cor
-    v0_prime_7_cor = (u_inf7_block_cor*((ut_v0_7_cor**2 + (ct_les7_block_cor/4))))/(ut_v0_7_cor)
-    cp_prime_7_cor = cp_les7_block_cor*((u_inf7_block_cor/v0_prime_7_cor)**3)
-    ct_prime_7_cor = ct_les7_block_cor*((u_inf7_block_cor/v0_prime_7_cor)**2)
+    v0_u1_h7_cor = np.mean([v0_U1_h7_cor_22, v0_U1_h7_cor_23])
+    ut_v0_h7_cor = ut_u1_h7_cor/v0_u1_h7_cor
+    v0_prime_h7_cor = (u_inf7_hblock_cor*((ut_v0_h7_cor**2 + (ct_les7_hblock_cor/4))))/(ut_v0_h7_cor)
+    cp_prime_h7_cor = cp_les7_hblock_cor*((u_inf7_hblock_cor/v0_prime_h7_cor)**3)
+    ct_prime_h7_cor = ct_les7_hblock_cor*((u_inf7_hblock_cor/v0_prime_h7_cor)**2)
 
-if np.absolute(v0_U1_8_cor_22 - v0_U1_8_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0007")
+if np.absolute(v0_U1_h8_cor_22 - v0_U1_h8_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim8")
 else:
-    v0_u1_8_cor = np.mean([v0_U1_8_cor_22, v0_U1_8_cor_23])
-    ut_v0_8_cor = ut_u1_8_cor/v0_u1_8_cor
-    v0_prime_8_cor = (u_inf8_block_cor*((ut_v0_8_cor**2 + (ct_les8_block_cor/4))))/(ut_v0_8_cor)
-    cp_prime_8_cor = cp_les8_block_cor*((u_inf8_block_cor/v0_prime_8_cor)**3)
-    ct_prime_8_cor = ct_les8_block_cor*((u_inf8_block_cor/v0_prime_8_cor)**2)
+    v0_u1_h8_cor = np.mean([v0_U1_h8_cor_22, v0_U1_h8_cor_23])
+    ut_v0_h8_cor = ut_u1_h8_cor/v0_u1_h8_cor
+    v0_prime_h8_cor = (u_inf8_hblock_cor*((ut_v0_h8_cor**2 + (ct_les8_hblock_cor/4))))/(ut_v0_h8_cor)
+    cp_prime_h8_cor = cp_les8_hblock_cor*((u_inf8_hblock_cor/v0_prime_h8_cor)**3)
+    ct_prime_h8_cor = ct_les8_hblock_cor*((u_inf8_hblock_cor/v0_prime_h8_cor)**2)
 
-if np.absolute(v0_U1_9_cor_22 - v0_U1_9_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0008")
+if np.absolute(v0_U1_h9_cor_22 - v0_U1_h9_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim9")
 else:
-    v0_u1_9_cor = np.mean([v0_U1_9_cor_22, v0_U1_9_cor_23])
-    ut_v0_9_cor = ut_u1_9_cor/v0_u1_9_cor
-    v0_prime_9_cor = (u_inf9_block_cor*((ut_v0_9_cor**2 + (ct_les9_block_cor/4))))/(ut_v0_9_cor)
-    cp_prime_9_cor = cp_les9_block_cor*((u_inf9_block_cor/v0_prime_9_cor)**3)
-    ct_prime_9_cor = ct_les9_block_cor*((u_inf9_block_cor/v0_prime_9_cor)**2)
+    v0_u1_h9_cor = np.mean([v0_U1_h9_cor_22, v0_U1_h9_cor_23])
+    ut_v0_h9_cor = ut_u1_h9_cor/v0_u1_h9_cor
+    v0_prime_h9_cor = (u_inf9_hblock_cor*((ut_v0_h9_cor**2 + (ct_les9_hblock_cor/4))))/(ut_v0_h9_cor)
+    cp_prime_h9_cor = cp_les9_hblock_cor*((u_inf9_hblock_cor/v0_prime_h9_cor)**3)
+    ct_prime_h9_cor = ct_les9_hblock_cor*((u_inf9_hblock_cor/v0_prime_h9_cor)**2)
 
-if np.absolute(v0_U1_10_cor_22 - v0_U1_10_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0009")
+if np.absolute(v0_U1_h10_cor_22 - v0_U1_h10_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim10")
 else:
-    v0_u1_10_cor = np.mean([v0_U1_10_cor_22, v0_U1_10_cor_23])
-    ut_v0_10_cor = ut_u1_10_cor/v0_u1_10_cor
-    v0_prime_10_cor = (u_inf10_block_cor*((ut_v0_10_cor**2 + (ct_les10_block_cor/4))))/(ut_v0_10_cor)
-    cp_prime_10_cor = cp_les10_block_cor*((u_inf10_block_cor/v0_prime_10_cor)**3)
-    ct_prime_10_cor = ct_les10_block_cor*((u_inf10_block_cor/v0_prime_10_cor)**2)
+    v0_u1_h10_cor = np.mean([v0_U1_h10_cor_22, v0_U1_h10_cor_23])
+    ut_v0_h10_cor = ut_u1_h10_cor/v0_u1_h10_cor
+    v0_prime_h10_cor = (u_inf10_hblock_cor*((ut_v0_h10_cor**2 + (ct_les10_hblock_cor/4))))/(ut_v0_h10_cor)
+    cp_prime_h10_cor = cp_les10_hblock_cor*((u_inf10_hblock_cor/v0_prime_h10_cor)**3)
+    ct_prime_h10_cor = ct_les10_hblock_cor*((u_inf10_hblock_cor/v0_prime_h10_cor)**2)
 
-if np.absolute(v0_U1_11_cor_22 - v0_U1_11_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0010")
+if np.absolute(v0_U1_h11_cor_22 - v0_U1_h11_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim11")
 else:
-    v0_u1_11_cor = np.mean([v0_U1_11_cor_22, v0_U1_11_cor_23])
-    ut_v0_11_cor = ut_u1_11_cor/v0_u1_11_cor
-    v0_prime_11_cor = (u_inf11_block_cor*((ut_v0_11_cor**2 + (ct_les11_block_cor/4))))/(ut_v0_11_cor)
-    cp_prime_11_cor = cp_les11_block_cor*((u_inf11_block_cor/v0_prime_11_cor)**3)
-    ct_prime_11_cor = ct_les11_block_cor*((u_inf11_block_cor/v0_prime_11_cor)**2)
+    v0_u1_h11_cor = np.mean([v0_U1_h11_cor_22, v0_U1_h11_cor_23])
+    ut_v0_h11_cor = ut_u1_h11_cor/v0_u1_h11_cor
+    v0_prime_h11_cor = (u_inf11_hblock_cor*((ut_v0_h11_cor**2 + (ct_les11_hblock_cor/4))))/(ut_v0_h11_cor)
+    cp_prime_h11_cor = cp_les11_hblock_cor*((u_inf11_hblock_cor/v0_prime_h11_cor)**3)
+    ct_prime_h11_cor = ct_les11_hblock_cor*((u_inf11_hblock_cor/v0_prime_h11_cor)**2)
 
-if np.absolute(v0_U1_12_cor_22 - v0_U1_12_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0011")
+if np.absolute(v0_U1_h12_cor_22 - v0_U1_h12_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim12")
 else:
-    v0_u1_12_cor = np.mean([v0_U1_12_cor_22, v0_U1_12_cor_23])
-    ut_v0_12_cor = ut_u1_12_cor/v0_u1_12_cor
-    v0_prime_12_cor = (u_inf12_block_cor*((ut_v0_12_cor**2 + (ct_les12_block_cor/4))))/(ut_v0_12_cor)
-    cp_prime_12_cor = cp_les12_block_cor*((u_inf12_block_cor/v0_prime_12_cor)**3)
-    ct_prime_12_cor = ct_les12_block_cor*((u_inf12_block_cor/v0_prime_12_cor)**2)
+    v0_u1_h12_cor = np.mean([v0_U1_h12_cor_22, v0_U1_h12_cor_23])
+    ut_v0_h12_cor = ut_u1_h12_cor/v0_u1_h12_cor
+    v0_prime_h12_cor = (u_inf12_hblock_cor*((ut_v0_h12_cor**2 + (ct_les12_hblock_cor/4))))/(ut_v0_h12_cor)
+    cp_prime_h12_cor = cp_les12_hblock_cor*((u_inf12_hblock_cor/v0_prime_h12_cor)**3)
+    ct_prime_h12_cor = ct_les12_hblock_cor*((u_inf12_hblock_cor/v0_prime_h12_cor)**2)
 
-if np.absolute(v0_U1_13_cor_22 - v0_U1_13_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0012")
+if np.absolute(v0_U1_h13_cor_22 - v0_U1_h13_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim13")
 else:
-    v0_u1_13_cor = np.mean([v0_U1_13_cor_22, v0_U1_13_cor_23])
-    ut_v0_13_cor = ut_u1_13_cor/v0_u1_13_cor
-    v0_prime_13_cor = (u_inf13_block_cor*((ut_v0_13_cor**2 + (ct_les13_block_cor/4))))/(ut_v0_13_cor)
-    cp_prime_13_cor = cp_les13_block_cor*((u_inf13_block_cor/v0_prime_13_cor)**3)
-    ct_prime_13_cor = ct_les13_block_cor*((u_inf13_block_cor/v0_prime_13_cor)**2)
+    v0_u1_h13_cor = np.mean([v0_U1_h13_cor_22, v0_U1_h13_cor_23])
+    ut_v0_h13_cor = ut_u1_h13_cor/v0_u1_h13_cor
+    v0_prime_h13_cor = (u_inf13_hblock_cor*((ut_v0_h13_cor**2 + (ct_les13_hblock_cor/4))))/(ut_v0_h13_cor)
+    cp_prime_h13_cor = cp_les13_hblock_cor*((u_inf13_hblock_cor/v0_prime_h13_cor)**3)
+    ct_prime_h13_cor = ct_les13_hblock_cor*((u_inf13_hblock_cor/v0_prime_h13_cor)**2)
 
-if np.absolute(v0_U1_14_cor_22 - v0_U1_14_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0013")
+if np.absolute(v0_U1_h14_cor_22 - v0_U1_h14_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim14")
 else:
-    v0_u1_14_cor = np.mean([v0_U1_14_cor_22, v0_U1_14_cor_23])
-    ut_v0_14_cor = ut_u1_14_cor/v0_u1_14_cor
-    v0_prime_14_cor = (u_inf14_block_cor*((ut_v0_14_cor**2 + (ct_les14_block_cor/4))))/(ut_v0_14_cor)
-    cp_prime_14_cor = cp_les14_block_cor*((u_inf14_block_cor/v0_prime_14_cor)**3)
-    ct_prime_14_cor = ct_les14_block_cor*((u_inf14_block_cor/v0_prime_14_cor)**2)
+    v0_u1_h14_cor = np.mean([v0_U1_h14_cor_22, v0_U1_h14_cor_23])
+    ut_v0_h14_cor = ut_u1_h14_cor/v0_u1_h14_cor
+    v0_prime_h14_cor = (u_inf14_hblock_cor*((ut_v0_h14_cor**2 + (ct_les14_hblock_cor/4))))/(ut_v0_h14_cor)
+    cp_prime_h14_cor = cp_les14_hblock_cor*((u_inf14_hblock_cor/v0_prime_h14_cor)**3)
+    ct_prime_h14_cor = ct_les14_hblock_cor*((u_inf14_hblock_cor/v0_prime_h14_cor)**2)
 
-if np.absolute(v0_U1_15_cor_22 - v0_U1_15_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0014")
+if np.absolute(v0_U1_h15_cor_22 - v0_U1_h15_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim15")
 else:
-    v0_u1_15_cor = np.mean([v0_U1_15_cor_22, v0_U1_15_cor_23])
-    ut_v0_15_cor = ut_u1_15_cor/v0_u1_15_cor
-    v0_prime_15_cor = (u_inf15_block_cor*((ut_v0_15_cor**2 + (ct_les15_block_cor/4))))/(ut_v0_15_cor)
-    cp_prime_15_cor = cp_les15_block_cor*((u_inf15_block_cor/v0_prime_15_cor)**3)
-    ct_prime_15_cor = ct_les15_block_cor*((u_inf15_block_cor/v0_prime_15_cor)**2)
+    v0_u1_h15_cor = np.mean([v0_U1_h15_cor_22, v0_U1_h15_cor_23])
+    ut_v0_h15_cor = ut_u1_h15_cor/v0_u1_h15_cor
+    v0_prime_h15_cor = (u_inf15_hblock_cor*((ut_v0_h15_cor**2 + (ct_les15_hblock_cor/4))))/(ut_v0_h15_cor)
+    cp_prime_h15_cor = cp_les15_hblock_cor*((u_inf15_hblock_cor/v0_prime_h15_cor)**3)
+    ct_prime_h15_cor = ct_les15_hblock_cor*((u_inf15_hblock_cor/v0_prime_h15_cor)**2)
 
-if np.absolute(v0_U1_16_cor_22 - v0_U1_16_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0015")
+if np.absolute(v0_U1_h16_cor_22 - v0_U1_h16_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim16")
 else:
-    v0_u1_16_cor = np.mean([v0_U1_16_cor_22, v0_U1_16_cor_23])
-    ut_v0_16_cor = ut_u1_16_cor/v0_u1_16_cor
-    v0_prime_16_cor = (u_inf16_block_cor*((ut_v0_16_cor**2 + (ct_les16_block_cor/4))))/(ut_v0_16_cor)
-    cp_prime_16_cor = cp_les16_block_cor*((u_inf16_block_cor/v0_prime_16_cor)**3)
-    ct_prime_16_cor = ct_les16_block_cor*((u_inf16_block_cor/v0_prime_16_cor)**2)
+    v0_u1_h16_cor = np.mean([v0_U1_h16_cor_22, v0_U1_h16_cor_23])
+    ut_v0_h16_cor = ut_u1_h16_cor/v0_u1_h16_cor
+    v0_prime_h16_cor = (u_inf16_hblock_cor*((ut_v0_h16_cor**2 + (ct_les16_hblock_cor/4))))/(ut_v0_h16_cor)
+    cp_prime_h16_cor = cp_les16_hblock_cor*((u_inf16_hblock_cor/v0_prime_h16_cor)**3)
+    ct_prime_h16_cor = ct_les16_hblock_cor*((u_inf16_hblock_cor/v0_prime_h16_cor)**2)
 
-if np.absolute(v0_U1_17_cor_22 - v0_U1_17_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Corrected Sim0016")
+if np.absolute(v0_U1_h17_cor_22 - v0_U1_h17_cor_23) > 0.01:
+    print(f"Enter a new guess for U2/U1 for High Corrected Sim17")
 else:
-    v0_u1_17_cor = np.mean([v0_U1_17_cor_22, v0_U1_17_cor_23])
-    ut_v0_17_cor = ut_u1_17_cor/v0_u1_17_cor
-    v0_prime_17_cor = (u_inf17_block_cor*((ut_v0_17_cor**2 + (ct_les17_block_cor/4))))/(ut_v0_17_cor)
-    cp_prime_17_cor = cp_les17_block_cor*((u_inf17_block_cor/v0_prime_17_cor)**3)
-    ct_prime_17_cor = ct_les17_block_cor*((u_inf17_block_cor/v0_prime_17_cor)**2)
+    v0_u1_h17_cor = np.mean([v0_U1_h17_cor_22, v0_U1_h17_cor_23])
+    ut_v0_h17_cor = ut_u1_h17_cor/v0_u1_h17_cor
+    v0_prime_h17_cor = (u_inf17_hblock_cor*((ut_v0_h17_cor**2 + (ct_les17_hblock_cor/4))))/(ut_v0_h17_cor)
+    cp_prime_h17_cor = cp_les17_hblock_cor*((u_inf17_hblock_cor/v0_prime_h17_cor)**3)
+    ct_prime_h17_cor = ct_les17_hblock_cor*((u_inf17_hblock_cor/v0_prime_h17_cor)**2)
