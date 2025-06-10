@@ -1803,10 +1803,7 @@ plt.legend()
 plt.savefig('./ct_prime_comapare_ind')
 
 #Save Arrays
-np.save('./cp_prime_ms', cp_prime_plot)
-np.save('./ct_prime_ms', ct_prime_plot)
-np.save('./cp_prime_cor_ms', cp_prime_cor_plot)
-np.save('./ct_prime_cor_ms', ct_prime_cor_plot)
+np.save('./CtPrime_Values', Ctprime_plot)
 np.save('./cp_prime_mblock_ms', cp_prime_mblock_plot)
 np.save('./ct_prime_mblock_ms', ct_prime_mblock_plot)
 np.save('./cp_prime_mblock_cor_ms', cp_prime_mblock_cor_plot[1:16])
