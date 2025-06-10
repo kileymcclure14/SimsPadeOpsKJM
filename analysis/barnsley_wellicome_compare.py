@@ -12,9 +12,6 @@ from padeopsIO import turbine
 #Data and Path Stuff
 data_path = Path(au.DATA_PATH)
 #Uncorrected
-sim9_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0008")
-sim9 = pio.BudgetIO("Data/U_0017_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0009")
 sim10 = pio.BudgetIO("Data/U_0017_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -40,9 +37,6 @@ sim17_folder = os.path.join(au.DATA_PATH, "U_0017_Files/Sim_0016")
 sim17 = pio.BudgetIO("Data/U_0017_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Corrected
-sim9_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0008")
-sim9_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0009")
 sim10_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -68,9 +62,6 @@ sim17_folder_cor = os.path.join(au.DATA_PATH, "U_0018_Files/Sim_0016")
 sim17_cor = pio.BudgetIO("Data/U_0018_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 # Medium Blocked, No Correction
-sim9_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0008")
-sim9_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0009")
 sim10_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -96,9 +87,6 @@ sim17_folder_mblock = os.path.join(au.DATA_PATH, "B_0000_Files/Sim_0016")
 sim17_mblock = pio.BudgetIO("Data/B_0000_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 # Medium Blocked, Corrected
-sim9_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0008")
-sim9_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0009")
 sim10_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -124,9 +112,6 @@ sim17_folder_mblock_cor = os.path.join(au.DATA_PATH, "B_0001_Files/Sim_0016")
 sim17_mblock_cor = pio.BudgetIO("Data/B_0001_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 # High Blocked, No Correction
-sim9_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0008")
-sim9_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0009")
 sim10_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -152,9 +137,6 @@ sim17_folder_hblock = os.path.join(au.DATA_PATH, "B_0002_Files/Sim_0016")
 sim17_hblock = pio.BudgetIO("Data/B_0002_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 # High Blocked, Corrected
-sim9_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0008")
-sim9_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0008", padeops = True, runid = 1, normalize_origin = "turbine")
-
 sim10_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0009")
 sim10_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0009", padeops = True, runid = 1, normalize_origin = "turbine")
 
@@ -180,7 +162,6 @@ sim17_folder_hblock_cor = os.path.join(au.DATA_PATH, "B_0003_Files/Sim_0016")
 sim17_hblock_cor = pio.BudgetIO("Data/B_0003_Files/Sim_0016", padeops = True, runid = 1, normalize_origin = "turbine")
 
 #Ct Primes
-Ctprime9 = sim9.ta[0].ct
 Ctprime10 = sim10.ta[0].ct
 Ctprime11 = sim11.ta[0].ct
 Ctprime12 = sim12.ta[0].ct
@@ -192,7 +173,6 @@ Ctprime17 = sim17.ta[0].ct
 
 #Turbine Power
 #Uncorrected
-p_les9 = sim9.read_turb_power("all", turb =1)[-1]
 p_les10 = sim10.read_turb_power("all", turb =1)[-1]
 p_les11 = sim11.read_turb_power("all", turb =1)[-1]
 p_les12 = sim12.read_turb_power("all", turb =1)[-1]
@@ -203,7 +183,6 @@ p_les16 = sim16.read_turb_power("all", turb =1)[-1]
 p_les17 = sim17.read_turb_power("all", turb =1)[-1]
 
 #Corrected
-p_les9_cor = sim9_cor.read_turb_power("all", turb = 1)[-1]
 p_les10_cor = sim10_cor.read_turb_power("all", turb = 1)[-1]
 p_les11_cor = sim11_cor.read_turb_power("all", turb = 1)[-1]
 p_les12_cor = sim12_cor.read_turb_power("all", turb = 1)[-1]
@@ -214,7 +193,6 @@ p_les16_cor = sim16_cor.read_turb_power("all", turb = 1)[-1]
 p_les17_cor = sim17_cor.read_turb_power("all", turb = 1)[-1]
 
 # Medium Blocked, No Correction
-p_les9_mblock = sim9_mblock.read_turb_power("all", turb = 1)[-1]
 p_les10_mblock = sim10_mblock.read_turb_power("all", turb = 1)[-1]
 p_les11_mblock = sim11_mblock.read_turb_power("all", turb = 1)[-1]
 p_les12_mblock = sim12_mblock.read_turb_power("all", turb = 1)[-1]
@@ -225,7 +203,6 @@ p_les16_mblock = sim16_mblock.read_turb_power("all", turb = 1)[-1]
 p_les17_mblock = sim17_mblock.read_turb_power("all", turb = 1)[-1]
 
 # Medium Blocked, Corrected
-p_les9_mblock_cor = sim9_mblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les10_mblock_cor = sim10_mblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les11_mblock_cor = sim11_mblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les12_mblock_cor = sim12_mblock_cor.read_turb_power("all", turb = 1)[-1]
@@ -236,7 +213,6 @@ p_les16_mblock_cor = sim16_mblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les17_mblock_cor = sim17_mblock_cor.read_turb_power("all", turb = 1)[-1]
 
 # High Blocked, No Correction
-p_les9_hblock = sim9_hblock.read_turb_power("all", turb = 1)[-1]
 p_les10_hblock = sim10_hblock.read_turb_power("all", turb = 1)[-1]
 p_les11_hblock = sim11_hblock.read_turb_power("all", turb = 1)[-1]
 p_les12_hblock = sim12_hblock.read_turb_power("all", turb = 1)[-1]
@@ -247,7 +223,6 @@ p_les16_hblock = sim16_hblock.read_turb_power("all", turb = 1)[-1]
 p_les17_hblock = sim17_hblock.read_turb_power("all", turb = 1)[-1]
 
 # High Blocked, Corrected
-p_les9_hblock_cor = sim9_hblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les10_hblock_cor = sim10_hblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les11_hblock_cor = sim11_hblock_cor.read_turb_power("all", turb = 1)[-1]
 p_les12_hblock_cor = sim12_hblock_cor.read_turb_power("all", turb = 1)[-1]
@@ -259,7 +234,6 @@ p_les17_hblock_cor = sim17_hblock_cor.read_turb_power("all", turb = 1)[-1]
 
 #Free Stream Velocities
 # Uncorrected
-u_inf9 = sim9.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10 = sim10.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11 = sim11.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12 = sim12.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -270,7 +244,6 @@ u_inf16 = sim16.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").val
 u_inf17 = sim17.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # Corrected
-u_inf9_cor = sim9_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10_cor = sim10_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11_cor = sim11_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12_cor = sim12_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -281,7 +254,6 @@ u_inf16_cor = sim16_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean(
 u_inf17_cor = sim17_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # Medium Blocked, No Correction
-u_inf9_mblock = sim9_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10_mblock = sim10_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11_mblock = sim11_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12_mblock = sim12_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -292,7 +264,6 @@ u_inf16_mblock = sim16_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u']
 u_inf17_mblock = sim17_mblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # Medium Blocked, Corrected
-u_inf9_mblock_cor = sim9_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10_mblock_cor = sim10_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11_mblock_cor = sim11_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12_mblock_cor = sim12_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -303,7 +274,6 @@ u_inf16_mblock_cor = sim16_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim =
 u_inf17_mblock_cor = sim17_mblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # High Blocked, No Correction
-u_inf9_hblock = sim9_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10_hblock = sim10_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11_hblock = sim11_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12_hblock = sim12_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -314,7 +284,6 @@ u_inf16_hblock = sim16_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u']
 u_inf17_hblock = sim17_hblock.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 
 # High Blocked, Corrected
-u_inf9_hblock_cor = sim9_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf10_hblock_cor = sim10_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf11_hblock_cor = sim11_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
 u_inf12_hblock_cor = sim12_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim = 0)['u'].mean("y").values
@@ -326,7 +295,6 @@ u_inf17_hblock_cor = sim17_hblock_cor.slice(field_terms=['u'], xlim = -5, zlim =
 
 #Power Coefficients
 #Uncorrected
-cp_les9 = p_les9 / (0.5*(np.pi/4)*(u_inf9**3))
 cp_les10 = p_les10 / (0.5*(np.pi/4)*(u_inf10**3))
 cp_les11 = p_les11 / (0.5*(np.pi/4)*(u_inf11**3))
 cp_les12 = p_les12 / (0.5*(np.pi/4)*(u_inf12**3))
@@ -337,7 +305,6 @@ cp_les16 = p_les16 / (0.5*(np.pi/4)*(u_inf16**3))
 cp_les17 = p_les17 / (0.5*(np.pi/4)*(u_inf17**3))
 
 # Correcteed
-cp_les9_cor = p_les9_cor / (0.5*(np.pi/4)*(u_inf9_cor**3))
 cp_les10_cor = p_les10_cor / (0.5*(np.pi/4)*(u_inf10_cor**3))
 cp_les11_cor = p_les11_cor / (0.5*(np.pi/4)*(u_inf11_cor**3))
 cp_les12_cor = p_les12_cor / (0.5*(np.pi/4)*(u_inf12_cor**3))
@@ -348,7 +315,6 @@ cp_les16_cor = p_les16_cor / (0.5*(np.pi/4)*(u_inf16_cor**3))
 cp_les17_cor = p_les17_cor / (0.5*(np.pi/4)*(u_inf17_cor**3))
 
 # Medium Blocked, No Correction
-cp_les9_mblock = p_les9_mblock / (0.5*(np.pi/4)*(u_inf9_mblock**3))
 cp_les10_mblock = p_les10_mblock / (0.5*(np.pi/4)*(u_inf10_mblock**3))
 cp_les11_mblock = p_les11_mblock / (0.5*(np.pi/4)*(u_inf11_mblock**3))
 cp_les12_mblock = p_les12_mblock / (0.5*(np.pi/4)*(u_inf12_mblock**3))
@@ -359,7 +325,6 @@ cp_les16_mblock = p_les16_mblock / (0.5*(np.pi/4)*(u_inf16_mblock**3))
 cp_les17_mblock = p_les17_mblock / (0.5*(np.pi/4)*(u_inf17_mblock**3))
 
 # Medium Blocked, Corrected
-cp_les9_mblock_cor = p_les9_mblock_cor / (0.5*(np.pi/4)*(u_inf9_mblock_cor**3))
 cp_les10_mblock_cor = p_les10_mblock_cor / (0.5*(np.pi/4)*(u_inf10_mblock_cor**3))
 cp_les11_mblock_cor = p_les11_mblock_cor / (0.5*(np.pi/4)*(u_inf11_mblock_cor**3))
 cp_les12_mblock_cor = p_les12_mblock_cor / (0.5*(np.pi/4)*(u_inf12_mblock_cor**3))
@@ -370,7 +335,6 @@ cp_les16_mblock_cor = p_les16_mblock_cor / (0.5*(np.pi/4)*(u_inf16_mblock_cor**3
 cp_les17_mblock_cor = p_les17_mblock_cor / (0.5*(np.pi/4)*(u_inf17_mblock_cor**3))
 
 # High Blocked, No Correction
-cp_les9_hblock = p_les9_hblock / (0.5*(np.pi/4)*(u_inf9_hblock**3))
 cp_les10_hblock = p_les10_hblock / (0.5*(np.pi/4)*(u_inf10_hblock**3))
 cp_les11_hblock = p_les11_hblock / (0.5*(np.pi/4)*(u_inf11_hblock**3))
 cp_les12_hblock = p_les12_hblock / (0.5*(np.pi/4)*(u_inf12_hblock**3))
@@ -381,7 +345,6 @@ cp_les16_hblock = p_les16_hblock / (0.5*(np.pi/4)*(u_inf16_hblock**3))
 cp_les17_hblock = p_les17_hblock / (0.5*(np.pi/4)*(u_inf17_hblock**3))
 
 # HighBlocked, Corrected
-cp_les9_hblock_cor = p_les9_hblock_cor / (0.5*(np.pi/4)*(u_inf9_hblock_cor**3))
 cp_les10_hblock_cor = p_les10_hblock_cor / (0.5*(np.pi/4)*(u_inf10_hblock_cor**3))
 cp_les11_hblock_cor = p_les11_hblock_cor / (0.5*(np.pi/4)*(u_inf11_hblock_cor**3))
 cp_les12_hblock_cor = p_les12_hblock_cor / (0.5*(np.pi/4)*(u_inf12_hblock_cor**3))
@@ -393,8 +356,6 @@ cp_les17_hblock_cor = p_les17_hblock_cor / (0.5*(np.pi/4)*(u_inf17_hblock_cor**3
 
 #Disk Velocities
 #Uncorrected
-ud_les9 = sim9.read_turb_uvel("all", steady = False)
-ud_les9 = ud_les9[-1]
 ud_les10 = sim10.read_turb_uvel("all", steady = False)
 ud_les10 = ud_les10[-1]
 ud_les11 = sim11.read_turb_uvel("all", steady = False)
@@ -413,8 +374,6 @@ ud_les17 = sim17.read_turb_uvel("all", steady = False)
 ud_les17 = ud_les17[-1]
 
 #Corrected
-ud_les9_cor = sim9_cor.read_turb_uvel("all", steady = False)
-ud_les9_cor = ud_les9_cor[-1]
 ud_les10_cor = sim10_cor.read_turb_uvel("all", steady = False)
 ud_les10_cor = ud_les10_cor[-1]
 ud_les11_cor = sim11_cor.read_turb_uvel("all", steady = False)
@@ -433,8 +392,6 @@ ud_les17_cor = sim17_cor.read_turb_uvel("all", steady = False)
 ud_les17_cor = ud_les17_cor[-1]
 
 # Meidum Blocked, No Correction
-ud_les9_mblock = sim9_mblock.read_turb_uvel("all", steady = False)
-ud_les9_mblock = ud_les9_mblock[-1]
 ud_les10_mblock = sim10_mblock.read_turb_uvel("all", steady = False)
 ud_les10_mblock = ud_les10_mblock[-1]
 ud_les11_mblock = sim11_mblock.read_turb_uvel("all", steady = False)
@@ -453,8 +410,6 @@ ud_les17_mblock = sim17_mblock.read_turb_uvel("all", steady = False)
 ud_les17_mblock = ud_les17_mblock[-1]
 
 # Medium Blocked, Corrected
-ud_les9_mblock_cor = sim9_mblock_cor.read_turb_uvel("all", steady = False)
-ud_les9_mblock_cor = ud_les9_mblock_cor[-1]
 ud_les10_mblock_cor = sim10_mblock_cor.read_turb_uvel("all", steady = False)
 ud_les10_mblock_cor = ud_les10_mblock_cor[-1]
 ud_les11_mblock_cor = sim11_mblock_cor.read_turb_uvel("all", steady = False)
@@ -473,8 +428,6 @@ ud_les17_mblock_cor = sim17_mblock_cor.read_turb_uvel("all", steady = False)
 ud_les17_mblock_cor = ud_les17_mblock_cor[-1]
 
 # High Blocked, No Correction
-ud_les9_hblock = sim9_hblock.read_turb_uvel("all", steady = False)
-ud_les9_hblock = ud_les9_hblock[-1]
 ud_les10_hblock = sim10_hblock.read_turb_uvel("all", steady = False)
 ud_les10_hblock = ud_les10_hblock[-1]
 ud_les11_hblock = sim11_hblock.read_turb_uvel("all", steady = False)
@@ -493,8 +446,6 @@ ud_les17_hblock = sim17_hblock.read_turb_uvel("all", steady = False)
 ud_les17_hblock = ud_les17_hblock[-1]
 
 # High Blocked, Corrected
-ud_les9_hblock_cor = sim9_hblock_cor.read_turb_uvel("all", steady = False)
-ud_les9_hblock_cor = ud_les9_hblock_cor[-1]
 ud_les10_hblock_cor = sim10_hblock_cor.read_turb_uvel("all", steady = False)
 ud_les10_hblock_cor = ud_les10_hblock_cor[-1]
 ud_les11_hblock_cor = sim11_hblock_cor.read_turb_uvel("all", steady = False)
@@ -514,7 +465,6 @@ ud_les17_hblock_cor = ud_les17_hblock_cor[-1]
 
 #Thrust Force 
 #Uncorrected
-thrust_les9 = 2*(np.pi/4)*(ud_les9)*(u_inf9 - ud_les9)
 thrust_les10 = 2*(np.pi/4)*(ud_les10)*(u_inf10 - ud_les10)
 thrust_les11 = 2*(np.pi/4)*(ud_les11)*(u_inf11 - ud_les11)
 thrust_les12 = 2*(np.pi/4)*(ud_les12)*(u_inf12 - ud_les12)
@@ -525,7 +475,6 @@ thrust_les16 = 2*(np.pi/4)*(ud_les16)*(u_inf16 - ud_les16)
 thrust_les17 = 2*(np.pi/4)*(ud_les17)*(u_inf17 - ud_les17)
 
 #Corrected
-thrust_les9_cor = 2*(np.pi/4)*(ud_les9_cor)*(u_inf9_cor - ud_les9_cor)
 thrust_les10_cor = 2*(np.pi/4)*(ud_les10_cor)*(u_inf10_cor - ud_les10_cor)
 thrust_les11_cor = 2*(np.pi/4)*(ud_les11_cor)*(u_inf11_cor - ud_les11_cor)
 thrust_les12_cor = 2*(np.pi/4)*(ud_les12_cor)*(u_inf12_cor - ud_les12_cor)
@@ -536,7 +485,6 @@ thrust_les16_cor = 2*(np.pi/4)*(ud_les16_cor)*(u_inf16_cor - ud_les16_cor)
 thrust_les17_cor = 2*(np.pi/4)*(ud_les17_cor)*(u_inf17_cor - ud_les17_cor)
 
 # Medium Blocked, No Correction
-thrust_les9_mblock = 2*(np.pi/4)*(ud_les9_mblock)*(u_inf9_mblock - ud_les9_mblock)
 thrust_les10_mblock = 2*(np.pi/4)*(ud_les10_mblock)*(u_inf10_mblock - ud_les10_mblock)
 thrust_les11_mblock = 2*(np.pi/4)*(ud_les11_mblock)*(u_inf11_mblock - ud_les11_mblock)
 thrust_les12_mblock = 2*(np.pi/4)*(ud_les12_mblock)*(u_inf12_mblock - ud_les12_mblock)
@@ -547,7 +495,6 @@ thrust_les16_mblock = 2*(np.pi/4)*(ud_les16_mblock)*(u_inf16_mblock - ud_les16_m
 thrust_les17_mblock = 2*(np.pi/4)*(ud_les17_mblock)*(u_inf17_mblock - ud_les17_mblock)
 
 # Medium Blocked, Corrected
-thrust_les9_mblock_cor = 2*(np.pi/4)*(ud_les9_mblock_cor)*(u_inf9_mblock_cor - ud_les9_mblock_cor)
 thrust_les10_mblock_cor = 2*(np.pi/4)*(ud_les10_mblock_cor)*(u_inf10_mblock_cor - ud_les10_mblock_cor)
 thrust_les11_mblock_cor = 2*(np.pi/4)*(ud_les11_mblock_cor)*(u_inf11_mblock_cor - ud_les11_mblock_cor)
 thrust_les12_mblock_cor = 2*(np.pi/4)*(ud_les12_mblock_cor)*(u_inf12_mblock_cor - ud_les12_mblock_cor)
@@ -558,7 +505,6 @@ thrust_les16_mblock_cor = 2*(np.pi/4)*(ud_les16_mblock_cor)*(u_inf16_mblock_cor 
 thrust_les17_mblock_cor = 2*(np.pi/4)*(ud_les17_mblock_cor)*(u_inf17_mblock_cor - ud_les17_mblock_cor)
 
 # High Blocked, No Correction
-thrust_les9_hblock = 2*(np.pi/4)*(ud_les9_hblock)*(u_inf9_hblock - ud_les9_hblock)
 thrust_les10_hblock = 2*(np.pi/4)*(ud_les10_hblock)*(u_inf10_hblock - ud_les10_hblock)
 thrust_les11_hblock = 2*(np.pi/4)*(ud_les11_hblock)*(u_inf11_hblock - ud_les11_hblock)
 thrust_les12_hblock = 2*(np.pi/4)*(ud_les12_hblock)*(u_inf12_hblock - ud_les12_hblock)
@@ -569,7 +515,6 @@ thrust_les16_hblock = 2*(np.pi/4)*(ud_les16_hblock)*(u_inf16_hblock - ud_les16_h
 thrust_les17_hblock = 2*(np.pi/4)*(ud_les17_hblock)*(u_inf17_hblock - ud_les17_hblock)
 
 # High Blocked, Corrected
-thrust_les9_hblock_cor = 2*(np.pi/4)*(ud_les9_hblock_cor)*(u_inf9_hblock_cor - ud_les9_hblock_cor)
 thrust_les10_hblock_cor = 2*(np.pi/4)*(ud_les10_hblock_cor)*(u_inf10_hblock_cor - ud_les10_hblock_cor)
 thrust_les11_hblock_cor = 2*(np.pi/4)*(ud_les11_hblock_cor)*(u_inf11_hblock_cor - ud_les11_hblock_cor)
 thrust_les12_hblock_cor = 2*(np.pi/4)*(ud_les12_hblock_cor)*(u_inf12_hblock_cor - ud_les12_hblock_cor)
@@ -581,7 +526,6 @@ thrust_les17_hblock_cor = 2*(np.pi/4)*(ud_les17_hblock_cor)*(u_inf17_hblock_cor 
 
 #Ct
 #Uncorrected
-ct_les9 = thrust_les9/(0.5*(np.pi/4)*(u_inf9**2))
 ct_les10 = thrust_les10/(0.5*(np.pi/4)*(u_inf10**2))
 ct_les11 = thrust_les11/(0.5*(np.pi/4)*(u_inf11**2))
 ct_les12 = thrust_les12/(0.5*(np.pi/4)*(u_inf12**2))
@@ -592,7 +536,6 @@ ct_les16 = thrust_les16/(0.5*(np.pi/4)*(u_inf16**2))
 ct_les17 = thrust_les17/(0.5*(np.pi/4)*(u_inf17**2))
 
 #Corrected
-ct_les9_cor = thrust_les9_cor/(0.5*(np.pi/4)*(u_inf9_cor**2))
 ct_les10_cor = thrust_les10_cor/(0.5*(np.pi/4)*(u_inf10_cor**2))
 ct_les11_cor = thrust_les11_cor/(0.5*(np.pi/4)*(u_inf11_cor**2))
 ct_les12_cor = thrust_les12_cor/(0.5*(np.pi/4)*(u_inf12_cor**2))
@@ -603,7 +546,6 @@ ct_les16_cor = thrust_les16_cor/(0.5*(np.pi/4)*(u_inf16_cor**2))
 ct_les17_cor = thrust_les17_cor/(0.5*(np.pi/4)*(u_inf17_cor**2))
 
 # Medium Blocked, No Correction
-ct_les9_mblock = thrust_les9_mblock/(0.5*(np.pi/4)*(u_inf9_mblock**2))
 ct_les10_mblock = thrust_les10_mblock/(0.5*(np.pi/4)*(u_inf10_mblock**2))
 ct_les11_mblock = thrust_les11_mblock/(0.5*(np.pi/4)*(u_inf11_mblock**2))
 ct_les12_mblock = thrust_les12_mblock/(0.5*(np.pi/4)*(u_inf12_mblock**2))
@@ -614,7 +556,6 @@ ct_les16_mblock = thrust_les16_mblock/(0.5*(np.pi/4)*(u_inf16_mblock**2))
 ct_les17_mblock = thrust_les17_mblock/(0.5*(np.pi/4)*(u_inf17_mblock**2))
 
 # Medium Blocked, Corrected
-ct_les9_mblock_cor = thrust_les9_mblock_cor/(0.5*(np.pi/4)*(u_inf9_mblock_cor**2))
 ct_les10_mblock_cor = thrust_les10_mblock_cor/(0.5*(np.pi/4)*(u_inf10_mblock_cor**2))
 ct_les11_mblock_cor = thrust_les11_mblock_cor/(0.5*(np.pi/4)*(u_inf11_mblock_cor**2))
 ct_les12_mblock_cor = thrust_les12_mblock_cor/(0.5*(np.pi/4)*(u_inf12_mblock_cor**2))
@@ -625,7 +566,6 @@ ct_les16_mblock_cor = thrust_les16_mblock_cor/(0.5*(np.pi/4)*(u_inf16_mblock_cor
 ct_les17_mblock_cor = thrust_les17_mblock_cor/(0.5*(np.pi/4)*(u_inf17_mblock_cor**2))
 
 # High Blocked, No Correction
-ct_les9_hblock = thrust_les9_hblock/(0.5*(np.pi/4)*(u_inf9_hblock**2))
 ct_les10_hblock = thrust_les10_hblock/(0.5*(np.pi/4)*(u_inf10_hblock**2))
 ct_les11_hblock = thrust_les11_hblock/(0.5*(np.pi/4)*(u_inf11_hblock**2))
 ct_les12_hblock = thrust_les12_hblock/(0.5*(np.pi/4)*(u_inf12_hblock**2))
@@ -636,7 +576,6 @@ ct_les16_hblock = thrust_les16_hblock/(0.5*(np.pi/4)*(u_inf16_hblock**2))
 ct_les17_hblock = thrust_les17_hblock/(0.5*(np.pi/4)*(u_inf17_hblock**2))
 
 # High Blocked, Corrected
-ct_les9_hblock_cor = thrust_les9_hblock_cor/(0.5*(np.pi/4)*(u_inf9_hblock_cor**2))
 ct_les10_hblock_cor = thrust_les10_hblock_cor/(0.5*(np.pi/4)*(u_inf10_hblock_cor**2))
 ct_les11_hblock_cor = thrust_les11_hblock_cor/(0.5*(np.pi/4)*(u_inf11_hblock_cor**2))
 ct_les12_hblock_cor = thrust_les12_hblock_cor/(0.5*(np.pi/4)*(u_inf12_hblock_cor**2))
@@ -653,52 +592,47 @@ hb = 0.35
 
 #U2/U1 Manual Inputs/Guess
 # Medium Uncorrected
-u2_u1_m9 = 2
-u2_u1_m10 = 2
-u2_u1_m11 = 2
-u2_u1_m12 = 2
-u2_u1_m13 = 2
-u2_u1_m14 = 2
-u2_u1_m15 = 2
-u2_u1_m16 = 2
-u2_u1_m17 = 2
+u2_u1_m10 = 1
+u2_u1_m11 = 1
+u2_u1_m12 = 1.01
+u2_u1_m13 = 1.01
+u2_u1_m14 = 1.01
+u2_u1_m15 = 1.01
+u2_u1_m16 = 1.01
+u2_u1_m17 = 1.01
 
 # Medium Corrected
-u2_u1_m9_cor = 2
-u2_u1_m10_cor = 2
-u2_u1_m11_cor = 2
-u2_u1_m12_cor = 2
-u2_u1_m13_cor = 2
-u2_u1_m14_cor = 2
-u2_u1_m15_cor = 2
-u2_u1_m16_cor = 2
-u2_u1_m17_cor = 2
+u2_u1_m10_cor = 1
+u2_u1_m11_cor = 1
+u2_u1_m12_cor = 1
+u2_u1_m13_cor = 1
+u2_u1_m14_cor = 1.01
+u2_u1_m15_cor = 1.01
+u2_u1_m16_cor = 1.01
+u2_u1_m17_cor = 1.01
 
 # High Uncorrected
-u2_u1_h9 = 2
-u2_u1_h10 = 2
-u2_u1_h11 = 2
-u2_u1_h12 = 2
-u2_u1_h13 = 2
-u2_u1_h14 = 2
-u2_u1_h15 = 2
-u2_u1_h16 = 2
-u2_u1_h17 = 2
+u2_u1_h10 = 1.01
+u2_u1_h11 = 1.01
+u2_u1_h12 = 1.01
+u2_u1_h13 = 1.01
+u2_u1_h14 = 1.01
+u2_u1_h15 = 1.01
+u2_u1_h16 = 1.01
+u2_u1_h17 = 1.01
 
 # High Corrected
-u2_u1_h9_cor = 2
-u2_u1_h10_cor = 2
-u2_u1_h11_cor = 2
-u2_u1_h12_cor = 2
-u2_u1_h13_cor = 2
-u2_u1_h14_cor = 2
-u2_u1_h15_cor = 2
-u2_u1_h16_cor = 2
-u2_u1_h17_cor = 2
+u2_u1_h10_cor = 1.01
+u2_u1_h11_cor = 1.01
+u2_u1_h12_cor = 1.01
+u2_u1_h13_cor = 1.01
+u2_u1_h14_cor = 1.01
+u2_u1_h15_cor = 1.01
+u2_u1_h16_cor = 1.01
+u2_u1_h17_cor = 1.01
 
 #Solving for Ut/U1
 #Medium Uncorrected
-ut_u1_m9 = (-1 + np.sqrt(1+mb*((u2_u1_m9**2)-1)))/(mb*(u2_u1_m9 -1))
 ut_u1_m10 = (-1 + np.sqrt(1+mb*((u2_u1_m10**2)-1)))/(mb*(u2_u1_m10 -1))
 ut_u1_m11 = (-1 + np.sqrt(1+mb*((u2_u1_m11**2)-1)))/(mb*(u2_u1_m11 -1))
 ut_u1_m12 = (-1 + np.sqrt(1+mb*((u2_u1_m12**2)-1)))/(mb*(u2_u1_m12 -1))
@@ -709,7 +643,6 @@ ut_u1_m16 = (-1 + np.sqrt(1+mb*((u2_u1_m16**2)-1)))/(mb*(u2_u1_m16 -1))
 ut_u1_m17 = (-1 + np.sqrt(1+mb*((u2_u1_m17**2)-1)))/(mb*(u2_u1_m17 -1))
 
 # Medium Corrected
-ut_u1_m9_cor = (-1 + np.sqrt(1+mb*((u2_u1_m9_cor**2)-1)))/(mb*(u2_u1_m9_cor -1))
 ut_u1_m10_cor = (-1 + np.sqrt(1+mb*((u2_u1_m10_cor**2)-1)))/(mb*(u2_u1_m10_cor -1))
 ut_u1_m11_cor = (-1 + np.sqrt(1+mb*((u2_u1_m11_cor**2)-1)))/(mb*(u2_u1_m11_cor -1))
 ut_u1_m12_cor = (-1 + np.sqrt(1+mb*((u2_u1_m12_cor**2)-1)))/(mb*(u2_u1_m12_cor -1))
@@ -720,7 +653,6 @@ ut_u1_m16_cor = (-1 + np.sqrt(1+mb*((u2_u1_m16_cor**2)-1)))/(mb*(u2_u1_m16_cor -
 ut_u1_m17_cor = (-1 + np.sqrt(1+mb*((u2_u1_m17_cor**2)-1)))/(mb*(u2_u1_m17_cor -1))
 
 #High Uncorrected
-ut_u1_h9 = (-1 + np.sqrt(1+hb*((u2_u1_h9**2)-1)))/(hb*(u2_u1_h9 -1))
 ut_u1_h10 = (-1 + np.sqrt(1+hb*((u2_u1_h10**2)-1)))/(hb*(u2_u1_h10 -1))
 ut_u1_h11 = (-1 + np.sqrt(1+hb*((u2_u1_h11**2)-1)))/(hb*(u2_u1_h11 -1))
 ut_u1_h12 = (-1 + np.sqrt(1+hb*((u2_u1_h12**2)-1)))/(hb*(u2_u1_h12 -1))
@@ -731,7 +663,6 @@ ut_u1_h16 = (-1 + np.sqrt(1+hb*((u2_u1_h16**2)-1)))/(hb*(u2_u1_h16 -1))
 ut_u1_h17 = (-1 + np.sqrt(1+hb*((u2_u1_h17**2)-1)))/(hb*(u2_u1_h17 -1))
 
 # High Corrected
-ut_u1_h9_cor = (-1 + np.sqrt(1+hb*((u2_u1_h9_cor**2)-1)))/(hb*(u2_u1_m9_cor -1))
 ut_u1_h10_cor = (-1 + np.sqrt(1+hb*((u2_u1_h10_cor**2)-1)))/(hb*(u2_u1_m10_cor -1))
 ut_u1_h11_cor = (-1 + np.sqrt(1+hb*((u2_u1_h11_cor**2)-1)))/(hb*(u2_u1_m11_cor -1))
 ut_u1_h12_cor = (-1 + np.sqrt(1+hb*((u2_u1_h12_cor**2)-1)))/(hb*(u2_u1_m12_cor -1))
@@ -743,7 +674,6 @@ ut_u1_h17_cor = (-1 + np.sqrt(1+hb*((u2_u1_h17_cor**2)-1)))/(hb*(u2_u1_m17_cor -
 
 #V0/U1 Eqs
 # Meddium Uncorrected, Eq 22 From Paper
-v0_U1_m9_22 = u2_u1_m9 - mb*(ut_u1_m9)*(u2_u1_m9 - 1)
 v0_U1_m10_22 = u2_u1_m10 - mb*(ut_u1_m10)*(u2_u1_m10 - 1)
 v0_U1_m11_22 = u2_u1_m11 - mb*(ut_u1_m11)*(u2_u1_m11 - 1)
 v0_U1_m12_22 = u2_u1_m12 - mb*(ut_u1_m12)*(u2_u1_m12 - 1)
@@ -754,7 +684,6 @@ v0_U1_m16_22 = u2_u1_m16 - mb*(ut_u1_m16)*(u2_u1_m16 - 1)
 v0_U1_m17_22 = u2_u1_m17 - mb*(ut_u1_m17)*(u2_u1_m17 - 1)
 
 # Medium Corrected, Eq 22 From Paper
-v0_U1_m9_cor_22 = u2_u1_m9_cor - mb*(ut_u1_m9_cor)*(u2_u1_m9_cor - 1)
 v0_U1_m10_cor_22 = u2_u1_m10_cor - mb*(ut_u1_m10_cor)*(u2_u1_m10_cor - 1)
 v0_U1_m11_cor_22 = u2_u1_m11_cor - mb*(ut_u1_m11_cor)*(u2_u1_m11_cor - 1)
 v0_U1_m12_cor_22 = u2_u1_m12_cor - mb*(ut_u1_m12_cor)*(u2_u1_m12_cor - 1)
@@ -765,7 +694,6 @@ v0_U1_m16_cor_22 = u2_u1_m16_cor - mb*(ut_u1_m16_cor)*(u2_u1_m16_cor - 1)
 v0_U1_m17_cor_22 = u2_u1_m17_cor - mb*(ut_u1_m17_cor)*(u2_u1_m17_cor - 1)
 
 # High Uncorrected, Eq 22 From Paper
-v0_U1_h9_22 = u2_u1_h9 - hb*(ut_u1_h9)*(u2_u1_h9 - 1)
 v0_U1_h10_22 = u2_u1_h10 - hb*(ut_u1_h10)*(u2_u1_h10 - 1)
 v0_U1_h11_22 = u2_u1_h11 - hb*(ut_u1_h11)*(u2_u1_h11 - 1)
 v0_U1_h12_22 = u2_u1_h12 - hb*(ut_u1_h12)*(u2_u1_h12 - 1)
@@ -776,7 +704,6 @@ v0_U1_h16_22 = u2_u1_h16 - hb*(ut_u1_h16)*(u2_u1_h16 - 1)
 v0_U1_h17_22 = u2_u1_h17 - hb*(ut_u1_h17)*(u2_u1_h17 - 1)
 
 # High Corrected, Eq 22 From Paper
-v0_U1_h9_cor_22 = u2_u1_h9_cor - hb*(ut_u1_h9_cor)*(u2_u1_h9_cor - 1)
 v0_U1_h10_cor_22 = u2_u1_h10_cor - hb*(ut_u1_h10_cor)*(u2_u1_h10_cor - 1)
 v0_U1_h11_cor_22 = u2_u1_h11_cor - hb*(ut_u1_h11_cor)*(u2_u1_h11_cor - 1)
 v0_U1_h12_cor_22 = u2_u1_h12_cor - hb*(ut_u1_h12_cor)*(u2_u1_h12_cor - 1)
@@ -787,7 +714,6 @@ v0_U1_h16_cor_22 = u2_u1_h16_cor - hb*(ut_u1_h16_cor)*(u2_u1_h16_cor - 1)
 v0_U1_h17_cor_22 = u2_u1_h17_cor - hb*(ut_u1_h17_cor)*(u2_u1_h17_cor - 1)
 
 # Medium Uncorrected, Eq 23 From Paper
-v0_U1_m9_23 = np.sqrt(((u2_u1_m9**2)-1)/ct_les9_mblock)
 v0_U1_m10_23 = np.sqrt(((u2_u1_m10**2)-1)/ct_les10_mblock)
 v0_U1_m11_23 = np.sqrt(((u2_u1_m11**2)-1)/ct_les11_mblock)
 v0_U1_m12_23 = np.sqrt(((u2_u1_m12**2)-1)/ct_les12_mblock)
@@ -798,7 +724,6 @@ v0_U1_m16_23 = np.sqrt(((u2_u1_m16**2)-1)/ct_les16_mblock)
 v0_U1_m17_23 = np.sqrt(((u2_u1_m17**2)-1)/ct_les17_mblock)
 
 # Medium Corrected, Eq 23 From Paper
-v0_U1_m9_cor_23 = np.sqrt(((u2_u1_m9_cor**2)-1)/ct_les9_mblock_cor)
 v0_U1_m10_cor_23 = np.sqrt(((u2_u1_m10_cor**2)-1)/ct_les10_mblock_cor)
 v0_U1_m11_cor_23 = np.sqrt(((u2_u1_m11_cor**2)-1)/ct_les11_mblock_cor)
 v0_U1_m12_cor_23 = np.sqrt(((u2_u1_m12_cor**2)-1)/ct_les12_mblock_cor)
@@ -809,7 +734,6 @@ v0_U1_m16_cor_23 = np.sqrt(((u2_u1_m16_cor**2)-1)/ct_les16_mblock_cor)
 v0_U1_m17_cor_23 = np.sqrt(((u2_u1_m17_cor**2)-1)/ct_les17_mblock_cor)
 
 # High Uncorrected, Eq 23 From Paper
-v0_U1_h9_23 = np.sqrt(((u2_u1_h9**2)-1)/ct_les9_hblock)
 v0_U1_h10_23 = np.sqrt(((u2_u1_h10**2)-1)/ct_les10_hblock)
 v0_U1_h11_23 = np.sqrt(((u2_u1_h11**2)-1)/ct_les11_hblock)
 v0_U1_h12_23 = np.sqrt(((u2_u1_h12**2)-1)/ct_les12_hblock)
@@ -820,7 +744,6 @@ v0_U1_h16_23 = np.sqrt(((u2_u1_h16**2)-1)/ct_les16_hblock)
 v0_U1_h17_23 = np.sqrt(((u2_u1_h17**2)-1)/ct_les17_hblock)
 
 # High Corrected, Eq 23 From Paper
-v0_U1_h9_cor_23 = np.sqrt(((u2_u1_h9_cor**2)-1)/ct_les9_hblock_cor)
 v0_U1_h10_cor_23 = np.sqrt(((u2_u1_h10_cor**2)-1)/ct_les10_hblock_cor)
 v0_U1_h11_cor_23 = np.sqrt(((u2_u1_h11_cor**2)-1)/ct_les11_hblock_cor)
 v0_U1_h12_cor_23 = np.sqrt(((u2_u1_h12_cor**2)-1)/ct_les12_hblock_cor)
@@ -832,16 +755,6 @@ v0_U1_h17_cor_23 = np.sqrt(((u2_u1_h17_cor**2)-1)/ct_les17_hblock_cor)
 
 #Loops to Establish Convergence + Calculate V'0
 # Medium Uncorrected
-if np.absolute(v0_U1_m9_22 - v0_U1_m9_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim9")
-else:
-    v0_u1_m9 = np.mean([v0_U1_m9_22, v0_U1_m9_23])
-    print(f"v0/u1 for Med Uncorrected Sim 9: {v0_u1_m9}")
-    ut_v0_m9 = ut_u1_m9/v0_u1_m9
-    v0_prime_m9 = (u_inf9_mblock*((ut_v0_m9**2 + (ct_les9_mblock/4))))/(ut_v0_m9)
-    cp_prime_m9 = cp_les9_mblock*((u_inf9_mblock/v0_prime_m9)**3)
-    ct_prime_m9 = ct_les9_mblock*((u_inf9_mblock/v0_prime_m9)**2)
-
 if np.absolute(v0_U1_m10_22 - v0_U1_m10_23) > 0.01:
     print(f"Enter a new guess for U2/U1 for Medium Uncorrected Sim10")
 else:
@@ -923,16 +836,6 @@ else:
     ct_prime_m17 = ct_les17_mblock*((u_inf17_mblock/v0_prime_m17)**2)
 
 # Medium Corrected
-if np.absolute(v0_U1_m9_cor_22 - v0_U1_m9_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for Meidum Corrected Sim9")
-else:
-    v0_u1_m9_cor = np.mean([v0_U1_m9_cor_22, v0_U1_m9_cor_23])
-    print(f"v0/u1 for Med Corrected Sim 9: {v0_u1_m9_cor}")
-    ut_v0_m9_cor = ut_u1_m9_cor/v0_u1_m9_cor
-    v0_prime_m9_cor = (u_inf9_mblock_cor*((ut_v0_m9_cor**2 + (ct_les9_mblock_cor/4))))/(ut_v0_m9_cor)
-    cp_prime_m9_cor = cp_les9_mblock_cor*((u_inf9_mblock_cor/v0_prime_m9_cor)**3)
-    ct_prime_m9_cor = ct_les9_mblock_cor*((u_inf9_mblock_cor/v0_prime_m9_cor)**2)
-
 if np.absolute(v0_U1_m10_cor_22 - v0_U1_m10_cor_23) > 0.01:
     print(f"Enter a new guess for U2/U1 for Mecium Corrected Sim10")
 else:
@@ -1014,16 +917,6 @@ else:
     ct_prime_m17_cor = ct_les17_mblock_cor*((u_inf17_mblock_cor/v0_prime_m17_cor)**2)
 
 # High Uncorrected
-if np.absolute(v0_U1_h9_22 - v0_U1_h9_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for High Uncorrected Sim9")
-else:
-    v0_u1_h9 = np.mean([v0_U1_h9_22, v0_U1_h9_23])
-    print(f"v0/u1 for High uncorrected Sim 9: {v0_u1_h9}")
-    ut_v0_h9 = ut_u1_h9/v0_u1_h9
-    v0_prime_h9 = (u_inf9_hblock*((ut_v0_h9**2 + (ct_les9_hblock/4))))/(ut_v0_h9)
-    cp_prime_h9 = cp_les9_hblock*((u_inf9_hblock/v0_prime_h9)**3)
-    ct_prime_h9 = ct_les9_hblock*((u_inf9_hblock/v0_prime_h9)**2)
-
 if np.absolute(v0_U1_h10_22 - v0_U1_h10_23) > 0.01:
     print(f"Enter a new guess for U2/U1 for High Uncorrected Sim10")
 else:
@@ -1105,16 +998,6 @@ else:
     ct_prime_1h7 = ct_les17_hblock*((u_inf17_hblock/v0_prime_h17)**2)
 
 # High Corrected
-if np.absolute(v0_U1_h9_cor_22 - v0_U1_h9_cor_23) > 0.01:
-    print(f"Enter a new guess for U2/U1 for High Corrected Sim9")
-else:
-    v0_u1_h9_cor = np.mean([v0_U1_h9_cor_22, v0_U1_h9_cor_23])
-    print(f"v0/u1 for High Corrected Sim 9: {v0_u1_h9_cor}")
-    ut_v0_h9_cor = ut_u1_h9_cor/v0_u1_h9_cor
-    v0_prime_h9_cor = (u_inf9_hblock_cor*((ut_v0_h9_cor**2 + (ct_les9_hblock_cor/4))))/(ut_v0_h9_cor)
-    cp_prime_h9_cor = cp_les9_hblock_cor*((u_inf9_hblock_cor/v0_prime_h9_cor)**3)
-    ct_prime_h9_cor = ct_les9_hblock_cor*((u_inf9_hblock_cor/v0_prime_h9_cor)**2)
-
 if np.absolute(v0_U1_h10_cor_22 - v0_U1_h10_cor_23) > 0.01:
     print(f"Enter a new guess for U2/U1 for High Corrected Sim10")
 else:
@@ -1194,3 +1077,136 @@ else:
     v0_prime_h17_cor = (u_inf17_hblock_cor*((ut_v0_h17_cor**2 + (ct_les17_hblock_cor/4))))/(ut_v0_h17_cor)
     cp_prime_h17_cor = cp_les17_hblock_cor*((u_inf17_hblock_cor/v0_prime_h17_cor)**3)
     ct_prime_h17_cor = ct_les17_hblock_cor*((u_inf17_hblock_cor/v0_prime_h17_cor)**2)
+
+#Velocity Fields to Help with Guess
+#Medium Uncorrected
+dsm10 = sim10_mblock.slice(field_terms = 'u', ylim = 5)
+dsm10['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0009')
+
+dsm11 = sim11_mblock.slice(field_terms = 'u', ylim = 5)
+dsm11['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0010')
+
+dsm12 = sim12_mblock.slice(field_terms = 'u', ylim = 5)
+dsm12['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0011')
+
+dsm13 = sim13_mblock.slice(field_terms = 'u', ylim = 5)
+dsm13['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0012')
+
+dsm14 = sim14_mblock.slice(field_terms = 'u', ylim = 5)
+dsm14['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0013')
+
+dsm15 = sim15_mblock.slice(field_terms = 'u', ylim = 5)
+dsm15['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0014')
+
+dsm16 = sim16_mblock.slice(field_terms = 'u', ylim = 5)
+dsm16['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0015')
+
+dsm17 = sim17_mblock.slice(field_terms = 'u', ylim = 5)
+dsm17['u'].imshow()
+plt.savefig('./u_field_B_0000_Sim_0016')
+
+#Medium Corrected
+dsm10_cor = sim10_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm10_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0009')
+
+dsm11_cor = sim11_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm11_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0010')
+
+dsm12_cor = sim12_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm12_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0011')
+
+dsm13_cor = sim13_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm13_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0012')
+
+dsm14_cor = sim14_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm14_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0013')
+
+dsm15_cor = sim15_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm15_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0014')
+
+dsm16_cor = sim16_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm16_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0015')
+
+dsm17_cor = sim17_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsm17_cor['u'].imshow()
+plt.savefig('./u_field_B_0001_Sim_0016')
+
+#High Uncorrected
+dsh10 = sim10_mblock.slice(field_terms = 'u', ylim = 5)
+dsh10['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0009')
+
+dsh11 = sim11_mblock.slice(field_terms = 'u', ylim = 5)
+dsh11['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0010')
+
+dsh12 = sim12_mblock.slice(field_terms = 'u', ylim = 5)
+dsh12['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0011')
+
+dsh13 = sim13_mblock.slice(field_terms = 'u', ylim = 5)
+dsh13['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0012')
+
+dsh14 = sim14_mblock.slice(field_terms = 'u', ylim = 5)
+dsh14['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0013')
+
+dsh15 = sim15_mblock.slice(field_terms = 'u', ylim = 5)
+dsh15['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0014')
+
+dsh16 = sim16_mblock.slice(field_terms = 'u', ylim = 5)
+dsh16['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0015')
+
+dsh17 = sim17_mblock.slice(field_terms = 'u', ylim = 5)
+dsh17['u'].imshow()
+plt.savefig('./u_field_B_0002_Sim_0016')
+
+#High Corrected
+dsh10_cor = sim10_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh10_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0009')
+
+dsh11_cor = sim11_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh11_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0010')
+
+dsh12_cor = sim12_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh12_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0011')
+
+dsh13_cor = sim13_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh13_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0012')
+
+dsh14_cor = sim14_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh14_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0013')
+
+dsh15_cor = sim15_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh15_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0014')
+
+dsh16_cor = sim16_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh16_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0015')
+
+dsh17_cor = sim17_mblock_cor.slice(field_terms = 'u', ylim = 5)
+dsh17_cor['u'].imshow()
+plt.savefig('./u_field_B_0003_Sim_0016')

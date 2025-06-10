@@ -1410,7 +1410,7 @@ ct_prime_mblock_cor_gl = [ct_prime1_mcor, ct_prime2_mcor, ct_prime3_mcor, ct_pri
 ct_prime_hblock_gl = [ct_prime1_h, ct_prime2_h, ct_prime3_h, ct_prime4_h, ct_prime5_h, ct_prime6_h, ct_prime7_h, ct_prime8_h, ct_prime9_h, ct_prime10_h, ct_prime12_h, ct_prime13_h, ct_prime14_h, ct_prime15_h, ct_prime16_h, ct_prime17_h]
 ct_prime_hblock_cor_gl = [ct_prime1_hcor, ct_prime2_hcor, ct_prime3_hcor, ct_prime4_hcor, ct_prime5_hcor, ct_prime6_hcor, ct_prime7_hcor, ct_prime8_hcor, ct_prime9_hcor, ct_prime10_hcor, ct_prime11_hcor, ct_prime12_hcor, ct_prime13_hcor, ct_prime14_hcor, ct_prime15_hcor, ct_prime16_hcor, ct_prime17_hcor]
 
-#Sace Arrays
+#Save Arrays
 np.save("cp_prime_mblock_gl.npy", cp_prime_mblock_gl)
 np.save("cp_prime_mblock_cor_gl.npy", cp_prime_mblock_cor_gl)
 np.save("cp_prime_hblock_gl.npy", cp_prime_hblock_gl)

@@ -1717,18 +1717,59 @@ ct_prime17_hblock_cor = ct_les17_hblock_cor*(V0_Vp17_hblock_cor**2)
 
 #Arrays
 Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
-cp_prime_plot = [cp_prime1, cp_prime2, cp_prime3, cp_prime4, cp_prime5, cp_prime6, cp_prime7, cp_prime8, cp_prime9, cp_prime10, cp_prime11, cp_prime12, cp_prime13, cp_prime14, cp_prime15, cp_prime16, cp_prime17]
-cp_prime_cor_plot = [cp_prime1_cor, cp_prime2_cor, cp_prime3_cor, cp_prime4_cor, cp_prime5_cor, cp_prime6_cor, cp_prime7_cor, cp_prime8_cor, cp_prime9_cor, cp_prime10_cor, cp_prime11_cor, cp_prime12_cor, cp_prime13_cor, cp_prime14_cor, cp_prime15_cor, cp_prime16_cor, cp_prime17_cor]
-cp_prime_mblock_plot = [cp_prime1_mblock, cp_prime2_mblock, cp_prime3_mblock, cp_prime4_mblock, cp_prime5_mblock, cp_prime6_mblock, cp_prime7_mblock, cp_prime8_mblock, cp_prime9_mblock, cp_prime10_mblock, cp_prime11_mblock, cp_prime12_mblock, cp_prime13_mblock, cp_prime14_mblock, cp_prime15_mblock, cp_prime16_mblock, cp_prime17_mblock]
-cp_prime_mblock_cor_plot = [cp_prime1_mblock_cor, cp_prime2_mblock_cor, cp_prime3_mblock_cor, cp_prime4_mblock_cor, cp_prime5_mblock_cor, cp_prime6_mblock_cor, cp_prime7_mblock_cor, cp_prime8_mblock_cor, cp_prime9_mblock_cor, cp_prime10_mblock_cor, cp_prime11_mblock_cor, cp_prime12_mblock_cor, cp_prime13_mblock_cor, cp_prime14_mblock_cor, cp_prime15_mblock_cor, cp_prime16_mblock_cor, cp_prime17_mblock_cor]
-cp_prime_hblock_plot = [cp_prime1_hblock, cp_prime2_hblock, cp_prime3_hblock, cp_prime4_hblock, cp_prime5_hblock, cp_prime6_hblock, cp_prime7_hblock, cp_prime8_hblock, cp_prime9_hblock, cp_prime10_hblock, cp_prime11_hblock, cp_prime12_hblock, cp_prime13_hblock, cp_prime14_hblock, cp_prime15_hblock, cp_prime16_hblock, cp_prime17_hblock]
-cp_prime_hblock_cor_plot = [cp_prime1_hblock_cor, cp_prime2_hblock_cor, cp_prime3_hblock_cor, cp_prime4_hblock_cor, cp_prime5_hblock_cor, cp_prime6_hblock_cor, cp_prime7_hblock_cor, cp_prime8_hblock_cor, cp_prime9_hblock_cor, cp_prime10_hblock_cor, cp_prime11_hblock_cor, cp_prime12_hblock_cor, cp_prime13_hblock_cor, cp_prime14_hblock_cor, cp_prime15_hblock_cor, cp_prime16_hblock_cor, cp_prime17_hblock_cor]
-ct_prime_plot = [ct_prime1, ct_prime2, ct_prime3, ct_prime4, ct_prime5, ct_prime6, ct_prime7, ct_prime8, ct_prime9, ct_prime10, ct_prime11, ct_prime12, ct_prime13, ct_prime14, ct_prime15, ct_prime16, ct_prime17]
-ct_prime_cor_plot = [ct_prime1_cor, ct_prime2_cor, ct_prime3_cor, ct_prime4_cor, ct_prime5_cor, ct_prime6_cor, ct_prime7_cor, ct_prime8_cor, ct_prime9_cor, ct_prime10_cor, ct_prime11_cor, ct_prime12_cor, ct_prime13_cor, ct_prime14_cor, ct_prime15_cor, ct_prime16_cor, ct_prime17_cor]
-ct_prime_mblock_plot = [ct_prime1_mblock, ct_prime2_mblock, ct_prime3_mblock, ct_prime4_mblock, ct_prime5_mblock, ct_prime6_mblock, ct_prime7_mblock, ct_prime8_mblock, ct_prime9_mblock, ct_prime10_mblock, ct_prime11_mblock, ct_prime12_mblock, ct_prime13_mblock, ct_prime14_mblock, ct_prime15_mblock, ct_prime16_mblock, ct_prime17_mblock]
-ct_prime_mblock_cor_plot = [ct_prime1_mblock_cor, ct_prime2_mblock_cor, ct_prime3_mblock_cor, ct_prime4_mblock_cor, ct_prime5_mblock_cor, ct_prime6_mblock_cor, ct_prime7_mblock_cor, ct_prime8_mblock_cor, ct_prime9_mblock_cor, ct_prime10_mblock_cor, ct_prime11_mblock_cor, ct_prime12_mblock_cor, ct_prime13_mblock_cor, ct_prime14_mblock_cor, ct_prime15_mblock_cor, ct_prime16_mblock_cor, ct_prime17_mblock_cor]
-ct_prime_hblock_plot = [ct_prime1_hblock, ct_prime2_hblock, ct_prime3_hblock, ct_prime4_hblock, ct_prime5_hblock, ct_prime6_hblock, ct_prime7_hblock, ct_prime8_hblock, ct_prime9_hblock, ct_prime10_hblock, ct_prime11_hblock, ct_prime12_hblock, ct_prime13_hblock, ct_prime14_hblock, ct_prime15_hblock, ct_prime16_hblock, ct_prime17_hblock]
-ct_prime_hblock_cor_plot = [ct_prime1_hblock_cor, ct_prime2_hblock_cor, ct_prime3_hblock_cor, cp_prime4_hblock_cor, cp_prime5_hblock_cor, cp_prime6_hblock_cor, cp_prime7_hblock_cor, cp_prime8_hblock_cor, cp_prime9_hblock_cor, cp_prime10_hblock_cor, cp_prime11_hblock_cor, cp_prime12_hblock_cor, cp_prime13_hblock_cor, cp_prime14_hblock_cor, cp_prime15_hblock_cor, cp_prime16_hblock_cor, cp_prime17_hblock_cor]
+# Arrays (homogeneous, no missing or inhomogeneous elements)
+Ctprime_plot = [
+    Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9,
+    Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17
+]
+cp_prime_plot = [
+    cp_prime1, cp_prime2, cp_prime3, cp_prime4, cp_prime5, cp_prime6, cp_prime7, cp_prime8, cp_prime9,
+    cp_prime10, cp_prime11, cp_prime12, cp_prime13, cp_prime14, cp_prime15, cp_prime16, cp_prime17
+]
+cp_prime_cor_plot = [
+    cp_prime1_cor, cp_prime2_cor, cp_prime3_cor, cp_prime4_cor, cp_prime5_cor, cp_prime6_cor, cp_prime7_cor, cp_prime8_cor, cp_prime9_cor,
+    cp_prime10_cor, cp_prime11_cor, cp_prime12_cor, cp_prime13_cor, cp_prime14_cor, cp_prime15_cor, cp_prime16_cor, cp_prime17_cor
+]
+cp_prime_mblock_plot = [
+    cp_prime1_mblock, cp_prime2_mblock, cp_prime3_mblock, cp_prime4_mblock, cp_prime5_mblock, cp_prime6_mblock, cp_prime7_mblock, cp_prime8_mblock, cp_prime9_mblock,
+    cp_prime10_mblock, cp_prime11_mblock, cp_prime12_mblock, cp_prime13_mblock, cp_prime14_mblock, cp_prime15_mblock, cp_prime16_mblock, cp_prime17_mblock
+]
+cp_prime_mblock_cor_plot = [
+    cp_prime1_mblock_cor, cp_prime2_mblock_cor, cp_prime3_mblock_cor, cp_prime4_mblock_cor, cp_prime5_mblock_cor, cp_prime6_mblock_cor, cp_prime7_mblock_cor, cp_prime8_mblock_cor, cp_prime9_mblock_cor,
+    cp_prime10_mblock_cor, cp_prime11_mblock_cor, cp_prime12_mblock_cor, cp_prime13_mblock_cor, cp_prime14_mblock_cor, cp_prime15_mblock_cor, cp_prime16_mblock_cor, cp_prime17_mblock_cor
+]
+cp_prime_hblock_plot = [
+    cp_prime1_hblock, cp_prime2_hblock, cp_prime3_hblock, cp_prime4_hblock, cp_prime5_hblock, cp_prime6_hblock, cp_prime7_hblock, cp_prime8_hblock, cp_prime9_hblock,
+    cp_prime10_hblock, cp_prime11_hblock, cp_prime12_hblock, cp_prime13_hblock, cp_prime14_hblock, cp_prime15_hblock, cp_prime16_hblock, cp_prime17_hblock
+]
+cp_prime_hblock_cor_plot = [
+    cp_prime1_hblock_cor, cp_prime2_hblock_cor, cp_prime3_hblock_cor, cp_prime4_hblock_cor, cp_prime5_hblock_cor, cp_prime6_hblock_cor, cp_prime7_hblock_cor, cp_prime8_hblock_cor, cp_prime9_hblock_cor,
+    cp_prime10_hblock_cor, cp_prime11_hblock_cor, cp_prime12_hblock_cor, cp_prime13_hblock_cor, cp_prime14_hblock_cor, cp_prime15_hblock_cor, cp_prime16_hblock_cor, cp_prime17_hblock_cor
+]
+ct_prime_plot = [
+    ct_prime1, ct_prime2, ct_prime3, ct_prime4, ct_prime5, ct_prime6, ct_prime7, ct_prime8, ct_prime9,
+    ct_prime10, ct_prime11, ct_prime12, ct_prime13, ct_prime14, ct_prime15, ct_prime16, ct_prime17
+]
+ct_prime_cor_plot = [
+    ct_prime1_cor, ct_prime2_cor, ct_prime3_cor, ct_prime4_cor, ct_prime5_cor, ct_prime6_cor, ct_prime7_cor, ct_prime8_cor, ct_prime9_cor,
+    ct_prime10_cor, ct_prime11_cor, ct_prime12_cor, ct_prime13_cor, ct_prime14_cor, ct_prime15_cor, ct_prime16_cor, ct_prime17_cor
+]
+ct_prime_mblock_plot = [
+    ct_prime1_mblock, ct_prime2_mblock, ct_prime3_mblock, ct_prime4_mblock, ct_prime5_mblock, ct_prime6_mblock, ct_prime7_mblock, ct_prime8_mblock, ct_prime9_mblock,
+    ct_prime10_mblock, ct_prime11_mblock, ct_prime12_mblock, ct_prime13_mblock, ct_prime14_mblock, ct_prime15_mblock, ct_prime16_mblock, ct_prime17_mblock
+]
+ct_prime_mblock_cor_plot = [
+    ct_prime1_mblock_cor, ct_prime2_mblock_cor, ct_prime3_mblock_cor, ct_prime4_mblock_cor, ct_prime5_mblock_cor, ct_prime6_mblock_cor, ct_prime7_mblock_cor, ct_prime8_mblock_cor, ct_prime9_mblock_cor,
+    ct_prime10_mblock_cor, ct_prime11_mblock_cor, ct_prime12_mblock_cor, ct_prime13_mblock_cor, ct_prime14_mblock_cor, ct_prime15_mblock_cor, ct_prime16_mblock_cor, ct_prime17_mblock_cor
+]
+ct_prime_hblock_plot = [
+    ct_prime1_hblock, ct_prime2_hblock, ct_prime3_hblock, ct_prime4_hblock, ct_prime5_hblock, ct_prime6_hblock, ct_prime7_hblock, ct_prime8_hblock, ct_prime9_hblock,
+    ct_prime10_hblock, ct_prime11_hblock, ct_prime12_hblock, ct_prime13_hblock, ct_prime14_hblock, ct_prime15_hblock, ct_prime16_hblock, ct_prime17_hblock
+]
+ct_prime_hblock_cor_plot = [
+    ct_prime1_hblock_cor, ct_prime2_hblock_cor, ct_prime3_hblock_cor, ct_prime4_hblock_cor, ct_prime5_hblock_cor, ct_prime6_hblock_cor, ct_prime7_hblock_cor, ct_prime8_hblock_cor, ct_prime9_hblock_cor,
+    ct_prime10_hblock_cor, ct_prime11_hblock_cor, ct_prime12_hblock_cor, ct_prime13_hblock_cor, ct_prime14_hblock_cor, ct_prime15_hblock_cor, ct_prime16_hblock_cor, ct_prime17_hblock_cor
+]
 
 #Plotting
 #Cp
@@ -1739,7 +1780,7 @@ plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_plot[1:16], color = 'orange', la
 plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_cor_plot[1:16], color = 'green', label = '10 pct Blockage Corrected')
 plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_plot[1:16], color = 'magenta', label = '35 pct Blockage Uncorrected')
 plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_cor_plot[1:16], color = 'purple', label = '35 pct Blockage Corrected')
-plt.title('Emperical Blockage Correction Results')
+plt.title('Emperical Blockage Correction Results (Mikkelsen/Sorensen 2002)')
 plt.ylim(-1, 1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Cp Prime (Equivalent Cp in Unblocked Flow)')
@@ -1754,9 +1795,24 @@ plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_plot[1:16], color = 'orange', la
 plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_cor_plot[1:16], color = 'green', label = '10 pct Blockage Corrected')
 plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_plot[1:16], color = 'magenta', label = '35 pct Blockage Uncorrected')
 plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_cor_plot[1:16], color = 'purple', label = '35 pct Blockage Corrected')
-plt.title('Emperical Blockage Correction Results')
+plt.title('Emperical Blockage Correction Results (Mikkelsen/Sorensen 2002)')
 plt.ylim(-1, 1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Ct Prime (Equivalent Ct in Unblocked Flow)')
 plt.legend()
 plt.savefig('./ct_prime_comapare_ind')
+
+#Save Arrays
+np.save('./cp_prime_plot_ms', cp_prime_plot)
+np.save('./ct_prime_plot_ms', ct_prime_plot)
+np.save('./cp_prime_cor_plot_ms', cp_prime_cor_plot)
+np.save('./ct_prime_cor_plot_ms', ct_prime_cor_plot)
+np.save('./cp_prime_mblock_plot_ms', cp_prime_mblock_plot)
+np.save('./ct_prime_mblock_plot_ms', ct_prime_mblock_plot)
+np.save('./cp_prime_mblock_cor_plot_ms', cp_prime_mblock_cor_plot[1:16])
+np.save('./ct_prime_mblock_cor_plot_ms', ct_prime_mblock_cor_plot[1:16])
+np.save('./cp_prime_hblock_plot_ms', cp_prime_hblock_plot[1:16])
+np.save('./ct_prime_hblock_plot_ms', ct_prime_hblock_plot[1:16])
+np.save('./cp_prime_hblock_cor_plot_ms', cp_prime_hblock_cor_plot[1:16])
+np.save('./ct_prime_hblock_cor_plot_ms', ct_prime_hblock_cor_plot[1:16])
+
