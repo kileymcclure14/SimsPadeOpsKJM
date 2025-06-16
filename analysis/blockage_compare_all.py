@@ -1338,3 +1338,10 @@ plt.ylabel('Thrust Coefficient')
 plt.legend()
 plt.ylim(-1, 1)
 plt.savefig('./ct_compare_all')
+
+#Export Data
+np.save("cp_unblocked.npy", cp_plot[1:16])
+np.save("cp_unblocked_cor.npy", cp_plot_cor[1:16])
+np.save("ct_unblocked.npy", ct_plot[1:16])
+np.save("ct_unblocked_cor.npy", ct_plot_cor[1:16])
+
