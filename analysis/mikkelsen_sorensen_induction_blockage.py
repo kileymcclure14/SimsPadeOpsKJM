@@ -1183,6 +1183,9 @@ cp_prime_mblock_cor_plot = [
     cp_prime1_mblock_cor, cp_prime2_mblock_cor, cp_prime3_mblock_cor, cp_prime4_mblock_cor, cp_prime5_mblock_cor, cp_prime6_mblock_cor, cp_prime7_mblock_cor, cp_prime8_mblock_cor, cp_prime9_mblock_cor,
     cp_prime10_mblock_cor, cp_prime11_mblock_cor, cp_prime12_mblock_cor, cp_prime13_mblock_cor, cp_prime14_mblock_cor, cp_prime15_mblock_cor, cp_prime16_mblock_cor, cp_prime17_mblock_cor
 ]
+cp_prime_mblock_cor = np.hstack(cp_prime_mblock_cor_plot)
+cp_prime_mblock_cor = cp_prime_mblock_cor[~np.isnan(cp_prime_mblock_cor)]
+
 cp_prime_hblock_plot = [
     cp_prime1_hblock, cp_prime2_hblock, cp_prime3_hblock, cp_prime4_hblock, cp_prime5_hblock, cp_prime6_hblock, cp_prime7_hblock, cp_prime8_hblock, cp_prime9_hblock,
     cp_prime10_hblock, cp_prime11_hblock, cp_prime12_hblock, cp_prime13_hblock, cp_prime14_hblock, cp_prime15_hblock, cp_prime16_hblock, cp_prime17_hblock
@@ -1199,6 +1202,9 @@ ct_prime_mblock_cor_plot = [
     ct_prime1_mblock_cor, ct_prime2_mblock_cor, ct_prime3_mblock_cor, ct_prime4_mblock_cor, ct_prime5_mblock_cor, ct_prime6_mblock_cor, ct_prime7_mblock_cor, ct_prime8_mblock_cor, ct_prime9_mblock_cor,
     ct_prime10_mblock_cor, ct_prime11_mblock_cor, ct_prime12_mblock_cor, ct_prime13_mblock_cor, ct_prime14_mblock_cor, ct_prime15_mblock_cor, ct_prime16_mblock_cor, ct_prime17_mblock_cor
 ]
+ct_prime_mblock_cor = np.hstack(ct_prime_mblock_cor_plot)
+ct_prime_mblock_cor = ct_prime_mblock_cor[~np.isnan(ct_prime_mblock_cor)]
+
 ct_prime_hblock_plot = [
     ct_prime1_hblock, ct_prime2_hblock, ct_prime3_hblock, ct_prime4_hblock, ct_prime5_hblock, ct_prime6_hblock, ct_prime7_hblock, ct_prime8_hblock, ct_prime9_hblock,
     ct_prime10_hblock, ct_prime11_hblock, ct_prime12_hblock, ct_prime13_hblock, ct_prime14_hblock, ct_prime15_hblock, ct_prime16_hblock, ct_prime17_hblock
@@ -1239,8 +1245,8 @@ plt.savefig('./ct_prime_comapare_ind')
 np.save('./CtPrime_Values', Ctprime_plot)
 np.save('./cp_prime_mblock_ms', cp_prime_mblock_plot)
 np.save('./ct_prime_mblock_ms', ct_prime_mblock_plot)
-np.save('./cp_prime_mblock_cor_ms', cp_prime_mblock_cor_plot)
-np.save('./ct_prime_mblock_cor_ms', ct_prime_mblock_cor_plot)
+np.save('./cp_prime_mblock_cor_ms', cp_prime_mblock_cor)
+np.save('./ct_prime_mblock_cor_ms', ct_prime_mblock_cor)
 np.save('./cp_prime_hblock_ms', cp_prime_hblock_plot)
 np.save('./ct_prime_hblock_ms', ct_prime_hblock_plot)
 np.save('./cp_prime_hblock_cor_ms', cp_prime_hblock_cor_plot)
