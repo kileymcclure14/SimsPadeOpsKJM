@@ -1410,33 +1410,61 @@ ct_prime_mblock_cor_gl = [ct_prime1_mcor, ct_prime2_mcor, ct_prime3_mcor, ct_pri
 ct_prime_hblock_gl = [ct_prime1_h, ct_prime2_h, ct_prime3_h, ct_prime4_h, ct_prime5_h, ct_prime6_h, ct_prime7_h, ct_prime8_h, ct_prime9_h, ct_prime10_h, ct_prime12_h, ct_prime13_h, ct_prime14_h, ct_prime15_h, ct_prime16_h, ct_prime17_h]
 ct_prime_hblock_cor_gl = [ct_prime1_hcor, ct_prime2_hcor, ct_prime3_hcor, ct_prime4_hcor, ct_prime5_hcor, ct_prime6_hcor, ct_prime7_hcor, ct_prime8_hcor, ct_prime9_hcor, ct_prime10_hcor, ct_prime11_hcor, ct_prime12_hcor, ct_prime13_hcor, ct_prime14_hcor, ct_prime15_hcor, ct_prime16_hcor, ct_prime17_hcor]
 Ctprime_plot = [Ctprime1, Ctprime2, Ctprime3, Ctprime4, Ctprime5, Ctprime6, Ctprime7, Ctprime8, Ctprime9, Ctprime10, Ctprime11, Ctprime12, Ctprime13, Ctprime14, Ctprime15, Ctprime16, Ctprime17]
+cp_raw = [cp_les1, cp_les2, cp_les3, cp_les4, cp_les5, cp_les6, cp_les7, cp_les8, cp_les9, cp_les10, cp_les11, cp_les12, cp_les13, cp_les14, cp_les15, cp_les16, cp_les17]
+cp_raw_cor = [cp_les1_cor, cp_les2_cor, cp_les3_cor, cp_les4_cor, cp_les5_cor, cp_les6_cor, cp_les7_cor, cp_les8_cor, cp_les9_cor, cp_les10_cor, cp_les11_cor, cp_les12_cor, cp_les13_cor, cp_les14_cor, cp_les15_cor, cp_les16_cor, cp_les17_cor]
+ct_raw = [ct_les1, ct_les2, ct_les3, ct_les4, ct_les5, ct_les6, ct_les7, ct_les8, ct_les9, ct_les10, ct_les11, ct_les12, ct_les13, ct_les14, ct_les15, ct_les16, ct_les17]
+ct_raw_cor = [ct_les1_cor, ct_les2_cor, ct_les3_cor, ct_les4_cor, ct_les5_cor, ct_les6_cor, ct_les7_cor, ct_les8_cor, ct_les9_cor, ct_les10_cor, ct_les11_cor, ct_les12_cor, ct_les13_cor, ct_les14_cor, ct_les15_cor, ct_les16_cor, ct_les17_cor]
 
 #Plots
 #Cp
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_gl[1:16], label = '10% Blocked Uncorrected', color = 'blue')
-plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_cor_gl[1:16], label = '10% Blocked Corrected', color = 'orange')
-plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_gl[1:16], label = '35% Blocked Uncorrected', color = 'green')
-plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_cor_gl[1:16], label = '35% Blocked Corrected', color = 'red')
+plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_gl[1:16], label = 'Blocked Unfiltered', color = 'blue')
+plt.scatter(Ctprime_plot[1:16], cp_prime_mblock_cor_gl[1:16], label = 'Blocked Filtered', color = 'orange')
+plt.scatter(Ctprime_plot[1:16], cp_raw[1:16], label = 'LES Unfiltered', color = 'black', marker = '^')
+plt.scatter(Ctprime_plot[1:16], cp_raw_cor[1:16], label = 'LES Filtered', color = 'red', marker = '^')
 plt.ylim(-1,1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Equivalent Unblocked Cp')
-plt.title('Emperical Blockage Correction Results (Glauert)')
+plt.title('Emperical Blockage Correction Results (Glauert) at 10% Blockage')
 plt.legend()
-plt.savefig('./cp_prime_gl')
+plt.savefig('./cp_prime_gl_mblock')
+
+plt.figure(figsize = (9,6))
+plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_gl[1:16], label = 'Blocked Unfiltered', color = 'blue')
+plt.scatter(Ctprime_plot[1:16], cp_prime_hblock_cor_gl[1:16], label = 'Blocked Filtered', color = 'orange')
+plt.scatter(Ctprime_plot[1:16], cp_raw[1:16], label = 'LES Unfiltered', color = 'black', marker = '^')
+plt.scatter(Ctprime_plot[1:16], cp_raw_cor[1:16], label = 'LES Filtered', color = 'red', marker = '^')
+plt.ylim(-1,1)
+plt.xlabel('Ct Prime')
+plt.ylabel('Equivalent Unblocked Cp')
+plt.title('Emperical Blockage Correction Results (Glauert) at 35% Blockage')
+plt.legend()
+plt.savefig('./cp_prime_gl_hblock')
 
 #Ct
 plt.figure(figsize = (9,6))
-plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_gl[1:16], label = '10% Blocked Uncorrected', color = 'blue')
-plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_cor_gl[1:16], label = '10% Blocked Corrected', color = 'orange')
-plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_gl[1:16], label = '35% Blocked Uncorrected', color = 'green')
-plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_cor_gl[1:16], label = '35% Blocked Corrected', color = 'red')
+plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_gl[1:16], label = 'Blocked Unfiltered', color = 'blue')
+plt.scatter(Ctprime_plot[1:16], ct_prime_mblock_cor_gl[1:16], label = 'Blocked Filtered', color = 'orange')
+plt.scatter(Ctprime_plot[1:16], ct_raw[1:16], label = 'LES Unfiltered', color = 'black', marker = '^')
+plt.scatter(Ctprime_plot[1:16], ct_raw_cor[1:16], label = 'LES Filtered', color = 'red', marker = '^')
 plt.ylim(-1, 1)
 plt.xlabel('Ct Prime')
 plt.ylabel('Equivalent Unblocked Ct')
-plt.title('Emperical Blockage Correction Results (Glauert)')
+plt.title('Emperical Blockage Correction Results (Glauert) at 10% Blockage')
 plt.legend()
-plt.savefig('./ct_prime_gl')
+plt.savefig('./ct_prime_gl_mblock')
+
+plt.figure(figsize = (9,6))
+plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_gl[1:16], label = 'Corrected Unfiltered', color = 'blue')
+plt.scatter(Ctprime_plot[1:16], ct_prime_hblock_cor_gl[1:16], label = 'Corrected Filtered', color = 'orange')
+plt.scatter(Ctprime_plot[1:16], ct_raw[1:16], label = 'LES Unfiltered', color = 'black', marker = '^')
+plt.scatter(Ctprime_plot[1:16], ct_raw_cor[1:16], label = 'LES Filtered', color = 'red', marker = '^')
+plt.ylim(-1, 1)
+plt.xlabel('Ct Prime')
+plt.ylabel('Equivalent Unblocked Ct')
+plt.title('Emperical Blockage Correction Results (Glauert) at 35% Blockage')
+plt.legend()
+plt.savefig('./ct_prime_gl_hblock')
 
 #Save Arrays
 np.save("cp_prime_mblock_gl.npy", cp_prime_mblock_gl)
@@ -1447,6 +1475,11 @@ np.save("ct_prime_mblock_gl.npy", ct_prime_mblock_gl)
 np.save("ct_prime_mblock_cor_gl.npy", ct_prime_mblock_cor_gl)
 np.save("ct_prime_hblock_gl.npy", ct_prime_hblock_gl)
 np.save("ct_prime_hblock_cor_gl.npy", ct_prime_hblock_cor_gl)
+np.save("cp_raw.npy", cp_raw)
+np.save("cp_raw_cor.npy", cp_raw_cor)
+np.save("ct_raw.npy", ct_raw)
+np.save("ct_raw_cor.npy", ct_raw_cor)
+
 
 # #Unblocked Velocity Fields
 # #Corrected

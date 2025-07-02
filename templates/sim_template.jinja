@@ -129,10 +129,10 @@ t_dumpKSprep                  = 10             ! Dumping Frequency for KS files
 /
 /
 &BUDGET_TIME_AVG
-do_budgets            = .FALSE.                 ! Perform budget calculations? 
+do_budgets            = .{{ do_budgets }}.                 ! Perform budget calculations? 
 budgetType            = 1                      ! See type descriptions in budget_time_avg.F90
-budgets_dir           = "/scratch/08445/tg877441/CNBL/prod_04_1Kkm/u0"   ! Write in default output directory
-tidx_compute          = 1                      ! How often should budgets be computed?  
+budgets_dir           = "{{ budgets_dir }}"   ! Write in default output directory
+tidx_compute          = 5                      ! How often should budgets be computed?  
 tidx_dump             = 1000                   ! How often should budget files be written to disk? 
 tidx_budget_start     = -1                     ! Start budget computation from this timestep onward
 time_budget_start     = 90.d0
