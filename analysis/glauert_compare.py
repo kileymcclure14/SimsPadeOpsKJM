@@ -1831,3 +1831,9 @@ np.save("ct_raw_cor.npy", ct_raw_cor)
 # print(f"Ct Prime for 3.0 Ct Prime and Corrected: {ct_prime15_cor}")
 # print(f"Ct Prime for 3.5 Ct Prime and Corrected: {ct_prime16_cor}")
 # print(f"Ct Prime for 4 Ct Prime and Corrected: {ct_prime17_cor}"
+
+ct_les_mblock_cor = [ct_les1_mblock_cor, ct_les2_mblock_cor, ct_les3_mblock_cor, ct_les4_mblock_cor, ct_les5_mblock_cor, ct_les6_mblock_cor, ct_les7_mblock_cor, ct_les8_mblock_cor, ct_les9_mblock_cor, ct_les10_mblock_cor, ct_les11_mblock_cor, ct_les12_mblock_cor, ct_les13_mblock_cor, ct_les14_mblock_cor, ct_les15_mblock_cor, ct_les16_mblock_cor, ct_les17_mblock_cor]
+ct_les_hblock_cor = [ct_les1_hblock_cor, ct_les2_hblock_cor, ct_les3_hblock_cor, ct_les4_hblock_cor, ct_les5_hblock_cor, ct_les6_hblock_cor, ct_les7_hblock_cor, ct_les8_hblock_cor, ct_les9_hblock_cor, ct_les10_hblock_cor, ct_les11_hblock_cor, ct_les12_hblock_cor, ct_les13_hblock_cor, ct_les14_hblock_cor, ct_les15_hblock_cor, ct_les16_hblock_cor, ct_les17_hblock_cor]
+
+print(f"{ct_les_mblock_cor}")
+print(f"{ct_les_hblock_cor}")

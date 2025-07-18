@@ -511,3 +511,4 @@ plt.ylabel("a")
 plt.title("Corrected and Uncorrected LES a Values vs. Ct Prime and Theory")
 plt.savefig("./a_Compare")
 
+print(f"{ct_t}")

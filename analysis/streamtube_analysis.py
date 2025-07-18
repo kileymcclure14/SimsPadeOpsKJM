@@ -82,152 +82,152 @@ ds17h = sim17_hblock.slice(budget_terms = ["ubar", "vbar", "wbar"])
 
 # Bypass Streamtubes
 stream3m = streamtube.Streamtube(ds3m.x.to_numpy(), ds3m.y.to_numpy(), ds3m.z.to_numpy(), ds3m["ubar"].to_numpy(), ds3m['vbar'].to_numpy(), ds3m['wbar'].to_numpy())
-stream3m.compute_mask(R = 0.1, origin = (0,0,4))
+stream3m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds3m['streamtube'] = stream3m.mask
 u_avg3mb = np.sum(ds3m['ubar'] * ds3m['streamtube'], axis = (1,2))/np.sum(ds3m['streamtube'], axis = (1,2))
 
 stream4m = streamtube.Streamtube(ds4m.x.to_numpy(), ds4m.y.to_numpy(), ds4m.z.to_numpy(), ds4m["ubar"].to_numpy(), ds4m['vbar'].to_numpy(), ds4m['wbar'].to_numpy())
-stream4m.compute_mask(R = 0.1, origin = (0,0,4))
+stream4m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds4m['streamtube'] = stream4m.mask
 u_avg4mb = np.sum(ds4m['ubar'] * ds4m['streamtube'], axis = (1,2))/np.sum(ds4m['streamtube'], axis = (1,2))
 
 stream5m = streamtube.Streamtube(ds5m.x.to_numpy(), ds5m.y.to_numpy(), ds5m.z.to_numpy(), ds5m["ubar"].to_numpy(), ds5m['vbar'].to_numpy(), ds5m['wbar'].to_numpy())
-stream5m.compute_mask(R = 0.1, origin = (0,0,4))
+stream5m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds5m['streamtube'] = stream5m.mask
 u_avg5mb = np.sum(ds5m['ubar'] * ds5m['streamtube'], axis = (1,2))/np.sum(ds5m['streamtube'], axis = (1,2))
 
 stream6m = streamtube.Streamtube(ds6m.x.to_numpy(), ds6m.y.to_numpy(), ds6m.z.to_numpy(), ds6m["ubar"].to_numpy(), ds6m['vbar'].to_numpy(), ds6m['wbar'].to_numpy())
-stream6m.compute_mask(R = 0.1, origin = (0,0,4))
+stream6m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds6m['streamtube'] = stream6m.mask
 u_avg6mb = np.sum(ds6m['ubar'] * ds6m['streamtube'], axis = (1,2))/np.sum(ds6m['streamtube'], axis = (1,2))
 
 stream7m = streamtube.Streamtube(ds7m.x.to_numpy(), ds7m.y.to_numpy(), ds7m.z.to_numpy(), ds7m["ubar"].to_numpy(), ds7m['vbar'].to_numpy(), ds7m['wbar'].to_numpy())
-stream7m.compute_mask(R = 0.1, origin = (0,0,4))
+stream7m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds7m['streamtube'] = stream7m.mask
 u_avg7mb = np.sum(ds7m['ubar'] * ds7m['streamtube'], axis = (1,2))/np.sum(ds7m['streamtube'], axis = (1,2))
 
 stream8m = streamtube.Streamtube(ds8m.x.to_numpy(), ds8m.y.to_numpy(), ds8m.z.to_numpy(), ds8m["ubar"].to_numpy(), ds8m['vbar'].to_numpy(), ds8m['wbar'].to_numpy())
-stream8m.compute_mask(R = 0.1, origin = (0,0,4))
+stream8m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds8m['streamtube'] = stream8m.mask
 u_avg8mb = np.sum(ds8m['ubar'] * ds8m['streamtube'], axis = (1,2))/np.sum(ds8m['streamtube'], axis = (1,2))
 
 stream9m = streamtube.Streamtube(ds9m.x.to_numpy(), ds9m.y.to_numpy(), ds9m.z.to_numpy(), ds9m["ubar"].to_numpy(), ds9m['vbar'].to_numpy(), ds9m['wbar'].to_numpy())
-stream9m.compute_mask(R = 0.1, origin = (0,0,4))
+stream9m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds9m['streamtube'] = stream9m.mask
 u_avg9mb = np.sum(ds9m['ubar'] * ds9m['streamtube'], axis = (1,2))/np.sum(ds9m['streamtube'], axis = (1,2))
 
 stream10m = streamtube.Streamtube(ds10m.x.to_numpy(), ds10m.y.to_numpy(), ds10m.z.to_numpy(), ds10m["ubar"].to_numpy(), ds10m['vbar'].to_numpy(), ds10m['wbar'].to_numpy())
-stream10m.compute_mask(R = 0.1, origin = (0,0,4))
+stream10m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds10m['streamtube'] = stream10m.mask
 u_avg10mb = np.sum(ds10m['ubar'] * ds10m['streamtube'], axis = (1,2))/np.sum(ds10m['streamtube'], axis = (1,2))
 
 stream11m = streamtube.Streamtube(ds11m.x.to_numpy(), ds11m.y.to_numpy(), ds11m.z.to_numpy(), ds11m["ubar"].to_numpy(), ds11m['vbar'].to_numpy(), ds11m['wbar'].to_numpy())
-stream11m.compute_mask(R = 0.1, origin = (0,0,4))
+stream11m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds11m['streamtube'] = stream11m.mask
 u_avg11mb = np.sum(ds11m['ubar'] * ds11m['streamtube'], axis = (1,2))/np.sum(ds11m['streamtube'], axis = (1,2))  
 
 stream12m = streamtube.Streamtube(ds12m.x.to_numpy(), ds12m.y.to_numpy(), ds12m.z.to_numpy(), ds12m["ubar"].to_numpy(), ds12m['vbar'].to_numpy(), ds12m['wbar'].to_numpy())
-stream12m.compute_mask(R = 0.1, origin = (0,0,4))
+stream12m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds12m['streamtube'] = stream12m.mask
 u_avg12mb = np.sum(ds12m['ubar'] * ds12m['streamtube'], axis = (1,2))/np.sum(ds12m['streamtube'], axis = (1,2))
 
 stream13m = streamtube.Streamtube(ds13m.x.to_numpy(), ds13m.y.to_numpy(), ds13m.z.to_numpy(), ds13m["ubar"].to_numpy(), ds13m['vbar'].to_numpy(), ds13m['wbar'].to_numpy())
-stream13m.compute_mask(R = 0.1, origin = (0,0,4))
+stream13m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds13m['streamtube'] = stream13m.mask
 u_avg13mb = np.sum(ds13m['ubar'] * ds13m['streamtube'], axis = (1,2))/np.sum(ds13m['streamtube'], axis = (1,2))
 
 stream14m = streamtube.Streamtube(ds14m.x.to_numpy(), ds14m.y.to_numpy(), ds14m.z.to_numpy(), ds14m["ubar"].to_numpy(), ds14m['vbar'].to_numpy(), ds14m['wbar'].to_numpy())
-stream14m.compute_mask(R = 0.1, origin = (0,0,4))
+stream14m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds14m['streamtube'] = stream14m.mask
 u_avg14mb = np.sum(ds14m['ubar'] * ds14m['streamtube'], axis = (1,2))/np.sum(ds14m['streamtube'], axis = (1,2))
 
 stream15m = streamtube.Streamtube(ds15m.x.to_numpy(), ds15m.y.to_numpy(), ds15m.z.to_numpy(), ds15m["ubar"].to_numpy(), ds15m['vbar'].to_numpy(), ds15m['wbar'].to_numpy())
-stream15m.compute_mask(R = 0.1, origin = (0,0,4))
+stream15m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds15m['streamtube'] = stream15m.mask
 u_avg15mb = np.sum(ds15m['ubar'] * ds15m['streamtube'], axis = (1,2))/np.sum(ds15m['streamtube'], axis = (1,2))
 
 stream16m = streamtube.Streamtube(ds16m.x.to_numpy(), ds16m.y.to_numpy(), ds16m.z.to_numpy(), ds16m["ubar"].to_numpy(), ds16m['vbar'].to_numpy(), ds16m['wbar'].to_numpy())
-stream16m.compute_mask(R = 0.1, origin = (0,0,4))
+stream16m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds16m['streamtube'] = stream16m.mask
 u_avg16mb = np.sum(ds16m['ubar'] * ds16m['streamtube'], axis = (1,2))/np.sum(ds16m['streamtube'], axis = (1,2))
 
 stream17m = streamtube.Streamtube(ds17m.x.to_numpy(), ds17m.y.to_numpy(), ds17m.z.to_numpy(), ds17m["ubar"].to_numpy(), ds17m['vbar'].to_numpy(), ds17m['wbar'].to_numpy())
-stream17m.compute_mask(R = 0.1, origin = (0,0,4))
+stream17m.compute_mask(R = 0.1, origin = (0,0,2.5))
 ds17m['streamtube'] = stream17m.mask
 u_avg17mb = np.sum(ds17m['ubar'] * ds17m['streamtube'], axis = (1,2))/np.sum(ds17m['streamtube'], axis = (1,2))
 
 stream3h = streamtube.Streamtube(ds3h.x.to_numpy(), ds3h.y.to_numpy(), ds3h.z.to_numpy(), ds3h["ubar"].to_numpy(), ds3h['vbar'].to_numpy(), ds3h['wbar'].to_numpy())
-stream3h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream3h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds3h['streamtube'] = stream3h.mask
 u_avg3hb = np.sum(ds3h['ubar'] * ds3h['streamtube'], axis = (1,2))/np.sum(ds3h['streamtube'], axis = (1,2))
 
 stream4h = streamtube.Streamtube(ds4h.x.to_numpy(), ds4h.y.to_numpy(), ds4h.z.to_numpy(), ds4h["ubar"].to_numpy(), ds4h['vbar'].to_numpy(), ds4h['wbar'].to_numpy())
-stream4h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream4h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds4h['streamtube'] = stream4h.mask
 u_avg4hb = np.sum(ds4h['ubar'] * ds4h['streamtube'], axis = (1,2))/np.sum(ds4h['streamtube'], axis = (1,2))
 
 stream5h = streamtube.Streamtube(ds5h.x.to_numpy(), ds5h.y.to_numpy(), ds5h.z.to_numpy(), ds5h["ubar"].to_numpy(), ds5h['vbar'].to_numpy(), ds5h['wbar'].to_numpy())
-stream5h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream5h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds5h['streamtube'] = stream5h.mask
 u_avg5hb = np.sum(ds5h['ubar'] * ds5h['streamtube'], axis = (1,2))/np.sum(ds5h['streamtube'], axis = (1,2))
 
 stream6h = streamtube.Streamtube(ds6h.x.to_numpy(), ds6h.y.to_numpy(), ds6h.z.to_numpy(), ds6h["ubar"].to_numpy(), ds6h['vbar'].to_numpy(), ds6h['wbar'].to_numpy())
-stream6h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream6h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds6h['streamtube'] = stream6h.mask
 u_avg6hb = np.sum(ds6h['ubar'] * ds6h['streamtube'], axis = (1,2))/np.sum(ds6h['streamtube'], axis = (1,2))
 
 stream7h = streamtube.Streamtube(ds7h.x.to_numpy(), ds7h.y.to_numpy(), ds7h.z.to_numpy(), ds7h["ubar"].to_numpy(), ds7h['vbar'].to_numpy(), ds7h['wbar'].to_numpy())
-stream7h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream7h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds7h['streamtube'] = stream7h.mask
 u_avg7hb = np.sum(ds7h['ubar'] * ds7h['streamtube'], axis = (1,2))/np.sum(ds7h['streamtube'], axis = (1,2))
 
 stream8h = streamtube.Streamtube(ds8h.x.to_numpy(), ds8h.y.to_numpy(), ds8h.z.to_numpy(), ds8h["ubar"].to_numpy(), ds8h['vbar'].to_numpy(), ds8h['wbar'].to_numpy())
-stream8h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream8h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds8h['streamtube'] = stream8h.mask
 u_avg8hb = np.sum(ds8h['ubar'] * ds8h['streamtube'], axis = (1,2))/np.sum(ds8h['streamtube'], axis = (1,2))
 
 stream9h = streamtube.Streamtube(ds9h.x.to_numpy(), ds9h.y.to_numpy(), ds9h.z.to_numpy(), ds9h["ubar"].to_numpy(), ds9h['vbar'].to_numpy(), ds9h['wbar'].to_numpy())
-stream9h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream9h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds9h['streamtube'] = stream9h.mask
 u_avg9hb = np.sum(ds9h['ubar'] * ds9h['streamtube'], axis = (1,2))/np.sum(ds9h['streamtube'], axis = (1,2))
 
 stream10h = streamtube.Streamtube(ds10h.x.to_numpy(), ds10h.y.to_numpy(), ds10h.z.to_numpy(), ds10h["ubar"].to_numpy(), ds10h['vbar'].to_numpy(), ds10h['wbar'].to_numpy())
-stream10h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream10h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds10h['streamtube'] = stream10h.mask
 u_avg10hb = np.sum(ds10h['ubar'] * ds10h['streamtube'], axis = (1,2))/np.sum(ds10h['streamtube'], axis = (1,2))
 
 stream11h = streamtube.Streamtube(ds11h.x.to_numpy(), ds11h.y.to_numpy(), ds11h.z.to_numpy(), ds11h["ubar"].to_numpy(), ds11h['vbar'].to_numpy(), ds11h['wbar'].to_numpy())
-stream11h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream11h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds11h['streamtube'] = stream11h.mask
 u_avg11hb = np.sum(ds11h['ubar'] * ds11h['streamtube'], axis = (1,2))/np.sum(ds11h['streamtube'], axis = (1,2))
 
 stream12h = streamtube.Streamtube(ds12h.x.to_numpy(), ds12h.y.to_numpy(), ds12h.z.to_numpy(), ds12h["ubar"].to_numpy(), ds12h['vbar'].to_numpy(), ds12h['wbar'].to_numpy())
-stream12h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream12h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds12h['streamtube'] = stream12h.mask
 u_avg12hb = np.sum(ds12h['ubar'] * ds12h['streamtube'], axis = (1,2))/np.sum(ds12h['streamtube'], axis = (1,2))
 
 stream13h = streamtube.Streamtube(ds13h.x.to_numpy(), ds13h.y.to_numpy(), ds13h.z.to_numpy(), ds13h["ubar"].to_numpy(), ds13h['vbar'].to_numpy(), ds13h['wbar'].to_numpy())
-stream13h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream13h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds13h['streamtube'] = stream13h.mask
 u_avg13hb = np.sum(ds13h['ubar'] * ds13h['streamtube'], axis = (1,2))/np.sum(ds13h['streamtube'], axis = (1,2))
 
 stream14h = streamtube.Streamtube(ds14h.x.to_numpy(), ds14h.y.to_numpy(), ds14h.z.to_numpy(), ds14h["ubar"].to_numpy(), ds14h['vbar'].to_numpy(), ds14h['wbar'].to_numpy())
-stream14h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream14h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds14h['streamtube'] = stream14h.mask
 u_avg14hb = np.sum(ds14h['ubar'] * ds14h['streamtube'], axis = (1,2))/np.sum(ds14h['streamtube'], axis = (1,2))
 
 stream15h = streamtube.Streamtube(ds15h.x.to_numpy(), ds15h.y.to_numpy(), ds15h.z.to_numpy(), ds15h["ubar"].to_numpy(), ds15h['vbar'].to_numpy(), ds15h['wbar'].to_numpy())
-stream15h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream15h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds15h['streamtube'] = stream15h.mask
 u_avg15hb = np.sum(ds15h['ubar'] * ds15h['streamtube'], axis = (1,2))/np.sum(ds15h['streamtube'], axis = (1,2))
 
 stream16h = streamtube.Streamtube(ds16h.x.to_numpy(), ds16h.y.to_numpy(), ds16h.z.to_numpy(), ds16h["ubar"].to_numpy(), ds16h['vbar'].to_numpy(), ds16h['wbar'].to_numpy())
-stream16h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream16h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds16h['streamtube'] = stream16h.mask
 u_avg16hb = np.sum(ds16h['ubar'] * ds16h['streamtube'], axis = (1,2))/np.sum(ds16h['streamtube'], axis = (1,2))
 
 stream17h = streamtube.Streamtube(ds17h.x.to_numpy(), ds17h.y.to_numpy(), ds17h.z.to_numpy(), ds17h["ubar"].to_numpy(), ds17h['vbar'].to_numpy(), ds17h['wbar'].to_numpy())
-stream17h.compute_mask(R = 0.1, origin = (0,0,1.1))
+stream17h.compute_mask(R = 0.1, origin = (0,0,.75))
 ds17h['streamtube'] = stream17h.mask
 u_avg17hb = np.sum(ds17h['ubar'] * ds17h['streamtube'], axis = (1,2))/np.sum(ds17h['streamtube'], axis = (1,2))
 
