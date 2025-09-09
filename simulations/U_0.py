@@ -21,18 +21,17 @@ single_inputs = dict(
         CFL = 1.0,
         tstop = 1000,
         nx = 192,
-        ny = 40,
-        nz = 20,
+        ny = 128,
+        nz = 128,
         Lx = 38.4,
-        Ly = 3.96,
-        Lz = 1.98,
-        do_budgets = True,
+        Ly = 12.8,
+        Lz = 12.8,
+        do_budgets = False,
         budgets_dir = ju.DATA_PATH + curr_script_name + "_Files"
 
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
-        cT = 1.5,
         yaw = 0,
         useCorrection = True,
         xLoc = 5,
@@ -49,6 +48,7 @@ single_inputs = dict(
     )
 )
 single_inputs["turb"]["filterWidth"] = ju.find_filter_width(single_inputs)
+varied_inputs = dict(turb = dict(cT = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]))
 
-ju.write_padeops_files(single_inputs, default_input = default_inputs,
-    sim_template = sim_template, run_template = run_template, turb_template = turb_template, node_cap = 12)
+ju.write_padeops_suite(single_inputs, varied_inputs, nested = True, default_input = default_inputs,
+    sim_template = sim_template, run_template = run_template, turb_template = turb_template)
