@@ -101,7 +101,7 @@ np.save("ct_1_5.npy", ct_1_5)
 simulations_2 = {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_2 = f"sim2_{i}_10"
-    folder = f"Data/2_{i}_10_Files"
+    folder = f"Data/2_{i}_10s_Files"
     simulations_2[sim_name_2] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_2 = []
 for i in range(10):
@@ -122,14 +122,14 @@ ct_2 = []
 for i in range(10):
     ct_2.append(t_2[i]/(0.5*(np.pi/4)*(u_inf_2[i]**2)))
 #Export to .npy
-np.save("cp_2.npy", cp_2)
-np.save("ct_2.npy", ct_2)
+np.save("cp_2s.npy", cp_2)
+np.save("ct_2s.npy", ct_2)
 
 #2.5 Ct Prime
 simulations_2_5= {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_2_5 = f"sim2_5_{i}_10"
-    folder = f"Data/2_5_{i}_10_Files"
+    folder = f"Data/2_5_{i}_10s_Files"
     simulations_2_5[sim_name_2_5] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_2_5 = []
 for i in range(10):
@@ -150,14 +150,14 @@ ct_2_5 = []
 for i in range(10):
     ct_2_5.append(t_2_5[i]/(0.5*(np.pi/4)*(u_inf_2_5[i]**2)))
 #Export to .npy
-np.save("cp_2_5.npy", cp_2_5)
-np.save("ct_2_5.npy", ct_2_5)
+np.save("cp_2_5s.npy", cp_2_5)
+np.save("ct_2_5s.npy", ct_2_5)
 
 #3 Ct Prime
 simulations_3= {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_3 = f"sim3_{i}_10"
-    folder = f"Data/3_{i}_10_Files"
+    folder = f"Data/3_{i}_10s_Files"
     simulations_3[sim_name_3] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_3 = []
 for i in range(10):
@@ -178,14 +178,14 @@ ct_3 = []
 for i in range(10):
     ct_3.append(t_3[i]/(0.5*(np.pi/4)*(u_inf_3[i]**2)))
 #Export to .npy
-np.save("cp_3.npy", cp_3)
-np.save("ct_3.npy", ct_3)
+np.save("cp_3s.npy", cp_3)
+np.save("ct_3s.npy", ct_3)
 
 #3.5 Ct Prime
 simulations_3_5= {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_3_5 = f"sim3_5_{i}_10"
-    folder = f"Data/3_5_{i}_10_Files"
+    folder = f"Data/3_5_{i}_10s_Files"
     simulations_3_5[sim_name_3_5] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_3_5 = []
 for i in range(10):
@@ -206,14 +206,14 @@ ct_3_5 = []
 for i in range(10):
     ct_3_5.append(t_3_5[i]/(0.5*(np.pi/4)*(u_inf_3_5[i]**2)))
 #Export to .npy
-np.save("cp_3_5.npy", cp_3_5)
-np.save("ct_3_5.npy", ct_3_5)
+np.save("cp_3_5s.npy", cp_3_5)
+np.save("ct_3_5s.npy", ct_3_5)
 
 #4 Ct Prime
 simulations_4= {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_4 = f"sim4_{i}_10"
-    folder = f"Data/4_{i}_10_Files"
+    folder = f"Data/4_{i}_10s_Files"
     simulations_4[sim_name_4] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_4 = []
 for i in range(10):
@@ -234,14 +234,14 @@ ct_4 = []
 for i in range(10):
     ct_4.append(t_4[i]/(0.5*(np.pi/4)*(u_inf_4[i]**2)))
 #Export to .npy
-np.save("cp_4.npy", cp_4)
-np.save("ct_4.npy", ct_4)
+np.save("cp_4s.npy", cp_4)
+np.save("ct_4s.npy", ct_4)
 
 #-3 Ct Prime
 simulations_neg3 = {}
 for i in range(0, 100, 10):  # 0, 10, ..., 90
     sim_name_neg3 = f"simneg3_{i}_10"
-    folder = f"Data/neg3_{i}_10_Files"
+    folder = f"Data/neg3_{i}_10s_Files"
     simulations_neg3[sim_name_neg3] = pio.BudgetIO(folder, padeops=True, runid=1, normalize_origin="turbine")
 p_neg3 = []
 for i in range(10):
