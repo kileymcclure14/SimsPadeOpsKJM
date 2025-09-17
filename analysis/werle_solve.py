@@ -1,3 +1,4 @@
+import analysis_utils as au
 from pathlib import Path
 import os
 import math
@@ -10,13 +11,11 @@ import numpy as np
 from padeopsIO import turbine
 
 b = 0.35
-k = 0.3551 - 5.1050*b
+cp = np.load('cp_0deg_35.npy')
+ct = np.load('ct_0deg_35.npy')
 
-ct_block = np.load("ct_0deg_35.npy")
-cp_block = np.load("cp_0deg_35.npy")
+ct_werle = ct*((1-b)**2/(1+b))
+cp_werle = cp*((1-b)**2)
 
-V0_Vprime = np.sqrt(1-(b*ct_block*(1/k)))
-
-cp_mask = cp_block*((V0_Vprime)**3)
-
-np.save('cp_maskell_35_U.npy', cp_mask)
+np.save('cp_werle_35.npy', cp_werle)
+np.save('ct_werle_35.npy', ct_werle)
