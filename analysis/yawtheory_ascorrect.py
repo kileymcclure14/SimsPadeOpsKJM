@@ -4,7 +4,7 @@ import numpy as np
 ct = np.load("ct_0deg_35.npy")
 beta1 = 0.35
 yaw = 0
-uinf = np.load("u_inf_0deg_10.npy")
+uinf = np.load("uinf_0deg_35.npy")
 
 ct_primes_sol = []
 for i in range(8):
@@ -26,4 +26,4 @@ for i in range(8):
     cp_35_U.append(ct_primes_sol[i] * ((1-an[i])**3) * (np.cos(yaw)**3))
 
 cp_35_U = np.array(cp_35_U)
-np.save("cp_35s_U.npy", cp_35_U)
+np.save("cp_35_U.npy", cp_35_U)

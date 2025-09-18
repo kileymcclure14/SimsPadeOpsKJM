@@ -17,8 +17,8 @@ uinf = np.load("uinf_0deg_35.npy")
 
 vprime = (uinf*((ud/uinf)**2 + (ct_35/4)))/(ud/uinf)
 
-cp_gl_35 = cp_35*((vprime/uinf)**3)
-ct_gl_35 = ct_35*((vprime/uinf)**2)
+cp_gl_35 = cp_35*((uinf/vprime)**3)
+ct_gl_35 = ct_35*((uinf/vprime)**2)
 
 np.save("cp_gl_35.npy", cp_gl_35)
 np.save("ct_gl_35.npy", ct_gl_35)
