@@ -2,8 +2,8 @@ from yawtheory import BC_residuals_ctprime, model_BC_ctprime, BC_residuals_ct, m
 import numpy as np
 import matplotlib.pyplot as plt
 
-cts = np.load("ct_0deg_10.npy")
-beta = 0.1
+cts = np.load("ct_0deg_35.npy")
+beta = 0.35
 yaw = 0
 
 Cp_array = []
@@ -16,4 +16,4 @@ for ct in cts:
 
 Cp_array = np.array(Cp_array)
 
-les = np.load("cp_0deg_10.npy")
+np.save('cp_0deg_35_ct_test.npy', Cp_array)

@@ -1,6 +1,8 @@
 import numpy as np
 from UnifiedMomentumModel.Momentum import UnifiedMomentum, ThrustBasedUnified
-from scipy.optimize import fsolve
+from scipy.optimize import fsolve, root
+
+
 
 def BC_residuals_ctprime(x, Ctprime, yaw, beta):
     an, u4, v4, us, dp, A4 = x
@@ -46,7 +48,23 @@ def model_BC_ct(Ct, yaw, beta):
     umm_model = ThrustBasedUnified()
     umm_sol = umm_model(Ct, yaw)
     Ctp_0 = Ct / ((1 - umm_sol.an)**2 * np.cos(yaw)**2 + 1e-6)
-    initial_guess = [umm_sol.an, umm_sol.u4, umm_sol.v4, 1.001, -0.1, 1, Ct]
+    initial_guess = [(1-beta)*umm_sol.an, 1.1*umm_sol.u4, umm_sol.v4, 1.001, -0.1, 1, 2]
     #initial_guess = [1/3, 0.5, 0.001, 1.001, -0.01, 1.1, 1]
-    root = fsolve((lambda x: BC_residuals_ct(x, Ct, yaw, beta)), initial_guess)
-    return root
+    sol = root((lambda x: BC_residuals_ct(x, Ct, yaw, beta)), initial_guess)
+    print(sol.success)
+    return sol.x
+
+def model_BC_ct_feed(Ct, yaw, beta, last_val):
+    """
+    an, u4, v4, us, dp, A4, Ctp
+    """
+    umm_model = ThrustBasedUnified()
+    umm_sol = umm_model(Ct, yaw)
+    Ctp_0 = Ct / ((1 - umm_sol.an)**2 * np.cos(yaw)**2 + 1e-6)
+
+    initial_guess = [(1-beta)*umm_sol.an, 1.1*umm_sol.u4, umm_sol.v4, 1.001, -0.1, 1, last_val]
+    sol = root(lambda x: BC_residuals_ct(x, Ct, yaw, beta), initial_guess)
+    print(sol.success)
+    return sol.x
+
+
