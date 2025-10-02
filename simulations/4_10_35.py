@@ -19,7 +19,7 @@ single_inputs = dict(
         # if not provided, default_inputs will be used
         t_dataDump = 1000,
         CFL = 1.0,
-        tstop = 1000,
+        tstop = 400,
         nx = 192,
         ny = 128,
         nz = 128,
@@ -34,7 +34,7 @@ single_inputs = dict(
         # if not provided, default_inputs will be used
         cT = 4,
         yaw = 0,
-        useCorrection = True,
+        useCorrection = False,
         xLoc = 5,
         yLoc = 0.748998,
         zLoc = 0.748998,

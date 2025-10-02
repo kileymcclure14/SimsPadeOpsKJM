@@ -12,11 +12,11 @@ from padeopsIO import turbine
 b = 0.35
 k = 0.3551 - 5.1050*b
 
-ct_block = np.load("ct_0deg_35.npy")
-cp_block = np.load("cp_0deg_35.npy")
+ct_block = np.load("ct_0deg_35_f.npy")
+cp_block = np.load("cp_0deg_35_f.npy")
 
 V0_Vprime = np.sqrt(1-(b*ct_block*(1/k)))
 
 cp_mask = cp_block*((V0_Vprime)**3)
 
-np.save('cp_maskell_35_U.npy', cp_mask)
+np.save('cp_maskell_35_U_f.npy', cp_mask)

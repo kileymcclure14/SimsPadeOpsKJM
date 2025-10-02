@@ -10,7 +10,7 @@ from scipy.signal import find_peaks
 import numpy as np
 from padeopsIO import turbine
 
-CtPrimes = [-3, -2, -1, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
+CtPrimes =  [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
 np.save("CtPrimes_Yaw.npy", CtPrimes)
 
 #0.5 Ct Prime

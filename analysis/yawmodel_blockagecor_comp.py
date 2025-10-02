@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Load Data
-cp_yawmodel = np.load("cp_35_U.npy")
-cp_gl = np.load("cp_gl_35.npy")
-cp_mask = np.load("cp_maskell_35_U.npy")
-cp_ms = np.load("cp_ms_35.npy")
-cp_werle = np.load("cp_werle_35.npy")
+cp_yawmodel = np.load("cp_35_U_f.npy")
+cp_gl = np.load("cp_gl_35_f.npy")
+cp_mask = np.load("cp_maskell_35_U_f.npy")
+cp_ms = np.load("cp_ms_35_f.npy")
+cp_werle = np.load("cp_werle_35_f.npy")
 CtPrimes = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
 cp_raw = np.load("cp_raw.npy")
 
@@ -23,4 +23,4 @@ plt.ylim(0,1)
 plt.xlabel(r'$C_T^{\prime}$')
 plt.ylabel(r'$C_P$')
 plt.title('Blockage Correction Comparisson at 35% Blockage Ratio')
-plt.savefig('correction_compare_35_U', bbox_inches='tight', dpi = 300)
+plt.savefig('correction_compare_35_U_f', bbox_inches='tight', dpi = 300)

@@ -2,7 +2,6 @@ import analysis_utils as au
 from pathlib import Path
 import os
 import math
-import cmath
 import padeopsIO as pio
 # from pathlib import Path
 import matplotlib.pyplot as plt
@@ -10,12 +9,8 @@ from scipy.signal import find_peaks
 import numpy as np
 from padeopsIO import turbine
 
-b = 0.35
-cp = np.load('cp_0deg_35_f.npy')
-ct = np.load('ct_0deg_35_f.npy')
+sim = pio.BudgetIO("Data/1_5_10_35_Files", padeops = True, normalize_origin = "turbine")
 
-ct_werle = ct*((1-b)**2/(1+b))
-cp_werle = cp*((1-b)**2)
-
-np.save('cp_werle_35_f.npy', cp_werle)
-np.save('ct_werle_35_f.npy', ct_werle)
+ds_u = sim.slice(field_terms = 'u', ylim = 5)
+ds_u['u'].imshow()
+plt.savefig('./flow_field_1_5_10_35_xz.png', dpi = 300)

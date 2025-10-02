@@ -2,7 +2,7 @@ from yawtheory import model_BC_ctprime
 import numpy as np
 
 beta = 0.35
-CtPrime = 4
+CtPrime = 0.5
 
 yaw_degs = np.arange(0, 81, 10)
 Ct_array = []
@@ -20,5 +20,5 @@ for yaw_deg in yaw_degs:
 Ct_array = np.array(Ct_array)
 Cp_array = np.array(Cp_array)
 
-np.save("ct_4_35_model_new.npy", Ct_array)
-np.save("cp_4_35_model_new.npy", Cp_array)
+np.save("ct_0_5_35_model.npy", Ct_array)
+np.save("cp_0_5_35_model.npy", Cp_array)
