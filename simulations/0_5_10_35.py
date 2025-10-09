@@ -24,20 +24,20 @@ single_inputs = dict(
         ny = 128,
         nz = 128,
         Lx = 38.4,
-        Ly = 1.4979969,
-        Lz = 1.4979969,
+        Ly = 1.49799690,
+        Lz = 1.49799690,
         do_budgets = True,
         budgets_dir = ju.DATA_PATH + curr_script_name + "_Files"
 
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
-        cT = 4,
+        cT = 0.5,
         yaw = 0,
         useCorrection = False,
         xLoc = 5,
-        yLoc = 0.748998,
-        zLoc = 0.748998,
+        yLoc = 0.74899800,
+        zLoc = 0.74899800,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)

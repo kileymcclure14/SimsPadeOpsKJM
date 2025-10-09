@@ -22,5 +22,17 @@ cp_4 = np.load("cp_4_35_model.npy")
 
 cp_10deg_35_model = [cp_05[1], cp_1[1], cp_15[1], cp_2[1], cp_25[1], cp_3[1], cp_35[1], cp_4[1]]
 
-np.save("ct_10deg_35_model.npy", ct_10deg_35_model)
-np.save("cp_10deg_35_model.npy", cp_10deg_35_model)
+a_05 = np.load("a_0_5_35_model.npy")
+a_1 = np.load("a_1_35_model.npy")
+a_15 = np.load("a_1_5_35_model.npy")
+a_2 = np.load("a_2_35_model.npy")
+a_25 = np.load("a_2_5_35_model.npy")
+a_3 = np.load("a_3_35_model.npy")
+a_35 = np.load("a_3_5_35_model.npy")
+a_4 = np.load("a_4_35_model.npy")
+
+a_10deg_35_model = [a_05[1], a_1[1], a_15[1], a_2[1], a_25[1], a_3[1], a_35[1], a_4[1]]
+
+np.save("ct_0deg_35_model.npy", ct_10deg_35_model)
+np.save("cp_0deg_35_model.npy", cp_10deg_35_model)
+np.save("a_0deg_35_model.npy", a_10deg_35_model)
