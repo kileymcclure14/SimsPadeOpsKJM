@@ -1,29 +1,40 @@
-from yawtheory import BC_residuals_ctprime, model_BC_ctprime, BC_residuals_ct, model_BC_ct
+from yawtheory2 import ThrustBasedBlockageModel, BlockageModel
+from UnifiedMomentumModel.Momentum import ThrustBasedUnified, UnifiedMomentum
 import numpy as np
 
-ct = np.load("ct_0deg_35_f.npy")
-beta1 = 0.35
+ct_vals = np.load('C_CT_RP.npy')
 yaw = 0
-uinf = np.load("uinf_0deg_35_f.npy")
+beta1 = 0.35
 
-ct_primes_sol = []
-for i in range(8):
-    sol_ct = model_BC_ct(ct[i], yaw, beta1)
-    ct_primes_sol.append(sol_ct[6])
+ctp_thrust = []
+for i in range(21):
+    sol_ct = ThrustBasedBlockageModel(ct_vals[i], yaw, beta1)
+    ctp_thrust.append(sol_ct[4])
 
-ct_primes_sol = np.array(ct_primes_sol)
-beta2 = 0.00479
 
-an = []
-for i in range(8):
-    sol_ctprime = model_BC_ctprime(ct_primes_sol[i], yaw, beta2)
-    an.append(sol_ctprime[0])
+ctp_thrust = np.array(ctp_thrust)
+np.save('CTP_Sol_RP.npy', ctp_thrust)
 
-an = np.array(an)
+beta2 = 0.005
 
-cp_35_U = []
-for i in range(8):
-    cp_35_U.append(ct_primes_sol[i] * ((1-an[i])**3) * (np.cos(yaw)**3))
+an_ctp = []
+for i in range(21):
+    sol_ctp = BlockageModel(ctp_thrust[i], yaw, beta2)
+    an_ctp.append(sol_ctp[0])
 
-cp_35_U = np.array(cp_35_U)
-np.save("cp_35_U_f.npy", cp_35_U)
+an_ctp = np.array(an_ctp)
+print(an_ctp)
+print(ctp_thrust)
+
+cp_cor = []
+for i in range(21):
+    cp_corr = ctp_thrust[i] * ((1 - an_ctp[i])**3) * (np.cos(yaw)**3)
+    cp_cor.append(cp_corr)
+
+ct_cor = []
+for i in range(21):
+    ct_corr = ctp_thrust[i] * ((1 - an_ctp[i])**2) * (np.cos(yaw)**2)
+    ct_cor.append(ct_corr)
+
+np.save('CT_RP_Cor.npy', np.array(ct_cor))
+np.save('CP_RP_Cor.npy', np.array(cp_cor))

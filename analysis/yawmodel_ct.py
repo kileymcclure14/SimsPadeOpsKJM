@@ -1,19 +1,25 @@
-from yawtheory import BC_residuals_ctprime, model_BC_ctprime, BC_residuals_ct, model_BC_ct
+from yawtheory2 import ThrustBasedBlockageModel
 import numpy as np
 import matplotlib.pyplot as plt
+from UnifiedMomentumModel.Momentum import ThrustBasedUnified, UnifiedMomentum
 
-cts = np.load("ct_0deg_35_f.npy")
+cts = np.load('U_CT_RP.npy')
 beta = 0.35
 yaw = 0
 
 Cp_array = []
 
-for ct in cts:
-    solution = model_BC_ct(ct, yaw, beta)
-    an, u4, v4, us, dp, A4, Ctp = solution
-    Cp = Ctp * ((1 - an)**3) * (np.cos(yaw)**3)
-    Cp_array.append(Cp)
+ctp_thrust = []
+an_thrust = []
+for i in range(16):
+    sol_ct = ThrustBasedBlockageModel(cts[i], yaw, beta)
+    an_thrust.append(sol_ct[0])
+    ctp_thrust.append(sol_ct[4])
 
-Cp_array = np.array(Cp_array)
+ctp_thrust = np.array(ctp_thrust)
+an_thrust = np.array(an_thrust)
 
-np.save('cp_0deg_35_ct_f.npy', Cp_array)
+CP_Cor_RP,= ctp_thrust * ((1-an_thrust)**3) * (np.cos(np.radians(yaw))**3)
+np.save('U_CTP_Sol_RP.npy', np.array(ctp_thrust))
+
+

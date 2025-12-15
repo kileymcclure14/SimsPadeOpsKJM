@@ -24,26 +24,26 @@ single_inputs = dict(
         ny = 128,
         nz = 128,
         Lx = 38.4,
-        Ly = 1.49799690,
-        Lz = 1.49799690,
+        Ly = 1.497,
+        Lz = 1.497,
         do_budgets = True,
         budgets_dir = ju.DATA_PATH + curr_script_name + "_Files"
 
     ),
     turb = dict(  # can only provide one turbine right now - update when needed
         # if not provided, default_inputs will be used
-        cT = 0.5,
-        yaw = 0,
-        useCorrection = False,
+        cT = 4,
+        yaw = 40,
+        useCorrection = True,
         xLoc = 5,
-        yLoc = 0.74899800,
-        zLoc = 0.74899800,
+        yLoc = 0.7485,
+        zLoc = 0.7585,
     ),
     run = dict(
         # always need to provide the filepaths (no defaults)
         problem_dir = "turbines",
         problem_name = "AD_coriolis_shear",
-        job_name = "mblocked_kjm",
+        job_name = "10deg_mblock_kjm",
         # if not provided, default_inputs will be used
         n_hrs = 24,
     )
