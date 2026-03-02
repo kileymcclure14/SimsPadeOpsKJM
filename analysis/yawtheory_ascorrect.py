@@ -15,7 +15,7 @@ for i in range(21):
 ctp_thrust = np.array(ctp_thrust)
 np.save('CTP_Sol_RP.npy', ctp_thrust)
 
-beta2 = 0.005
+beta2 = 0.02
 
 an_ctp = []
 for i in range(21):

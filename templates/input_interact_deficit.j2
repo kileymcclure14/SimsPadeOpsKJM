@@ -1,0 +1,35 @@
+&concurrent
+HIT_InputFile                 = "{{ dirname }}/input_hit.dat"                   ! Inputfile path for HIT simulation
+AD_InputFile                  = "{{ dirname }}/input_ad.dat"                    ! Inputfile path for AD (primary) simulation
+Empty_InputFile               = "{{ dirname }}/input_empty.dat"                 ! Inputfile path for empty (precursor) simulation
+inflowSpeed                   = 1.0d                                            ! advection velocity for HIT targets
+k_bandpass_left               = {{ "%.4f"|format(k_bandpass_left|float)}}d0     ! bandpass filter HIT lower
+k_bandpass_right              = {{ "%.4f"|format(k_bandpass_right|float)}}d0    ! bandpass filter HIT upper
+TI_target                     = {{ "%.4f"|format(TI|float)}}d0                  ! Target turbulence intensity sqrt(2/3k)/InflowSpeed. Set to -1 to disable
+TI_fact                       = {{ "%.4f"|format(TI_fact|float)}}d0             ! x-location to compute TI for the TI controller and TI_target
+TI_xloc                       = {{ "%.4f"|format(TI_xloc|float)}}d0             ! Amplifier for HIT fluctuations. Set to > 0 to enable manually
+freeze_HIT                    = .{{ freeze_hit }}.                              ! Freeze HIT targets? (e.g. for Mann turbulence)
+/
+/
+&FILTER_INFO
+applyfilters = .FALSE. 
+nfilters     = 2
+fof_dir      = "/projects/windFlowModeling/PadeOps/HIT_Interact/filter_visualizations/"
+tid_FIL_FullField = 75
+tid_FIL_Planes = 4
+filoutdir    = "/scratch/globus/aghate/filter_visualization/ad_data" 
+/
+/
+&BUDGET_TIME_AVG_DEFICIT
+do_budgets            = .{{ do_deficit_budgets }}.    ! Perform budget calculations?
+budgetType            = 1         ! See type descriptions in budget_time_avg.F90
+budgets_dir           = "{{ dirname }}"    ! Write in default output directory
+tidx_compute          = 1        ! How often should budgets be computed?
+tidx_dump             = 1000      ! How often should budget files be written to disk?
+tidx_budget_start     = -1      ! Start budget computation from this timestep onward
+time_budget_start     = {{ "%0.1f"|format(time_budget_start|float) }}d0
+restart_budgets       = .FALSE.   ! use existing budget file to restart budget calculations?
+restart_rid           = 2         ! Restart budget file run index
+restart_tid           = 99999     ! Restart budget file time index
+restart_counter       = 11111     ! Restart budget file counter
+/
