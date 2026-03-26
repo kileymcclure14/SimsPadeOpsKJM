@@ -201,11 +201,178 @@ plt.plot(lags_t, Ru_t / Ru_t[0])
 plt.xlabel("Time Lag")
 plt.ylabel("Normalized Autocovariance")
 plt.title("Temporal Autocorrelation (u)")
-plt.savefig("Ru_time.png", dpi=300)
+plt.savefig("./Ru_time.png", dpi=300)
 
 plt.figure()
 plt.plot(lags_x, Ru_c / Ru_c[0])
 plt.xlabel("Spatial Lag")
 plt.ylabel("Normalized Autocovariance")
 plt.title("Spatial Autocorrelation (u)")
-plt.savefig("Ru_space.png", dpi=300)
+plt.savefig("./Ru_space.png", dpi=300)
+
+# Energy Spectra Frequency Space
+#Energy Spectrum Function
+def energy_spectrum_fft(uprime, dt):
+
+    Nt = uprime.shape[0]
+
+    uflat = uprime.reshape(Nt, -1)
+    umean = np.mean(uflat, axis=1)
+
+    U = np.fft.fft(umean)
+
+    freqs = np.fft.fftfreq(Nt, d=dt)
+    omega = 2*np.pi*freqs
+
+    S = (np.abs(U)**2) / Nt
+
+    mask = freqs > 0
+    return omega[mask], S[mask]
+
+# Apply to Temporal Data
+omega_fft, Su_fft = energy_spectrum_fft(utprime, dt)
+
+# Plot
+plt.figure(figsize=(10,6))
+plt.loglog(omega_fft, Su_fft)
+plt.xlabel("Frequency")
+plt.ylabel("Energy Spectrum")
+plt.title("Energy Spectrum at Future Turbine Location")
+plt.savefig('./10PCT_Energy_Spectrum_Frequency.png', dpi = 300)
+
+# Convert to k space
+def omega_k(omega, S_omega, U):
+    k = omega / U
+    E_k = U*S_omega
+    return k, E_k
+
+# Apply to Temporal Data
+k, Ek = omega_k(omega_fft, Su_fft, np.mean(ubart))
+
+#Plot
+# Reference -5/3 slope
+k_ref = np.linspace(min(k), max(k), 100)
+Ek_ref = Ek[0] * (k_ref / k[0])**(-5/3)
+
+plt.figure()
+plt.loglog(k, Ek, label="E(k)")
+plt.loglog(k_ref, Ek_ref, '--', label="-5/3 slope")
+plt.xlabel("k")
+plt.ylabel("E(k)")
+plt.legend()
+plt.title("Energy Spectrum with -5/3 Scaling")
+plt.savefig("./k_spectrum_10PCT.png", dpi=300)
+
+# Spatial Energy Spectrum
+def spatial_spectrum(uprime, dx):
+    Nx = len(uprime)
+
+    U = np.fft.fft(uprime)
+    k = np.fft.fftfreq(Nx, d=dx) * 2 * np.pi
+
+    E_k = (np.abs(U)**2) / Nx
+
+    mask = k > 0
+    return k[mask], E_k[mask]
+
+# Apply to Spatial Data
+k_space, Ek_space = spatial_spectrum(ucprime, dx)
+
+# Plot
+k_ref_space = np.linspace(min(k_space), max(k_space), 100)
+Ek_ref_space = Ek_space[0] * (k_ref_space / k_space[0])**(-5/3)
+
+
+plt.figure(figsize=(10,6))
+plt.loglog(k_space, Ek_space)
+plt.loglog(k_ref_space, Ek_ref_space, '--', label="-5/3 slope")
+plt.xlabel("k")
+plt.ylabel("E(k)")
+plt.title("Spatial Energy Spectrum")
+plt.savefig("./10PCT_spatial_energy_spectrum.png", dpi=300)
+
+# Dissipation Length Scales
+# From Converted Time Series
+logE = np.log(Ek)
+grad = np.gradient(logE)
+
+k_index = np.argmax(grad)
+kd = k[k_index]
+eta = 1/kd
+print("Dissipation Length Scale (from time series):", eta)
+
+# From Spatial Series
+logEspace = np.log(Ek_space)
+grad_space = np.gradient(logEspace)
+
+k_index_space = np.argmin(grad_space)
+kd_space = k_space[k_index_space]
+eta_space = 1/kd_space
+print("Dissipation Length Scale (from spatial series):", eta_space)
+
+# Injection Length Scales
+# Time Series
+lit = (utprime**3)/eta
+lit_mean = np.mean(lit)
+print("Injection Length Scale (from time series):", lit_mean)
+
+# Spatial Series
+lispace = (ucprime**3)/eta_space
+lispace_mean = np.mean(lispace)
+print("Injection Length Scale (from spatial series):", lispace_mean)
+
+# TKE Calculations
+# Time Series
+uut = []
+vvt = []
+wwt = []
+for tid in tids:
+    uu = sim.slice(budget_terms='uu', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['uu']
+    uut.append(uu)
+    vv = sim.slice(budget_terms='vv', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['vv']
+    vvt.append(vv)
+    ww = sim.slice(budget_terms='ww', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['ww']
+    wwt.append(ww)
+uut = np.array(uut)
+vvt = np.array(vvt)
+wwt = np.array(wwt)
+
+TKEUt = 0.5 * uut
+TKEVt = 0.5 * vvt
+TKEWt = 0.5 * wwt
+
+# Spatial Series
+uuc = sim.slice(budget_terms='uu', ylim=1.4, zlim=1.4)['uu']
+vvc = sim.slice(budget_terms='vv', ylim=1.4, zlim=1.4)['vv']
+wwc = sim.slice(budget_terms='ww', ylim=1.4, zlim=1.4)['ww'] 
+
+uuc = np.array(uuc)
+vvc = np.array(vvc)
+wwc = np.array(wwc)
+
+TKEUc = 0.5 * uuc
+TKEVc = 0.5 * vvc
+TKEWc = 0.5 * wwc
+
+# Plots
+# Time Series
+plt.figure(figsize=(10,6))
+plt.plot(tidx, TKEUt, label="TKE U Component")
+plt.plot(tidx, TKEVt, label="TKE V Component")
+plt.plot(tidx, TKEWt, label="TKE W Component")
+plt.xlabel("Time Step")
+plt.ylabel("Turbulent Kinetic Energy")
+plt.title("Turbulent Kinetic Energy at Future Turbine Location Through Time")
+plt.legend()
+plt.savefig('./10PCT_TKE_TIDX.png', dpi = 300)
+
+# Spatial Series
+plt.figure(figsize=(10,6))
+plt.plot(sim.x, TKEUc, label="TKE U Component")
+plt.plot(sim.x, TKEVc, label="TKE V Component")
+plt.plot(sim.x, TKEWc, label="TKE W Component")
+plt.xlabel("X/D")
+plt.ylabel("Turbulent Kinetic Energy")
+plt.title("Turbulent Kinetic Energy at Centerline at Last Timestep")
+plt.legend()
+plt.savefig('./10PCT_TKE_Centerline.png', dpi = 300)
