@@ -14,45 +14,55 @@ from matplotlib.colors import Normalize
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct", padeops = True, runid = 3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB", padeops = True, runid = 3)
 
 #Initial Views
-uview = sim.slice(field_terms = "u", ylim = 6.25) # For X-Z view
-umeanview = sim.slice(budget_terms = "ubar", ylim = 6.25) # For X-Z view
+uviewz = sim.slice(field_terms = "u", ylim = 6.25) # For X-Z view
+umeanviewz = sim.slice(budget_terms = "ubar", ylim = 6.25) # For X-Z view
+uviewy = sim.slice(field_terms = "u", zlim = 6.25) # For X-Y view
+umeanviewy = sim.slice(budget_terms = "ubar", zlim = 6.25) # For X-Y view
 
-uview['u'].imshow()
+uviewz['u'].imshow()
 plt.title("Final Velcoity Field for Empty 10% Domain")
-plt.savefig('./10PCT_Final_Field.png', dpi = 300)
+plt.savefig('./UNB_Final_Fieldz.png', dpi = 300)
 
-umeanview['ubar'].imshow()
+umeanviewz['ubar'].imshow()
 plt.title("Time-Averaged Mean Velcoity Field for Empty 10% Domain")
-plt.savefig('./10PCT_Mean_Field.png', dpi = 300)
+plt.savefig('./UNB_Mean_Fieldz.png', dpi = 300)
+
+uviewy['u'].imshow()
+plt.title("Final Velcoity Field for Empty 10% Domain")
+plt.savefig('./UNB_Final_Fieldy.png', dpi = 300)
+
+umeanviewy['ubar'].imshow()
+plt.title("Time-Averaged Mean Velcoity Field for Empty 10% Domain")
+plt.savefig('./UNB_Mean_Fieldy.png', dpi = 300)
 
 # Set Up Velocities
-tids = range(0, 3062, 100)
+tids = range(0, 3074, 100)
 
 ut, ubart = [], []
 vt, vbart = [], []
 wt, wbart = [], []
 
 for tid in tids:
-    ut.append(sim.slice(field_terms='u', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['u'])
-    ubart.append(sim.slice(budget_terms='ubar', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['ubar'])
+    ut.append(sim.slice(field_terms='u', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['u'])
+    ubart.append(sim.slice(budget_terms='ubar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['ubar'])
     
-    vt.append(sim.slice(field_terms='v', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['v'])
-    vbart.append(sim.slice(budget_terms='vbar', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['vbar'])
+    vt.append(sim.slice(field_terms='v', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['v'])
+    vbart.append(sim.slice(budget_terms='vbar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['vbar'])
     
-    wt.append(sim.slice(field_terms='w', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['w'])
-    wbart.append(sim.slice(budget_terms='wbar', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['wbar'])
+    wt.append(sim.slice(field_terms='w', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['w'])
+    wbart.append(sim.slice(budget_terms='wbar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['wbar'])
 
-uc = sim.slice(field_terms = 'u', ylim = 1.4, zlim = 1.4)['u'] #Centerline at last timestep
-ubarc = sim.slice(budget_terms = 'ubar', ylim = 1.4, zlim = 1.4, tidx = 3062)['ubar'] #Centerline at last timestep
+uc = sim.slice(field_terms = 'u', ylim = 6.25, zlim = 6.25)['u'] #Centerline at last timestep
+ubarc = sim.slice(budget_terms = 'ubar', ylim = 6.25, zlim = 6.25, tidx = 3074)['ubar'] #Centerline at last timestep
 
-vc = sim.slice(field_terms = 'v', ylim = 1.4, zlim = 1.4)['v'] #Centerline at last timestep
-vbarc = sim.slice(budget_terms = 'vbar', ylim = 1.4, zlim = 1.4, tidx = 3062)['vbar'] #Centerline at last timestep
+vc = sim.slice(field_terms = 'v', ylim = 6.25, zlim = 6.25)['v'] #Centerline at last timestep
+vbarc = sim.slice(budget_terms = 'vbar', ylim = 6.25, zlim = 6.25, tidx = 3074)['vbar'] #Centerline at last timestep
 
-wc = sim.slice(field_terms = 'w', ylim = 1.4, zlim = 1.4)['w'] #Centerline at last timestep
-wbarc = sim.slice(budget_terms = 'wbar', ylim = 1.4, zlim = 1.4, tidx = 3062)['wbar'] #Centerline at last timestep
+wc = sim.slice(field_terms = 'w', ylim = 6.25, zlim = 6.25)['w'] #Centerline at last timestep
+wbarc = sim.slice(budget_terms = 'wbar', ylim = 6.25, zlim = 6.25, tidx = 3074)['wbar'] #Centerline at last timestep
 
 ut = np.array(ut)
 vt = np.array(vt)
@@ -79,28 +89,28 @@ wcprime = wc - wbarc
 # Turbulence Intensities
 # At Turbine Location Through Time
 # X Component
-ti_xt = np.sqrt(np.mean(utprime**2)) /ubart
+ti_xt = np.sqrt(np.mean(utprime**2)) / ubart
 # Y Component
-ti_yt = np.sqrt(np.mean(vtprime**2))/ vbart
+ti_yt = np.sqrt(np.mean(vtprime**2)) / vbart
 # Z Component
-ti_zt = np.sqrt(np.mean(wtprime**2))/ wbart
+ti_zt = np.sqrt(np.mean(wtprime**2)) / wbart
 
 # At Centerline at Last Timestep
 # X Component
-ti_xc = np.sqrt(np.mean(ucprime**2)) /ubarc
+ti_xc = np.sqrt(np.mean(ucprime**2)) / ubarc
 # Y Component
-ti_yc = np.sqrt(np.mean(vcprime**2))/ vbarc
+ti_yc = np.sqrt(np.mean(vcprime**2)) / vbarc
 # Z Component
-ti_zc = np.sqrt(np.mean(wcprime**2))/ wbarc
+ti_zc = np.sqrt(np.mean(wcprime**2)) / wbarc
 
 #Plots
-tidx = np.array(range(0, 3062, 100))
+tidx = np.array(range(0, 3074, 100))
 
 plt.figure(figsize=(10,6))
 plt.plot(tidx, ti_xt, label = "U Component")
 #plt.plot(tidx, ti_yt, label = "V Component")
 #plt.plot(tidx, ti_zt, label = "W Component")
-plt.ylim(-.5, 0.5)
+#plt.ylim(-.5, 0.5)
 plt.xlabel("Time Step")
 plt.ylabel("Turbulence Intensity")
 plt.title("Turbulence Intensities at Future Turbine Location Through Time")
@@ -111,7 +121,7 @@ plt.figure(figsize=(10,6))
 plt.plot(sim.x, ti_xc, label = "U Component")
 #plt.plot(sim.x, ti_yc, label = "V Component")
 #plt.plot(sim.x, ti_zc, label = "W Component")
-plt.ylim(-.5, 0.5)
+#plt.ylim(-.5, 0.5)
 plt.xlabel("X/D")
 plt.ylabel("Turbulence Intensity")
 plt.title("Turbulence Intensities at Centerline at Last Timestep")
@@ -163,7 +173,7 @@ def ils(R, dx):
     return L
 
 # Integral Time Scales at Turbine Location
-dt = 100
+dt = 10
 Ru_t = autocov_time(utprime)
 Rv_t = autocov_time(vtprime)
 Rw_t = autocov_time(wtprime)
@@ -171,11 +181,6 @@ Rw_t = autocov_time(wtprime)
 Tu = its(Ru_t, dt)
 Tv = its(Rv_t, dt)
 Tw = its(Rw_t, dt)
-
-print("Integral Time Sclaes:")
-print("U Component:", Tu)
-print("V Component:", Tv)
-print("W Component:", Tw)
 
 # Integral Length Scales at Centerline at Last Timestep
 dx = sim.x[1] - sim.x[0]
@@ -187,11 +192,6 @@ Lu = ils(Ru_c, dx)
 Lv = ils(Rv_c, dx)
 Lw = ils(Rw_c, dx)
 
-print("Integral Length Sclaes:")
-print("U Component:", Lu)
-print("V Component:", Lv)
-print("W Component:", Lw)
-
 # Plot Correlations
 lags_t = np.arange(len(Ru_t)) * dt
 lags_x = np.arange(len(Ru_c)) * dx
@@ -201,33 +201,30 @@ plt.plot(lags_t, Ru_t / Ru_t[0])
 plt.xlabel("Time Lag")
 plt.ylabel("Normalized Autocovariance")
 plt.title("Temporal Autocorrelation (u)")
-plt.savefig("./Ru_time.png", dpi=300)
+plt.savefig("./Ru_time_UNB.png", dpi=300)
 
 plt.figure()
 plt.plot(lags_x, Ru_c / Ru_c[0])
 plt.xlabel("Spatial Lag")
 plt.ylabel("Normalized Autocovariance")
 plt.title("Spatial Autocorrelation (u)")
-plt.savefig("./Ru_space.png", dpi=300)
+plt.savefig("./Ru_space_UNB.png", dpi=300)
 
-# Energy Spectra Frequency Space
 #Energy Spectrum Function
 def energy_spectrum_fft(uprime, dt):
-
     Nt = uprime.shape[0]
-
-    uflat = uprime.reshape(Nt, -1)
-    umean = np.mean(uflat, axis=1)
-
-    U = np.fft.fft(umean)
-
-    freqs = np.fft.fftfreq(Nt, d=dt)
-    omega = 2*np.pi*freqs
-
+    uflat = uprime.reshape(Nt, -1) # (Time, Space)
+    
+    # Compute FFT for each spatial point
+    U = np.fft.fft(uflat, axis=0)
     S = (np.abs(U)**2) / Nt
-
+    
+    # Average the spectra across all spatial points
+    S_mean = np.mean(S, axis=1)
+    
+    freqs = np.fft.fftfreq(Nt, d=dt)
     mask = freqs > 0
-    return omega[mask], S[mask]
+    return 2*np.pi*freqs[mask], S_mean[mask]
 
 # Apply to Temporal Data
 omega_fft, Su_fft = energy_spectrum_fft(utprime, dt)
@@ -238,7 +235,7 @@ plt.loglog(omega_fft, Su_fft)
 plt.xlabel("Frequency")
 plt.ylabel("Energy Spectrum")
 plt.title("Energy Spectrum at Future Turbine Location")
-plt.savefig('./10PCT_Energy_Spectrum_Frequency.png', dpi = 300)
+plt.savefig('./UNB_Energy_Spectrum_Frequency.png', dpi = 300)
 
 # Convert to k space
 def omega_k(omega, S_omega, U):
@@ -261,7 +258,7 @@ plt.xlabel("k")
 plt.ylabel("E(k)")
 plt.legend()
 plt.title("Energy Spectrum with -5/3 Scaling")
-plt.savefig("./k_spectrum_10PCT.png", dpi=300)
+plt.savefig("./k_spectrum_UNB.png", dpi=300)
 
 # Spatial Energy Spectrum
 def spatial_spectrum(uprime, dx):
@@ -289,37 +286,25 @@ plt.loglog(k_ref_space, Ek_ref_space, '--', label="-5/3 slope")
 plt.xlabel("k")
 plt.ylabel("E(k)")
 plt.title("Spatial Energy Spectrum")
-plt.savefig("./10PCT_spatial_energy_spectrum.png", dpi=300)
+plt.savefig("./UNB_spatial_energy_spectrum.png", dpi=300)
 
-# Dissipation Length Scales
-# From Converted Time Series
-logE = np.log(Ek)
-grad = np.gradient(logE)
+# Dissipation Length Scale (Grid Scale for Assumed 0 Viscosity)
+dx = sim.x[1] - sim.x[0]
+dy = sim.y[1] - sim.y[0]
+dz = sim.z[1] - sim.z[0]
 
-k_index = np.argmax(grad)
-kd = k[k_index]
-eta = 1/kd
-print("Dissipation Length Scale (from time series):", eta)
+# Effective grid filter scale
+delta_grid = (dx * dy * dz)**(1/3) 
 
-# From Spatial Series
-logEspace = np.log(Ek_space)
-grad_space = np.gradient(logEspace)
+#Injection Length Scale and Numerical Dissipation Rate
+Ck = 1.5
+k_ref = k_space[len(k_space)//4]
+Ek_ref = Ek_space[len(k_space)//4]
 
-k_index_space = np.argmin(grad_space)
-kd_space = k_space[k_index_space]
-eta_space = 1/kd_space
-print("Dissipation Length Scale (from spatial series):", eta_space)
+epsilon_num = (Ek_ref / (Ck * k_ref**(-5/3)))**1.5
 
-# Injection Length Scales
-# Time Series
-lit = (utprime**3)/eta
-lit_mean = np.mean(lit)
-print("Injection Length Scale (from time series):", lit_mean)
-
-# Spatial Series
-lispace = (ucprime**3)/eta_space
-lispace_mean = np.mean(lispace)
-print("Injection Length Scale (from spatial series):", lispace_mean)
+u_rms = np.sqrt(np.mean(ucprime**2))
+L_injection = (u_rms**3) / epsilon_num
 
 # TKE Calculations
 # Time Series
@@ -327,52 +312,58 @@ uut = []
 vvt = []
 wwt = []
 for tid in tids:
-    uu = sim.slice(budget_terms='uu', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['uu']
+    uu = sim.slice(budget_terms='uu', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['uu']
     uut.append(uu)
-    vv = sim.slice(budget_terms='vv', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['vv']
+    vv = sim.slice(budget_terms='vv', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['vv']
     vvt.append(vv)
-    ww = sim.slice(budget_terms='ww', xlim=5, ylim=1.4, zlim=1.4, tidx=tid)['ww']
+    ww = sim.slice(budget_terms='ww', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['ww']
     wwt.append(ww)
 uut = np.array(uut)
 vvt = np.array(vvt)
 wwt = np.array(wwt)
 
-TKEUt = 0.5 * uut
-TKEVt = 0.5 * vvt
-TKEWt = 0.5 * wwt
+TKEt = 0.5 * (uut + vvt + wwt)
 
 # Spatial Series
-uuc = sim.slice(budget_terms='uu', ylim=1.4, zlim=1.4)['uu']
-vvc = sim.slice(budget_terms='vv', ylim=1.4, zlim=1.4)['vv']
-wwc = sim.slice(budget_terms='ww', ylim=1.4, zlim=1.4)['ww'] 
+uuc = sim.slice(budget_terms='uu', ylim=6.25, zlim=6.25)['uu']
+vvc = sim.slice(budget_terms='vv', ylim=6.25, zlim=6.25)['vv']
+wwc = sim.slice(budget_terms='ww', ylim=6.25, zlim=6.25)['ww'] 
 
 uuc = np.array(uuc)
 vvc = np.array(vvc)
 wwc = np.array(wwc)
 
-TKEUc = 0.5 * uuc
-TKEVc = 0.5 * vvc
-TKEWc = 0.5 * wwc
+TKEc = 0.5 * (uuc + vvc + wwc)
 
 # Plots
 # Time Series
 plt.figure(figsize=(10,6))
-plt.plot(tidx, TKEUt, label="TKE U Component")
-plt.plot(tidx, TKEVt, label="TKE V Component")
-plt.plot(tidx, TKEWt, label="TKE W Component")
+plt.plot(tidx, TKEt, label="Total TKE")
 plt.xlabel("Time Step")
 plt.ylabel("Turbulent Kinetic Energy")
 plt.title("Turbulent Kinetic Energy at Future Turbine Location Through Time")
 plt.legend()
-plt.savefig('./10PCT_TKE_TIDX.png', dpi = 300)
+plt.savefig('./UNB_TKE_TIDX.png', dpi = 300)
 
 # Spatial Series
 plt.figure(figsize=(10,6))
-plt.plot(sim.x, TKEUc, label="TKE U Component")
-plt.plot(sim.x, TKEVc, label="TKE V Component")
-plt.plot(sim.x, TKEWc, label="TKE W Component")
+plt.plot(sim.x, TKEc, label="Total TKE")
 plt.xlabel("X/D")
 plt.ylabel("Turbulent Kinetic Energy")
 plt.title("Turbulent Kinetic Energy at Centerline at Last Timestep")
 plt.legend()
-plt.savefig('./10PCT_TKE_Centerline.png', dpi = 300)
+plt.savefig('./UNB_TKE_Centerline.png', dpi = 300)
+
+print("Integral Time Sclaes:")
+print("U Component:", Tu)
+print("V Component:", Tv)
+print("W Component:", Tw)
+
+print("Integral Length Sclaes:")
+print("U Component:", Lu)
+print("V Component:", Lv)
+print("W Component:", Lw)
+
+print(f"Numerical Dissipation Scale (Grid Delta): {delta_grid:.6f}")
+print(f"Estimated Numerical Dissipation Rate: {epsilon_num:.6e}")
+print(f"Injection Length Scale (L): {L_injection:.6f}")
