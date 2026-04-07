@@ -14,356 +14,311 @@ from matplotlib.colors import Normalize
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB", padeops = True, runid = 3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct", padeops = True, runid = 3)
 
-#Initial Views
-uviewz = sim.slice(field_terms = "u", ylim = 6.25) # For X-Z view
-umeanviewz = sim.slice(budget_terms = "ubar", ylim = 6.25) # For X-Z view
-uviewy = sim.slice(field_terms = "u", zlim = 6.25) # For X-Y view
-umeanviewy = sim.slice(budget_terms = "ubar", zlim = 6.25) # For X-Y view
+# Initial Views
+uviewz = sim.slice(field_terms = "u", ylim = 1.4) # For X-Z view
+umeanviewz = sim.slice(budget_terms = "ubar", ylim = 1.4) # For X-Z view
+uviewy = sim.slice(field_terms = "u", zlim = 1.4) # For X-Y view
+umeanviewy = sim.slice(budget_terms = "ubar", zlim = 1.4) # For X-Y view
 
 uviewz['u'].imshow()
 plt.title("Final Velcoity Field for Empty 10% Domain")
-plt.savefig('./UNB_Final_Fieldz.png', dpi = 300)
+plt.savefig('./10PCT_Final_Fieldz.png', dpi = 300)
 
 umeanviewz['ubar'].imshow()
 plt.title("Time-Averaged Mean Velcoity Field for Empty 10% Domain")
-plt.savefig('./UNB_Mean_Fieldz.png', dpi = 300)
+plt.savefig('./10PCT_Mean_Fieldz.png', dpi = 300)
 
 uviewy['u'].imshow()
 plt.title("Final Velcoity Field for Empty 10% Domain")
-plt.savefig('./UNB_Final_Fieldy.png', dpi = 300)
+plt.savefig('./10PCT_Final_Fieldy.png', dpi = 300)
 
 umeanviewy['ubar'].imshow()
 plt.title("Time-Averaged Mean Velcoity Field for Empty 10% Domain")
-plt.savefig('./UNB_Mean_Fieldy.png', dpi = 300)
+plt.savefig('./10PCT_Mean_Fieldy.png', dpi = 300)
 
-# Set Up Velocities
-tids = range(0, 3074, 100)
+# 3D Slices
+uc = np.array(sim.slice(field_terms='u')['u'])
+vc = np.array(sim.slice(field_terms='v')['v'])
+wc = np.array(sim.slice(field_terms='w')['w'])
 
-ut, ubart = [], []
-vt, vbart = [], []
-wt, wbart = [], []
+ubar = np.array(sim.slice(budget_terms='ubar')['ubar'])
+vbar = np.array(sim.slice(budget_terms='vbar')['vbar'])
+wbar = np.array(sim.slice(budget_terms='wbar')['wbar'])
 
-for tid in tids:
-    ut.append(sim.slice(field_terms='u', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['u'])
-    ubart.append(sim.slice(budget_terms='ubar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['ubar'])
-    
-    vt.append(sim.slice(field_terms='v', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['v'])
-    vbart.append(sim.slice(budget_terms='vbar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['vbar'])
-    
-    wt.append(sim.slice(field_terms='w', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['w'])
-    wbart.append(sim.slice(budget_terms='wbar', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['wbar'])
+print("uc shape:", uc.shape)
+print("ubar shape:", ubar.shape)
 
-uc = sim.slice(field_terms = 'u', ylim = 6.25, zlim = 6.25)['u'] #Centerline at last timestep
-ubarc = sim.slice(budget_terms = 'ubar', ylim = 6.25, zlim = 6.25, tidx = 3074)['ubar'] #Centerline at last timestep
+# Fluctuations
+uprime = uc - ubar
+vprime = vc - vbar
+wprime = wc - wbar
 
-vc = sim.slice(field_terms = 'v', ylim = 6.25, zlim = 6.25)['v'] #Centerline at last timestep
-vbarc = sim.slice(budget_terms = 'vbar', ylim = 6.25, zlim = 6.25, tidx = 3074)['vbar'] #Centerline at last timestep
+# Variance over y and z
+uvar_x = np.mean(uprime**2, axis=(1,2))
+vvar_x = np.mean(vprime**2, axis=(1,2))
+wvar_x = np.mean(wprime**2, axis=(1,2))
 
-wc = sim.slice(field_terms = 'w', ylim = 6.25, zlim = 6.25)['w'] #Centerline at last timestep
-wbarc = sim.slice(budget_terms = 'wbar', ylim = 6.25, zlim = 6.25, tidx = 3074)['wbar'] #Centerline at last timestep
+# Mean over y and z
+ubar_x = np.mean(ubar, axis=(1,2))
+vbar_x = np.mean(vbar, axis=(1,2))
+wbar_x = np.mean(wbar, axis=(1,2))
 
-ut = np.array(ut)
-vt = np.array(vt)
-wt = np.array(wt)
-ubart = np.array(ubart)
-vbart = np.array(vbart)
-wbart = np.array(wbart)
+print("ubar_x shape:", ubar_x.shape)
 
-uc = np.array(uc)
-vc = np.array(vc)
-wc = np.array(wc)
-ubarc = np.array(ubarc)
-vbarc = np.array(vbarc)
-wbarc = np.array(wbarc)
+# Turbulence Intensity as a Function of X
+TIu = (np.sqrt(uvar_x) / ubar_x) * 100
 
-utprime = ut - ubart #Fluctuation at turbine location
-vtprime = vt - vbart
-wtprime = wt - wbart
+print("TIu shape:", TIu.shape)
 
-ucprime = uc - ubarc #Fluctuation at centerline at last timestep
-vcprime = vc - vbarc 
-wcprime = wc - wbarc 
-
-# Turbulence Intensities
-# At Turbine Location Through Time
-# X Component
-ti_xt = np.sqrt(np.mean(utprime**2)) / ubart
-# Y Component
-ti_yt = np.sqrt(np.mean(vtprime**2)) / vbart
-# Z Component
-ti_zt = np.sqrt(np.mean(wtprime**2)) / wbart
-
-# At Centerline at Last Timestep
-# X Component
-ti_xc = np.sqrt(np.mean(ucprime**2)) / ubarc
-# Y Component
-ti_yc = np.sqrt(np.mean(vcprime**2)) / vbarc
-# Z Component
-ti_zc = np.sqrt(np.mean(wcprime**2)) / wbarc
-
-#Plots
-tidx = np.array(range(0, 3074, 100))
-
-plt.figure(figsize=(10,6))
-plt.plot(tidx, ti_xt, label = "U Component")
-#plt.plot(tidx, ti_yt, label = "V Component")
-#plt.plot(tidx, ti_zt, label = "W Component")
-#plt.ylim(-.5, 0.5)
-plt.xlabel("Time Step")
-plt.ylabel("Turbulence Intensity")
-plt.title("Turbulence Intensities at Future Turbine Location Through Time")
+plt.figure(figsize=(10, 6))
+plt.plot(sim.x, TIu, label='Streamwise TI (u)')
+plt.xlabel('x/D')
+plt.ylabel('Turbulence Intensity (%)')
+plt.title('Turbulence Intensity vs x/D')
 plt.legend()
-plt.savefig('./10PCT_Turbulence_Intensity_TIDX.png', dpi = 300)
+plt.grid()
+plt.savefig('./10PCT_TI.png', dpi=300)
 
-plt.figure(figsize=(10,6))
-plt.plot(sim.x, ti_xc, label = "U Component")
-#plt.plot(sim.x, ti_yc, label = "V Component")
-#plt.plot(sim.x, ti_zc, label = "W Component")
-#plt.ylim(-.5, 0.5)
-plt.xlabel("X/D")
-plt.ylabel("Turbulence Intensity")
-plt.title("Turbulence Intensities at Centerline at Last Timestep")
+# Log-Log Plot of Velocity and Variance
+log = np.mean(uc, axis=(1,2))/uvar_x
+
+plt.figure(figsize=(10, 6))
+plt.loglog(sim.x, log, label='Mean Velocity / Variance')
+plt.xlabel('x/D')
+plt.ylabel('Mean Velocity / Variance')
+plt.title('Log-Log Plot of Mean Velocity / Variance vs x/D')
 plt.legend()
-plt.savefig('./10PCT_Turbulence_Intensity_Centerline.png', dpi = 300)
+plt.grid()
+plt.savefig('./10PCT_LogLog.png', dpi=300)
 
-# Time Varying Autocovariance Function
-def autocov_time(uprime):
-    Nt = uprime.shape[0]
-
-    uprime_flat = uprime.reshape(Nt, -1)
-
-    R = np.zeros(Nt)
-
-    for tau in range(Nt):
-        prod = uprime_flat[:Nt - tau] * uprime_flat[tau:, :]
-        R[tau] = np.mean(prod)
-    return R
-
-# Spatial Varying Autocovariance Function
-def autocov_space(uprime):
-    Nx = uprime.shape[0]
-
-    R = np.zeros(Nx)
-
-    for r in range(Nx):
-        prod = uprime[:Nx - r] * uprime[r:]
-        R[r] = np.mean(prod)
-    return R
-
-# Integral Time Scale Function
-def its(R, dt):
-    Rnorm = R/R[0]
-
-    cutoff = np.where(Rnorm<0)[0]
-    if len(cutoff) > 0:
-        Rnorm = Rnorm[:cutoff[0]]
-    T = np.trapz(Rnorm, dx=dt)
-    return T
-
-# Integral Length Scale Function
-def ils(R, dx):
-    Rnorm = R/R[0]
-
-    cutoff = np.where(Rnorm<0)[0]
-    if len(cutoff) > 0:
-        Rnorm = Rnorm[:cutoff[0]]
-    L = np.trapz(Rnorm, dx=dx)
-    return L
-
-# Integral Time Scales at Turbine Location
-dt = 10
-Ru_t = autocov_time(utprime)
-Rv_t = autocov_time(vtprime)
-Rw_t = autocov_time(wtprime)
-
-Tu = its(Ru_t, dt)
-Tv = its(Rv_t, dt)
-Tw = its(Rw_t, dt)
-
-# Integral Length Scales at Centerline at Last Timestep
+# Spectrum in Kx Space Averaged over y-z
+# Domain
+nx, ny, nz  = uc.shape
 dx = sim.x[1] - sim.x[0]
-Ru_c = autocov_space(ucprime)
-Rv_c = autocov_space(vcprime)
-Rw_c = autocov_space(wcprime)
 
-Lu = ils(Ru_c, dx)
-Lv = ils(Rv_c, dx)
-Lw = ils(Rw_c, dx)
+print("Grid:", nx, ny, nz)
+print("dx:", dx)
 
-# Plot Correlations
-lags_t = np.arange(len(Ru_t)) * dt
-lags_x = np.arange(len(Ru_c)) * dx
+# FFT in X Direction for each y, z
+uhat = np.fft.fft(uprime, axis=0)
 
-plt.figure()
-plt.plot(lags_t, Ru_t / Ru_t[0])
-plt.xlabel("Time Lag")
-plt.ylabel("Normalized Autocovariance")
-plt.title("Temporal Autocorrelation (u)")
-plt.savefig("./Ru_time_UNB.png", dpi=300)
+# Wace Numbers
+kx = np.fft.fftfreq(nx, d=dx) * 2 * np.pi
 
-plt.figure()
-plt.plot(lags_x, Ru_c / Ru_c[0])
-plt.xlabel("Spatial Lag")
-plt.ylabel("Normalized Autocovariance")
-plt.title("Spatial Autocorrelation (u)")
-plt.savefig("./Ru_space_UNB.png", dpi=300)
+# Energy Spectrum
+Euu_3d = (np.abs(uhat)**2) / nx
 
-#Energy Spectrum Function
-def energy_spectrum_fft(uprime, dt):
-    Nt = uprime.shape[0]
-    uflat = uprime.reshape(Nt, -1) # (Time, Space)
-    
-    # Compute FFT for each spatial point
-    U = np.fft.fft(uflat, axis=0)
-    S = (np.abs(U)**2) / Nt
-    
-    # Average the spectra across all spatial points
-    S_mean = np.mean(S, axis=1)
-    
-    freqs = np.fft.fftfreq(Nt, d=dt)
-    mask = freqs > 0
-    return 2*np.pi*freqs[mask], S_mean[mask]
+# Average over y and z
+Euu_kx = np.mean(Euu_3d, axis=(1,2))
 
-# Apply to Temporal Data
-omega_fft, Su_fft = energy_spectrum_fft(utprime, dt)
+print("Euu_kx shape:", Euu_kx.shape)
 
-# Plot
-plt.figure(figsize=(10,6))
-plt.loglog(omega_fft, Su_fft)
-plt.xlabel("Frequency")
-plt.ylabel("Energy Spectrum")
-plt.title("Energy Spectrum at Future Turbine Location")
-plt.savefig('./UNB_Energy_Spectrum_Frequency.png', dpi = 300)
+# Mask Negative Values
+pos_mask = kx > 0
+kx_pos = kx[pos_mask]
+Euu_pos = Euu_kx[pos_mask]
 
-# Convert to k space
-def omega_k(omega, S_omega, U):
-    k = omega / U
-    E_k = U*S_omega
-    return k, E_k
+k_ref = kx_pos[1:1000]  # choose a reasonable range
+ref_line = Euu_pos[1] * (k_ref / k_ref[0])**(-5/3)
 
-# Apply to Temporal Data
-k, Ek = omega_k(omega_fft, Su_fft, np.mean(ubart))
 
-#Plot
-# Reference -5/3 slope
-k_ref = np.linspace(min(k), max(k), 100)
-Ek_ref = Ek[0] * (k_ref / k[0])**(-5/3)
-
-plt.figure()
-plt.loglog(k, Ek, label="E(k)")
-plt.loglog(k_ref, Ek_ref, '--', label="-5/3 slope")
-plt.xlabel("k")
-plt.ylabel("E(k)")
+plt.figure(figsize=(10, 6))
+plt.loglog(kx_pos, Euu_pos, label='Euu(kx)')
+plt.loglog(k_ref, ref_line, '--', color='red', label='-5/3 slope')
+plt.xlabel('kx')
+plt.ylabel('Euu(kx)')
+plt.title('Energy Spectrum Euu vs kx')
 plt.legend()
-plt.title("Energy Spectrum with -5/3 Scaling")
-plt.savefig("./k_spectrum_UNB.png", dpi=300)
+plt.grid()
+plt.savefig('./10PCT_Ekuu_log.png', dpi=300)
 
-# Spatial Energy Spectrum
-def spatial_spectrum(uprime, dx):
-    Nx = len(uprime)
+plt.figure(figsize=(10, 6))
+plt.plot(kx_pos, Euu_pos, label='Euu(kx)')
+plt.plot(k_ref, ref_line, '--', color='red', label='-5/3 power law')
+plt.xlabel('kx')
+plt.ylabel('Euu(kx)')
+plt.title('Energy Spectrum Euu vs kx')
+plt.legend()
+plt.grid()
+plt.savefig('./10PCT_Ekuu.png', dpi=300)
 
-    U = np.fft.fft(uprime)
-    k = np.fft.fftfreq(Nx, d=dx) * 2 * np.pi
-
-    E_k = (np.abs(U)**2) / Nx
-
-    mask = k > 0
-    return k[mask], E_k[mask]
-
-# Apply to Spatial Data
-k_space, Ek_space = spatial_spectrum(ucprime, dx)
-
-# Plot
-k_ref_space = np.linspace(min(k_space), max(k_space), 100)
-Ek_ref_space = Ek_space[0] * (k_ref_space / k_space[0])**(-5/3)
-
-
-plt.figure(figsize=(10,6))
-plt.loglog(k_space, Ek_space)
-plt.loglog(k_ref_space, Ek_ref_space, '--', label="-5/3 slope")
-plt.xlabel("k")
-plt.ylabel("E(k)")
-plt.title("Spatial Energy Spectrum")
-plt.savefig("./UNB_spatial_energy_spectrum.png", dpi=300)
-
-# Dissipation Length Scale (Grid Scale for Assumed 0 Viscosity)
-dx = sim.x[1] - sim.x[0]
+# Energy Spectra as Functions of ky and kz
+nx, ny, nz = uc.shape
 dy = sim.y[1] - sim.y[0]
 dz = sim.z[1] - sim.z[0]
 
-# Effective grid filter scale
-delta_grid = (dx * dy * dz)**(1/3) 
+use_window = True
 
-#Injection Length Scale and Numerical Dissipation Rate
-Ck = 1.5
-k_ref = k_space[len(k_space)//4]
-Ek_ref = Ek_space[len(k_space)//4]
+if use_window:
+    window_y = np.hanning(ny)[None, :, None]
+    window_z = np.hanning(nz)[None, None, :]
+else:
+    window_y = 1
+    window_z = 1
 
-epsilon_num = (Ek_ref / (Ck * k_ref**(-5/3)))**1.5
+# Ky and averaging along z
+# FFT along y
+uhat_y = np.fft.fft(uprime * window_y, axis=1)
 
-u_rms = np.sqrt(np.mean(ucprime**2))
-L_injection = (u_rms**3) / epsilon_num
+# Wavenumbers
+ky = 2 * np.pi * np.fft.fftfreq(ny, d=dy)
 
-# TKE Calculations
-# Time Series
-uut = []
-vvt = []
-wwt = []
-for tid in tids:
-    uu = sim.slice(budget_terms='uu', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['uu']
-    uut.append(uu)
-    vv = sim.slice(budget_terms='vv', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['vv']
-    vvt.append(vv)
-    ww = sim.slice(budget_terms='ww', xlim=5, ylim=6.25, zlim=6.25, tidx=tid)['ww']
-    wwt.append(ww)
-uut = np.array(uut)
-vvt = np.array(vvt)
-wwt = np.array(wwt)
+# Energy spectrum (proper normalization)
+Euu_ky_3d = (np.abs(uhat_y)**2) * dy / ny 
 
-TKEt = 0.5 * (uut + vvt + wwt)
+# Average over z ONLY
+Euu_ky = np.mean(Euu_ky_3d, axis=2)
 
-# Spatial Series
-uuc = sim.slice(budget_terms='uu', ylim=6.25, zlim=6.25)['uu']
-vvc = sim.slice(budget_terms='vv', ylim=6.25, zlim=6.25)['vv']
-wwc = sim.slice(budget_terms='ww', ylim=6.25, zlim=6.25)['ww'] 
+# Keep positive ky
+pos_mask_ky = ky > 0
+ky_pos = ky[pos_mask_ky]
+Euu_ky_pos = Euu_ky[:, pos_mask_ky]
 
-uuc = np.array(uuc)
-vvc = np.array(vvc)
-wwc = np.array(wwc)
-
-TKEc = 0.5 * (uuc + vvc + wwc)
+# Desired x/D locations
+x_targets = [5, 10, 15]
+x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
+for xt, idx in zip(x_targets, x_indices):
+    print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
 # Plots
-# Time Series
 plt.figure(figsize=(10,6))
-plt.plot(tidx, TKEt, label="Total TKE")
-plt.xlabel("Time Step")
-plt.ylabel("Turbulent Kinetic Energy")
-plt.title("Turbulent Kinetic Energy at Future Turbine Location Through Time")
+for xt, idx in zip(x_targets, x_indices):
+    plt.loglog(ky_pos, Euu_ky_pos[idx, :], label=f'x/D={sim.x[idx]:.2f}')
+mid_idx = x_indices[len(x_indices)//2]
+plt.loglog(k_ref, ref_line, '--', color='red', label='-5/3 slope')   
+plt.xlabel('ky')
+plt.ylabel('Euu(ky, x)')
+plt.title('Euu vs ky at selected x/D')
+plt.grid()
 plt.legend()
-plt.savefig('./UNB_TKE_TIDX.png', dpi = 300)
+plt.savefig('./10PCT_Euu_ky_log.png', dpi=300)
 
-# Spatial Series
 plt.figure(figsize=(10,6))
-plt.plot(sim.x, TKEc, label="Total TKE")
-plt.xlabel("X/D")
-plt.ylabel("Turbulent Kinetic Energy")
-plt.title("Turbulent Kinetic Energy at Centerline at Last Timestep")
+for xt, idx in zip(x_targets, x_indices):
+    plt.plot(ky_pos, Euu_ky_pos[idx, :], label=f'x/D={sim.x[idx]:.2f}')
+plt.plot(k_ref, ref_line, '--', color='red', label='-5/3 power law')
+plt.xlabel('ky')
+plt.ylabel('Euu(ky, x)')
+plt.title('Euu vs ky (linear)')
+plt.grid()
 plt.legend()
-plt.savefig('./UNB_TKE_Centerline.png', dpi = 300)
+plt.savefig('./10PCT_Euu_ky.png', dpi=300)
 
-print("Integral Time Sclaes:")
-print("U Component:", Tu)
-print("V Component:", Tv)
-print("W Component:", Tw)
+# Kz and averaging along y
+# FFT along z
+uhat_z = np.fft.fft(uprime * window_z, axis=2)
 
-print("Integral Length Sclaes:")
-print("U Component:", Lu)
-print("V Component:", Lv)
-print("W Component:", Lw)
+# Wavenumbers
+kz = 2 * np.pi * np.fft.fftfreq(nz, d=dz)
 
-print(f"Numerical Dissipation Scale (Grid Delta): {delta_grid:.6f}")
-print(f"Estimated Numerical Dissipation Rate: {epsilon_num:.6e}")
-print(f"Injection Length Scale (L): {L_injection:.6f}")
+# Energy spectrum (proper normalization)
+Euu_kz_3d = (np.abs(uhat_z)**2) * dz / nz 
+
+# Average over y
+Euu_kz = np.mean(Euu_kz_3d, axis=1)
+
+# Keep positive kz
+pos_mask_kz = kz > 0
+kz_pos = kz[pos_mask_kz]
+Euu_kz_pos = Euu_kz[:, pos_mask_kz]
+
+# Plots
+plt.figure(figsize=(10,6))
+for xt, idx in zip(x_targets, x_indices):
+    plt.loglog(kz_pos, Euu_kz_pos[idx, :], label=f'x/D={sim.x[idx]:.2f}')
+mid_idx = x_indices[len(x_indices)//2]
+plt.loglog(k_ref, ref_line, '--', color='red', label='-5/3 slope')
+plt.xlabel('kz')
+plt.ylabel('Euu(kz, x)')
+plt.title('Euu vs kz at selected x/D (log-log)')
+plt.grid()
+plt.legend()
+plt.savefig('./10PCT_Euu_kz_log.png', dpi=300)
+
+plt.figure(figsize=(10,6))
+for xt, idx in zip(x_targets, x_indices):
+    plt.plot(kz_pos, Euu_kz_pos[idx, :], label=f'x/D={sim.x[idx]:.2f}')
+plt.plot(k_ref, ref_line, '--', color='red', label='-5/3 power law')
+plt.xlabel('kz')
+plt.ylabel('Euu(kz, x)')
+plt.title('Euu vs kz at selected x/D (linear)')
+plt.grid()
+plt.legend()
+plt.savefig('./10PCT_Euu_kz.png', dpi=300)
+
+# TI Time Series
+tids = range(0, 3062, 10)
+all_t = sim.unique_times()
+
+ut, vt, wt = [], [], []
+ubart, vbart, wbart = [], [], []
+t = []
+
+for i, tid in enumerate(tids):
+    data_f = sim.slice(field_terms=['u','v','w'], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+    data_b = sim.slice(budget_terms=['ubar','vbar','wbar'], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+
+    ut.append(data_f['u'])
+    vt.append(data_f['v'])
+    wt.append(data_f['w'])
+
+    ubart.append(data_b['ubar'])
+    vbart.append(data_b['vbar'])
+    wbart.append(data_b['wbar'])
+
+  
+    if i < len(all_t):
+        t.append(all_t[i])
+
+# Arrays
+ut = np.array(ut).squeeze()
+vt = np.array(vt).squeeze()
+wt = np.array(wt).squeeze()
+ubart = np.array(ubart).squeeze()
+vbart = np.array(vbart).squeeze()
+wbart = np.array(wbart).squeeze()
+t = np.array(t).squeeze()
+
+# Fluctuations
+uprime = ut - ubart
+vprime = vt - vbart
+wprime = wt - wbart
+
+# Instantaneous TI
+TIu_inst = (np.abs(uprime) / ubart) * 100
+TIv_inst = (np.abs(vprime) / vbart) * 100
+TIw_inst = (np.abs(wprime) / wbart) * 100
+
+# RMS TI
+window = 20 
+TIu_rms = np.zeros_like(TIu_inst)
+TIv_rms = np.zeros_like(TIv_inst)
+TIw_rms = np.zeros_like(TIw_inst)
+
+for i in range(len(uprime)):
+    start = max(0, i - window)
+    
+    u_rms = np.sqrt(np.mean(uprime[start:i+1]**2))
+    v_rms = np.sqrt(np.mean(vprime[start:i+1]**2))
+    w_rms = np.sqrt(np.mean(wprime[start:i+1]**2))
+    
+    u_mean = np.mean(ubart[start:i+1])
+    v_mean = np.mean(vbart[start:i+1])
+    w_mean = np.mean(wbart[start:i+1])
+    
+    TIu_rms[i] = (u_rms / u_mean) * 100
+    TIv_rms[i] = (v_rms / v_mean) * 100
+    TIw_rms[i] = (w_rms / w_mean) * 100
+
+# Plot
+plt.figure(figsize=(10,6))
+plt.plot(t, TIu_inst, label='Instantaneous TIu', alpha=0.5)
+plt.plot(t, TIu_rms, label='RMS TIu', color='blue', linewidth=2)
+plt.xlabel('Physical Time')
+plt.ylabel('Turbulence Intensity (%)')
+plt.title('Instantaneous and RMS Turbulence Intensity at Future Turbine Location')
+plt.grid(True)
+plt.legend()
+plt.savefig('./10PCT_TI_TimeSeries.png', dpi=300)
