@@ -7,32 +7,32 @@ import padeopsIO as pio
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/20pct", padeops=True, runid=3)
 
 # Initial Views
-uviewz = sim.slice(field_terms="u", ylim=1.4)
-umeanviewz = sim.slice(budget_terms="ubar", ylim=1.4)
-uviewy = sim.slice(field_terms="u", zlim=1.4)
-umeanviewy = sim.slice(budget_terms="ubar", zlim=1.4)
+uviewz = sim.slice(field_terms="u", ylim=0.9)
+umeanviewz = sim.slice(budget_terms="ubar", ylim=0.9)
+uviewy = sim.slice(field_terms="u", zlim=0.9)
+umeanviewy = sim.slice(budget_terms="ubar", zlim=0.9)
 
 uviewz["u"].imshow()
-plt.title("Final Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Final_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Empty 20% Domain")
+plt.savefig("./20PCT_Final_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 umeanviewz["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Time-Averaged Mean Velocity Field for Empty 20% Domain")
+plt.savefig("./20PCT_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 uviewy["u"].imshow()
-plt.title("Final Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Final_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Empty 20% Domain")
+plt.savefig("./20PCT_Final_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 umeanviewy["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Time-Averaged Mean Velocity Field for Empty 20% Domain")
+plt.savefig("./20PCT_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # 3D fields
@@ -76,7 +76,7 @@ plt.ylabel("Turbulence Intensity (%)")
 plt.title("Turbulence Intensity vs x/D")
 plt.legend()
 plt.grid()
-plt.savefig("./10PCT_TI.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_TI.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Log-log Plot of Velocity and Variance
@@ -90,7 +90,7 @@ plt.ylabel("Mean Velocity / Variance")
 plt.title("Log-Log Plot of Mean Velocity / Variance vs x/D")
 plt.legend()
 plt.grid(True, which="both")
-plt.savefig("./10PCT_LogLog.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_LogLog.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Spectra
@@ -140,7 +140,7 @@ plt.ylabel(r'$E_{uu}(k_x)$')
 plt.title('Streamwise spectrum averaged over y,z')
 plt.grid(True, which='both')
 plt.legend()
-plt.savefig("./10PCT_Euu_kx_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Euu_kx_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -150,11 +150,11 @@ plt.ylabel(r'$E_{uu}(k_x)$')
 plt.title('Streamwise spectrum averaged over y,z (linear)')
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_Euu_kx.png", dpi=300, bbox_inches = "tight")
+plt.savefig("./20PCT_Euu_kx.png", dpi=300, bbox_inches = "tight")
 plt.close()
 
 # y spectrum: Euu(x, ky, z) averaged over z at selected x
-u_y = uprime * wx * wz
+u_y = uprime * wz
 uhat_y = np.fft.fft(u_y, axis=1)
 ky = 2 * np.pi * np.fft.fftfreq(ny, d=dy)
 
@@ -165,31 +165,50 @@ pos_ky = ky > 0
 ky_pos = ky[pos_ky]
 Euu_ky_pos = Euu_ky_x[:, pos_ky]
 
-x_targets = [5, 10, 15]
+x_targets = [5, 10, 17]
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
 for xt, idx in zip(x_targets, x_indices):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
-# Reference lines for log-log spectra
-ref_x_idx = x_indices[1]  # use the middle x location, e.g. x/D ~ 10
-
-# Reference Line for Ky Spectra
-ky_ref_idx = 1 if len(ky_pos) > 1 else 0
-ky_ref_amp = Euu_ky_pos[ref_x_idx, ky_ref_idx]
-ky_ref = ky_pos[ky_ref_idx]
-ky_line = ky_ref_amp * (ky_pos / ky_ref) ** (-5/3)
-
 # Ky Plots
 plt.figure(figsize=(10, 6))
+
+ky_ref_idx = 2 if len(ky_pos) > 2 else 1
+ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
+
 for xt, idx in zip(x_targets, x_indices):
-    plt.loglog(ky_pos, Euu_ky_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.loglog(ky_pos, ky_line, "--", color="red", label=r"$-5/3$ reference")
+    # Plot actual spectrum and capture its color
+    spectrum_line, = plt.loglog(
+        ky_pos,
+        Euu_ky_pos[idx, :],
+        linewidth=2,
+        label=f"x/D={sim.x[idx]:.2f}"
+    )
+    c = spectrum_line.get_color()
+
+    # Build a local -5/3 reference line anchored to this specific x curve
+    ky_ref = ky_pos[ky_ref_idx]
+    ky_ref_amp = Euu_ky_pos[idx, ky_ref_idx]
+
+    ky_ref_x = ky_pos[ky_ref_slice]
+    ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5/3)
+
+    # Plot reference line in same color
+    plt.loglog(
+        ky_ref_x,
+        ky_ref_y,
+        "--",
+        color=c,
+        linewidth=1.6,
+        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}"
+    )
+
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky at selected x/D")
+plt.title("Euu vs ky at selected x/D (log-log)")
 plt.grid(True, which="both")
 plt.legend()
-plt.savefig("./10PCT_Euu_ky_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Euu_ky_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -200,11 +219,11 @@ plt.ylabel(r'$E_{uu}(x,k_y)$')
 plt.title('Euu vs ky (linear)')
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # z spectrum: Euu(x, y, kz) averaged over y at selected x
-u_z = uprime * wx * wy
+u_z = uprime * wy
 uhat_z = np.fft.fft(u_z, axis=2)
 kz = 2 * np.pi * np.fft.fftfreq(nz, d=dz)
 
@@ -215,23 +234,45 @@ pos_kz = kz > 0
 kz_pos = kz[pos_kz]
 Euu_kz_pos = Euu_kz_x[:, pos_kz]
 
-# Reference Line for Kz
-kz_ref_idx = 1 if len(kz_pos) > 1 else 0
-kz_ref_amp = Euu_kz_pos[ref_x_idx, kz_ref_idx]
-kz_ref = kz_pos[kz_ref_idx]
-kz_line = kz_ref_amp * (kz_pos / kz_ref) ** (-5/3)
-
-# Kx Plots
+# Kz Plots
 plt.figure(figsize=(10, 6))
+
+kz_ref_idx = 2 if len(kz_pos) > 2 else 1
+kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
+
 for xt, idx in zip(x_targets, x_indices):
-    plt.loglog(kz_pos, Euu_kz_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.loglog(kz_pos, kz_line, "--", color="red", label=r"$-5/3$ reference")
+    # Plot actual spectrum and capture its color
+    spectrum_line, = plt.loglog(
+        kz_pos,
+        Euu_kz_pos[idx, :],
+        linewidth=2,
+        label=f"x/D={sim.x[idx]:.2f}"
+    )
+    c = spectrum_line.get_color()
+
+    # Build a local -5/3 reference line anchored to this specific x curve
+    kz_ref = kz_pos[kz_ref_idx]
+    kz_ref_amp = Euu_kz_pos[idx, kz_ref_idx]
+
+    kz_ref_x = kz_pos[kz_ref_slice]
+    kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5/3)
+
+    # Plot reference line in same color
+    plt.loglog(
+        kz_ref_x,
+        kz_ref_y,
+        "--",
+        color=c,
+        linewidth=1.6,
+        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}"
+    )
+
 plt.xlabel(r"$k_z$")
 plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D")
+plt.title("Euu vs kz at selected x/D (log-log)")
 plt.grid(True, which="both")
 plt.legend()
-plt.savefig("./10PCT_Euu_kz_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Euu_kz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -242,11 +283,11 @@ plt.ylabel(r'$E_{uu}(x,k_z)$')
 plt.title('Euu vs kz at selected x/D (linear)')
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TI Time Series
-tids = range(0, 3062, 10)
+tids = range(0, 4781, 10)
 all_t = sim.unique_times()
 
 ut, vt, wt = [], [], []
@@ -299,7 +340,8 @@ plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
 plt.title("Instantaneous and RMS Turbulence Intensity at Future Turbine Location")
+plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
 plt.close()
