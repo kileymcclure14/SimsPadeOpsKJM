@@ -37,40 +37,33 @@ plt.close()
 
 # 3D fields
 uc = np.asarray(sim.slice(field_terms="u")["u"])
-vc = np.asarray(sim.slice(field_terms="v")["v"])
-wc = np.asarray(sim.slice(field_terms="w")["w"])
 
 ubar = np.asarray(sim.slice(budget_terms="ubar")["ubar"])
-vbar = np.asarray(sim.slice(budget_terms="vbar")["vbar"])
-wbar = np.asarray(sim.slice(budget_terms="wbar")["wbar"])
+
+np.save("./10PCT_uc.npy", uc)
+np.save("./10PCT_ubar.npy", ubar)
 
 print("uc shape:", uc.shape)
 print("ubar shape:", ubar.shape)
 
 # Fluctuations
 uprime_3d = uc - ubar
-vprime_3d = vc - vbar
-wprime_3d = wc - wbar
+
+np.save("./10PCT_uprime_3d.npy", uprime_3d)
 
 # Variance over y and z
 uvar_x = np.mean(uprime_3d**2, axis=(1, 2))
-vvar_x = np.mean(vprime_3d**2, axis=(1, 2))
-wvar_x = np.mean(wprime_3d**2, axis=(1, 2))
-np.save('./10PCT_uvar_x.npy', uvar_x)
 
 # Mean over y and z
 ubar_x = np.mean(ubar, axis=(1, 2))
-vbar_x = np.mean(vbar, axis=(1, 2))
-wbar_x = np.mean(wbar, axis=(1, 2))
-np.save('./10PCT_ubar_x.npy', ubar_x)
 
 print("ubar_x shape:", ubar_x.shape)
 
 # Turbulence Intensity as a Function of X
 TIu = np.where(ubar_x != 0, (np.sqrt(uvar_x) / ubar_x) * 100, np.nan)
 print("TIu shape:", TIu.shape)
-np.save('./10PCT_TIu_x.npy', TIu)
-np.save('./10PCT_x.npy', sim.x)
+np.save("./10PCT_TIu_x.npy", TIu)
+np.save("./10PCT_x.npy", sim.x)
 
 # Plot
 plt.figure(figsize=(10, 6))
@@ -86,7 +79,7 @@ plt.close()
 # Log-log Plot of Velocity and Variance
 mean_u_x = np.mean(uc, axis=(1, 2))
 ratio = np.where(uvar_x != 0, mean_u_x / uvar_x, np.nan)
-np.save('./10PCT_ratio.npy', ratio)
+np.save("./10PCT_loglog_ratio.npy", ratio)
 
 plt.figure(figsize=(10, 6))
 plt.loglog(sim.x, ratio, label="Mean Velocity / Variance")
@@ -118,47 +111,6 @@ else:
     wy = 1.0
     wz = 1.0
 
-# x spectrum: Euu(kx, y, z) averaged over y,z
-u_x = uprime * wy * wz
-uhat_x = np.fft.fft(u_x, axis=0)
-kx = 2 * np.pi * np.fft.fftfreq(nx, d=dx)
-
-Euu_kx_yz = (np.abs(uhat_x) ** 2) / nx
-Euu_kx = np.mean(Euu_kx_yz, axis=(1, 2))
-
-pos_kx = kx > 0
-kx_pos = kx[pos_kx]
-Euu_kx_pos = Euu_kx[pos_kx]
-
-# Reference line for kx spectrum
-kx_ref_idx = 1 if len(kx_pos) > 1 else 0
-kx_ref = kx_pos[kx_ref_idx]
-kx_ref_amp = Euu_kx_pos[kx_ref_idx]
-kx_line = kx_ref_amp * (kx_pos / kx_ref) ** (-2/3)
-
-# Kx Plots
-plt.figure(figsize=(10, 6))
-plt.loglog(kx_pos, Euu_kx_pos, label=r'$\langle E_{uu}(k_x,y,z)\rangle_{yz}$')
-plt.loglog(kx_pos, kx_line, '--', color='red', label=r'$-2/3$ reference')
-plt.xlabel(r'$k_x$')
-plt.ylabel(r'$E_{uu}(k_x)$')
-plt.title('Streamwise spectrum averaged over y,z')
-plt.ylim(10e-6, 10e-2)
-plt.grid(True, which='both')
-plt.legend()
-plt.savefig("./10PCT_Euu_kx_log.png", dpi=300, bbox_inches="tight")
-plt.close()
-
-plt.figure(figsize=(10, 6))
-plt.plot(kx_pos, Euu_kx_pos, label=r'$\langle E_{uu}(k_x,y,z)\rangle_{yz}$')
-plt.xlabel(r'$k_x$')
-plt.ylabel(r'$E_{uu}(k_x)$')
-plt.title('Streamwise spectrum averaged over y,z (linear)')
-plt.grid(True)
-plt.legend()
-plt.savefig("./10PCT_Euu_kx.png", dpi=300, bbox_inches = "tight")
-plt.close()
-
 # y spectrum: Euu(x, ky, z) averaged over z at selected x
 u_y = uprime * wz
 uhat_y = np.fft.fft(u_y, axis=1)
@@ -171,44 +123,45 @@ pos_ky = ky > 0
 ky_pos = ky[pos_ky]
 Euu_ky_pos = Euu_ky_x[:, pos_ky]
 
+np.save("./10PCT_ky.npy", ky_pos)
+np.save("./10PCT_Euu_ky_xz.npy", Euu_ky_pos)
+
 x_targets = [5, 10, 17]
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
+
 for xt, idx in zip(x_targets, x_indices):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
 # Ky Plots
 plt.figure(figsize=(10, 6))
-
 ky_ref_idx = 2 if len(ky_pos) > 2 else 1
 ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
-
 for xt, idx in zip(x_targets, x_indices):
-    # Plot actual spectrum and capture its color
     spectrum_line, = plt.loglog(
         ky_pos,
         Euu_ky_pos[idx, :],
         linewidth=2,
-        label=f"x/D={sim.x[idx]:.2f}"
+        label=f"x/D={sim.x[idx]:.2f}",
     )
     c = spectrum_line.get_color()
 
-    # Build a local -5/3 reference line anchored to this specific x curve
     ky_ref = ky_pos[ky_ref_idx]
     ky_ref_amp = Euu_ky_pos[idx, ky_ref_idx]
 
     ky_ref_x = ky_pos[ky_ref_slice]
-    ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5/3)
+    ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5 / 3)
 
-    # Plot reference line in same color
+    np.save(f"./10PCT_ky_ref_x_xidx_{idx}.npy", ky_ref_x)
+    np.save(f"./10PCT_ky_ref_y_xidx_{idx}.npy", ky_ref_y)
+
     plt.loglog(
         ky_ref_x,
         ky_ref_y,
         "--",
         color=c,
         linewidth=1.6,
-        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}"
+        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}",
     )
-
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
 plt.title("Euu vs ky at selected x/D (log-log)")
@@ -221,9 +174,9 @@ plt.close()
 plt.figure(figsize=(10, 6))
 for xt, idx in zip(x_targets, x_indices):
     plt.plot(ky_pos, Euu_ky_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r'$k_y$')
-plt.ylabel(r'$E_{uu}(x,k_y)$')
-plt.title('Euu vs ky (linear)')
+plt.xlabel(r"$k_y$")
+plt.ylabel(r"$E_{uu}(x,k_y)$")
+plt.title("Euu vs ky (linear)")
 plt.grid(True)
 plt.legend()
 plt.savefig("./10PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
@@ -241,37 +194,38 @@ pos_kz = kz > 0
 kz_pos = kz[pos_kz]
 Euu_kz_pos = Euu_kz_x[:, pos_kz]
 
+np.save("./10PCT_kz.npy", kz_pos)
+np.save("./10PCT_Euu_kz.npy", Euu_kz_pos)
+
 # Kz Plots
 plt.figure(figsize=(10, 6))
-
 kz_ref_idx = 2 if len(kz_pos) > 2 else 1
 kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
-
 for xt, idx in zip(x_targets, x_indices):
-    # Plot actual spectrum and capture its color
     spectrum_line, = plt.loglog(
         kz_pos,
         Euu_kz_pos[idx, :],
         linewidth=2,
-        label=f"x/D={sim.x[idx]:.2f}"
+        label=f"x/D={sim.x[idx]:.2f}",
     )
     c = spectrum_line.get_color()
 
-    # Build a local -5/3 reference line anchored to this specific x curve
     kz_ref = kz_pos[kz_ref_idx]
     kz_ref_amp = Euu_kz_pos[idx, kz_ref_idx]
 
     kz_ref_x = kz_pos[kz_ref_slice]
-    kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5/3)
+    kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5 / 3)
 
-    # Plot reference line in same color
+    np.save(f"./10PCT_kz_ref_x_xidx_{idx}.npy", kz_ref_x)
+    np.save(f"./10PCT_kz_ref_y_xidx_{idx}.npy", kz_ref_y)
+
     plt.loglog(
         kz_ref_x,
         kz_ref_y,
         "--",
         color=c,
         linewidth=1.6,
-        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}"
+        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}",
     )
 
 plt.xlabel(r"$k_z$")
@@ -286,67 +240,62 @@ plt.close()
 plt.figure(figsize=(10, 6))
 for xt, idx in zip(x_targets, x_indices):
     plt.plot(kz_pos, Euu_kz_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r'$k_z$')
-plt.ylabel(r'$E_{uu}(x,k_z)$')
-plt.title('Euu vs kz at selected x/D (linear)')
+plt.xlabel(r"$k_z$")
+plt.ylabel(r"$E_{uu}(x,k_z)$")
+plt.title("Euu vs kz at selected x/D (linear)")
 plt.grid(True)
 plt.legend()
-plt.savefig("./20PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TI Time Series
 tids = range(0, 3360, 10)
 all_t = sim.unique_times()
 
-ut, vt, wt = [], [], []
-ubart, vbart, wbart = [], [], []
+ut = []
+ubart = []
 t = []
 
 for i, tid in enumerate(tids):
-    data_f = sim.slice(field_terms=["u", "v", "w"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar", "vbar", "wbar"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
 
     ut.append(np.asarray(data_f["u"]))
-    vt.append(np.asarray(data_f["v"]))
-    wt.append(np.asarray(data_f["w"]))
 
     ubart.append(np.asarray(data_b["ubar"]))
-    vbart.append(np.asarray(data_b["vbar"]))
-    wbart.append(np.asarray(data_b["wbar"]))
 
     if i < len(all_t):
         t.append(all_t[i])
 
+
 ut = np.asarray(ut).squeeze()
-vt = np.asarray(vt).squeeze()
-wt = np.asarray(wt).squeeze()
 ubart = np.asarray(ubart).squeeze()
-vbart = np.asarray(vbart).squeeze()
-wbart = np.asarray(wbart).squeeze()
 t = np.asarray(t).squeeze()
 
+np.save("./10PCT_ut.npy", ut)
+np.save("./10PCT_ubart.npy", ubart)
+
 uprime = ut - ubart
-vprime = vt - vbart
-wprime = wt - wbart
+
+np.save("./10PCT_uprime_t.npy", uprime)
 
 TIu_inst = np.where(ubart != 0, (np.abs(uprime) / ubart) * 100, np.nan)
-TIv_inst = np.where(vbart != 0, (np.abs(vprime) / vbart) * 100, np.nan)
-TIw_inst = np.where(wbart != 0, (np.abs(wprime) / wbart) * 100, np.nan)
 
 window = 20
 TIu_rms = np.zeros_like(TIu_inst, dtype=float)
 
 for i in range(len(uprime)):
     start = max(0, i - window)
-    u_rms = np.sqrt(np.mean(uprime[start:i+1] ** 2))
-    u_mean = np.mean(ubart[start:i+1])
+    u_rms = np.sqrt(np.mean(uprime[start:i + 1] ** 2))
+    u_mean = np.mean(ubart[start:i + 1])
     TIu_rms[i] = (u_rms / u_mean) * 100 if u_mean != 0 else np.nan
 
-np.save('./10PCT_TIu_RMS_t.npy', TIu_rms)
-np.save('./10PCT_t.npy', t)
+
+np.save("./10PCT_TIu_RMS_t.npy", TIu_rms)
+np.save("./10PCT_t.npy", t)
+
 
 plt.figure(figsize=(10, 6))
-plt.plot(t, TIu_inst, label="Instantaneous TIu", alpha=0.5)
 plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
@@ -357,7 +306,7 @@ plt.legend()
 plt.savefig("./10PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-# Time Spectra Averaged Over y and z plane 
+# Time Spectra Averaged Over y and z plane
 x_targets = [2, 5, 8, 10, 12, 15, 17, 20]
 tids = range(0, 3360, 10)
 all_t = sim.unique_times()
@@ -380,15 +329,18 @@ ft = np.fft.fftfreq(nt, d=dt)
 pos_ft = ft > 0
 ft_pos = ft[pos_ft]
 
+np.save("./10PCT_freq.npy", ft_pos)
+
 # Hanning window in time
 wt = np.hanning(nt)[:, None, None]
 
 # Map requested x/D values to nearest grid indices
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
+np.save("./10PCT_time_x_targets.npy", np.asarray(x_targets))
+np.save("./10PCT_time_x_indices.npy", np.asarray(x_indices))
 
 # Store spectra by x index
 time_spectra = {}
-
 for xt, idx in zip(x_targets, x_indices):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
@@ -398,11 +350,11 @@ for xt, idx in zip(x_targets, x_indices):
         data_f = sim.slice(
             field_terms="u",
             xlim=sim.x[idx],
-            tidx=tid
+            tidx=tid,
         )
         u_tseries.append(np.asarray(data_f["u"]))
 
-    u_tseries = np.asarray(u_tseries).squeeze()   # expected shape: (nt, ny, nz)
+    u_tseries = np.asarray(u_tseries).squeeze()
     print(f"x/D={sim.x[idx]:.2f}, u_tseries shape: {u_tseries.shape}")
 
     # Remove temporal mean at each (y,z)
@@ -417,7 +369,7 @@ for xt, idx in zip(x_targets, x_indices):
 
     # Keep only positive frequencies
     time_spectra[idx] = Euu_ft[pos_ft]
-
+    np.save(f"./10PCT_time_spectrum_xidx_{idx}.npy", time_spectra[idx])
 
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.subplots_adjust(right=0.72)
@@ -429,17 +381,16 @@ for xt, idx in zip(x_targets, x_indices):
         ft_pos,
         yspec,
         linewidth=2,
-        label=f"x/D={sim.x[idx]:.2f}"
+        label=f"x/D={sim.x[idx]:.2f}",
     )
     c = spectrum_line.get_color()
 
     # Anchor frequency:
-    # x/D = 20  -> anchor at 10^-2
+    # x/D = 20 -> anchor at 10^-2
     # all others -> anchor at first point to the right of 10^-1
     if int(round(xt)) == 20:
         f_anchor_target = 1e-2
     else:
-        # first plotted frequency strictly greater than 10^-1
         valid = np.where(ft_pos > 1e-1)[0]
         if len(valid) == 0:
             continue
@@ -457,7 +408,10 @@ for xt, idx in zip(x_targets, x_indices):
     f_ref_amp = yspec[ref_idx]
 
     f_ref_x = ft_pos[ref_slice]
-    f_ref_y = f_ref_amp * (f_ref_x / f_ref) ** (-5/3)
+    f_ref_y = f_ref_amp * (f_ref_x / f_ref) ** (-5 / 3)
+
+    np.save(f"./10PCT_f_ref_x_xidx_{idx}.npy", f_ref_x)
+    np.save(f"./10PCT_f_ref_y_xidx_{idx}.npy", f_ref_y)
 
     ax.loglog(
         f_ref_x,
@@ -465,22 +419,19 @@ for xt, idx in zip(x_targets, x_indices):
         "--",
         color=c,
         linewidth=1.6,
-        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}"
+        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}",
     )
-
 ax.set_xlabel("Frequency [1/time]")
 ax.set_ylabel(r"$E_{uu}(f)$")
 ax.set_title("Time spectrum of u averaged over y,z at selected x/D")
 ax.set_ylim(1e-6, 1e-2)
 ax.grid(True, which="both")
-
 ax.legend(
     loc="upper left",
     bbox_to_anchor=(1.02, 1.0),
     borderaxespad=0.0,
-    fontsize=9
+    fontsize=9,
 )
-
 plt.savefig("./10PCT_Euu_time_yz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
@@ -490,9 +441,8 @@ for xt, idx in zip(x_targets, x_indices):
         ft_pos,
         time_spectra[idx],
         linewidth=2,
-        label=f"x/D={sim.x[idx]:.2f}"
+        label=f"x/D={sim.x[idx]:.2f}",
     )
-
 plt.xlabel("Frequency [1/time]")
 plt.ylabel(r"$E_{uu}(f)$")
 plt.title("Time spectrum of u averaged over y,z at selected x/D (linear)")
