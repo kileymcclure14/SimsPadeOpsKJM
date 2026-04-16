@@ -7,7 +7,7 @@ import padeopsIO as pio
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct_latebudgets", padeops=True, runid=3)
 
 # Initial Views
 uviewz = sim.slice(field_terms="u", ylim=1.4)
@@ -43,13 +43,12 @@ ubar = np.asarray(sim.slice(budget_terms="ubar")["ubar"])
 np.save("./10PCT_uc.npy", uc)
 np.save("./10PCT_ubar.npy", ubar)
 
+
 print("uc shape:", uc.shape)
 print("ubar shape:", ubar.shape)
 
 # Fluctuations
 uprime_3d = uc - ubar
-
-np.save("./10PCT_uprime_3d.npy", uprime_3d)
 
 # Variance over y and z
 uvar_x = np.mean(uprime_3d**2, axis=(1, 2))
@@ -80,6 +79,7 @@ plt.close()
 mean_u_x = np.mean(uc, axis=(1, 2))
 ratio = np.where(uvar_x != 0, mean_u_x / uvar_x, np.nan)
 np.save("./10PCT_loglog_ratio.npy", ratio)
+
 
 plt.figure(figsize=(10, 6))
 plt.loglog(sim.x, ratio, label="Mean Velocity / Variance")
@@ -124,7 +124,6 @@ ky_pos = ky[pos_ky]
 Euu_ky_pos = Euu_ky_x[:, pos_ky]
 
 np.save("./10PCT_ky.npy", ky_pos)
-np.save("./10PCT_Euu_ky_xz.npy", Euu_ky_pos)
 
 x_targets = [5, 10, 17]
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
@@ -137,6 +136,8 @@ plt.figure(figsize=(10, 6))
 ky_ref_idx = 2 if len(ky_pos) > 2 else 1
 ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
+    np.save(f"./10PCT_Euuky_xidx_{idx}.npy", Euu_ky_pos[idx, :])
+
     spectrum_line, = plt.loglog(
         ky_pos,
         Euu_ky_pos[idx, :],
@@ -152,7 +153,7 @@ for xt, idx in zip(x_targets, x_indices):
     ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5 / 3)
 
     np.save(f"./10PCT_ky_ref_x_xidx_{idx}.npy", ky_ref_x)
-    np.save(f"./10PCT_ky_ref_y_xidx_{idx}.npy", ky_ref_y)
+    np.save(f"./10PCT_ky_ref_xidx_{idx}.npy", ky_ref_y)
 
     plt.loglog(
         ky_ref_x,
@@ -195,13 +196,14 @@ kz_pos = kz[pos_kz]
 Euu_kz_pos = Euu_kz_x[:, pos_kz]
 
 np.save("./10PCT_kz.npy", kz_pos)
-np.save("./10PCT_Euu_kz.npy", Euu_kz_pos)
 
 # Kz Plots
 plt.figure(figsize=(10, 6))
 kz_ref_idx = 2 if len(kz_pos) > 2 else 1
 kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
+    np.save(f"./10PCT_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
+
     spectrum_line, = plt.loglog(
         kz_pos,
         Euu_kz_pos[idx, :],
@@ -217,7 +219,7 @@ for xt, idx in zip(x_targets, x_indices):
     kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5 / 3)
 
     np.save(f"./10PCT_kz_ref_x_xidx_{idx}.npy", kz_ref_x)
-    np.save(f"./10PCT_kz_ref_y_xidx_{idx}.npy", kz_ref_y)
+    np.save(f"./10PCT_kz_ref_xidx_{idx}.npy", kz_ref_y)
 
     plt.loglog(
         kz_ref_x,
@@ -267,22 +269,17 @@ for i, tid in enumerate(tids):
     if i < len(all_t):
         t.append(all_t[i])
 
-
 ut = np.asarray(ut).squeeze()
 ubart = np.asarray(ubart).squeeze()
 t = np.asarray(t).squeeze()
 
-np.save("./10PCT_ut.npy", ut)
-np.save("./10PCT_ubart.npy", ubart)
-
 uprime = ut - ubart
-
-np.save("./10PCT_uprime_t.npy", uprime)
 
 TIu_inst = np.where(ubart != 0, (np.abs(uprime) / ubart) * 100, np.nan)
 
 window = 20
 TIu_rms = np.zeros_like(TIu_inst, dtype=float)
+
 
 for i in range(len(uprime)):
     start = max(0, i - window)
@@ -290,16 +287,14 @@ for i in range(len(uprime)):
     u_mean = np.mean(ubart[start:i + 1])
     TIu_rms[i] = (u_rms / u_mean) * 100 if u_mean != 0 else np.nan
 
-
 np.save("./10PCT_TIu_RMS_t.npy", TIu_rms)
 np.save("./10PCT_t.npy", t)
-
 
 plt.figure(figsize=(10, 6))
 plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Instantaneous and RMS Turbulence Intensity at Future Turbine Location")
+plt.title("Turbulence Intensity at Future Turbine Location")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
@@ -336,8 +331,6 @@ wt = np.hanning(nt)[:, None, None]
 
 # Map requested x/D values to nearest grid indices
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
-np.save("./10PCT_time_x_targets.npy", np.asarray(x_targets))
-np.save("./10PCT_time_x_indices.npy", np.asarray(x_indices))
 
 # Store spectra by x index
 time_spectra = {}
