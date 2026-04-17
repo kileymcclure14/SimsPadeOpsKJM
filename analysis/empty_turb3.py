@@ -5,7 +5,6 @@ import numpy as np
 import padeopsIO as pio
 
 data_path = Path(au.DATA_PATH)
-
 # Load Data
 sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct_latebudgets", padeops=True, runid=3)
 
@@ -106,17 +105,25 @@ if use_window:
     wx = np.hanning(nx)[:, None, None]
     wy = np.hanning(ny)[None, :, None]
     wz = np.hanning(nz)[None, None, :]
+    # FIX: amplitude correction factors for Hanning window power loss
+    wy_correction = np.mean(np.hanning(ny) ** 2)   # ≈ 3/8
+    wz_correction = np.mean(np.hanning(nz) ** 2)   # ≈ 3/8
 else:
     wx = 1.0
     wy = 1.0
     wz = 1.0
+    wy_correction = 1.0
+    wz_correction = 1.0
 
 # y spectrum: Euu(x, ky, z) averaged over z at selected x
 u_y = uprime * wy
 uhat_y = np.fft.fft(u_y, axis=1)
 ky = 2 * np.pi * np.fft.fftfreq(ny, d=dy)
 
-Euu_ky_xz = (np.abs(uhat_y) ** 2) / ny
+# FIX: normalize by grid spacing and window correction to get a proper one-sided PSD.
+# Factor of 2 folds the energy from negative frequencies into the positive side.
+# Dividing by wy_correction undoes the amplitude reduction from the Hanning window.
+Euu_ky_xz = (np.abs(uhat_y) ** 2) * (2 * dy) / (ny * wy_correction)
 Euu_ky_x = np.mean(Euu_ky_xz, axis=2)
 
 pos_ky = ky > 0
@@ -188,7 +195,8 @@ u_z = uprime * wz
 uhat_z = np.fft.fft(u_z, axis=2)
 kz = 2 * np.pi * np.fft.fftfreq(nz, d=dz)
 
-Euu_kz_xy = (np.abs(uhat_z) ** 2) / nz
+# FIX: same normalization as ky spectrum — grid spacing, factor of 2, window correction
+Euu_kz_xy = (np.abs(uhat_z) ** 2) * (2 * dz) / (nz * wz_correction)
 Euu_kz_x = np.mean(Euu_kz_xy, axis=1)
 
 pos_kz = kz > 0
@@ -326,7 +334,10 @@ ft_pos = ft[pos_ft]
 np.save("./10PCT_freq.npy", ft_pos)
 
 # Hanning window in time
-wt = np.hanning(nt)[:, None, None]
+wt_1d = np.hanning(nt)
+wt = wt_1d[:, None, None]
+# FIX: amplitude correction factor for the time-domain Hanning window
+wt_correction = np.mean(wt_1d ** 2)  # ≈ 3/8
 
 # Map requested x/D values to nearest grid indices
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
@@ -346,18 +357,26 @@ for xt, idx in zip(x_targets, x_indices):
         )
         u_tseries.append(np.asarray(data_f["u"]))
 
-    u_tseries = np.asarray(u_tseries).squeeze()
+    # FIX: do NOT squeeze — preserves (nt, ny, nz) shape for safe broadcasting
+    u_tseries = np.asarray(u_tseries)
+    # Collapse any length-1 spatial dims while keeping the time axis intact
+    u_tseries = u_tseries.reshape(nt, -1)  # shape: (nt, ny*nz)
+    assert u_tseries.shape[0] == nt, (
+        f"Time axis mismatch at x/D={sim.x[idx]:.2f}: got shape {u_tseries.shape}"
+    )
     print(f"x/D={sim.x[idx]:.2f}, u_tseries shape: {u_tseries.shape}")
 
-    # Remove temporal mean at each (y,z)
+    # Remove temporal mean at each spatial point
     uprime_t = u_tseries - np.mean(u_tseries, axis=0, keepdims=True)
 
-    # FFT in time
-    uhat_t = np.fft.fft(uprime_t * wt, axis=0)
+    # FIX: apply window with correct 1-D shape after reshape
+    uhat_t = np.fft.fft(uprime_t * wt_1d[:, None], axis=0)
 
-    # Power spectrum averaged over y,z
-    Euu_ft_yz = (np.abs(uhat_t) ** 2) / nt
-    Euu_ft = np.mean(Euu_ft_yz, axis=(1, 2))
+    # FIX: normalize by dt, factor of 2 (one-sided), and window correction
+    Euu_ft_spatial = (np.abs(uhat_t) ** 2) * (2 * dt) / (nt * wt_correction)
+
+    # Average over all spatial points
+    Euu_ft = np.mean(Euu_ft_spatial, axis=1)
 
     # Keep only positive frequencies
     time_spectra[idx] = Euu_ft[pos_ft]

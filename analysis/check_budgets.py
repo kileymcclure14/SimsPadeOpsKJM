@@ -8,15 +8,15 @@ from scipy.signal import find_peaks  # <-- added
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct_latebudgets", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/20pct", padeops=True, runid=3)
 
 # Pull Data
-tids = range(0, 2723, 10)
+tids = range(0, 65135, 1000)
 u, ubar = [], [] 
 
 for tid in tids:
-    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=0.9, zlim=0.9, tidx=tid)
+    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=0.9, zlim=0.9, tidx=tid)
 
     u.append(np.asarray(data_f["u"]))
     ubar.append(np.asarray(data_b["ubar"]))
