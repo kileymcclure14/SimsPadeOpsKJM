@@ -6,32 +6,32 @@ import padeopsIO as pio
 
 data_path = Path(au.DATA_PATH)
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct_latebudgets", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB2", padeops=True, runid=3)
 
 # Initial Views
-uviewz = sim.slice(field_terms="u", ylim=1.4)
-umeanviewz = sim.slice(budget_terms="ubar", ylim=1.4)
-uviewy = sim.slice(field_terms="u", zlim=1.4)
-umeanviewy = sim.slice(budget_terms="ubar", zlim=1.4)
+uviewz = sim.slice(field_terms="u", ylim=6.25)
+umeanviewz = sim.slice(budget_terms="ubar", ylim=6.25)
+uviewy = sim.slice(field_terms="u", zlim=6.25)
+umeanviewy = sim.slice(budget_terms="ubar", zlim=6.25)
 
 uviewz["u"].imshow()
-plt.title("Final Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Final_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Empty Unblocked Domain")
+plt.savefig("./20PCT_Final_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 umeanviewz["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Time-Averaged Mean Velocity Field for Empty Unblocked Domain")
+plt.savefig("./20PCT_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 uviewy["u"].imshow()
-plt.title("Final Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Final_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Empty Unblocked Domain")
+plt.savefig("./20PCT_Final_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 umeanviewy["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty 10% Domain")
-plt.savefig("./10PCT_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Time-Averaged Mean Velocity Field for Empty Unblocked Domain")
+plt.savefig("./20PCT_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # 3D fields
@@ -39,8 +39,8 @@ uc = np.asarray(sim.slice(field_terms="u")["u"])
 
 ubar = np.asarray(sim.slice(budget_terms="ubar")["ubar"])
 
-np.save("./10PCT_uc.npy", uc)
-np.save("./10PCT_ubar.npy", ubar)
+np.save("./UNB_uc.npy", uc)
+np.save("./UNB_ubar.npy", ubar)
 
 
 print("uc shape:", uc.shape)
@@ -60,32 +60,32 @@ print("ubar_x shape:", ubar_x.shape)
 # Turbulence Intensity as a Function of X
 TIu = np.where(ubar_x != 0, (np.sqrt(uvar_x) / ubar_x) * 100, np.nan)
 print("TIu shape:", TIu.shape)
-np.save("./10PCT_TIu_x.npy", TIu)
-np.save("./10PCT_x.npy", sim.x)
+np.save("./UNB_TIu_x.npy", TIu)
+np.save("./UNB_x.npy", sim.x)
 
 # Plot
 plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TIu, label="Streamwise TI (u)")
 plt.xlabel("x/D")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity vs x/D")
+plt.title("Turbulence Intensity vs x/D in Empty Unblocked Domain")
 plt.legend()
 plt.grid()
-plt.savefig("./10PCT_TI.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_TI.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Log-log Plot of Velocity and Variance
 ratio = np.where(uvar_x != 0, ubar_x / uvar_x, np.nan)
-np.save("./10PCT_loglog_ratio.npy", ratio)
+np.save("./UNB_loglog_ratio.npy", ratio)
 
 plt.figure(figsize=(10, 6))
 plt.loglog(sim.x, ratio, label="Mean Velocity / Variance")
 plt.xlabel("x/D")
 plt.ylabel("Mean Velocity / Variance")
-plt.title("Log-Log Plot of Mean Velocity / Variance vs x/D")
+plt.title("Log-Log Plot of Mean Velocity / Variance vs x/D in Empty Unblocked Domain")
 plt.legend()
 plt.grid(True, which="both")
-plt.savefig("./10PCT_LogLog.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_LogLog.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Spectra
@@ -103,9 +103,8 @@ if use_window:
     wx = np.hanning(nx)[:, None, None]
     wy = np.hanning(ny)[None, :, None]
     wz = np.hanning(nz)[None, None, :]
-    # FIX: amplitude correction factors for Hanning window power loss
-    wy_correction = np.mean(np.hanning(ny) ** 2)   # ≈ 3/8
-    wz_correction = np.mean(np.hanning(nz) ** 2)   # ≈ 3/8
+    wy_correction = np.mean(np.hanning(ny) ** 2) 
+    wz_correction = np.mean(np.hanning(nz) ** 2) 
 else:
     wx = 1.0
     wy = 1.0
@@ -118,7 +117,6 @@ u_y = uprime * wy
 uhat_y = np.fft.fft(u_y, axis=1)
 ky = 2 * np.pi * np.fft.fftfreq(ny, d=dy)
 
-# FIXED: normalize by grid spacing in denominator
 Euu_ky_xz = (np.abs(uhat_y) ** 2) * 2 / (ny * dy * wy_correction)
 Euu_ky_x = np.mean(Euu_ky_xz, axis=2)
 
@@ -126,7 +124,7 @@ pos_ky = ky > 0
 ky_pos = ky[pos_ky]
 Euu_ky_pos = Euu_ky_x[:, pos_ky]
 
-np.save("./10PCT_ky.npy", ky_pos)
+np.save("./UNB_ky.npy", ky_pos)
 
 x_targets = [5, 10, 17]
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
@@ -139,7 +137,7 @@ plt.figure(figsize=(10, 6))
 ky_ref_idx = 2 if len(ky_pos) > 2 else 1
 ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
-    np.save(f"./10PCT_Euuky_xidx_{idx}.npy", Euu_ky_pos[idx, :])
+    np.save(f"./UNB_Euuky_x_{sim.x[idx]:.2f}.npy", Euu_ky_pos[idx, :])
 
     spectrum_line, = plt.loglog(
         ky_pos,
@@ -155,8 +153,8 @@ for xt, idx in zip(x_targets, x_indices):
     ky_ref_x = ky_pos[ky_ref_slice]
     ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-2 / 3)
 
-    np.save(f"./10PCT_ky_ref_x_xidx_{sim.x[idx]:.2f}.npy", ky_ref_x)
-    np.save(f"./10PCT_ky_ref_xidx_{sim.x[idx]:.2f}.npy", ky_ref_y)
+    np.save(f"./UNB_ky_ref_x_xidx_{sim.x[idx]:.2f}.npy", ky_ref_x)
+    np.save(f"./UNB_ky_ref_xidx_{sim.x[idx]:.2f}.npy", ky_ref_y)
 
     plt.loglog(
         ky_ref_x,
@@ -168,11 +166,11 @@ for xt, idx in zip(x_targets, x_indices):
     )
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky at selected x/D (log-log)")
+plt.title("Euu vs ky at selected x/D (log-log) for Empty Unblocked Domain")
 plt.ylim(10e-6, 10e-2)
 plt.grid(True, which="both")
 plt.legend()
-plt.savefig("./10PCT_Euu_ky_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_ky_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -180,10 +178,10 @@ for xt, idx in zip(x_targets, x_indices):
     plt.plot(ky_pos, Euu_ky_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky (linear)")
+plt.title("Euu vs ky (linear) for Empty Unblocked Domain")
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_ky.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # z spectrum: Euu(x, y, kz) averaged over y at selected x
@@ -191,7 +189,6 @@ u_z = uprime * wz
 uhat_z = np.fft.fft(u_z, axis=2)
 kz = 2 * np.pi * np.fft.fftfreq(nz, d=dz)
 
-# FIXED: normalize by grid spacing in denominator
 Euu_kz_xy = (np.abs(uhat_z) ** 2) * 2 / (nz * dz * wz_correction)
 Euu_kz_x = np.mean(Euu_kz_xy, axis=1)
 
@@ -199,14 +196,14 @@ pos_kz = kz > 0
 kz_pos = kz[pos_kz]
 Euu_kz_pos = Euu_kz_x[:, pos_kz]
 
-np.save("./10PCT_kz.npy", kz_pos)
+np.save("./UNB_kz.npy", kz_pos)
 
 # Kz Plots
 plt.figure(figsize=(10, 6))
 kz_ref_idx = 2 if len(kz_pos) > 2 else 1
 kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
-    np.save(f"./10PCT_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
+    np.save(f"./UNB_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
 
     spectrum_line, = plt.loglog(
         kz_pos,
@@ -222,8 +219,8 @@ for xt, idx in zip(x_targets, x_indices):
     kz_ref_x = kz_pos[kz_ref_slice]
     kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-2 / 3)
 
-    np.save(f"./10PCT_kz_ref_x_xidx_{sim.x[idx]:.2f}.npy", kz_ref_x)
-    np.save(f"./10PCT_kz_ref_xidx_{sim.x[idx]:.2f}.npy", kz_ref_y)
+    np.save(f"./UNB_kz_ref_x_xidx_{sim.x[idx]:.2f}.npy", kz_ref_x)
+    np.save(f"./UNB_kz_ref_xidx_{sim.x[idx]:.2f}.npy", kz_ref_y)
 
     plt.loglog(
         kz_ref_x,
@@ -236,11 +233,11 @@ for xt, idx in zip(x_targets, x_indices):
 
 plt.xlabel(r"$k_z$")
 plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D (log-log)")
+plt.title("Euu vs kz at selected x/D (log-log) for Empty Unblocked Domain")
 plt.ylim(10e-6, 10e-2)
 plt.grid(True, which="both")
 plt.legend()
-plt.savefig("./10PCT_Euu_kz_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_kz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -248,14 +245,14 @@ for xt, idx in zip(x_targets, x_indices):
     plt.plot(kz_pos, Euu_kz_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_z$")
 plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D (linear)")
+plt.title("Euu vs kz at selected x/D (linear) for Empty Unblocked Domain")
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TI Time Series
-tids = range(0, 3360, 10)
+tids = range(0, 64573, 100)
 all_t = sim.unique_times()
 
 ut = []
@@ -263,8 +260,8 @@ ubart = []
 t = []
 
 for i, tid in enumerate(tids):
-    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=0.9, zlim=0.9, tidx=tid)
+    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=0.9, zlim=0.9, tidx=tid)
 
     ut.append(np.asarray(data_f["u"]))
 
@@ -290,23 +287,23 @@ for i in range(len(uprime)):
     u_mean = np.mean(ubart[start:i + 1])
     TIu_rms[i] = (u_rms / u_mean) * 100 if u_mean != 0 else np.nan
 
-np.save("./10PCT_TIu_RMS_t.npy", TIu_rms)
-np.save("./10PCT_t.npy", t)
+np.save("./UNB_TIu_RMS_t.npy", TIu_rms)
+np.save("./UNB_t.npy", t)
 
 plt.figure(figsize=(10, 6))
 plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity at Future Turbine Location")
+plt.title("Turbulence Intensity at Future Turbine Location in Empty Unblocked Domain")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Time Spectra Averaged Over y and z plane
 x_targets = [2, 5, 8, 10, 12, 15, 17, 20]
-tids = range(0, 3360, 10)
+tids = range(0, 18723, 100)
 all_t = sim.unique_times()
 
 # Build time array
@@ -314,7 +311,7 @@ t = []
 for i, tid in enumerate(tids):
     if i < len(all_t):
         t.append(all_t[i])
-
+187
 t = np.asarray(t).squeeze()
 dt = np.mean(np.diff(t))
 nt = len(t)
@@ -327,18 +324,15 @@ ft = np.fft.fftfreq(nt, d=dt)
 pos_ft = ft > 0
 ft_pos = ft[pos_ft]
 
-np.save("./10PCT_freq.npy", ft_pos)
+np.save("./UNB_freq.npy", ft_pos)
 
 # Hanning window in time
 wt_1d = np.hanning(nt)
 wt = wt_1d[:, None, None]
-# FIX: amplitude correction factor for the time-domain Hanning window
-wt_correction = np.mean(wt_1d ** 2)  # ≈ 3/8
+wt_correction = np.mean(wt_1d ** 2) 
 
-# Map requested x/D values to nearest grid indices
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
 
-# Store spectra by x index
 time_spectra = {}
 for xt, idx in zip(x_targets, x_indices):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
@@ -353,7 +347,6 @@ for xt, idx in zip(x_targets, x_indices):
         )
         u_tseries.append(np.asarray(data_f["u"]))
 
-    # FIX: do NOT squeeze — preserves (nt, ny, nz) shape for safe broadcasting
     u_tseries = np.asarray(u_tseries)
     # Collapse any length-1 spatial dims while keeping the time axis intact
     u_tseries = u_tseries.reshape(nt, -1)  # shape: (nt, ny*nz)
@@ -362,21 +355,16 @@ for xt, idx in zip(x_targets, x_indices):
     )
     print(f"x/D={sim.x[idx]:.2f}, u_tseries shape: {u_tseries.shape}")
 
-    # Remove temporal mean at each spatial point
     uprime_t = u_tseries - np.mean(u_tseries, axis=0, keepdims=True)
 
-    # FIX: apply window with correct 1-D shape after reshape
     uhat_t = np.fft.fft(uprime_t * wt_1d[:, None], axis=0)
 
-    # FIXED: normalize by grid spacing in denominator
     Euu_ft_spatial = (np.abs(uhat_t) ** 2) * 2 / (nt * dt * wt_correction)
 
-    # Average over all spatial points
     Euu_ft = np.mean(Euu_ft_spatial, axis=1)
 
-    # Keep only positive frequencies
     time_spectra[idx] = Euu_ft[pos_ft]
-    np.save(f"./10PCT_time_spectrum_xidx_{sim.x[idx]:.2f}.npy", time_spectra[idx])
+    np.save(f"./UNB_time_spectrum_xidx_{sim.x[idx]:.2f}.npy", time_spectra[idx])
 
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.subplots_adjust(right=0.72)
@@ -392,9 +380,6 @@ for xt, idx in zip(x_targets, x_indices):
     )
     c = spectrum_line.get_color()
 
-    # Anchor frequency:
-    # x/D = 20 -> anchor at 10^-2
-    # all others -> anchor at first point to the right of 10^-1
     if int(round(xt)) == 20:
         f_anchor_target = 1e-2
     else:
@@ -417,8 +402,8 @@ for xt, idx in zip(x_targets, x_indices):
     f_ref_x = ft_pos[ref_slice]
     f_ref_y = f_ref_amp * (f_ref_x / f_ref) ** (-2 / 3)
 
-    np.save(f"./10PCT_f_ref_x_xidx_{sim.x[idx]:.2f}.npy", f_ref_x)
-    np.save(f"./10PCT_f_ref_y_xidx_{sim.x[idx]:.2f}.npy", f_ref_y)
+    np.save(f"./UNB_f_ref_x_xidx_{sim.x[idx]:.2f}.npy", f_ref_x)
+    np.save(f"./UNB_f_ref_y_xidx_{sim.x[idx]:.2f}.npy", f_ref_y)
 
     ax.loglog(
         f_ref_x,
@@ -430,7 +415,7 @@ for xt, idx in zip(x_targets, x_indices):
     )
 ax.set_xlabel("Frequency [1/time]")
 ax.set_ylabel(r"$E_{uu}(f)$")
-ax.set_title("Time spectrum of u averaged over y,z at selected x/D")
+ax.set_title("Time spectrum of u averaged over y,z at selected x/D in Empty Unblocked Domain")
 #ax.set_ylim(1e-6, 1e-2)
 ax.grid(True, which="both")
 ax.legend(
@@ -439,7 +424,7 @@ ax.legend(
     borderaxespad=0.0,
     fontsize=9,
 )
-plt.savefig("./10PCT_Euu_time_yz_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_time_yz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -452,8 +437,8 @@ for xt, idx in zip(x_targets, x_indices):
     )
 plt.xlabel("Frequency [1/time]")
 plt.ylabel(r"$E_{uu}(f)$")
-plt.title("Time spectrum of u averaged over y,z at selected x/D (linear)")
+plt.title("Time spectrum of u averaged over y,z at selected x/D (linear) for Empty Unblocked Domain")
 plt.grid(True)
 plt.legend(ncol=2, fontsize=9)
-plt.savefig("./10PCT_Euu_time_yz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNB_Euu_time_yz.png", dpi=300, bbox_inches="tight")
 plt.close()
