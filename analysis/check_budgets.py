@@ -3,28 +3,27 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import padeopsIO as pio
-from scipy.signal import find_peaks  # <-- added
+from scipy.signal import find_peaks 
 
 data_path = Path(au.DATA_PATH)
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB2", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB3", padeops=True, runid=3)
 
 # Pull Data
-tids = range(0, 18273, 100)
-u, ubar = [], [] 
+tids = range(0, 18695, 1000)
+u, = []
 
 for tid in tids:
-    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=0.99, zlim=0.99, tidx=tid)
 
     u.append(np.asarray(data_f["u"]))
-    ubar.append(np.asarray(data_b["ubar"]))
 
+data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=0.99, zlim=0.99)['ubar']
 u = np.array(u).squeeze()
-ubar = np.array(ubar).squeeze()
+ubar = data_b
 
-uprime = ubar - u
+uprime = u - ubar
 
 # RMS Turbulence Intensity
 TIu_inst = np.where(ubar != 0, (np.abs(uprime) / ubar) * 100, np.nan)
@@ -77,8 +76,8 @@ plt.scatter(t_valleys, TI_valleys, color='green', label='Minima', zorder=3)
 
 plt.xlabel('Time Index')
 plt.ylabel('Turbulence Intensity (%)')
-plt.title('Turbulence Intensity Budget Check for Unblocked Domain (Empty)')
+plt.title('Turbulence Intensity Budget Check for 10% Blocked Domain (Empty)')
 plt.grid()
 plt.legend()
-plt.savefig("UNB_budgetcheck", dpi=300)
+plt.savefig("20PCT_budgetcheck", dpi=300)
 plt.show()
