@@ -6,7 +6,7 @@ import padeopsIO as pio
 
 data_path = Path(au.DATA_PATH)
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/UNB3", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB", padeops=True, runid=1)
 
 # Initial Views
 uviewz = sim.slice(field_terms="u", ylim=6.25)
@@ -15,23 +15,27 @@ uviewy = sim.slice(field_terms="u", zlim=6.25)
 umeanviewy = sim.slice(budget_terms="ubar", zlim=6.25)
 
 uviewz["u"].imshow()
-plt.title("Final Velocity Field for Empty Unblocked Blocked Domain")
-plt.savefig("./UNB_Final_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Unblocked Domain Spinup", pad = 20)
+plt.savefig("./UNBSpin_Final_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-umeanviewz["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty Unblocked Blocked Domain")
-plt.savefig("./UNB_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
+fig, ax = plt.subplots(figsize=(10, 6))
+umeanviewz["ubar"].imshow(ax=ax)
+ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain Spinup", pad=20)
+fig.subplots_adjust(top=0.88)
+plt.savefig("./UNBSpin_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 uviewy["u"].imshow()
-plt.title("Final Velocity Field for Empty Unblocked Blocked Domain")
-plt.savefig("./UNB_Final_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for Unblocked Domain Spinup", pad = 20)
+plt.savefig("./UNBSpin_Final_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-umeanviewy["ubar"].imshow()
-plt.title("Time-Averaged Mean Velocity Field for Empty Unblocked Blocked Domain")
-plt.savefig("./UNB_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
+fig, ax = plt.subplots(figsize=(10, 6))
+umeanviewy["ubar"].imshow(ax=ax)
+ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain Spinup", pad=20)
+fig.subplots_adjust(top=0.88)
+plt.savefig("./UNBSpin_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # 3D fields
@@ -39,8 +43,8 @@ uc = np.asarray(sim.slice(field_terms="u")["u"])
 
 ubar = np.asarray(sim.slice(budget_terms="ubar")["ubar"])
 
-np.save("./UNB_uc.npy", uc)
-np.save("./UNB_ubar.npy", ubar)
+# np.save("./20PCT_uc.npy", uc)
+# np.save("./20PCT_ubar.npy", ubar)
 
 
 print("uc shape:", uc.shape)
@@ -60,36 +64,36 @@ print("ubar_x shape:", ubar_x.shape)
 # Turbulence Intensity as a Function of X
 TIu = np.where(ubar_x != 0, (np.sqrt(uvar_x) / ubar_x) * 100, np.nan)
 print("TIu shape:", TIu.shape)
-np.save("./UNB_TIu_x.npy", TIu)
-np.save("./UNB_x.npy", sim.x)
+# np.save("./UNB_TIu_x.npy", TIu)
+# np.save("./UNB_x.npy", sim.x)
 
 # Plot
 plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TIu, label="Streamwise TI (u)")
 plt.xlabel("x/D")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity vs x/D in Empty Unblocked Blocked Domain")
+plt.title("Turbulence Intensity vs x/D in Unblocked Domain Spinup")
 plt.legend()
 plt.grid()
-plt.savefig("./UNB_TI.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNBSpin_TI.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # Log-log Plot of Velocity and Variance
 ratio = np.where(uvar_x != 0, ubar_x / uvar_x, np.nan)
-np.save("./UNB_loglog_ratio.npy", ratio)
+# np.save("./UNB_loglog_ratio.npy", ratio)
 
 plt.figure(figsize=(10, 6))
 plt.loglog(sim.x, ratio, label="Mean Velocity / Variance")
 plt.xlabel("x/D")
 plt.ylabel("Mean Velocity / Variance")
-plt.title("Log-Log Plot of Mean Velocity / Variance vs x/D in Empty Unblocked Blocked Domain")
+plt.title("Log-Log Plot of Mean Velocity / Variance vs x/D in Unblocked Domain Spinup")
 plt.legend()
 plt.grid(True, which="both")
-plt.savefig("./UNB_LogLog.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNBSpin_LogLog.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TI Time Series
-tids = range(0, 18965, 1000)
+tids = range(0, 1592, 10)
 all_t = sim.unique_times()
 
 ut = []
@@ -97,8 +101,8 @@ ubart = []
 t = []
 
 for i, tid in enumerate(tids):
-    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=6.25, ylim=6.25, zlim=6.25, tidx=tid)
+    data_b = sim.slice(budget_terms=["ubar"], xlim=6.25, ylim=6.25, zlim=6.25, tidx=tid)
 
     ut.append(np.asarray(data_f["u"]))
     ubart.append(np.asarray(data_b["ubar"]))
@@ -123,16 +127,16 @@ for i in range(len(uprime)):
     u_mean = np.mean(ubart[start:i + 1])
     TIu_rms[i] = (u_rms / u_mean) * 100 if u_mean != 0 else np.nan
 
-np.save("./UNB_TIu_RMS_t.npy", TIu_rms)
-np.save("./UNB_t.npy", t)
+# np.save("./UNB_TIu_RMS_t.npy", TIu_rms)
+# np.save("./UNB_t.npy", t)
 
 plt.figure(figsize=(10, 6))
 plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity at Future Turbine Location in Empty Unblocked Blocked Domain")
+plt.title("Turbulence Intensity at enter of Unblocked Domain Spinup")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
-plt.savefig("./10PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
+plt.savefig("./UNBSpin_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
 plt.close()

@@ -5,7 +5,7 @@ import numpy as np
 import padeopsIO as pio
 
 # Load Data
-sim = pio.BudgetIO("Data/Empty_HIT_Tests/10pct3", padeops = True, runid = 3)
+sim = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops = True, runid = 3)
 
 # Reynolds Decomposition
 u = np.asarray(sim.slice(field_terms="u")['u'])
@@ -34,7 +34,7 @@ ky_pos = ky[pos_ky]
 Euu_ky_x = np.mean(psd_y, axis=2)
 Euu_ky_pos = Euu_ky_x[:, pos_ky]
 
-np.save("./10PCT_ky.npy", ky_pos)
+#np.save("./10PCT_ky.npy", ky_pos)
 
 x_targets = [5, 10, 17]
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
@@ -47,7 +47,7 @@ plt.figure(figsize=(10, 6))
 ky_ref_idx = 2 if len(ky_pos) > 2 else 1
 ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
-    np.save(f"./10PCT_Euuky_x_{sim.x[idx]:.2f}.npy", Euu_ky_pos[idx, :])
+    # np.save(f"./10PCT_Euuky_x_{sim.x[idx]:.2f}.npy", Euu_ky_pos[idx, :])
 
     spectrum_line, = plt.loglog(
         ky_pos, Euu_ky_pos[idx, :], linewidth=2, label=f"x/D={sim.x[idx]:.2f}",
@@ -59,15 +59,15 @@ for xt, idx in zip(x_targets, x_indices):
     ky_ref_x = ky_pos[ky_ref_slice]
     ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5 / 3)
 
-    np.save(f"./10PCT_ky_ref_x_xidx_{sim.x[idx]:.2f}.npy", ky_ref_x)
-    np.save(f"./10PCT_ky_ref_xidx_{sim.x[idx]:.2f}.npy", ky_ref_y)
+    # np.save(f"./10PCT_ky_ref_x_xidx_{sim.x[idx]:.2f}.npy", ky_ref_x)
+    # np.save(f"./10PCT_ky_ref_xidx_{sim.x[idx]:.2f}.npy", ky_ref_y)
 
     plt.loglog(ky_ref_x, ky_ref_y, "--", color=c, linewidth=1.6,
                label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
 
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky at selected x/D (log-log)")
+plt.title("Euu vs ky at selected x/D in 10% Blocked Domain (log-log)")
 plt.grid(True, which="both")
 plt.legend()
 plt.savefig("./10PCT_Euu_ky_log.png", dpi=300, bbox_inches="tight")
@@ -78,7 +78,7 @@ for xt, idx in zip(x_targets, x_indices):
     plt.plot(ky_pos, Euu_ky_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_y$")
 plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky (linear)")
+plt.title("Euu vs ky at selected x/D in 10% Blocked Domain (linear)")
 plt.grid(True)
 plt.legend()
 plt.savefig("./10PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
@@ -100,14 +100,14 @@ kz_pos = kz[pos_kz]
 Euu_kz_x = np.mean(psd_z, axis=1)
 Euu_kz_pos = Euu_kz_x[:, pos_kz]
 
-np.save("./10PCT_kz.npy", kz_pos)
+# np.save("./10PCT_kz.npy", kz_pos)
 
 # Kz Plots
 plt.figure(figsize=(10, 6))
 kz_ref_idx = 2 if len(kz_pos) > 2 else 1
 kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
 for xt, idx in zip(x_targets, x_indices):
-    np.save(f"./10PCT_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
+    # np.save(f"./10PCT_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
 
     spectrum_line, = plt.loglog(
         kz_pos, Euu_kz_pos[idx, :], linewidth=2, label=f"x/D={sim.x[idx]:.2f}",
@@ -119,15 +119,15 @@ for xt, idx in zip(x_targets, x_indices):
     kz_ref_x = kz_pos[kz_ref_slice]
     kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5 / 3)
 
-    np.save(f"./10PCT_kz_ref_x_xidx_{sim.x[idx]:.2f}.npy", kz_ref_x)
-    np.save(f"./10PCT_kz_ref_xidx_{sim.x[idx]:.2f}.npy", kz_ref_y)
+    #np.save(f"./10PCT_kz_ref_x_xidx_{sim.x[idx]:.2f}.npy", kz_ref_x)
+    #np.save(f"./10PCT_kz_ref_xidx_{sim.x[idx]:.2f}.npy", kz_ref_y)
 
     plt.loglog(kz_ref_x, kz_ref_y, "--", color=c, linewidth=1.6,
                label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
 
 plt.xlabel(r"$k_z$")
 plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D (log-log)")
+plt.title("Euu vs kz at selected x/D in 10% Blocked Domain (log-log)")
 plt.grid(True, which="both")
 plt.legend()
 plt.savefig("./10PCT_Euu_kz_log.png", dpi=300, bbox_inches="tight")
@@ -138,7 +138,7 @@ for xt, idx in zip(x_targets, x_indices):
     plt.plot(kz_pos, Euu_kz_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_z$")
 plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz (linear)")
+plt.title("Euu vs kz at selected x/D in 10% Blocked Domain (linear)")
 plt.grid(True)
 plt.legend()
 plt.savefig("./10PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
@@ -146,7 +146,7 @@ plt.close()
 
 # Time Spectra
 x_targets = [2, 5, 8, 10, 12, 15, 17, 20]
-tids = range(0, 3360, 10)
+tids = range(0, 3159, 10)
 all_t = sim.unique_times()
 
 # Build time array
@@ -166,7 +166,7 @@ ft = np.fft.rfftfreq(nt, d=dt)
 pos_ft = ft > 0
 ft_pos = ft[pos_ft]
 
-np.save("./10PCT_freq.npy", ft_pos)
+#np.save("./10PCT_freq.npy", ft_pos)
 
 x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
 
@@ -202,7 +202,7 @@ for xt, idx in zip(x_targets, x_indices):
     # Average over spatial dimensions, then select positive frequencies
     Euu_ft = np.nanmean(psd_t, axis=1)
     time_spectra[idx] = Euu_ft[pos_ft]
-    np.save(f"./10PCT_time_spectrum_xidx_{sim.x[idx]:.2f}.npy", time_spectra[idx])
+    # np.save(f"./10PCT_time_spectrum_xidx_{sim.x[idx]:.2f}.npy", time_spectra[idx])
 
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.subplots_adjust(right=0.72)
@@ -240,8 +240,8 @@ for xt, idx in zip(x_targets, x_indices):
     f_ref_x = ft_pos[ref_slice]
     f_ref_y = f_ref_amp * (f_ref_x / f_ref) ** (-5 / 3)
 
-    np.save(f"./10PCT_f_ref_x_xidx_{sim.x[idx]:.2f}.npy", f_ref_x)
-    np.save(f"./10PCT_f_ref_y_xidx_{sim.x[idx]:.2f}.npy", f_ref_y)
+    # np.save(f"./10PCT_f_ref_x_xidx_{sim.x[idx]:.2f}.npy", f_ref_x)
+    # np.save(f"./10PCT_f_ref_y_xidx_{sim.x[idx]:.2f}.npy", f_ref_y)
 
     ax.loglog(
         f_ref_x, f_ref_y, "--", color=c, linewidth=1.6,
@@ -250,7 +250,7 @@ for xt, idx in zip(x_targets, x_indices):
 
 ax.set_xlabel("Frequency [1/time]")
 ax.set_ylabel(r"$E_{uu}(f)$")
-ax.set_title("Time spectrum of u averaged over y,z at selected x/D")
+ax.set_title("Time spectrum of u averaged over y,z at selected x/D in 10% Blocked Domain")
 ax.grid(True, which="both")
 ax.legend(
     loc="upper left",
@@ -266,8 +266,9 @@ for xt, idx in zip(x_targets, x_indices):
     plt.plot(ft_pos, time_spectra[idx], linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel("Frequency [1/time]")
 plt.ylabel(r"$E_{uu}(f)$")
-plt.title("Time spectrum of u averaged over y,z at selected x/D (linear)")
+plt.title("Time spectrum of u averaged over y,z at selected x/D in 10% Blocked Domain (linear)")
 plt.grid(True)
 plt.legend(ncol=2, fontsize=9)
 plt.savefig("./10PCT_Euu_time_yz.png", dpi=300, bbox_inches="tight")
 plt.close()
+
