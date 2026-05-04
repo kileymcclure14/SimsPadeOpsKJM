@@ -8,20 +8,42 @@ import padeopsIO as pio
 # Import Data
 sim = pio.BudgetIO("Data/Empty_Domains/Spinups/20PCT", padeops=True, runid=1)
 
-tids = range(0, 13494, 10)
+tids = range(0, 135480, 1000)
 u, v, w = [], [], []
 
 for tid in tids:
-    data_f = sim.slice(field_terms=["u", "v", "w"], tidx=tid)
-    u.append(np.asarray(data_f["u"]))
-    v.append(np.asarray(data_f["v"]))
-    w.append(np.asarray(data_f["w"]))
+    data_u = sim.slice(field_terms=["u"], tidx=tid)
+    data_v = sim.slice(field_terms=["v"], tidx=tid)
+    data_w = sim.slice(field_terms=["w"], tidx=tid)
+    u.append(np.asarray(data_u["u"]))
+    v.append(np.asarray(data_v["v"]))
+    w.append(np.asarray(data_w["w"]))
 
 u = np.array(u).squeeze()
 v = np.array(v).squeeze()
 w = np.array(w).squeeze()
 
 print(f"u.shape = {u.shape}") 
+
+#Time Averaged Views
+ubar = sim.slice(budget_terms=["ubar"], xlim = 0.99)
+vbar = sim.slice(budget_terms=["vbar"], xlim = 0.99)
+wbar = sim.slice(budget_terms=["wbar"], xlim = 0.99)
+
+ubar["ubar"].imshow()
+plt.title("UBar in 20% Blockage Spinup")
+plt.savefig("ubar_20PCT.png", dpi=300)
+plt.close()
+
+vbar["vbar"].imshow()
+plt.title("VBar in 20% Blockage Spinup")
+plt.savefig("vbar_20PCT.png", dpi=300)
+plt.close()
+
+wbar["wbar"].imshow()
+plt.title("WBar in 20% Blockage Spinup")
+plt.savefig("wbar_20PCT.png", dpi=300)
+plt.close()
 
 # TKE Evolution
 ke = 0.5 * np.mean(u**2 + v**2 + w**2, axis=(1, 2, 3))
@@ -36,7 +58,7 @@ plt.axhspan(tke_final-tke_std, tke_final+tke_std, alpha=0.2, color='red')
 plt.xlabel("Timestep"); plt.ylabel("TKE")
 plt.title("TKE evolution (stationarity check)")
 plt.legend(); plt.grid(); plt.tight_layout()
-plt.ylim(0.02, 0.04)
+#plt.ylim(0.02, 0.04)
 plt.savefig("./TKE_stationarity_20PCT.png", dpi=300)
 plt.close()
 
@@ -133,7 +155,7 @@ ax1.loglog(k_plot, E_mean, 'o-', lw=2, label='Time-averaged')
 ax1.loglog(k_plot, E_last, 's--', lw=1.5, alpha=0.8, label='Final snapshot')
 ax1.fill_between(k_plot, np.maximum(E_mean-E_std, 1e-20), E_mean+E_std, alpha=0.2)
 ax1.loglog(k_plot, C * k_plot**(-5/3), 'k--', lw=2, label=r'$k^{-5/3}$')
-#ax1.set_ylim(10e-5, 10e-1)
+ax1.set_ylim(1e-5, 1e-1)
 ax1.set_xlabel(r'$k$'); ax1.set_ylabel(r'$E(k)$')
 ax1.set_title('Fully developed spectrum'); ax1.legend(); ax1.grid()
 
@@ -141,7 +163,7 @@ ax1.set_title('Fully developed spectrum'); ax1.legend(); ax1.grid()
 ax2.loglog(k_plot, E_mean * k_plot**(5/3), 'o-', lw=2, label='E(k) × k^{5/3}')
 ax2.axhline(y=C, color='k', ls='--', lw=2, label='Kolmogorov plateau')
 ax2.set_xlabel(r'$k$'); ax2.set_ylabel(r'$E(k) k^{5/3}$')
-#ax2.set_ylim(10e-5, 10e0)
+ax2.set_ylim(10e-5, 10e-1)
 ax2.set_title('Inertial range check'); ax2.legend(); ax2.grid()
 
 plt.tight_layout()
