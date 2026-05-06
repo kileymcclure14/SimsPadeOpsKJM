@@ -3,272 +3,182 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import padeopsIO as pio
+from scipy.signal import welch
 
-# Load Data
-sim = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops = True, runid = 3)
+sim = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=3)
 
-# Reynolds Decomposition
+# Load 3D Fields
 u = np.asarray(sim.slice(field_terms="u")['u'])
 ubar = np.asarray(sim.slice(budget_terms="ubar")['ubar'])
-uprime = u - ubar
 
-# Parmaters
-nx, ny, nz = uprime.shape
+v = np.asarray(sim.slice(field_terms="v")['v'])
+vbar = np.asarray(sim.slice(budget_terms="vbar")['vbar'])
+
+w = np.asarray(sim.slice(field_terms="w")['w'])
+wbar = np.asarray(sim.slice(budget_terms="wbar")['wbar'])
+
+# Velocity magnitudes
+Umag     = np.sqrt(u**2    + v**2    + w**2)
+Umag_bar = np.sqrt(ubar**2 + vbar**2 + wbar**2)
+Umag_prime = Umag - Umag_bar  
+
+# Parameters
+nx, ny, nz = Umag_prime.shape
 dx = sim.x[1] - sim.x[0]
 dy = sim.y[1] - sim.y[0]
 dz = sim.z[1] - sim.z[0]
 
-# Y Spectra
-newshape_y = list(uprime.shape)
-newshape_y[1] = 1
-uprime_y = uprime - np.mean(uprime, axis=1).reshape(newshape_y)
+def welch_avg(data, axis, fs, nperseg_frac=0.5):
+    n = data.shape[axis]
+    nperseg = max(4, int(n * nperseg_frac))
+    data_2d = np.moveaxis(data, axis, 0).reshape(n, -1)
+    f, _ = welch(data_2d[:, 0], fs=fs, nperseg=nperseg)
+    psds = np.array([welch(data_2d[:, i], fs=fs, nperseg=nperseg)[1]
+                     for i in range(data_2d.shape[1])])
+    return f, np.nanmean(psds, axis=0)
 
-uhat_y = np.fft.rfft(uprime_y, axis=1) * (2 / ny)
-psd_y = np.real(uhat_y * np.conj(uhat_y))
-filt_y = psd_y > 1e-20
-psd_y[~filt_y] = np.nan
 
-ky = 2 * np.pi * np.fft.rfftfreq(ny, d=dy)
-pos_ky = ky > 0
-ky_pos = ky[pos_ky]
-Euu_ky_x = np.mean(psd_y, axis=2)
-Euu_ky_pos = Euu_ky_x[:, pos_ky]
+def plot_ref_line(ax_or_plt, k_arr, E_arr, i_ref, n_pts, color, label):
+    ref_slice = slice(i_ref, min(len(k_arr), i_ref + n_pts))
+    k_ref = k_arr[i_ref]
+    A = E_arr[i_ref] * k_ref ** (5/3)
+    ax_or_plt.loglog(k_arr[ref_slice], A * k_arr[ref_slice] ** (-5/3),
+                     "--", color=color, linewidth=1.6, label=label)
 
-#np.save("./10PCT_ky.npy", ky_pos)
 
-x_targets = [5, 10, 17]
-x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
+newshape_y = list(Umag_prime.shape); newshape_y[1] = 1
+Umag_prime_y = Umag_prime - np.mean(Umag_prime, axis=1).reshape(newshape_y)
 
-for xt, idx in zip(x_targets, x_indices):
+x_targets_spatial = [5, 20, 55]
+x_indices_spatial = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets_spatial]
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
-# Ky Plots
+ky_results = {}
+for idx in x_indices_spatial:
+    fy, psd_y = welch_avg(Umag_prime_y[idx], axis=0, fs=1.0/dy)
+    pos = fy > 0
+    ky_results[idx] = (2 * np.pi * fy[pos], psd_y[pos])
+
 plt.figure(figsize=(10, 6))
-ky_ref_idx = 2 if len(ky_pos) > 2 else 1
-ky_ref_slice = slice(ky_ref_idx, min(len(ky_pos), ky_ref_idx + 12))
-for xt, idx in zip(x_targets, x_indices):
-    # np.save(f"./10PCT_Euuky_x_{sim.x[idx]:.2f}.npy", Euu_ky_pos[idx, :])
-
-    spectrum_line, = plt.loglog(
-        ky_pos, Euu_ky_pos[idx, :], linewidth=2, label=f"x/D={sim.x[idx]:.2f}",
-    )
-    c = spectrum_line.get_color()
-
-    ky_ref = ky_pos[ky_ref_idx]
-    ky_ref_amp = Euu_ky_pos[idx, ky_ref_idx]
-    ky_ref_x = ky_pos[ky_ref_slice]
-    ky_ref_y = ky_ref_amp * (ky_ref_x / ky_ref) ** (-5 / 3)
-
-    # np.save(f"./10PCT_ky_ref_x_xidx_{sim.x[idx]:.2f}.npy", ky_ref_x)
-    # np.save(f"./10PCT_ky_ref_xidx_{sim.x[idx]:.2f}.npy", ky_ref_y)
-
-    plt.loglog(ky_ref_x, ky_ref_y, "--", color=c, linewidth=1.6,
-               label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
-
-plt.xlabel(r"$k_y$")
-plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky at selected x/D in 10% Blocked Domain (log-log)")
-plt.grid(True, which="both")
-plt.legend()
-plt.savefig("./10PCT_Euu_ky_log.png", dpi=300, bbox_inches="tight")
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    ky_pos, E_ky = ky_results[idx]
+    line, = plt.loglog(ky_pos, E_ky, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+    plot_ref_line(plt, ky_pos, E_ky, len(ky_pos)//16, 30, line.get_color(),
+                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
+plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
+plt.title(r"$E_{|U|}$ vs $k_y$ — Unblocked Domain (log-log, Welch)")
+plt.ylim(10e-7, 10e-3)
+plt.grid(True, which="both"); plt.legend()
+plt.savefig("./UNB_Emag_ky_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
-for xt, idx in zip(x_targets, x_indices):
-    plt.plot(ky_pos, Euu_ky_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_y$")
-plt.ylabel(r"$E_{uu}(x,k_y)$")
-plt.title("Euu vs ky at selected x/D in 10% Blocked Domain (linear)")
-plt.grid(True)
-plt.legend()
-plt.savefig("./10PCT_Euu_ky.png", dpi=300, bbox_inches="tight")
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    ky_pos, E_ky = ky_results[idx]
+    plt.plot(ky_pos, E_ky, label=f"x/D={sim.x[idx]:.2f}")
+plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
+plt.title(r"$E_{|U|}$ vs $k_y$ — Unblocked Domain (linear, Welch)")
+plt.grid(True); plt.legend()
+plt.savefig("./UNB_Emag_ky.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-#Z Spectra
-newshape_z = list(uprime.shape)
-newshape_z[2] = 1
-uprime_z = uprime - np.mean(uprime, axis=2).reshape(newshape_z)
 
-uhat_z = np.fft.rfft(uprime_z, axis=2) * (2 / nz)
-psd_z = np.real(uhat_z * np.conj(uhat_z))
-filt_z = psd_z > 1e-20
-psd_z[~filt_z] = np.nan
+newshape_z = list(Umag_prime.shape); newshape_z[2] = 1
+Umag_prime_z = Umag_prime - np.mean(Umag_prime, axis=2).reshape(newshape_z)
 
-kz = 2 * np.pi * np.fft.rfftfreq(nz, d=dz)
-pos_kz = kz > 0
-kz_pos = kz[pos_kz]
-Euu_kz_x = np.mean(psd_z, axis=1)
-Euu_kz_pos = Euu_kz_x[:, pos_kz]
+kz_results = {}
+for idx in x_indices_spatial:
+    fz, psd_z = welch_avg(Umag_prime_z[idx], axis=1, fs=1.0/dz)
+    pos = fz > 0
+    kz_results[idx] = (2 * np.pi * fz[pos], psd_z[pos])
 
-# np.save("./10PCT_kz.npy", kz_pos)
-
-# Kz Plots
 plt.figure(figsize=(10, 6))
-kz_ref_idx = 2 if len(kz_pos) > 2 else 1
-kz_ref_slice = slice(kz_ref_idx, min(len(kz_pos), kz_ref_idx + 12))
-for xt, idx in zip(x_targets, x_indices):
-    # np.save(f"./10PCT_Euukz_xidx_{idx}.npy", Euu_kz_pos[idx, :])
-
-    spectrum_line, = plt.loglog(
-        kz_pos, Euu_kz_pos[idx, :], linewidth=2, label=f"x/D={sim.x[idx]:.2f}",
-    )
-    c = spectrum_line.get_color()
-
-    kz_ref = kz_pos[kz_ref_idx]
-    kz_ref_amp = Euu_kz_pos[idx, kz_ref_idx]
-    kz_ref_x = kz_pos[kz_ref_slice]
-    kz_ref_y = kz_ref_amp * (kz_ref_x / kz_ref) ** (-5 / 3)
-
-    #np.save(f"./10PCT_kz_ref_x_xidx_{sim.x[idx]:.2f}.npy", kz_ref_x)
-    #np.save(f"./10PCT_kz_ref_xidx_{sim.x[idx]:.2f}.npy", kz_ref_y)
-
-    plt.loglog(kz_ref_x, kz_ref_y, "--", color=c, linewidth=1.6,
-               label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
-
-plt.xlabel(r"$k_z$")
-plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D in 10% Blocked Domain (log-log)")
-plt.grid(True, which="both")
-plt.legend()
-plt.savefig("./10PCT_Euu_kz_log.png", dpi=300, bbox_inches="tight")
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    kz_pos, E_kz = kz_results[idx]
+    line, = plt.loglog(kz_pos, E_kz, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+    plot_ref_line(plt, kz_pos, E_kz, len(kz_pos)//15, 30, line.get_color(),
+                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
+plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
+plt.title(r"$E_{|U|}$ vs $k_z$ — Unblocked Domain (log-log, Welch)")
+plt.ylim(10e-7, 10e-3)
+plt.grid(True, which="both"); plt.legend()
+plt.savefig("./UNB_Emag_kz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
-for xt, idx in zip(x_targets, x_indices):
-    plt.plot(kz_pos, Euu_kz_pos[idx, :], label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_z$")
-plt.ylabel(r"$E_{uu}(x,k_z)$")
-plt.title("Euu vs kz at selected x/D in 10% Blocked Domain (linear)")
-plt.grid(True)
-plt.legend()
-plt.savefig("./10PCT_Euu_kz.png", dpi=300, bbox_inches="tight")
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    kz_pos, E_kz = kz_results[idx]
+    plt.plot(kz_pos, E_kz, label=f"x/D={sim.x[idx]:.2f}")
+plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
+plt.title(r"$E_{|U|}$ vs $k_z$ — Unblocked Domain (linear, Welch)")
+plt.grid(True); plt.legend()
+plt.savefig("./UNB_Emag_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-# Time Spectra
-x_targets = [2, 5, 8, 10, 12, 15, 17, 20]
-tids = range(0, 3159, 10)
+
+x_targets_time = [2, 5, 20, 30, 36, 45, 51, 60]
+tids = range(0, 2265, 100)
 all_t = sim.unique_times()
 
-# Build time array
-t = []
-for i, tid in enumerate(tids):
-    if i < len(all_t):
-        t.append(all_t[i])
-t = np.asarray(t).squeeze()
+t = np.asarray([all_t[i] for i in range(min(len(list(tids)), len(all_t)))]).squeeze()
 dt = np.mean(np.diff(t))
 nt = len(t)
+print("nt =", nt, "  dt =", dt)
 
-print("nt =", nt)
-print("dt =", dt)
-
-# Frequency axis
-ft = np.fft.rfftfreq(nt, d=dt)
-pos_ft = ft > 0
-ft_pos = ft[pos_ft]
-
-#np.save("./10PCT_freq.npy", ft_pos)
-
-x_indices = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets]
+x_indices_time = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets_time]
 
 time_spectra = {}
-for xt, idx in zip(x_targets, x_indices):
+for xt, idx in zip(x_targets_time, x_indices_time):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
-    u_tseries = []
+    u_ts, v_ts, w_ts = [], [], []
     for tid in tids:
-        data_f = sim.slice(
-            field_terms="u",
-            xlim=sim.x[idx],
-            tidx=tid,
-        )
-        u_tseries.append(np.asarray(data_f["u"]))
+        u_ts.append(np.asarray(sim.slice(field_terms="u", xlim=sim.x[idx], tidx=tid)["u"]))
+        v_ts.append(np.asarray(sim.slice(field_terms="v", xlim=sim.x[idx], tidx=tid)["v"]))
+        w_ts.append(np.asarray(sim.slice(field_terms="w", xlim=sim.x[idx], tidx=tid)["w"]))
 
-    u_tseries = np.asarray(u_tseries)
-    u_tseries = u_tseries.reshape(nt, -1)  # shape: (nt, ny*nz)
-    assert u_tseries.shape[0] == nt, (
-        f"Time axis mismatch at x/D={sim.x[idx]:.2f}: got shape {u_tseries.shape}"
-    )
-    print(f"x/D={sim.x[idx]:.2f}, u_tseries shape: {u_tseries.shape}")
+    u_ts = np.asarray(u_ts).reshape(nt, -1)
+    v_ts = np.asarray(v_ts).reshape(nt, -1)
+    w_ts = np.asarray(w_ts).reshape(nt, -1)
 
-    # Remove time mean (matching original function)
-    uprime_t = u_tseries - np.mean(u_tseries, axis=0, keepdims=True)
+    # Magnitude of instantaneous and mean velocity, then fluctuation
+    Umag_ts     = np.sqrt(u_ts**2 + v_ts**2 + w_ts**2)
+    Umag_bar_ts = np.mean(Umag_ts, axis=0, keepdims=True)
+    Umag_prime_ts = Umag_ts - Umag_bar_ts  # (nt, ny*nz)
 
-    # PSD using exact same equation as original function
-    uhat_t = np.fft.rfft(uprime_t, axis=0) * (2 / nt)
-    psd_t = np.real(uhat_t * np.conj(uhat_t))
-    filt_t = psd_t > 1e-20
-    psd_t[~filt_t] = np.nan
+    nperseg = max(4, nt // 2)
+    fs_t = 1.0 / dt
+    f0, _ = welch(Umag_prime_ts[:, 0], fs=fs_t, nperseg=nperseg)
+    psds = np.array([welch(Umag_prime_ts[:, i], fs=fs_t, nperseg=nperseg)[1]
+                     for i in range(Umag_prime_ts.shape[1])])
+    psd_mean = np.nanmean(psds, axis=0)
 
-    # Average over spatial dimensions, then select positive frequencies
-    Euu_ft = np.nanmean(psd_t, axis=1)
-    time_spectra[idx] = Euu_ft[pos_ft]
-    # np.save(f"./10PCT_time_spectrum_xidx_{sim.x[idx]:.2f}.npy", time_spectra[idx])
+    pos_ft = f0 > 0
+    time_spectra[idx] = (f0[pos_ft], psd_mean[pos_ft])
 
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.subplots_adjust(right=0.72)
-
-for xt, idx in zip(x_targets, x_indices):
-    yspec = time_spectra[idx]
-
-    spectrum_line, = ax.loglog(
-        ft_pos,
-        yspec,
-        linewidth=2,
-        label=f"x/D={sim.x[idx]:.2f}",
-    )
-    c = spectrum_line.get_color()
-
-    # Skip reference line for last x target
-    if xt == x_targets[-1]:
+for xt, idx in zip(x_targets_time, x_indices_time):
+    ft_pos, yspec = time_spectra[idx]
+    line, = ax.loglog(ft_pos, yspec, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+    if xt == x_targets_time[-1]:
         continue
-
-    if int(round(xt)) == 20:
-        f_anchor_target = 1e-2
-    else:
-        valid = np.where(ft_pos > 1e-1)[0]
-        if len(valid) == 0:
-            continue
-        ref_idx = valid[0]
-        f_anchor_target = ft_pos[ref_idx]
-
-    ref_idx = np.argmin(np.abs(ft_pos - f_anchor_target))
-    ref_len = 30
-    ref_slice = slice(ref_idx, min(len(ft_pos), ref_idx + ref_len))
-
-    f_ref = ft_pos[ref_idx]
-    f_ref_amp = yspec[ref_idx]
-    f_ref_x = ft_pos[ref_slice]
-    f_ref_y = f_ref_amp * (f_ref_x / f_ref) ** (-5 / 3)
-
-    # np.save(f"./10PCT_f_ref_x_xidx_{sim.x[idx]:.2f}.npy", f_ref_x)
-    # np.save(f"./10PCT_f_ref_y_xidx_{sim.x[idx]:.2f}.npy", f_ref_y)
-
-    ax.loglog(
-        f_ref_x, f_ref_y, "--", color=c, linewidth=1.6,
-        label=rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}",
-    )
-
-ax.set_xlabel("Frequency [1/time]")
-ax.set_ylabel(r"$E_{uu}(f)$")
-ax.set_title("Time spectrum of u averaged over y,z at selected x/D in 10% Blocked Domain")
+    plot_ref_line(ax, ft_pos, yspec, len(ft_pos)//2, 30, line.get_color(),
+                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
+ax.set_xlabel("Frequency [1/time]"); ax.set_ylabel(r"$E_{|U|}(f)$")
+ax.set_title(r"Time spectrum of $|U|'$ averaged over y,z — Unblocked Domain (Welch)")
 ax.grid(True, which="both")
-ax.legend(
-    loc="upper left",
-    bbox_to_anchor=(1.02, 1.0),
-    borderaxespad=0.0,
-    fontsize=9,
-)
-plt.savefig("./10PCT_Euu_time_yz_log.png", dpi=300, bbox_inches="tight")
+ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1.0), borderaxespad=0.0, fontsize=9)
+plt.savefig("./UNB_Emag_time_yz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
-for xt, idx in zip(x_targets, x_indices):
-    plt.plot(ft_pos, time_spectra[idx], linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel("Frequency [1/time]")
-plt.ylabel(r"$E_{uu}(f)$")
-plt.title("Time spectrum of u averaged over y,z at selected x/D in 10% Blocked Domain (linear)")
-plt.grid(True)
-plt.legend(ncol=2, fontsize=9)
-plt.savefig("./10PCT_Euu_time_yz.png", dpi=300, bbox_inches="tight")
+for xt, idx in zip(x_targets_time, x_indices_time):
+    ft_pos, yspec = time_spectra[idx]
+    plt.plot(ft_pos, yspec, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+plt.xlabel("Frequency [1/time]"); plt.ylabel(r"$E_{|U|}(f)$")
+plt.title(r"Time spectrum of $|U|'$ averaged over y,z — Unblocked Domain (linear, Welch)")
+plt.grid(True); plt.legend(ncol=2, fontsize=9)
+plt.savefig("./UNB_Emag_time_yz.png", dpi=300, bbox_inches="tight")
 plt.close()
-

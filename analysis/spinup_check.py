@@ -6,9 +6,9 @@ import numpy as np
 import padeopsIO as pio
 
 # Import Data
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/20PCT", padeops=True, runid=1)
+sim = pio.BudgetIO("Data/Empty_Domains/Spinups/10PCT", padeops=True, runid=1)
 
-tids = range(0, 135480, 1000)
+tids = range(0, 159705, 1000)
 u, v, w = [], [], []
 
 for tid in tids:
@@ -26,23 +26,23 @@ w = np.array(w).squeeze()
 print(f"u.shape = {u.shape}") 
 
 #Time Averaged Views
-ubar = sim.slice(budget_terms=["ubar"], xlim = 0.99)
-vbar = sim.slice(budget_terms=["vbar"], xlim = 0.99)
-wbar = sim.slice(budget_terms=["wbar"], xlim = 0.99)
+ubar = sim.slice(budget_terms=["ubar"], xlim = 1.4)
+vbar = sim.slice(budget_terms=["vbar"], xlim = 1.4)
+wbar = sim.slice(budget_terms=["wbar"], xlim = 1.4)
 
 ubar["ubar"].imshow()
-plt.title("UBar in 20% Blockage Spinup")
-plt.savefig("ubar_20PCT.png", dpi=300)
+plt.title("UBar in 10% Blocked Spinup")
+plt.savefig("ubar_10PCT.png", dpi=300)
 plt.close()
 
 vbar["vbar"].imshow()
-plt.title("VBar in 20% Blockage Spinup")
-plt.savefig("vbar_20PCT.png", dpi=300)
+plt.title("VBar in 10% Blocked Spinup")
+plt.savefig("vbar_10PCT.png", dpi=300)
 plt.close()
 
 wbar["wbar"].imshow()
-plt.title("WBar in 20% Blockage Spinup")
-plt.savefig("wbar_20PCT.png", dpi=300)
+plt.title("WBar in 10% Blocked Spinup")
+plt.savefig("wbar_10PCT.png", dpi=300)
 plt.close()
 
 # TKE Evolution
@@ -56,10 +56,10 @@ plt.axhline(tke_final, color='red', ls='--', lw=2,
            label=f'Final TKE={tke_final:.3f}')
 plt.axhspan(tke_final-tke_std, tke_final+tke_std, alpha=0.2, color='red')
 plt.xlabel("Timestep"); plt.ylabel("TKE")
-plt.title("TKE evolution (stationarity check)")
+plt.title("TKE Evolution in 10% Blocked Spinup")
 plt.legend(); plt.grid(); plt.tight_layout()
 #plt.ylim(0.02, 0.04)
-plt.savefig("./TKE_stationarity_20PCT.png", dpi=300)
+plt.savefig("./TKE_stationarity_10PCT.png", dpi=300)
 plt.close()
 
 # Check against Urms
@@ -110,38 +110,55 @@ E_last = E_k_last[mask]
 
 # PLOT 2: Spectrum convergence (stationarity)
 plt.figure(figsize=(10, 6))
-cumulative_means = np.cumsum(all_Ek, axis=0) / np.arange(1, len(all_Ek)+1)[:, None]
 
-times_to_plot = [
-    len(all_Ek)//100,
-    len(all_Ek)//50,
-    len(all_Ek)//10,
-    len(all_Ek)//5,
-    len(all_Ek)//4,
-    len(all_Ek)//2,
-    -1
-]
+cumulative_means = np.cumsum(all_Ek, axis=0) / np.arange(1, len(all_Ek) + 1)[:, None]
 
-cmap = mpl.colormaps['plasma']
+N = len(all_Ek)
+
+n_points = 10
+p = 2.5
+
+fractions = [(i / n_points) ** p for i in range(1, n_points + 1)]
+
+times_to_plot = sorted({
+    min(int(f * (N - 1)), N - 1)
+    for f in fractions
+})
+
+# ensure final timestep included
+if (N - 1) not in times_to_plot:
+    times_to_plot.append(N - 1)
+
+times_to_plot = sorted(times_to_plot)
+
+cmap = mpl.colormaps['plasma_r']
 colors = cmap(np.linspace(0.1, 0.9, len(times_to_plot)))
 
 for i, nt in enumerate(times_to_plot):
-    mask_t = (k_shell > 0) & (cumulative_means[nt] > 0)
+
+    Ek = cumulative_means[nt]
+
+    mask_t = (
+        (k_shell > 0) &
+        np.isfinite(Ek) &
+        (Ek > 0)
+    )
+
     plt.loglog(
         k_shell[mask_t],
-        cumulative_means[nt][mask_t],
-        label=f't={tids[nt]} (n={nt+1}/{len(all_Ek)})',
+        Ek[mask_t],
+        label=f'tid={tids[nt]}',
         color=colors[i],
         lw=2
     )
 
 plt.xlabel(r'$k$')
 plt.ylabel(r'$E(k)$')
-plt.title('Spectrum convergence to stationary state')
+plt.title('Spectrum Convergence to Stationary State for 10% Blocked Spinup')
 plt.legend()
 plt.grid(True, which='both', ls=':')
 plt.tight_layout()
-plt.savefig('spectrum_convergence_20PCT.png', dpi=300)
+plt.savefig('spectrum_convergence_10PCT.png', dpi=300)
 plt.close()
 
 i_ref = len(k_plot) // 4
@@ -155,17 +172,17 @@ ax1.loglog(k_plot, E_mean, 'o-', lw=2, label='Time-averaged')
 ax1.loglog(k_plot, E_last, 's--', lw=1.5, alpha=0.8, label='Final snapshot')
 ax1.fill_between(k_plot, np.maximum(E_mean-E_std, 1e-20), E_mean+E_std, alpha=0.2)
 ax1.loglog(k_plot, C * k_plot**(-5/3), 'k--', lw=2, label=r'$k^{-5/3}$')
-ax1.set_ylim(1e-5, 1e-1)
+ax1.set_ylim(10e-5, 10e-1)
 ax1.set_xlabel(r'$k$'); ax1.set_ylabel(r'$E(k)$')
-ax1.set_title('Fully developed spectrum'); ax1.legend(); ax1.grid()
+ax1.set_title('Fully Developed Spectrum for 10% Blocked Spinup'); ax1.legend(); ax1.grid()
 
 # Compensated plot
 ax2.loglog(k_plot, E_mean * k_plot**(5/3), 'o-', lw=2, label='E(k) × k^{5/3}')
 ax2.axhline(y=C, color='k', ls='--', lw=2, label='Kolmogorov plateau')
 ax2.set_xlabel(r'$k$'); ax2.set_ylabel(r'$E(k) k^{5/3}$')
 ax2.set_ylim(10e-5, 10e-1)
-ax2.set_title('Inertial range check'); ax2.legend(); ax2.grid()
+ax2.set_title('Inertial Range Check for 10% Blocked Spinup'); ax2.legend(); ax2.grid()
 
 plt.tight_layout()
-plt.savefig('fully_developed_spectra_20PCT.png', dpi=300)
+plt.savefig('fully_developed_spectra_10PCT.png', dpi=300)
 plt.close()
