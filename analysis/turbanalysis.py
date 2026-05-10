@@ -6,36 +6,36 @@ import padeopsIO as pio
 
 data_path = Path(au.DATA_PATH)
 # Load Data
-sim = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_Domains/20PCT", padeops=True, runid=3)
 
 # Initial Views
-uviewz = sim.slice(field_terms="u", ylim=6.25)
-umeanviewz = sim.slice(budget_terms="ubar", ylim=6.25)
-uviewy = sim.slice(field_terms="u", zlim=6.25)
-umeanviewy = sim.slice(budget_terms="ubar", zlim=6.25)
+uviewz = sim.slice(field_terms="u", ylim=0.99)
+umeanviewz = sim.slice(budget_terms="ubar", ylim=0.99)
+uviewy = sim.slice(field_terms="u", zlim=0.99)
+umeanviewy = sim.slice(budget_terms="ubar", zlim=0.99)
 
 uviewz["u"].imshow()
-plt.title("Final Velocity Field for Unblocked Domain", pad = 20)
-plt.savefig("./UNB_Final_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for 20% Blocked Domain", pad = 20)
+plt.savefig("./20PCT_Final_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 fig, ax = plt.subplots(figsize=(10, 6))
 umeanviewz["ubar"].imshow(ax=ax)
-ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain", pad=20)
+ax.set_title("Time-Averaged Mean Velocity Field for 20% Blocked Domain", pad=20)
 fig.subplots_adjust(top=0.88)
-plt.savefig("./UNB_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Mean_Fieldz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 uviewy["u"].imshow()
-plt.title("Final Velocity Field for Unblocked Domain", pad = 20)
-plt.savefig("./UNB_Final_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for 20% Blocked Domain", pad = 20)
+plt.savefig("./20PCT_Final_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 fig, ax = plt.subplots(figsize=(10, 6))
 umeanviewy["ubar"].imshow(ax=ax)
-ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain", pad=20)
+ax.set_title("Time-Averaged Mean Velocity Field for 20% Blocked Domain", pad=20)
 fig.subplots_adjust(top=0.88)
-plt.savefig("./UNB_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_Mean_Fieldy.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # 3D fields
@@ -82,10 +82,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TI, label="TI%")
 plt.xlabel("x/D")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity vs x/D in Unblocked Domain")
+plt.title("Turbulence Intensity vs x/D in 20% Blocked Domain")
 plt.legend()
 plt.grid()
-plt.savefig("./UNB_TI.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_TI.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TKE With X Averaged Over Y and Z
@@ -95,14 +95,14 @@ plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TKE_x, label="TKE", color="purple")
 plt.xlabel("x/D")
 plt.ylabel("TKE")
-plt.title("Turbulent Kinetic Energy vs x/D in Unblocked Domain")
+plt.title("Turbulent Kinetic Energy vs x/D in 20% Blocked Domain")
 plt.legend()
 plt.grid()
-plt.savefig("./UNB_TKE.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_TKE.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # TI Time Series
-tids = range(0, 2265, 100)
+tids = range(0, 9148, 10)
 all_t = sim.unique_times()
 
 # Only keep tids that have a corresponding time
@@ -113,8 +113,8 @@ ubart = []
 t = []
 
 for i, tid in valid_tids:
-    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
-    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
+    data_f = sim.slice(field_terms=["u"], xlim=5, ylim=0.99, zlim=0.99, tidx=tid)
+    data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=0.99, zlim=0.99, tidx=tid)
 
     ut.append(np.asarray(data_f["u"]))
     ubart.append(np.asarray(data_b["ubar"]))
@@ -144,9 +144,9 @@ plt.figure(figsize=(10, 6))
 plt.plot(t, TIu_rms, label="RMS TIu", color="blue", linewidth=2)
 plt.xlabel("Physical Time")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity at Future Turbine Location in Unblocked Domain")
+plt.title("Turbulence Intensity at Future Turbine Location in 20% Blocked Domain")
 plt.ylim(0, 100)
 plt.grid(True)
 plt.legend()
-plt.savefig("./UNB_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
+plt.savefig("./20PCT_TI_TimeSeries.png", dpi=300, bbox_inches="tight")
 plt.close()

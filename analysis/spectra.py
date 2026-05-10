@@ -5,7 +5,7 @@ import numpy as np
 import padeopsIO as pio
 from scipy.signal import welch
 
-sim = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops=True, runid=3)
 
 # Load 3D Fields
 u = np.asarray(sim.slice(field_terms="u")['u'])
@@ -49,7 +49,7 @@ def plot_ref_line(ax_or_plt, k_arr, E_arr, i_ref, n_pts, color, label):
 newshape_y = list(Umag_prime.shape); newshape_y[1] = 1
 Umag_prime_y = Umag_prime - np.mean(Umag_prime, axis=1).reshape(newshape_y)
 
-x_targets_spatial = [5, 20, 55]
+x_targets_spatial = [5, 10, 17]
 x_indices_spatial = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets_spatial]
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
@@ -64,13 +64,13 @@ plt.figure(figsize=(10, 6))
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     ky_pos, E_ky = ky_results[idx]
     line, = plt.loglog(ky_pos, E_ky, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-    plot_ref_line(plt, ky_pos, E_ky, len(ky_pos)//16, 30, line.get_color(),
+    plot_ref_line(plt, ky_pos, E_ky, len(ky_pos)//7, 30, line.get_color(),
                   rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
-plt.title(r"$E_{|U|}$ vs $k_y$ — Unblocked Domain (log-log, Welch)")
+plt.title(r"$E_{|U|}$ vs $k_y$ — 10% Blocked Domain (log-log, Welch)")
 plt.ylim(10e-7, 10e-3)
 plt.grid(True, which="both"); plt.legend()
-plt.savefig("./UNB_Emag_ky_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_ky_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -78,9 +78,9 @@ for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     ky_pos, E_ky = ky_results[idx]
     plt.plot(ky_pos, E_ky, label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
-plt.title(r"$E_{|U|}$ vs $k_y$ — Unblocked Domain (linear, Welch)")
+plt.title(r"$E_{|U|}$ vs $k_y$ — 10% Blocked Domain (linear, Welch)")
 plt.grid(True); plt.legend()
-plt.savefig("./UNB_Emag_ky.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_ky.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 
@@ -97,13 +97,13 @@ plt.figure(figsize=(10, 6))
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     kz_pos, E_kz = kz_results[idx]
     line, = plt.loglog(kz_pos, E_kz, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-    plot_ref_line(plt, kz_pos, E_kz, len(kz_pos)//15, 30, line.get_color(),
+    plot_ref_line(plt, kz_pos, E_kz, len(kz_pos)//7, 30, line.get_color(),
                   rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
-plt.title(r"$E_{|U|}$ vs $k_z$ — Unblocked Domain (log-log, Welch)")
+plt.title(r"$E_{|U|}$ vs $k_z$ — 10% Blocked Domain (log-log, Welch)")
 plt.ylim(10e-7, 10e-3)
 plt.grid(True, which="both"); plt.legend()
-plt.savefig("./UNB_Emag_kz_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_kz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -111,14 +111,14 @@ for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     kz_pos, E_kz = kz_results[idx]
     plt.plot(kz_pos, E_kz, label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
-plt.title(r"$E_{|U|}$ vs $k_z$ — Unblocked Domain (linear, Welch)")
+plt.title(r"$E_{|U|}$ vs $k_z$ — 10% Blocked Domain (linear, Welch)")
 plt.grid(True); plt.legend()
-plt.savefig("./UNB_Emag_kz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 
-x_targets_time = [2, 5, 20, 30, 36, 45, 51, 60]
-tids = range(0, 2265, 100)
+x_targets_time = [2, 5, 8, 10, 12, 15, 17, 20]
+tids = range(0, 11449, 10)
 all_t = sim.unique_times()
 
 t = np.asarray([all_t[i] for i in range(min(len(list(tids)), len(all_t)))]).squeeze()
@@ -167,10 +167,10 @@ for xt, idx in zip(x_targets_time, x_indices_time):
     plot_ref_line(ax, ft_pos, yspec, len(ft_pos)//2, 30, line.get_color(),
                   rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
 ax.set_xlabel("Frequency [1/time]"); ax.set_ylabel(r"$E_{|U|}(f)$")
-ax.set_title(r"Time spectrum of $|U|'$ averaged over y,z — Unblocked Domain (Welch)")
+ax.set_title(r"Time spectrum of $|U'|$ averaged over y,z — 10% Blocked Domain (Welch)")
 ax.grid(True, which="both")
 ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1.0), borderaxespad=0.0, fontsize=9)
-plt.savefig("./UNB_Emag_time_yz_log.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_time_yz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -178,7 +178,7 @@ for xt, idx in zip(x_targets_time, x_indices_time):
     ft_pos, yspec = time_spectra[idx]
     plt.plot(ft_pos, yspec, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
 plt.xlabel("Frequency [1/time]"); plt.ylabel(r"$E_{|U|}(f)$")
-plt.title(r"Time spectrum of $|U|'$ averaged over y,z — Unblocked Domain (linear, Welch)")
+plt.title(r"Time spectrum of $|U'|$ averaged over y,z — 10% Blocked Domain (linear, Welch)")
 plt.grid(True); plt.legend(ncol=2, fontsize=9)
-plt.savefig("./UNB_Emag_time_yz.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Emag_time_yz.png", dpi=300, bbox_inches="tight")
 plt.close()
