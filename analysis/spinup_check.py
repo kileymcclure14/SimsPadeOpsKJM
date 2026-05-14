@@ -6,9 +6,9 @@ import numpy as np
 import padeopsIO as pio
 
 # Import Data
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/10PCT", padeops=True, runid=1)
+sim = pio.BudgetIO("Data/Empty_Domains/Spinups/20PCT", padeops=True, runid=1)
 
-tids = range(0, 159705, 1000)
+tids = range(0, 999000, 1000)
 u, v, w = [], [], []
 
 for tid in tids:

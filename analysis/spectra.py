@@ -4,181 +4,302 @@ import matplotlib.pyplot as plt
 import numpy as np
 import padeopsIO as pio
 from scipy.signal import welch
+import gc
 
-sim = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops=True, runid=3)
+sim = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=3)
 
-# Load 3D Fields
-u = np.asarray(sim.slice(field_terms="u")['u'])
-ubar = np.asarray(sim.slice(budget_terms="ubar")['ubar'])
+# ─────────────────────────────────────────────
+# Data Load / Fluctuations  (single snapshot)
+# ─────────────────────────────────────────────
+u    = np.asarray(sim.slice(field_terms="u")["u"])
+ubar = np.asarray(sim.slice(budget_terms="ubar")["ubar"])
 
-v = np.asarray(sim.slice(field_terms="v")['v'])
-vbar = np.asarray(sim.slice(budget_terms="vbar")['vbar'])
+v    = np.asarray(sim.slice(field_terms="v")["v"])
+vbar = np.asarray(sim.slice(budget_terms="vbar")["vbar"])
 
-w = np.asarray(sim.slice(field_terms="w")['w'])
-wbar = np.asarray(sim.slice(budget_terms="wbar")['wbar'])
+w    = np.asarray(sim.slice(field_terms="w")["w"])
+wbar = np.asarray(sim.slice(budget_terms="wbar")["wbar"])
 
-# Velocity magnitudes
-Umag     = np.sqrt(u**2    + v**2    + w**2)
-Umag_bar = np.sqrt(ubar**2 + vbar**2 + wbar**2)
-Umag_prime = Umag - Umag_bar  
+uprime = u - ubar
+vprime = v - vbar
+wprime = w - wbar
 
-# Parameters
+Umag_prime = np.sqrt(uprime**2 + vprime**2 + wprime**2)
+
+# Grid
 nx, ny, nz = Umag_prime.shape
 dx = sim.x[1] - sim.x[0]
 dy = sim.y[1] - sim.y[0]
 dz = sim.z[1] - sim.z[0]
 
-def welch_avg(data, axis, fs, nperseg_frac=0.5):
-    n = data.shape[axis]
-    nperseg = max(4, int(n * nperseg_frac))
-    data_2d = np.moveaxis(data, axis, 0).reshape(n, -1)
-    f, _ = welch(data_2d[:, 0], fs=fs, nperseg=nperseg)
-    psds = np.array([welch(data_2d[:, i], fs=fs, nperseg=nperseg)[1]
-                     for i in range(data_2d.shape[1])])
-    return f, np.nanmean(psds, axis=0)
+REF_SLOPE = -5 / 3
 
 
-def plot_ref_line(ax_or_plt, k_arr, E_arr, i_ref, n_pts, color, label):
-    ref_slice = slice(i_ref, min(len(k_arr), i_ref + n_pts))
-    k_ref = k_arr[i_ref]
-    A = E_arr[i_ref] * k_ref ** (5/3)
-    ax_or_plt.loglog(k_arr[ref_slice], A * k_arr[ref_slice] ** (-5/3),
-                     "--", color=color, linewidth=1.6, label=label)
+# ─────────────────────────────────────────────────────────────────────────────
+# Single global ref line helper (in graph space, not attached to data lines)
+# ─────────────────────────────────────────────────────────────────────────────
+def _geom_interp(a, b, frac):
+    return a * (b / a) ** frac
+
+def add_global_powerlaw_ref(ax, slope=-5/3, label=r"$k^{-5/3}$ ref",
+                            color="k", xfrac=(0.52, 0.86), yfrac=0.80,
+                            lw=2.2, alpha=0.9):
+    xmin, xmax = ax.get_xlim()
+    ymin, ymax = ax.get_ylim()
+    if xmin <= 0 or xmax <= 0 or ymin <= 0 or ymax <= 0:
+        return
+
+    x0 = _geom_interp(xmin, xmax, xfrac[0])
+    x1 = _geom_interp(xmin, xmax, xfrac[1])
+    y0 = _geom_interp(ymin, ymax, yfrac)
+
+    C = y0 / (x0 ** slope)
+    xx = np.logspace(np.log10(x0), np.log10(x1), 120)
+    yy = C * xx**slope
+    ax.loglog(xx, yy, "--", color=color, linewidth=lw, alpha=alpha, label=label)
 
 
-newshape_y = list(Umag_prime.shape); newshape_y[1] = 1
-Umag_prime_y = Umag_prime - np.mean(Umag_prime, axis=1).reshape(newshape_y)
+# ─────────────────────────────────────────────────────────────────────────────
+# 1-D Spatial Energy Spectra
+# ─────────────────────────────────────────────────────────────────────────────
+def spatial_spectrum_1d(field_2d, d):
+    """
+    Compute 1-D energy spectrum via FFT.
 
-x_targets_spatial = [5, 10, 17]
+    field_2d : ndarray, shape (n0, n1)
+        Fluctuation field (2D spatial slice)
+    d : float
+        Grid spacing
+    """
+    n0, n1 = field_2d.shape
+
+    # Remove mean along transform direction for each line
+    field_2d = field_2d - field_2d.mean(axis=0, keepdims=True)
+
+    # FFT
+    fhat = np.fft.rfft(field_2d, axis=0)
+
+    # One-sided power
+    power = (np.abs(fhat) ** 2) / (n0 ** 2)
+    power *= 2
+    power[0] /= 2
+    if n0 % 2 == 0:
+        power[-1] /= 2
+
+    # Scale by spacing -> density
+    power *= d
+
+    # Average over second axis
+    E = power.mean(axis=1)
+
+    # Wavenumbers
+    freq = np.fft.rfftfreq(n0, d=d)
+    k = 2 * np.pi * freq
+
+    # Positive only
+    pos = k > 0
+    return k[pos], E[pos]
+
+
+x_targets_spatial = [5, 30, 50]
 x_indices_spatial = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets_spatial]
+
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
 ky_results = {}
-for idx in x_indices_spatial:
-    fy, psd_y = welch_avg(Umag_prime_y[idx], axis=0, fs=1.0/dy)
-    pos = fy > 0
-    ky_results[idx] = (2 * np.pi * fy[pos], psd_y[pos])
-
-plt.figure(figsize=(10, 6))
-for xt, idx in zip(x_targets_spatial, x_indices_spatial):
-    ky_pos, E_ky = ky_results[idx]
-    line, = plt.loglog(ky_pos, E_ky, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-    plot_ref_line(plt, ky_pos, E_ky, len(ky_pos)//7, 30, line.get_color(),
-                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
-plt.title(r"$E_{|U|}$ vs $k_y$ — 10% Blocked Domain (log-log, Welch)")
-plt.ylim(10e-7, 10e-3)
-plt.grid(True, which="both"); plt.legend()
-plt.savefig("./10PCT_Emag_ky_log.png", dpi=300, bbox_inches="tight")
-plt.close()
-
-plt.figure(figsize=(10, 6))
-for xt, idx in zip(x_targets_spatial, x_indices_spatial):
-    ky_pos, E_ky = ky_results[idx]
-    plt.plot(ky_pos, E_ky, label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_y$"); plt.ylabel(r"$E_{|U|}(x,k_y)$")
-plt.title(r"$E_{|U|}$ vs $k_y$ — 10% Blocked Domain (linear, Welch)")
-plt.grid(True); plt.legend()
-plt.savefig("./10PCT_Emag_ky.png", dpi=300, bbox_inches="tight")
-plt.close()
-
-
-newshape_z = list(Umag_prime.shape); newshape_z[2] = 1
-Umag_prime_z = Umag_prime - np.mean(Umag_prime, axis=2).reshape(newshape_z)
-
 kz_results = {}
+
 for idx in x_indices_spatial:
-    fz, psd_z = welch_avg(Umag_prime_z[idx], axis=1, fs=1.0/dz)
-    pos = fz > 0
-    kz_results[idx] = (2 * np.pi * fz[pos], psd_z[pos])
+    field = Umag_prime[idx]  # (ny, nz)
 
-plt.figure(figsize=(10, 6))
+    # ky: FFT along y, avg over z
+    ky, E_ky = spatial_spectrum_1d(field, dy)
+
+    # kz: FFT along z (after transpose), avg over y
+    kz, E_kz = spatial_spectrum_1d(field.T, dz)
+
+    ky_results[idx] = (ky, E_ky)
+    kz_results[idx] = (kz, E_kz)
+
+# ── Plot ky (log–log) ──────────────────────────────────────────────────────
+fig, ax = plt.subplots(figsize=(11, 7))
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
-    kz_pos, E_kz = kz_results[idx]
-    line, = plt.loglog(kz_pos, E_kz, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-    plot_ref_line(plt, kz_pos, E_kz, len(kz_pos)//7, 30, line.get_color(),
-                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
-plt.title(r"$E_{|U|}$ vs $k_z$ — 10% Blocked Domain (log-log, Welch)")
-plt.ylim(10e-7, 10e-3)
-plt.grid(True, which="both"); plt.legend()
-plt.savefig("./10PCT_Emag_kz_log.png", dpi=300, bbox_inches="tight")
+    ky_pos, E_ky = ky_results[idx]
+    ax.loglog(ky_pos, E_ky, linewidth=2.2, label=f"x/D={sim.x[idx]:.2f}")
+
+add_global_powerlaw_ref(
+    ax, slope=REF_SLOPE, label=r"$k^{-5/3}$ ref",
+    color="k", xfrac=(0.52, 0.86), yfrac=0.80
+)
+
+ax.set_xlabel(r"$k_y$  [rad / length]", fontsize=12)
+ax.set_ylabel(r"$E_{|U'|}(x,\,k_y)$  [field$^2$ · length]", fontsize=12)
+ax.set_title(r"$k_y$ Spectrum of $|U'|$ — Unblocked Domain", fontsize=13, fontweight="bold")
+ax.grid(True, which="both", ls=":", alpha=0.5)
+ax.legend(fontsize=11, loc="best")
+plt.tight_layout()
+plt.savefig("./UNB_Emag_ky_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-plt.figure(figsize=(10, 6))
+# ── Plot ky (linear) ───────────────────────────────────────────────────────
+fig, ax = plt.subplots(figsize=(11, 7))
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    ky_pos, E_ky = ky_results[idx]
+    ax.plot(ky_pos, E_ky, linewidth=2.2, label=f"x/D={sim.x[idx]:.2f}")
+ax.set_xlabel(r"$k_y$  [rad / length]", fontsize=12)
+ax.set_ylabel(r"$E_{|U'|}(x,\,k_y)$  [field$^2$ · length]", fontsize=12)
+ax.set_title(r"$k_y$ Spectrum of $|U'|$ — Unblocked Domain (linear)",
+             fontsize=13, fontweight="bold")
+ax.grid(True, alpha=0.5)
+ax.legend(fontsize=11)
+plt.tight_layout()
+plt.savefig("./UNB_Emag_ky.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# ── Plot kz (log–log) ──────────────────────────────────────────────────────
+fig, ax = plt.subplots(figsize=(11, 7))
 for xt, idx in zip(x_targets_spatial, x_indices_spatial):
     kz_pos, E_kz = kz_results[idx]
-    plt.plot(kz_pos, E_kz, label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel(r"$k_z$"); plt.ylabel(r"$E_{|U|}(x,k_z)$")
-plt.title(r"$E_{|U|}$ vs $k_z$ — 10% Blocked Domain (linear, Welch)")
-plt.grid(True); plt.legend()
-plt.savefig("./10PCT_Emag_kz.png", dpi=300, bbox_inches="tight")
+    ax.loglog(kz_pos, E_kz, linewidth=2.2, label=f"x/D={sim.x[idx]:.2f}")
+
+add_global_powerlaw_ref(
+    ax, slope=REF_SLOPE, label=r"$k^{-5/3}$ ref",
+    color="k", xfrac=(0.52, 0.86), yfrac=0.80
+)
+
+ax.set_xlabel(r"$k_z$  [rad / length]", fontsize=12)
+ax.set_ylabel(r"$E_{|U'|}(x,\,k_z)$  [field$^2$ · length]", fontsize=12)
+ax.set_title(r"$k_z$ Spectrum of $|U'|$ — Unblocked Domain", fontsize=13, fontweight="bold")
+ax.grid(True, which="both", ls=":", alpha=0.5)
+ax.legend(fontsize=11, loc="best")
+plt.tight_layout()
+plt.savefig("./UNB_Emag_kz_log.png", dpi=300, bbox_inches="tight")
+plt.close()
+
+# ── Plot kz (linear) ───────────────────────────────────────────────────────
+fig, ax = plt.subplots(figsize=(11, 7))
+for xt, idx in zip(x_targets_spatial, x_indices_spatial):
+    kz_pos, E_kz = kz_results[idx]
+    ax.plot(kz_pos, E_kz, linewidth=2.2, label=f"x/D={sim.x[idx]:.2f}")
+ax.set_xlabel(r"$k_z$  [rad / length]", fontsize=12)
+ax.set_ylabel(r"$E_{|U'|}(x,\,k_z)$  [field$^2$ · length]", fontsize=12)
+ax.set_title(r"$k_z$ Spectrum of $|U'|$ — Unblocked Domain (linear)",
+             fontsize=13, fontweight="bold")
+ax.grid(True, alpha=0.5)
+ax.legend(fontsize=11)
+plt.tight_layout()
+plt.savefig("./UNB_Emag_kz.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 
-x_targets_time = [2, 5, 8, 10, 12, 15, 17, 20]
-tids = range(0, 11449, 10)
-all_t = sim.unique_times()
+# ─────────────────────────────────────────────────────────────────────────────
+# Frequency Spectra (original block kept; only global ref line change)
+# ─────────────────────────────────────────────────────────────────────────────
+x_targets_time = [2, 5, 24, 30, 36, 45, 51, 60]
+tids           = range(0, 16161, 10)
+all_t          = sim.unique_times()
 
-t = np.asarray([all_t[i] for i in range(min(len(list(tids)), len(all_t)))]).squeeze()
+t  = np.asarray([all_t[i] for i in range(min(len(list(tids)), len(all_t)))]).squeeze()
 dt = np.mean(np.diff(t))
 nt = len(t)
-print("nt =", nt, "  dt =", dt)
+fs_t = 1.0 / dt
+print(f"nt = {nt}   dt = {dt:.4f}   fs = {fs_t:.4f}")
 
 x_indices_time = [np.argmin(np.abs(sim.x - xt)) for xt in x_targets_time]
 
-time_spectra = {}
 for xt, idx in zip(x_targets_time, x_indices_time):
     print(f"Requested x/D={xt}, using x/D={sim.x[idx]:.2f} (index {idx})")
 
-    u_ts, v_ts, w_ts = [], [], []
-    for tid in tids:
-        u_ts.append(np.asarray(sim.slice(field_terms="u", xlim=sim.x[idx], tidx=tid)["u"]))
-        v_ts.append(np.asarray(sim.slice(field_terms="v", xlim=sim.x[idx], tidx=tid)["v"]))
-        w_ts.append(np.asarray(sim.slice(field_terms="w", xlim=sim.x[idx], tidx=tid)["w"]))
+# Pre-allocate per-x-location storage; shape (nt, ny*nz)
+u_store = {idx: np.empty((nt, ny * nz), dtype=np.float64) for idx in x_indices_time}
+v_store = {idx: np.empty((nt, ny * nz), dtype=np.float64) for idx in x_indices_time}
+w_store = {idx: np.empty((nt, ny * nz), dtype=np.float64) for idx in x_indices_time}
 
-    u_ts = np.asarray(u_ts).reshape(nt, -1)
-    v_ts = np.asarray(v_ts).reshape(nt, -1)
-    w_ts = np.asarray(w_ts).reshape(nt, -1)
+# OUTER loop over tidx, INNER loop over x-locations
+for k, tid in enumerate(list(tids)[:nt]):
+    sl = sim.slice(field_terms=["u", "v", "w"], tidx=tid)
+    u_full = np.asarray(sl["u"])
+    v_full = np.asarray(sl["v"])
+    w_full = np.asarray(sl["w"])
 
-    # Magnitude of instantaneous and mean velocity, then fluctuation
-    Umag_ts     = np.sqrt(u_ts**2 + v_ts**2 + w_ts**2)
-    Umag_bar_ts = np.mean(Umag_ts, axis=0, keepdims=True)
-    Umag_prime_ts = Umag_ts - Umag_bar_ts  # (nt, ny*nz)
+    for idx in x_indices_time:
+        u_store[idx][k, :] = np.array(u_full[idx, :, :]).ravel()
+        v_store[idx][k, :] = np.array(v_full[idx, :, :]).ravel()
+        w_store[idx][k, :] = np.array(w_full[idx, :, :]).ravel()
 
-    nperseg = max(4, nt // 2)
-    fs_t = 1.0 / dt
-    f0, _ = welch(Umag_prime_ts[:, 0], fs=fs_t, nperseg=nperseg)
-    psds = np.array([welch(Umag_prime_ts[:, i], fs=fs_t, nperseg=nperseg)[1]
-                     for i in range(Umag_prime_ts.shape[1])])
+    del sl, u_full, v_full, w_full
+    if hasattr(sim, "field") and isinstance(sim.field, dict):
+        sim.field.clear()
+    if k % 50 == 0:
+        gc.collect()
+        print(f"  read tidx {tid}  ({k+1}/{nt})")
+
+gc.collect()
+
+# Compute Welch PSDs per x-location
+time_spectra = {}
+nperseg = max(4, nt // 2)
+
+for idx in x_indices_time:
+    u_ts = u_store[idx]
+    v_ts = v_store[idx]
+    w_ts = w_store[idx]
+
+    uprime_ts = u_ts - u_ts.mean(axis=0, keepdims=True)
+    vprime_ts = v_ts - v_ts.mean(axis=0, keepdims=True)
+    wprime_ts = w_ts - w_ts.mean(axis=0, keepdims=True)
+
+    Umag_prime_ts = np.sqrt(uprime_ts**2 + vprime_ts**2 + wprime_ts**2)
+    del uprime_ts, vprime_ts, wprime_ts
+
+    psds = np.array([
+        welch(Umag_prime_ts[:, i], fs=fs_t, nperseg=nperseg, window="hann")[1]
+        for i in range(Umag_prime_ts.shape[1])
+    ])
+    f0 = welch(Umag_prime_ts[:, 0], fs=fs_t, nperseg=nperseg, window="hann")[0]
     psd_mean = np.nanmean(psds, axis=0)
 
     pos_ft = f0 > 0
     time_spectra[idx] = (f0[pos_ft], psd_mean[pos_ft])
 
+    del u_store[idx], v_store[idx], w_store[idx], u_ts, v_ts, w_ts, Umag_prime_ts, psds
+    gc.collect()
+
+# Plot Frequency Spectra (log) with ONE global reference line
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.subplots_adjust(right=0.72)
+
 for xt, idx in zip(x_targets_time, x_indices_time):
-    ft_pos, yspec = time_spectra[idx]
-    line, = ax.loglog(ft_pos, yspec, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-    if xt == x_targets_time[-1]:
-        continue
-    plot_ref_line(ax, ft_pos, yspec, len(ft_pos)//2, 30, line.get_color(),
-                  rf"$-5/3$ ref, x/D={sim.x[idx]:.2f}")
-ax.set_xlabel("Frequency [1/time]"); ax.set_ylabel(r"$E_{|U|}(f)$")
-ax.set_title(r"Time spectrum of $|U'|$ averaged over y,z — 10% Blocked Domain (Welch)")
-ax.grid(True, which="both")
-ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1.0), borderaxespad=0.0, fontsize=9)
-plt.savefig("./10PCT_Emag_time_yz_log.png", dpi=300, bbox_inches="tight")
+    ft_pos, E_ft = time_spectra[idx]
+    ax.loglog(ft_pos, E_ft, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+
+add_global_powerlaw_ref(
+    ax, slope=-5/3, label=r"$f^{-5/3}$ ref",
+    color="k", xfrac=(0.52, 0.86), yfrac=0.80
+)
+
+ax.set_xlabel("Frequency [1/time]")
+ax.set_ylabel(r"$E_{|U'|}(f)$")
+ax.set_title(r"Time Spectrum of $|U'|$ averaged over $y$-$z$ — Unblocked Domain")
+ax.grid(True, which="both", ls=":")
+ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1.0),
+          borderaxespad=0.0, fontsize=9)
+plt.savefig("./UNB_Emag_time_yz_log.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-plt.figure(figsize=(10, 6))
+# Plot Frequency Spectra (linear)
+fig, ax = plt.subplots(figsize=(10, 6))
 for xt, idx in zip(x_targets_time, x_indices_time):
-    ft_pos, yspec = time_spectra[idx]
-    plt.plot(ft_pos, yspec, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
-plt.xlabel("Frequency [1/time]"); plt.ylabel(r"$E_{|U|}(f)$")
-plt.title(r"Time spectrum of $|U'|$ averaged over y,z — 10% Blocked Domain (linear, Welch)")
-plt.grid(True); plt.legend(ncol=2, fontsize=9)
-plt.savefig("./10PCT_Emag_time_yz.png", dpi=300, bbox_inches="tight")
+    ft_pos, E_ft = time_spectra[idx]
+    ax.plot(ft_pos, E_ft, linewidth=2, label=f"x/D={sim.x[idx]:.2f}")
+ax.set_xlabel("Frequency [1/time]")
+ax.set_ylabel(r"$E_{|U'|}(f)$")
+ax.set_title(r"Time Spectrum of $|U'|$ averaged over $y$-$z$ — Unblocked Domain (linear)")
+ax.grid(True)
+ax.legend(ncol=2, fontsize=9)
+plt.tight_layout()
+plt.savefig("./UNB_Emag_time_yz.png", dpi=300, bbox_inches="tight")
 plt.close()
+
+print("Done.")
