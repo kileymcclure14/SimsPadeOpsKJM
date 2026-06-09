@@ -10,25 +10,25 @@ import time
 data_path = Path(au.DATA_PATH)
 
 print("=" * 60)
-print("Starting velocity convergence analysis")
+print("Starting ubar convergence analysis")
 print("=" * 60)
 
 # Load Data
 print("\n[1/4] Initializing BudgetIO...")
 init_start = time.perf_counter()
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_r2", padeops=True, runid=2)
+sim = pio.BudgetIO("Data/Empty_Domains/20PCT", padeops=True, runid=3)
 init_time = time.perf_counter() - init_start
 print(f"✓ BudgetIO initialized in {init_time:.2f}s")
 
-# Get Velocities - no all_t check
+# Set up timesteps
 print("\n[2/4] Setting up timestep list...")
-tids = list(range(700000, 739000, 1000))
+tids = list(range(0, 10919, 100))
 print(f"✓ Timesteps to load: {len(tids)}")
 print(f"  Range: tid {tids[0]} to {tids[-1]}")
 
 # Set up figure and colors
 print("\n[3/4] Setting up figure and loading data...")
-fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig, ax = plt.subplots(1, 1, figsize=(7, 6))
 colors = cmc.batlow(np.linspace(0, 1, len(tids)))
 print(f"✓ Figure created")
 print(f"  Processing {len(tids)} timesteps...\n")
@@ -37,19 +37,15 @@ print(f"  Processing {len(tids)} timesteps...\n")
 load_start = time.perf_counter()
 for k, tid in enumerate(tids):
     iter_start = time.perf_counter()
-    
-    # Load all three velocity components at once
-    data = sim.slice(budget_terms=["ubar", "vbar", "wbar"], 
-                    ylim=6.25, zlim=6.25, tidx=tid)
-    
-    # Plot and immediately discard
-    axes[0].plot(sim.x, data["ubar"].squeeze(), color=colors[k], lw=0.8)
-    axes[1].plot(sim.x, data["vbar"].squeeze(), color=colors[k], lw=0.8)
-    axes[2].plot(sim.x, data["wbar"].squeeze(), color=colors[k], lw=0.8)
-    
+
+    data = sim.slice(budget_terms=["ubar"], tidx=tid)
+    print(f"tid={tid}, ubar shape={data['ubar'].shape}")
+    ubar_avg = data["ubar"].mean(axis=(0, 2))  # average over x and z → shape (nz,)
+
+    ax.plot(sim.y, ubar_avg, color=colors[k], lw=0.8)
+
     iter_time = time.perf_counter() - iter_start
     progress = (k + 1) / len(tids) * 100
-    
     print(f"  [{k+1:3d}/{len(tids):3d}] tid={tid:6d} ({progress:5.1f}%) - {iter_time:.3f}s")
 
 total_load_time = time.perf_counter() - load_start
@@ -58,30 +54,26 @@ print(f"\n✓ All data loaded and plotted")
 print(f"  Total loading time: {total_load_time:.2f}s")
 print(f"  Average per timestep: {avg_time_per_step:.3f}s")
 
-# Set labels and titles
+# Labels, colorbar, title
 print("\n[4/4] Finalizing plot...")
-axes[0].set(xlabel="x", ylabel="ubar", title="Ubar Convergence (Unblocked Spinup)")
-axes[1].set(xlabel="x", ylabel="vbar", title="Vbar Convergence (Unblocked Spinup)")
-axes[2].set(xlabel="x", ylabel="wbar", title="Wbar Convergence (Unblocked Spinup)")
+ax.set(xlabel="x", ylabel="ubar", title="Ubar Streamwise Profile Convergence (20PCT)")
+ax.grid(True, alpha=0.3)
 
-for ax in axes:
-    ax.grid(True, alpha=0.3)
-
-sm = mpl.cm.ScalarMappable(cmap="cmc.batlow", 
-                           norm=mpl.colors.Normalize(vmin=tids[0], vmax=tids[-1]))
+sm = mpl.cm.ScalarMappable(cmap=cmc.batlow,
+                            norm=mpl.colors.Normalize(vmin=tids[0], vmax=tids[-1]))
 sm.set_array([])
 
-fig.subplots_adjust(top=0.88, right=0.88, wspace=0.3)
+fig.subplots_adjust(right=0.88)
 cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.7])
 fig.colorbar(sm, cax=cbar_ax, label="tid")
 
-plt.suptitle("Mean Velocity Profiles Convergence in Unblocked Spinup", fontsize=16)
+plt.suptitle("Mean Streamwise Velocity Profile Convergence — 20PCT", fontsize=13)
 
 # Save
 save_start = time.perf_counter()
-plt.savefig("UNB_convergence.png", dpi=300, bbox_inches="tight")
+plt.savefig("20PCT_ubar_profilex_convergence.png", dpi=300, bbox_inches="tight")
 save_time = time.perf_counter() - save_start
-print(f"✓ Figure saved as 'UNB_convergence.png' ({save_time:.2f}s)")
+print(f"✓ Figure saved as '20PCT_ubar_profilex_convergence.png' ({save_time:.2f}s)")
 
 plt.close()
 
@@ -96,3 +88,4 @@ print(f"Figure saving:            {save_time:7.2f}s")
 print(f"TOTAL TIME:               {total_time:7.2f}s")
 print("=" * 60)
 print("✓ Done!")
+
