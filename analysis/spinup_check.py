@@ -7,9 +7,9 @@ import padeopsIO as pio
 import cmcrameri.cm as cmc
 
 # ── Import Data ───────────────────────────────────────────────────────────────
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_r2", padeops=True, runid=2)
+sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_spr", padeops=True, runid=1)
 
-tids = range(394000, 740000, 1000)
+tids = range(300000, 390000, 10000)
 u, v, w = [], [], []
 
 for tid in tids:

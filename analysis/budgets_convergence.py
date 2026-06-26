@@ -16,13 +16,13 @@ print("=" * 60)
 # Load Data
 print("\n[1/4] Initializing BudgetIO...")
 init_start = time.perf_counter()
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_r2", padeops=True, runid=2)
+sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_spr", padeops=True, runid=1)
 init_time = time.perf_counter() - init_start
 print(f"✓ BudgetIO initialized in {init_time:.2f}s")
 
 # Get Velocities - no all_t check
 print("\n[2/4] Setting up timestep list...")
-tids = list(range(700000, 739000, 1000))
+tids = list(range(10000, 110000, 10000))
 print(f"✓ Timesteps to load: {len(tids)}")
 print(f"  Range: tid {tids[0]} to {tids[-1]}")
 
