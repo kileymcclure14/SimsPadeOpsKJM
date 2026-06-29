@@ -13,42 +13,57 @@ from padeopsIO import turbine
 # ============================================================================
 SIM_CONFIGS = [
     # CTP = 2
+    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_2/TI_3/UNB", runid_e=2, runid_t=3, CTP=2, blockage="0.005%", TI="3%", color="black", marker="o"),
     dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_2/TI_3/10PCT",  runid_e=2, runid_t=3, CTP=2,  blockage="10%", TI="3%",  color="blue",  marker="o"),
     dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_2/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=2,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid_e=2, runid_t=3, CTP=2, blockage="0.005%", TI="8%", color="black", marker="s"),
     dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_2/TI_8/10PCT",  runid_e=2, runid_t=3, CTP=2,  blockage="10%", TI="8%",  color="blue",  marker="s"),
     dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_2/TI_8/20PCT",  runid_e=2, runid_t=3, CTP=2,  blockage="20%", TI="8%",  color="red",   marker="s"),
+    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid_e=2, runid_t=3, CTP=2, blockage="0.005%", TI="12%", color="black", marker="^"),
     dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/10PCT", runid_e=2, runid_t=3, CTP=2,  blockage="10%", TI="12%", color="blue",  marker="^"),
     dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/20PCT", runid_e=2, runid_t=3, CTP=2,  blockage="20%", TI="12%", color="red",   marker="^"),
 
     # CTP = 4
+    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid_e=2, runid_t=3, CTP=4, blockage="0.005%", TI="3%", color="black", marker="o"),
     dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_4/TI_3/10PCT",  runid_e=2, runid_t=3, CTP=4,  blockage="10%", TI="3%",  color="blue",  marker="o"),
     dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_4/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=4,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid_e=2, runid_t=3, CTP=4, blockage="0.005%", TI="8%", color="black", marker="s"),
     dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_4/TI_8/10PCT",  runid_e=2, runid_t=3, CTP=4,  blockage="10%", TI="8%",  color="blue",  marker="s"),
     dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_4/TI_8/20PCT",  runid_e=2, runid_t=3, CTP=4,  blockage="20%", TI="8%",  color="red",   marker="s"),
+    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid_e=2, runid_t=3, CTP=4, blockage="0.005%", TI="12%", color="black", marker="^"),
     dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/10PCT", runid_e=2, runid_t=3, CTP=4,  blockage="10%", TI="12%", color="blue",  marker="^"),
     dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/20PCT", runid_e=2, runid_t=3, CTP=4,  blockage="20%", TI="12%", color="red",   marker="^"),
 
     # CTP = 6
+    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid_e=2, runid_t=3, CTP=6, blockage="0.005%", TI="3%", color="black", marker="o"),
     dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_6/TI_3/10PCT",  runid_e=2, runid_t=3, CTP=6,  blockage="10%", TI="3%",  color="blue",  marker="o"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_6/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=6,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_6/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=6,  blockage="20%", TI="3%",  color="red",   marker="o")
+    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid_e=2, runid_t=3, CTP=6, blockage="0.005%", TI="8%", color="black", marker="s"),
     dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_6/TI_8/10PCT",  runid_e=2, runid_t=3, CTP=6,  blockage="10%", TI="8%",  color="blue",  marker="s"),
     dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_6/TI_8/20PCT",  runid_e=2, runid_t=3, CTP=6,  blockage="20%", TI="8%",  color="red",   marker="s"),
+    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid_e=2, runid_t=3, CTP=6, blockage="0.005%", TI="12%", color="black", marker="^"),
     dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/10PCT", runid_e=2, runid_t=3, CTP=6,  blockage="10%", TI="12%", color="blue",  marker="^"),
     dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/20PCT", runid_e=2, runid_t=3, CTP=6,  blockage="20%", TI="12%", color="red",   marker="^"),
 
     # CTP = 8
+    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_8/TI_3/UNB", runid_e=2, runid_t=3, CTP=8, blockage="0.005%", TI="3%", color="black", marker="o"),
     dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_8/TI_3/10PCT",  runid_e=2, runid_t=3, CTP=8,  blockage="10%", TI="3%",  color="blue",  marker="o"),
     dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_8/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=8,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_8/TI_8/UNB", runid_e=2, runid_t=3, CTP=8, blockage="0.005%", TI="8%", color="black", marker="s"),
     dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_8/TI_8/10PCT",  runid_e=2, runid_t=3, CTP=8,  blockage="10%", TI="8%",  color="blue",  marker="s"),
     dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_8/TI_8/20PCT",  runid_e=2, runid_t=3, CTP=8,  blockage="20%", TI="8%",  color="red",   marker="s"),
+    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/UNB", runid_e=2, runid_t=3, CTP=8, blockage="0.005%", TI="12%", color="black", marker="^"),
     dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/10PCT", runid_e=2, runid_t=3, CTP=8,  blockage="10%", TI="12%", color="blue",  marker="^"),
     dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/20PCT", runid_e=2, runid_t=3, CTP=8,  blockage="20%", TI="12%", color="red",   marker="^"),
 
     # CTP = 10
+    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_10/TI_3/UNB", runid_e=2, runid_t=3, CTP=10, blockage="0.005%", TI="3%", color="black", marker="o"),
     dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_10/TI_3/10PCT",  runid_e=2, runid_t=3, CTP=10, blockage="10%", TI="3%",  color="blue",  marker="o"),
     dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_10/TI_3/20PCT",  runid_e=2, runid_t=3, CTP=10, blockage="20%", TI="3%",  color="red",   marker="o"),
+    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_10/TI_8/UNB", runid_e=2, runid_t=3, CTP=10, blockage="0.005%", TI="8%", color="black", marker="s"),
     dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_10/TI_8/10PCT",  runid_e=2, runid_t=3, CTP=10, blockage="10%", TI="8%",  color="blue",  marker="s"),
     dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_10/TI_8/20PCT",  runid_e=2, runid_t=3, CTP=10, blockage="20%", TI="8%",  color="red",   marker="s"),
+    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/UNB", runid_e=2, runid_t=3, CTP=10, blockage="0.005%", TI="12%", color="black", marker="^"),
     dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/10PCT", runid_e=2, runid_t=3, CTP=10, blockage="10%", TI="12%", color="blue",  marker="^"),
     dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/20PCT", runid_e=2, runid_t=3, CTP=10, blockage="20%", TI="12%", color="red",   marker="^"),
 ]

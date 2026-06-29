@@ -80,7 +80,7 @@ ax.axhspan(mean10 - std10, mean10 + std10, color=c10, alpha=0.15)
 ax.axhspan(mean20 - std20, mean20 + std20, color=c20, alpha=0.15)
 ax.axhspan(meanUNB - stdUNB, meanUNB + stdUNB, color=cUNB, alpha=0.15)
 
-ax.set_xlabel("Time (s)")
+ax.set_xlabel("Time")
 ax.set_ylabel("Turbulence Intensity (%)")
 ax.set_title("Turbulence Intensity Time Series at Future Turbine Location")
 ax.legend()

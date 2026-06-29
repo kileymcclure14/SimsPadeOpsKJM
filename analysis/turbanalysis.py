@@ -10,38 +10,38 @@ data_path = Path(au.DATA_PATH)
 # =============================================================================
 # Load Data
 # =============================================================================
-sim = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=4)
+sim = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops=True, runid=4)
 
 # =============================================================================
 # Initial Views
 # =============================================================================
-uviewz    = sim.slice(field_terms="u",        ylim=6.25)
-umeanviewz = sim.slice(budget_terms="ubar",   ylim=6.25)
-uviewy    = sim.slice(field_terms="u",        zlim=6.25)
-umeanviewy = sim.slice(budget_terms="ubar",   zlim=6.25)
+uviewz    = sim.slice(field_terms="u",        ylim=1.4)
+umeanviewz = sim.slice(budget_terms="ubar",   ylim=1.4)
+uviewy    = sim.slice(field_terms="u",        zlim=1.4)
+umeanviewy = sim.slice(budget_terms="ubar",   zlim=1.4)
 
 uviewz["u"].imshow()
-plt.title("Final Velocity Field for Unblocked Domain", pad=20)
-plt.savefig("./UNB_Final_Fieldz_full.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for 10% Blocked Domain", pad=20)
+plt.savefig("./10PCT_Final_Fieldz_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 fig, ax = plt.subplots(figsize=(10, 6))
 umeanviewz["ubar"].imshow(ax=ax)
-ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain", pad=20)
+ax.set_title("Time-Averaged Mean Velocity Field for 10% Blocked Domain", pad=20)
 fig.subplots_adjust(top=0.88)
-plt.savefig("./UNB_Mean_Fieldz_full.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Mean_Fieldz_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 uviewy["u"].imshow()
-plt.title("Final Velocity Field for Unblocked Domain", pad=20)
-plt.savefig("./UNB_Final_Fieldy_full.png", dpi=300, bbox_inches="tight")
+plt.title("Final Velocity Field for 10% Blocked Domain", pad=20)
+plt.savefig("./10PCT_Final_Fieldy_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 fig, ax = plt.subplots(figsize=(10, 6))
 umeanviewy["ubar"].imshow(ax=ax)
-ax.set_title("Time-Averaged Mean Velocity Field for Unblocked Domain", pad=20)
+ax.set_title("Time-Averaged Mean Velocity Field for 10% Blocked Domain", pad=20)
 fig.subplots_adjust(top=0.88)
-plt.savefig("./UNB_Mean_Fieldy_full.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_Mean_Fieldy_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # =============================================================================
@@ -90,13 +90,13 @@ plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TI, label="TI%")
 plt.xlabel("x/D")
 plt.ylabel("Turbulence Intensity (%)")
-plt.title("Turbulence Intensity vs x/D in Unblocked Domain")
+plt.title("Turbulence Intensity vs x/D in 10% Blocked Domain")
 plt.legend()
 plt.grid()
-plt.savefig("./UNB_TI_full.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_TI_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-np.save("./UNB_TIx_full.npy", TI)
+np.save("./10PCT_TIx_full.npy", TI)
 
 # =============================================================================
 # Turbulent Kinetic Energy vs x (averaged over y and z)
@@ -107,18 +107,18 @@ plt.figure(figsize=(10, 6))
 plt.plot(sim.x, TKE_x, label="TKE", color="purple")
 plt.xlabel("x/D")
 plt.ylabel("TKE")
-plt.title("Turbulent Kinetic Energy vs x/D in Unblocked Domain")
+plt.title("Turbulent Kinetic Energy vs x/D in 10% Blocked Domain")
 plt.legend()
 plt.grid()
-plt.savefig("./UNB_TKE_full.png", dpi=300, bbox_inches="tight")
+plt.savefig("./10PCT_TKE_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
-np.save("./UNB_TKEx_full.npy", TKE_x)
+np.save("./10PCT_TKEx_full.npy", TKE_x)
 
 # =============================================================================
 # TI Time Series at Future Turbine Location (x=5D)
 # =============================================================================
-tids    = range(33000, 64422, 1000) 
+tids    = range(13700, 27276, 100) 
 all_t   = sim.unique_times()
 
 # Only keep tids that don't exceed what we have
@@ -143,8 +143,8 @@ for idx, (i, tid) in enumerate(valid_tids):
             print(f"  Processing timestep {idx + 1}/{len(valid_tids)}...")
         
         # Load data
-        data_f = sim.slice(field_terms=["u"],    xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
-        data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=6.25, zlim=6.25, tidx=tid)
+        data_f = sim.slice(field_terms=["u"],    xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
+        data_b = sim.slice(budget_terms=["ubar"], xlim=5, ylim=1.4, zlim=1.4, tidx=tid)
 
         # Extract velocity and mean velocity
         ut    = np.asarray(data_f["u"]).squeeze()
@@ -217,19 +217,19 @@ ax.fill_between(t, mean_TI - std_TI, mean_TI + std_TI,
 
 ax.set_xlabel("Physical Time", fontsize=12)
 ax.set_ylabel("Turbulence Intensity (%)", fontsize=12)
-ax.set_title("Turbulence Intensity at Future Turbine Location in Unblocked Domain", 
+ax.set_title("Turbulence Intensity at Future Turbine Location in 10% Blocked Domain", 
              fontsize=14, pad=20)
 ax.set_ylim(0, 100)
 ax.grid(True, alpha=0.3)
 ax.legend(loc='best', fontsize=10)
 fig.tight_layout()
-fig.savefig("./UNB_TI_TimeSeries_full.png", dpi=300, bbox_inches="tight")
+fig.savefig("./10PCT_TI_TimeSeries_full.png", dpi=300, bbox_inches="tight")
 plt.close()
 
 # =============================================================================
 # Save Results
 # =============================================================================
-np.save("./UNB_TItime_full.npy", TIu_rms_rolling)
-np.save("./UNB_phystime_full.npy", t)
+np.save("./10PCT_TItime_full.npy", TIu_rms_rolling)
+np.save("./10_phystime_full.npy", t)
 
 print("Analysis complete!")
