@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import padeopsIO as pio
 
-sim10 = pio.BudgetIO("Data/Empty_Domains/10PCT", padeops=True, runid=4)
-sim20 = pio.BudgetIO("Data/Empty_Domains/20PCT", padeops=True, runid=4)
-simUNB = pio.BudgetIO("Data/Empty_Domains/UNB", padeops=True, runid=4)
+sim10 = pio.BudgetIO("Data/Empty_Domains_Filtered/10PCT", padeops=True, runid=4)
+sim20 = pio.BudgetIO("Data/Empty_Domains_Filtered/20PCT", padeops=True, runid=4)
+simUNB = pio.BudgetIO("Data/Empty_Domains_Filtered/UNB", padeops=True, runid=4)
 
 # TI as a function of X
 TI10 = np.load("./10PCT_TIx_full.npy")

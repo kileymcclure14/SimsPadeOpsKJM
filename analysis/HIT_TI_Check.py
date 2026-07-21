@@ -14,57 +14,57 @@ from padeopsIO import turbine
 # CONFIGURATION
 # ============================================================================
 SIM_CONFIGS = [
-    #dict(path="Data/UNB_HIT/CTP_2/TI_3", runid=3, CTP="2", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_3/UNB", runid=3, CTP="2", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_3/10PCT",  runid=3, CTP="2", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_3/20PCT",  runid=3, CTP="2", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid=3, CTP="2", blockage="0.005%", TI="8%", color="brown"),
-    dict(path="Data/HIT_Turbines/CTP_2/TI_8/10PCT",  runid=3, CTP="2", blockage="10%", TI="8%",  color="orange"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid=3, CTP="2", blockage="1%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_8/10PCT",  runid=3, CTP="2", blockage="0.005%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_8/20PCT",  runid=3, CTP="2", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid=3, CTP="2", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid=3, CTP="2", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_12/10PCT", runid=3, CTP="2", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_12/20PCT", runid=3, CTP="2", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 4
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid=3, CTP="4", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid=3, CTP="4", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_3/10PCT",  runid=3, CTP="4", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_3/20PCT",  runid=3, CTP="4", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid=3, CTP="4", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid=3, CTP="4", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_8/10PCT",  runid=3, CTP="4", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_8/20PCT",  runid=3, CTP="4", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid=3, CTP="4", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid=3, CTP="4", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_12/10PCT", runid=3, CTP="4", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_12/20PCT", runid=3, CTP="4", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 6
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid=3, CTP="6", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid=3, CTP="6", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_3/10PCT",  runid=3, CTP="6", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_3/20PCT",  runid=3, CTP="6", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid=3, CTP="6", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid=3, CTP="6", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_8/10PCT",  runid=3, CTP="6", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_8/20PCT",  runid=3, CTP="6", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid=3, CTP="6", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid=3, CTP="6", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_12/10PCT", runid=3, CTP="6", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_12/20PCT", runid=3, CTP="6", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 8
-    #dict(path="Data/HIT_Turbines/CTP_8/TI_3/UNB", runid=3, CTP="8", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_8/TI_3/UNB", runid=3, CTP="8", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_3/10PCT",  runid=3, CTP="8", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_3/20PCT",  runid=3, CTP="8", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_8/TI_8/UNB", runid=3, CTP="8", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_8/TI_8/UNB", runid=3, CTP="8", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_8/10PCT",  runid=3, CTP="8", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_8/20PCT",  runid=3, CTP="8", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_8/TI_12/UNB", runid=3, CTP="8", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_8/TI_12/UNB", runid=3, CTP="8", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_12/10PCT", runid=3, CTP="8", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_8/TI_12/20PCT", runid=3, CTP="8", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 10
-    #dict(path="Data/HIT_Turbines/CTP_10/TI_3/UNB", runid=3, CTP="10", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_10/TI_3/UNB", runid=3, CTP="10", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_3/10PCT",  runid=3, CTP="10", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_3/20PCT",  runid=3, CTP="10", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_10/TI_8/UNB", runid=3, CTP="10", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_10/TI_8/UNB", runid=3, CTP="10", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_8/10PCT",  runid=3, CTP="10", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_8/20PCT",  runid=3, CTP="10", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_10/TI_12/UNB", runid=3, CTP="10", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_10/TI_12/UNB", runid=3, CTP="10", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_12/10PCT", runid=3, CTP="10", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_10/TI_12/20PCT", runid=3, CTP="10", blockage="20%", TI="12%", color="magenta"),
 ]
@@ -74,14 +74,14 @@ SIM_CONFIGS = [
 # HELPERS — computation
 # ============================================================================
 
-def get_latest_tidx(path, runid):
+def get_earliest_tidx(path, runid):
     """
-    Find the latest available tidx for budget files in a given run.
+    Find the earliest available tidx for budget files in a given run.
 
     Scans the simulation directory for budget files matching the pattern:
     Run{runid:02d}_budget0_term01_t*.s3D
 
-    Extracts time indices from filenames and returns the latest one.
+    Extracts time indices from filenames and returns the earliest one.
 
     Parameters
     ----------
@@ -93,7 +93,7 @@ def get_latest_tidx(path, runid):
     Returns
     -------
     int
-        Latest available time index
+        Earliest available time index
 
     Raises
     ------
@@ -121,7 +121,7 @@ def get_latest_tidx(path, runid):
         )
 
     tidxs = sorted(set(tidxs))
-    return tidxs[-1]
+    return tidxs[0]
 
 
 def compute_TI(u, v, w, ubar, vbar, wbar):
@@ -255,7 +255,7 @@ for idx, cfg in enumerate(SIM_CONFIGS, 1):
     print(f"\n[{idx}/{len(SIM_CONFIGS)}] CTP={cfg['CTP']}, {cfg['blockage']} blocked, {cfg['TI']} TI")
 
     try:
-        tidx = get_latest_tidx(cfg["path"], cfg["runid"])
+        tidx = get_earliest_tidx(cfg["path"], cfg["runid"])
         print(f"  → Found tidx={tidx}")
     except FileNotFoundError as e:
         print(f"  ⚠ SKIPPED: {e}")

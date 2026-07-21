@@ -1,67 +1,33 @@
 import padeopsIO as pio
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.patches import Rectangle
 import numpy as np
 
 
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
-# KEEP YOUR SIM_CONFIGS EXACTLY AS YOU POSTED
 SIM_CONFIGS = [
-     # CTP = 2
-    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_2/TI_3/UNB", runid_t=3, CTP="2", blockage="0.005", TI="3%"),
-    dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_2/TI_3/10PCT",  runid_t=3, CTP="2", blockage="10%", TI="3%"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_2/TI_3/20PCT",  runid_t=3, CTP="2", blockage="20%", TI="3%"),
-    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid_t=3, CTP="2", blockage="0.005", TI="8%"),
-    dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_2/TI_8/10PCT",  runid_t=3, CTP="2", blockage="10%", TI="8%"),
-    dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_2/TI_8/20PCT",  runid_t=3, CTP="2", blockage="20%", TI="8%"),
-    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid_t=3, CTP="2", blockage="0.005", TI="12%"),
-    dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/10PCT", runid_t=3, CTP="2", blockage="10%", TI="12%"),
-    dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_2/TI_12/20PCT", runid_t=3, CTP="2", blockage="20%", TI="12%"),
+# CTP = 2
+    dict(label="10% Blocked, 3% TI",  path="Data/HIT_AD/CTP_2/TI_3/10PCT",  runid_e=4, runid_t=5, CTP=2,  blockage="10%", TI="3%",  color="blue",  marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_AD/CTP_2/TI_3/20PCT",  runid_e=4, runid_t=5, CTP=2,  blockage="20%", TI="3%",  color="red",   marker="o"),
 
     # CTP = 4
-    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid_t=3, CTP="4", blockage="0.005", TI="3%"),
-    dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_4/TI_3/10PCT",  runid_t=3, CTP="4", blockage="10%", TI="3%"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_4/TI_3/20PCT",  runid_t=3, CTP="4", blockage="20%", TI="3%"),
-    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid_t=3, CTP="4", blockage="0.005", TI="8%"),
-    dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_4/TI_8/10PCT",  runid_t=3, CTP="4", blockage="10%", TI="8%"),
-    dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_4/TI_8/20PCT",  runid_t=3, CTP="4", blockage="20%", TI="8%"),
-    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid_t=3, CTP="4", blockage="0.005", TI="12%"),
-    dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/10PCT", runid_t=3, CTP="4", blockage="10%", TI="12%"),
-    dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_4/TI_12/20PCT", runid_t=3, CTP="4", blockage="20%", TI="12%"),
+    dict(label="10% Blocked, 3% TI",  path="Data/HIT_AD/CTP_4/TI_3/10PCT",  runid_e=4, runid_t=5, CTP=4,  blockage="10%", TI="3%",  color="blue",  marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_AD/CTP_4/TI_3/20PCT",  runid_e=4, runid_t=5, CTP=4,  blockage="20%", TI="3%",  color="red",   marker="o"),
 
     # CTP = 6
-    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid_t=3, CTP="6", blockage="0.005", TI="3%"),
-    dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_6/TI_3/10PCT",  runid_t=3, CTP="6", blockage="10%", TI="3%"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_6/TI_3/20PCT",  runid_t=3, CTP="6", blockage="20%", TI="3%"),
-    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid_t=3, CTP="6", blockage="0.005", TI="8%"),
-    dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_6/TI_8/10PCT",  runid_t=3, CTP="6", blockage="10%", TI="8%"),
-    dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_6/TI_8/20PCT",  runid_t=3, CTP="6", blockage="20%", TI="8%"),
-    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid_t=3, CTP="6", blockage="0.005", TI="12%"),
-    dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/10PCT", runid_t=3, CTP="6", blockage="10%", TI="12%"),
-    dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_6/TI_12/20PCT", runid_t=3, CTP="6", blockage="20%", TI="12%"),
-
+    dict(label="10% Blocked, 3% TI",  path="Data/HIT_AD/CTP_6/TI_3/10PCT",  runid_e=4, runid_t=5, CTP=6,  blockage="10%", TI="3%",  color="blue",  marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_AD/CTP_6/TI_3/20PCT",  runid_e=4, runid_t=5, CTP=6,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    
     # CTP = 8
-    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_8/TI_3/UNB", runid_t=3, CTP="8", blockage="0.005", TI="3%"),
-    dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_8/TI_3/10PCT",  runid_t=3, CTP="8", blockage="10%", TI="3%"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_8/TI_3/20PCT",  runid_t=3, CTP="8", blockage="20%", TI="3%"),
-    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_8/TI_8/UNB", runid_t=3, CTP="8", blockage="0.005", TI="8%"),
-    dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_8/TI_8/10PCT",  runid_t=3, CTP="8", blockage="10%", TI="8%"),
-    dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_8/TI_8/20PCT",  runid_t=3, CTP="8", blockage="20%", TI="8%"),
-    dict(label="Unblocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/UNB", runid_t=3, CTP="8", blockage="0.005", TI="12%"),
-    dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/10PCT", runid_t=3, CTP="8", blockage="10%", TI="12%"),
-    dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_8/TI_12/20PCT", runid_t=3, CTP="8", blockage="20%", TI="12%"),
-
+    dict(label="10% Blocked, 3% TI",  path="Data/HIT_AD/CTP_8/TI_3/10PCT",  runid_e=4, runid_t=5, CTP=8,  blockage="10%", TI="3%",  color="blue",  marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_AD/CTP_8/TI_3/20PCT",  runid_e=4, runid_t=5, CTP=8,  blockage="20%", TI="3%",  color="red",   marker="o"),
+    
     # CTP = 10
-    dict(label="Unblocked, 3% TI", path="Data/HIT_Turbines/CTP_10/TI_3/UNB", runid_t=3, CTP="10", blockage="0.005", TI="3%"),
-    dict(label="10% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_10/TI_3/10PCT",  runid_t=3, CTP="10", blockage="10%", TI="3%"),
-    dict(label="20% Blocked, 3% TI",  path="Data/HIT_Turbines/CTP_10/TI_3/20PCT",  runid_t=3, CTP="10", blockage="20%", TI="3%"),
-    dict(label="Unblocked, 8% TI", path="Data/HIT_Turbines/CTP_10/TI_8/UNB", runid_t=3, CTP="10", blockage="0.005", TI="8%"),
-    dict(label="10% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_10/TI_8/10PCT",  runid_t=3, CTP="10", blockage="10%", TI="8%"),
-    dict(label="20% Blocked, 8% TI",  path="Data/HIT_Turbines/CTP_10/TI_8/20PCT",  runid_t=3, CTP="10", blockage="20%", TI="8%"),
-    dict(label="Unblocked, `12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/UNB", runid_t=3, CTP="10", blockage="0.005", TI="12%"),
-    dict(label="10% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/10PCT", runid_t=3, CTP="10", blockage="10%", TI="12%"),
-    dict(label="20% Blocked, 12% TI", path="Data/HIT_Turbines/CTP_10/TI_12/20PCT", runid_t=3, CTP="10", blockage="20%", TI="12%"),
+    dict(label="10% Blocked, 3% TI",  path="Data/HIT_AD/CTP_10/TI_3/10PCT",  runid_e=4, runid_t=5, CTP=10, blockage="10%", TI="3%",  color="blue",  marker="o"),
+    dict(label="20% Blocked, 3% TI",  path="Data/HIT_AD/CTP_10/TI_3/20PCT",  runid_e=4, runid_t=5, CTP=10, blockage="20%", TI="3%",  color="red",   marker="o"),
 ]
 
 # ============================================================================
@@ -102,32 +68,104 @@ def fmt_range(vmin, vmax):
     return f"[{vmin:.4f}, {vmax:.4f}]"
 
 
-def plot_deficit_field(deficit, term, zlim=0, label="", ax=None, cmap="RdBu_r", vmin=None, vmax=None):
+def compute_global_y_extent(results, D=1.0, zlim=0):
+    """Compute global y extent across all deficits."""
+    y_min_global = np.inf
+    y_max_global = -np.inf
+    for r in results:
+        try:
+            deficit = r["deficit"]
+            deficit.read_budgets(budget_terms=["delta_u"], overwrite=False)
+            view = deficit.slice(budget_terms=["delta_u"], zlim=zlim)
+            u_data = view["delta_u"]
+            y = np.array(u_data.y) / D if hasattr(u_data, 'y') else np.arange(u_data.shape[0]) / D
+            y_min_global = min(y_min_global, y.min())
+            y_max_global = max(y_max_global, y.max())
+        except Exception:
+            continue
+    return y_min_global, y_max_global if not np.isinf(y_min_global) else (None, None)
+
+
+def plot_deficit_field_with_patches(deficit, term, zlim=0, label="", ax=None, cmap="RdBu_r", 
+                                     vmin=None, vmax=None, D=1.0, global_y_range=None):
     """
-    IMPORTANT:
-    - Uses view[term].imshow(...) to preserve your original field view.
-    - Removes any auto-created tiny colorbar axes immediately.
+    Plot deficit field with patches for boundaries and turbine rotor.
+    
+    Parameters
+    ----------
+    deficit : DeficitIO
+        Deficit object
+    term : str
+        Budget term to plot
+    zlim : float
+        Z-level slice
+    label : str
+        Plot label
+    ax : matplotlib axis
+        Axis to plot on
+    cmap : str
+        Colormap
+    vmin, vmax : float
+        Color scale limits
+    D : float
+        Rotor diameter
+    global_y_range : tuple of (y_min, y_max), optional
+        Global y extent for hatching domain gaps
     """
     try:
         deficit.read_budgets(budget_terms=[term], overwrite=False)
         view = deficit.slice(budget_terms=[term], zlim=zlim)
-
-        # Track axes count before plotting (in case backend auto-adds cbar axes)
+        u_data = view[term]
+        
+        x = np.array(u_data.x) / D if hasattr(u_data, 'x') else np.arange(u_data.shape[1]) / D
+        y = np.array(u_data.y) / D if hasattr(u_data, 'y') else np.arange(u_data.shape[0]) / D
+        values = np.array(u_data).T
+        
+        X, Y = np.meshgrid(x, y)
+        
+        # Track axes count before plotting
         n_before = len(ax.figure.axes)
-
-        # Keep your original plotting path (preserves view/orientation/domain behavior)
-        im = view[term].imshow(ax=ax, cmap=cmap, vmin=vmin, vmax=vmax)
-
-        # Remove any auto-created axes (tiny horizontal bars)
+        
+        # Plot contourf
+        im = ax.contourf(X, Y, values, levels=20, cmap=cmap, vmin=vmin, vmax=vmax, extend='both')
+        
+        # Remove any auto-created tiny colorbar axes
         if len(ax.figure.axes) > n_before:
             for extra_ax in ax.figure.axes[n_before:]:
                 if extra_ax is not ax:
                     extra_ax.remove()
-
+        
+        x_min, x_max = x.min(), x.max()
+        y_min, y_max = y.min(), y.max()
+        y_center = (y_min + y_max) / 2
+        
+        # Hatch gaps between this domain and global extent
+        if global_y_range is not None:
+            g_y_min, g_y_max = global_y_range
+            
+            if y_max < g_y_max - 1e-9:
+                boundary_top = Rectangle((x_min, y_max), x_max - x_min, g_y_max - y_max,
+                                        linewidth=0, facecolor='gray', hatch='///', alpha=0.4, zorder=1)
+                ax.add_patch(boundary_top)
+            
+            if y_min > g_y_min + 1e-9:
+                boundary_bottom = Rectangle((x_min, g_y_min), x_max - x_min, y_min - g_y_min,
+                                           linewidth=0, facecolor='gray', hatch='///', alpha=0.4, zorder=1)
+                ax.add_patch(boundary_bottom)
+            
+            ax.set_ylim(g_y_min, g_y_max)
+        
+        # Turbine rotor patch (white rectangle)
+        rotor = Rectangle((-0.05, y_center - D/2), 0.1, D,
+                         linewidth=2, edgecolor='white', facecolor='white', alpha=0.9, zorder=3)
+        ax.add_patch(rotor)
+        
         ax.set_title(label, fontsize=11, fontweight="bold", pad=8)
-        ax.set_xlabel("y", fontsize=9)
-        ax.set_ylabel("x", fontsize=9)
+        ax.set_xlabel("$y/D$ (-)", fontsize=9)
+        ax.set_ylabel("$x/D$ (-)", fontsize=9)
         ax.tick_params(labelsize=8)
+        ax.set_aspect('equal')
+        
         return im
 
     except Exception as e:
@@ -137,20 +175,22 @@ def plot_deficit_field(deficit, term, zlim=0, label="", ax=None, cmap="RdBu_r", 
             ha="center", va="center", transform=ax.transAxes, fontsize=9
         )
         ax.set_title(label, fontsize=11, fontweight="bold", pad=8)
-        ax.set_xlabel("y", fontsize=9)
-        ax.set_ylabel("x", fontsize=9)
+        ax.set_xlabel("$y/D$ (-)", fontsize=9)
+        ax.set_ylabel("$x/D$ (-)", fontsize=9)
         return None
 
 
-def plot_deficit_velocity_components(deficit, label, ax_array, zlim=0, cmap="RdBu_r", vmin_dict=None, vmax_dict=None):
+def plot_deficit_velocity_components_with_patches(deficit, label, ax_array, zlim=0, cmap="RdBu_r", 
+                                                   vmin_dict=None, vmax_dict=None, D=1.0, global_y_range=None):
+    """Plot all three velocity deficit components with patches."""
     components = [("delta_u", "ΔU"), ("delta_v", "ΔV"), ("delta_w", "ΔW")]
     images = []
     for ax, (term, term_label) in zip(ax_array, components):
         vmin = vmin_dict[term] if vmin_dict else None
         vmax = vmax_dict[term] if vmax_dict else None
-        im = plot_deficit_field(
+        im = plot_deficit_field_with_patches(
             deficit, term, zlim=zlim, label=f"{label}\n{term_label}",
-            ax=ax, cmap=cmap, vmin=vmin, vmax=vmax
+            ax=ax, cmap=cmap, vmin=vmin, vmax=vmax, D=D, global_y_range=global_y_range
         )
         images.append(im)
     return images
@@ -179,7 +219,16 @@ print(f"CTPs: {ctps}")
 print(f"TI levels: {ti_levels}")
 print(f"Blockages: {blockages}\n")
 
-print("Generating deficit velocity field plots...\n")
+# Compute global y extent once
+print("Computing global y extent across all simulations...")
+GLOBAL_Y_RANGE = compute_global_y_extent(results, D=1.0, zlim=0)
+if GLOBAL_Y_RANGE[0] is not None:
+    print(f"Global y-extent: [{GLOBAL_Y_RANGE[0]:.4f}, {GLOBAL_Y_RANGE[1]:.4f}] (normalized)\n")
+else:
+    print("Could not compute global y extent; plotting without hatching.\n")
+    GLOBAL_Y_RANGE = None
+
+print("Generating deficit velocity field plots with patches...\n")
 
 for ctp in ctps:
     for ti in ti_levels:
@@ -228,14 +277,16 @@ for ctp in ctps:
         # Plot rows
         for row_idx, r in enumerate(subs_sorted):
             print(f"    Processing blockage: {r['blockage']}")
-            plot_deficit_velocity_components(
+            plot_deficit_velocity_components_with_patches(
                 r["deficit"],
                 r["blockage"],
                 axes[row_idx, :],
                 zlim=0,
                 cmap="RdBu_r",
                 vmin_dict=vmin_dict,
-                vmax_dict=vmax_dict
+                vmax_dict=vmax_dict,
+                D=1.0,
+                global_y_range=GLOBAL_Y_RANGE
             )
 
         # Defensive cleanup: remove any non-main axes before shared colorbars

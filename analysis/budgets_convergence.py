@@ -16,13 +16,13 @@ print("=" * 60)
 # Load Data
 print("\n[1/4] Initializing BudgetIO...")
 init_start = time.perf_counter()
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_spr", padeops=True, runid=1)
+sim = pio.BudgetIO("Data/Filtered_Spinups/10PCT", padeops=True, runid=1)
 init_time = time.perf_counter() - init_start
 print(f"✓ BudgetIO initialized in {init_time:.2f}s")
 
 # Get Velocities - no all_t check
 print("\n[2/4] Setting up timestep list...")
-tids = list(range(10000, 110000, 10000))
+tids = list(range(800000, 990000, 10000))
 print(f"✓ Timesteps to load: {len(tids)}")
 print(f"  Range: tid {tids[0]} to {tids[-1]}")
 
@@ -40,7 +40,7 @@ for k, tid in enumerate(tids):
     
     # Load all three velocity components at once
     data = sim.slice(budget_terms=["ubar", "vbar", "wbar"], 
-                    ylim=6.25, zlim=6.25, tidx=tid)
+                    ylim=1.4, zlim=1.4, tidx=tid)
     
     # Plot and immediately discard
     axes[0].plot(sim.x, data["ubar"].squeeze(), color=colors[k], lw=0.8)
@@ -60,9 +60,9 @@ print(f"  Average per timestep: {avg_time_per_step:.3f}s")
 
 # Set labels and titles
 print("\n[4/4] Finalizing plot...")
-axes[0].set(xlabel="x", ylabel="ubar", title="Ubar Convergence (Unblocked Spinup)")
-axes[1].set(xlabel="x", ylabel="vbar", title="Vbar Convergence (Unblocked Spinup)")
-axes[2].set(xlabel="x", ylabel="wbar", title="Wbar Convergence (Unblocked Spinup)")
+axes[0].set(xlabel="x", ylabel="ubar", title="Ubar Convergence (10% Blocked Spinup)")
+axes[1].set(xlabel="x", ylabel="vbar", title="Vbar Convergence (10% Blocked Spinup)")
+axes[2].set(xlabel="x", ylabel="wbar", title="Wbar Convergence (10% Blocked Spinup)")
 
 for ax in axes:
     ax.grid(True, alpha=0.3)
@@ -75,13 +75,13 @@ fig.subplots_adjust(top=0.88, right=0.88, wspace=0.3)
 cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.7])
 fig.colorbar(sm, cax=cbar_ax, label="tid")
 
-plt.suptitle("Mean Velocity Profiles Convergence in Unblocked Spinup", fontsize=16)
+plt.suptitle("Mean Velocity Profiles Convergence in 10% Blocked Spinup", fontsize=16)
 
 # Save
 save_start = time.perf_counter()
-plt.savefig("UNB_convergence.png", dpi=300, bbox_inches="tight")
+plt.savefig("10PCT_filterspin_convergence.png", dpi=300, bbox_inches="tight")
 save_time = time.perf_counter() - save_start
-print(f"✓ Figure saved as 'UNB_convergence.png' ({save_time:.2f}s)")
+print(f"✓ Figure saved as '10PCT_filterspin_convergence.png' ({save_time:.2f}s)")
 
 plt.close()
 

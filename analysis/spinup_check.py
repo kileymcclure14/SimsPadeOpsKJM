@@ -7,9 +7,9 @@ import padeopsIO as pio
 import cmcrameri.cm as cmc
 
 # ── Import Data ───────────────────────────────────────────────────────────────
-sim = pio.BudgetIO("Data/Empty_Domains/Spinups/UNB_spr", padeops=True, runid=1)
+sim = pio.BudgetIO("Data/Filtered_Spinups/20PCT_P2", padeops=True, runid=1)
 
-tids = range(300000, 390000, 10000)
+tids = range(200000, 990000, 10000)
 u, v, w = [], [], []
 
 for tid in tids:
@@ -21,6 +21,8 @@ u = np.array(u).squeeze()
 v = np.array(v).squeeze()
 w = np.array(w).squeeze()
 
+
+
 print(f"u.shape = {u.shape}")
 
 # ── Time Averaged Fields and Views ────────────────────────────────────────────
@@ -28,23 +30,42 @@ ubar = np.asarray(sim.slice(budget_terms=["ubar"])['ubar'])
 vbar = np.asarray(sim.slice(budget_terms=["vbar"])['vbar'])
 wbar = np.asarray(sim.slice(budget_terms=["wbar"])['wbar'])
 
-ubarview = sim.slice(budget_terms=["ubar"], ylim = 6.25)
-vbarview = sim.slice(budget_terms=["vbar"], ylim=6.25)
-wbarview = sim.slice(budget_terms=["wbar"], ylim=6.25)
+ubarview = sim.slice(budget_terms=["ubar"], ylim = 0.99)
+vbarview = sim.slice(budget_terms=["vbar"], ylim= 0.99)
+wbarview = sim.slice(budget_terms=["wbar"], ylim= 0.99)
 
 ubarview["ubar"].imshow()
-plt.title("UBar in Unblocked Spinup")
-plt.savefig("ubar_UNB_spin.png", dpi=300)
+plt.title("UBar in 20% Blocked Filtered Spinup")
+plt.savefig("ubar_20PCTF_spin.png", dpi=300)
 plt.close()
 
 vbarview["vbar"].imshow()
-plt.title("VBar in Unblocked Spinup")
-plt.savefig("vbar_UNB_spin.png", dpi=300)
+plt.title("VBar in 20% Blocked Filtered Spinup")
+plt.savefig("vbar_20PCTF_spin.png", dpi=300)
 plt.close()
 
 wbarview["wbar"].imshow()
-plt.title("WBar in Unblocked Spinup")
-plt.savefig("wbar_UNB_spin.png", dpi=300)
+plt.title("WBar in 20% Blocked Filtered Spinup")
+plt.savefig("wbar_20PCTF_spin.png", dpi=300)
+plt.close()
+
+uview = sim.slice(field_terms=["u"], ylim = 0.99)
+vview = sim.slice(field_terms=["v"], ylim = 0.99)
+wview = sim.slice(field_terms=["w"], ylim = 0.99)
+
+uview["u"].imshow()
+plt.title("Instantaneous U in 20% Blocked Filtered Spinup")
+plt.savefig("u_20PCTF_spin.png", dpi=300)
+plt.close()
+
+vview["v"].imshow()
+plt.title("Instantaneous V in 20% Blocked Filtered Spinup")
+plt.savefig("v_20PCTF_spin.png", dpi=300)
+plt.close()
+
+wview["w"].imshow()
+plt.title("Instantaneous W in 20% Blocked Filtered Spinup")
+plt.savefig("w_20PCTF_spin.png", dpi=300)
 plt.close()
 
 # ── Calculate Fluctuations ────────────────────────────────────────────────────
@@ -72,9 +93,9 @@ plt.axhline(tke_final, color='red', ls='--', lw=2,
 plt.axhspan(tke_final - tke_std, tke_final + tke_std, alpha=0.2, color='red')
 #plt.ylim(0, 0.04)
 plt.xlabel("Timestep"); plt.ylabel("TKE")
-plt.title("TKE Evolution in Unblocked Spinup")
+plt.title("TKE Evolution in 20% Blocked Filtered Spinup")
 plt.legend(); plt.grid(); plt.tight_layout()
-plt.savefig("TKE_stationarity_UNB_spin.png", dpi=300)
+plt.savefig("TKE_stationarity_20PCTF_spin.png", dpi=300)
 plt.close()
 
 # ── Urms from Field and TKE ───────────────────────────────────────────────────
@@ -228,13 +249,13 @@ plt.loglog(_k_ref, _E_ref, 'k--', lw=2.5, label=r'$k^{-5/3}$')
 
 plt.xlabel(r'$k$')
 plt.ylabel(r'$E(k)$')
-plt.title("Spectrum Convergence to Stationary State for Unblocked Spinup")
+plt.title("Spectrum Convergence to Stationary State for 20% Blocked Filtered Spinup")
 plt.legend(fontsize=8)
 plt.grid(True, which='both', ls=':')
 plt.tight_layout()
-plt.savefig('spectrum_convergence_UNB_spin.png', dpi=300)
+plt.savefig('spectrum_convergence_20PCTF_spin.png', dpi=300)
 plt.close()
-print("✓ Saved: spectrum_convergence_UNB_spin.png")
+print("✓ Saved: spectrum_convergence_20PCTF_spin.png")
 
 # ── Reference Kolmogorov Line ─────────────────────────────────────────────────
 comp  = E_mean * k_plot ** (5 / 3)
@@ -245,39 +266,29 @@ C     = E_mean[i_ref] * k_ref ** (5 / 3)
 print(f"\nKolmogorov Constant: C = {C:.4e}")
 print(f"Reference wavenumber: k_ref = {k_ref:.4f}")
 
-# ── Fully Developed Spectrum ──────────────────────────────────────────────────
+# ── Fully Developed Spectrum ──────────────────────────────────────
 print("Plotting fully developed spectrum...")
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+fig, ax = plt.subplots(figsize=(10, 6))
 
-# Left panel: compare reference, final snapshot, and ensemble average
-ax1.loglog(k_plot, E_mean, 'o-',  lw=2,              label="Ensemble average (u'v'w')")
-ax1.loglog(k_plot, E_last, 's--', lw=1.5, alpha=0.6, label="Final snapshot")
-ax1.fill_between(
+# Compare reference, final snapshot, and ensemble average
+ax.loglog(k_plot, E_mean, 'o-',  lw=2,              label="Ensemble average (u'v'w')")
+ax.loglog(k_plot, E_last, 's--', lw=1.5, alpha=0.6, label="Final snapshot")
+ax.fill_between(
     k_plot,
     np.maximum(E_mean - E_std, 1e-20),
     np.maximum(E_mean + E_std, 1e-20),
     alpha=0.2, label=r'$\pm1\sigma$',
 )
-ax1.loglog(k_plot, C * k_plot ** (-5 / 3), 'k--', lw=2,
+ax.loglog(k_plot, C * k_plot ** (-5 / 3), 'k--', lw=2,
            label=rf"$Ck^{{-5/3}}$,  $C$={C:.2e}")
-ax1.set_xlabel(r'$k$'); ax1.set_ylabel(r'$E(k)$')
-#ax1.set_ylim(1e-6, 1e-1)
-ax1.set_title("Fully Developed Spectrum for Unblocked Spinup")
-ax1.legend(fontsize=8); ax1.grid(True, which='both', ls=':')
-
-# Right panel: compensated spectrum to check inertial range plateau
-ax2.loglog(k_plot, E_mean * k_plot ** (5 / 3), 'o-', lw=2,
-             label=r"$E(k)\,k^{5/3}$")
-ax2.axhline(y=C, color='k', ls='--', lw=2, label=f"Kolmogorov plateau  $C$={C:.2e}")
-ax2.axvline(x=k_ref, color='grey', ls=':', lw=1.5, label=f"$k_{{ref}}={k_ref:.1f}$")
-ax2.set_xlabel(r'$k$'); ax2.set_ylabel(r'$E(k)\,k^{5/3}$')
-ax2.set_title("Inertial Range Check for Unblocked Spinup")
-ax2.legend(fontsize=8); ax2.grid(True, which='both', ls=':')
+ax.set_xlabel(r'$k$'); ax.set_ylabel(r'$E(k)$')
+ax.set_title("Fully Developed Spectrum for 20% Blocked Filtered Spinup")
+ax.legend(fontsize=9); ax.grid(True, which='both', ls=':')
 
 plt.tight_layout()
-plt.savefig('fully_developed_spectra_UNB_spin.png', dpi=300)
+plt.savefig('fully_developed_spectra_20PCTF_spin.png', dpi=300)
 plt.close()
-print("✓ Saved: fully_developed_spectra_UNB_spin.png")
+print("✓ Saved: fully_developed_spectra_20PCTF_spin.png")
 
 print("\n" + "="*70)
 print("Done. All outputs saved successfully!")

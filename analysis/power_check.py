@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from padeopsIO import turbine
 
-path = r"/scratch/10268/kileymcclure/Data/HIT_Turbines/CTP_2/TI_8/UNB"
+path = r"/scratch/10268/kileymcclure/Data/HIT_Filter/CTP_2/TI_3/20PCT"
 sim = pio.BudgetIO(path, padeops = True, runid = 3)
 power_time = sim.read_turb_power(tidx="all")
 Cp_time = power_time/(np.pi/8)

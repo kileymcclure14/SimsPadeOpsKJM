@@ -13,45 +13,20 @@ from matplotlib.colors import Normalize
 
 data_path = Path(au.DATA_PATH)
 
-sim = pio.BudgetIO("Data/HIT_Domain_Tests/20pct", padeops = True, runid = 1)
+sim = pio.BudgetIO("Data/Filtered_Spinups/10PCT", padeops = True, runid = 1)
 
 ds = sim.slice(field_terms = "u")
 
-dsy = sim.slice(field_terms = "u", ylim = 0.99)
-dsz = sim.slice(field_terms = "u", zlim = 0.99)
+dsy = sim.slice(field_terms = "u", ylim = 1.4)
+dsz = sim.slice(field_terms = "u", zlim = 1.4)
 
 
 dsy['u'].imshow()
 plt.title('XZ HIT Spinup Test')
-plt.savefig('./20pct_spintest_xz.png', dpi = 300)
+plt.savefig('./10PCT_spintest_xz.png', dpi = 300)
 
 dsz['u'].imshow()
 plt.title('XY HIT Spinup Test')
-plt.savefig('./20pct_spintest_xy.png', dpi = 300)
+plt.savefig('./10PCT_spintest_xy.png', dpi = 300)
 
-ds1xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 1000)
-ds2xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 2000)
-ds3xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 3000)
-ds4xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 4000)
-ds5xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 5000)
-ds6xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 6000)
-ds7xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 7000)
-ds71xy = sim.slice(field_terms = "u", zlim = 0.99, ylim = 0.99, tidx = 7130)
-tidx_vals = np.array([1000, 2000, 3000, 4000, 5000, 6000, 7000, 7130])
-datasets = [ds1xy, ds2xy, ds3xy, ds4xy, ds5xy, ds6xy, ds7xy, ds71xy]
-
-norm = Normalize(vmin=tidx_vals.min(), vmax=tidx_vals.max())
-cmap = cm.get_cmap('cividis_r')
-
-plt.figure(figsize=(10, 6))
-
-for tidx, ds_xy in zip(tidx_vals, datasets):
-    color = cmap(norm(tidx))
-    plt.plot(ds.x, ds_xy['u'], color=color, label=f'tidx={tidx}')
-
-plt.xlabel('x/D')
-plt.ylabel('u/U')
-plt.title('Centerline Streamwise Velocity Evolution for HIT Spinup Test')
-plt.legend()
-plt.savefig('./20pct_spintest_centerline.png', dpi = 300)
 

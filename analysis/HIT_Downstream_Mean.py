@@ -14,35 +14,35 @@ from padeopsIO import turbine
 # CONFIGURATION
 # ============================================================================
 SIM_CONFIGS = [
-    #dict(path="Data/UNB_HIT/CTP_2/TI_3", runid=3, CTP="2", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_3/UNB", runid=3, CTP="2", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_3/10PCT",  runid=3, CTP="2", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_3/20PCT",  runid=3, CTP="2", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid=3, CTP="2", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_8/UNB", runid=3, CTP="2", blockage="0.005%%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_8/10PCT",  runid=3, CTP="2", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_8/20PCT",  runid=3, CTP="2", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid=3, CTP="2", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_2/TI_12/UNB", runid=3, CTP="2", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_12/10PCT", runid=3, CTP="2", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_2/TI_12/20PCT", runid=3, CTP="2", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 4
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid=3, CTP="4", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_3/UNB", runid=3, CTP="4", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_3/10PCT",  runid=3, CTP="4", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_3/20PCT",  runid=3, CTP="4", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid=3, CTP="4", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_8/UNB", runid=3, CTP="4", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_8/10PCT",  runid=3, CTP="4", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_8/20PCT",  runid=3, CTP="4", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid=3, CTP="4", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_4/TI_12/UNB", runid=3, CTP="4", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_12/10PCT", runid=3, CTP="4", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_4/TI_12/20PCT", runid=3, CTP="4", blockage="20%", TI="12%", color="magenta"),
 
     # CTP = 6
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid=3, CTP="6", blockage="0.005%", TI="3%", color="black"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_3/UNB", runid=3, CTP="6", blockage="0.005%", TI="3%", color="black"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_3/10PCT",  runid=3, CTP="6", blockage="10%", TI="3%",  color="blue"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_3/20PCT",  runid=3, CTP="6", blockage="20%", TI="3%",  color="red"),
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid=3, CTP="6", blockage="0.005%", TI="8%", color="brown"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_8/UNB", runid=3, CTP="6", blockage="0.005%", TI="8%", color="brown"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_8/10PCT",  runid=3, CTP="6", blockage="10%", TI="8%",  color="orange"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_8/20PCT",  runid=3, CTP="6", blockage="20%", TI="8%",  color="green"),
-    #dict(path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid=3, CTP="6", blockage="0.005%", TI="12%", color="gray"),
+    dict(path="Data/HIT_Turbines/CTP_6/TI_12/UNB", runid=3, CTP="6", blockage="0.005%", TI="12%", color="gray"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_12/10PCT", runid=3, CTP="6", blockage="10%", TI="12%", color="cyan"),
     dict(path="Data/HIT_Turbines/CTP_6/TI_12/20PCT", runid=3, CTP="6", blockage="20%", TI="12%", color="magenta"),
 
@@ -183,6 +183,53 @@ def _unique_values(results, key):
     return seen
 
 
+def compute_mean_TI(ti_arrays, x_arrays):
+    """
+    Compute mean TI across multiple simulations.
+
+    Takes the mean of TI values at each x location. Handles arrays of
+    potentially different lengths by finding the common x range.
+
+    Parameters
+    ----------
+    ti_arrays : list of ndarray
+        List of TI arrays from different simulations
+    x_arrays : list of ndarray
+        Corresponding x coordinate arrays
+
+    Returns
+    -------
+    x_common : ndarray
+        Common x coordinates
+    ti_mean : ndarray
+        Mean TI values at each x location
+    """
+    if not ti_arrays:
+        return np.array([]), np.array([])
+
+    if len(ti_arrays) == 1:
+        return x_arrays[0], ti_arrays[0]
+
+    # Find common x range
+    x_min = max([x[0] for x in x_arrays])
+    x_max = min([x[-1] for x in x_arrays])
+
+    # Use first array's x as reference
+    x_common = x_arrays[0]
+    mask = (x_common >= x_min) & (x_common <= x_max)
+    x_common = x_common[mask]
+
+    # Interpolate all ti_arrays onto common x and compute mean
+    ti_interpolated = []
+    for ti_arr, x_arr in zip(ti_arrays, x_arrays):
+        ti_interp = np.interp(x_common, x_arr, ti_arr, left=np.nan, right=np.nan)
+        ti_interpolated.append(ti_interp)
+
+    ti_mean = np.nanmean(ti_interpolated, axis=0)
+
+    return x_common, ti_mean
+
+
 def tag(s):
     """
     Strip % from string for use in filenames.
@@ -225,10 +272,10 @@ def save_TI_plot(ax_data, title, savepath, figsize=(10, 6)):
     fig, ax = plt.subplots(figsize=figsize)
 
     for x, ti_arr, cfg in ax_data:
-        ax.plot(x, ti_arr, label=cfg["label"], color=cfg["color"])
+        ax.plot(x, ti_arr, label=cfg["label"], color=cfg["color"], linewidth=2)
 
     ax.set_xlabel("x/D")
-    ax.set_ylabel("Turbulence Intensity (%)")
+    ax.set_ylabel("Mean Turbulence Intensity (%)")
     ax.set_title(title)
     ax.legend()
     ax.grid()
@@ -327,66 +374,72 @@ print()
 # ============================================================================
 
 print("=" * 80)
-print("GENERATING PLOTS")
+print("GENERATING MEAN TI PLOTS")
 print("=" * 80)
 
-# --- Plot 1: by (CTP, TI) — one line per blockage level ---
-print("\n[Plot Set 1] By (CTP, TI) — one line per blockage level")
+# --- Plot 1: Mean TI by (CTP, TI) — averaging over blockage levels ---
+print("\n[Plot Set 1] TI by (CTP, TI) — all blockage levels")
 plot_count = 0
 for ctp in ctps:
     for ti in ti_levels:
         subs = [r for r in results if r["CTP"] == ctp and r["TI"] == ti]
         if not subs:
             continue
-        ax_data = [(r["x"], r["ti_arr"], {**r, "label": f"{r['blockage']} Blockage"})
-                   for r in subs]
+        
+        ax_data = []
+        
+        # Add individual blockage lines
+        colors_blockage = {"10%": "blue", "20%": "red", "0.005%": "gray"}
+        for r in subs:
+            ax_data.append((r["x"], r["ti_arr"], {
+                "label": f"{r['blockage']}",
+                "color": colors_blockage.get(r["blockage"], "lightgray")
+            }))
+        
+        if not ax_data:
+            continue
+        
         save_TI_plot(
             ax_data,
-            title=f"Turbulence Intensity vs x/D — {ti} TI, CTP = {ctp}",
-            savepath=f"./TI_{tag(ti)}pct_CTP{ctp}_turbine.png",
+            title=f"TI vs x/D — {ti} TI, CTP = {ctp}",
+            savepath=f"./TI_{tag(ti)}pct_CTP{ctp}.png",
         )
         plot_count += 1
 
 print(f"  → Generated {plot_count} plots")
 
 
-# --- Plot 2: by (CTP, blockage) — one line per TI level ---
-print("\n[Plot Set 2] By (CTP, blockage) — one line per TI level")
+# --- Plot 2: Mean TI by (CTP, blockage) — averaging over TI levels ---
+print("\n[Plot Set 2] TI by (CTP, blockage) — all TI levels")
 plot_count = 0
 for ctp in ctps:
     for blockage in blockages:
         subs = [r for r in results if r["CTP"] == ctp and r["blockage"] == blockage]
         if not subs:
             continue
-        ax_data = [(r["x"], r["ti_arr"], {**r, "label": f"{r['TI']} TI"}) for r in subs]
+        
+        ax_data = []
+        
+        # Add individual TI lines
+        colors_ti = {"3%": "blue", "8%": "orange", "12%": "red"}
+        for r in subs:
+            ax_data.append((r["x"], r["ti_arr"], {
+                "label": f"{r['TI']}",
+                "color": colors_ti.get(r["TI"], "lightgray")
+            }))
+        
+        if not ax_data:
+            continue
+        
         save_TI_plot(
             ax_data,
-            title=f"Turbulence Intensity vs x/D — {blockage} Blocked, CTP = {ctp}",
-            savepath=f"./TI_{tag(blockage)}pct_CTP{ctp}_turbine.png",
+            title=f"TI vs x/D — {blockage} Blocked, CTP = {ctp}",
+            savepath=f"./TI_{tag(blockage)}_CTP{ctp}.png",
         )
         plot_count += 1
 
 print(f"  → Generated {plot_count} plots")
 
-
-# --- Plot 3: all cases together, one panel per CTP ---
-print("\n[Plot Set 3] All cases per CTP")
-plot_count = 0
-for ctp in ctps:
-    subs = [r for r in results if r["CTP"] == ctp]
-    if not subs:
-        continue
-    ax_data = [(r["x"], r["ti_arr"], r) for r in subs]
-    save_TI_plot(
-        ax_data,
-        title=f"Turbulence Intensity vs x/D — All Cases, CTP = {ctp}",
-        savepath=f"./TI_all_CTP{ctp}_turbine.png",
-        figsize=(14, 8),
-    )
-    plot_count += 1
-
-print(f"  → Generated {plot_count} plots")
-
 print("\n" + "=" * 80)
-print("✓ ALL PLOTS GENERATED SUCCESSFULLY!")
+print("✓ ALL TI PLOTS GENERATED SUCCESSFULLY!")
 print("=" * 80)
